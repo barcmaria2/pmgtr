@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Анкилостома (Ancylostoma duodenale) — урок 3</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        .epi-grid .item.full {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== ТАБЛИЦЫ ОБЩИЕ ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-table,
+        .pathogenic-table,
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .focus-table thead,
+        .pathogenic-table thead,
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .focus-table thead th,
+        .pathogenic-table thead th,
+        .compare-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .focus-table td,
+        .pathogenic-table td,
+        .compare-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .focus-table tbody tr:last-child td,
+        .pathogenic-table tbody tr:last-child td,
+        .compare-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .focus-table tbody tr:hover,
+        .pathogenic-table tbody tr:hover,
+        .compare-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .focus-table tbody tr:nth-child(even),
+        .pathogenic-table tbody tr:nth-child(even),
+        .compare-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .focus-table tbody tr:nth-child(even):hover,
+        .pathogenic-table tbody tr:nth-child(even):hover,
+        .compare-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .focus-table .col-type {
+            width: 20%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        .compare-table .col-criterion {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        .compare-table .col-ancylo {
+            width: 37%;
+        }
+
+        .compare-table .col-necator {
+            width: 38%;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        h5 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 14px 0 4px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul,
+        ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul,
+        ol ol,
+        ul ol,
+        ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .danger-note {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #7f1d1d;
+        }
+
+        .danger-note strong {
+            color: #991b1b;
+        }
+
+        .exam-note {
+            background: #eef2ff;
+            border-left: 4px solid #4f46e5;
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin: 16px 0 20px 0;
+            color: #1e1b4b;
+        }
+
+        .exam-note strong {
+            color: #312e81;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .highlight-box {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #14532d;
+        }
+
+        .highlight-box strong {
+            color: #166534;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 60%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .focus-table,
+            .pathogenic-table,
+            .compare-table {
+                font-size: 13px;
+            }
+
+            .compare-table .col-criterion,
+            .compare-table .col-ancylo,
+            .compare-table .col-necator {
+                width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+
+            .focus-table,
+            .pathogenic-table,
+            .compare-table {
+                font-size: 12px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== ЗАГОЛОВОК ===== -->
+        <h1><span class="emoji">🧬</span> Анкилостома двенадцатиперстная</h1>
+        <div class="subtitle">
+            <strong>Ancylostoma duodenale</strong> — возбудитель <strong>анкилостомоза</strong>
+            <span style="display:block;font-size:15px;color:#64748b;margin-top:4px;">
+                (Кривоголовка двенадцатиперстная)
+            </span>
+        </div>
+
+        <!-- ===== СИСТЕМАТИКА ===== -->
+        <div class="taxonomy-card">
+            <p>
+                <strong>Домен:</strong> Эукариоты (Eukaryota)<br />
+                <strong>Царство:</strong> Животные (Animalia)<br />
+                <strong>Тип:</strong> Круглые черви (Nemathelminthes)<br />
+                <strong>Класс:</strong> Собственно круглые черви, или Нематоды (Nematoda)<br />
+                <strong>Вид:</strong> Анкилостома двенадцатиперстная, или Кривоголовка (<em>Ancylostoma duodenale</em>)
+            </p>
+        </div>
+
+        <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+        <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+        <div class="epi-grid">
+            <div class="item"><strong>Вызываемое заболевание:</strong> Анкилостомоз (исторически — «бледная немочь»).</div>
+            <div class="item"><strong>Эпидемиологическая группа:</strong> Геогельминт, антропоноз (человек — единственный дефинитивный хозяин).</div>
+            <div class="item full">
+                <strong>Географическое распространение:</strong> Страны с тропическим и субтропическим климатом (Южная и Центральная Америка, Африка, Индия, Индокитай, Малайский архипелаг, Китай, Япония).<br />
+                На территории бывшего СССР — стойкие очаги в Закавказье (Грузия, Азербайджан) и Средней Азии (Казахстан, Туркмения, Киргизия, Узбекистан).<br />
+                В РФ — спорадические случаи на Черноморском побережье Краснодарского края и в Кабардино-Балкарии.
+            </div>
+            <div class="item full">
+                <strong>Эпидемиологические особенности:</strong> Специфическая природная очаговость отсутствует. В регионах с умеренным и холодным климатом формирует стойкие подземные (синантропные) очаги — <strong>«шахтный анкилостомоз»</strong> в глубоких каменноугольных и горнорудных шахтах (искусственно поддерживается +25 °С и выше, абсолютная влажность грунта).
+            </div>
+            <div class="item full" style="background:#fefce8;padding:8px 12px;border-radius:8px;border:1px solid #fde68a;">
+                <strong>⚠️ Особенность:</strong> Домашние животные и синантропные грызуны (копрофаги), поедая человеческие фекалии, пропускают яйца анкилостом через свой пищеварительный тракт без потери жизнеспособности, способствуя рассеиванию инвазии на огромные расстояния. Кроме того, филяриевидные личинки способны выживать в мышечной ткани травоядных животных (паратенические хозяева), из-за чего человек может заразиться при употреблении сырого или полусырого мяса.
+            </div>
+        </div>
+
+        <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+        <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+        <!-- 1. Взрослая особь -->
+        <h3>1. Взрослая (половозрелая) особь</h3>
+
+        <div class="stage-row">
+            <div class="text-col">
+                <p>
+                    <strong>Размеры:</strong> Самки — <strong>10–13 мм</strong> (иногда до 18 мм), ширина 0,4–0,6 мм. Самцы — <strong>8–11 мм</strong>, ширина 0,4–0,5 мм.
+                </p>
+                <p>
+                    <strong>Окраска:</strong> В живом состоянии — красноватый или бледно-розовый цвет (обусловлен питанием кровью хозяина).
+                </p>
+                <p>
+                    <strong>Форма тела (уникальная особенность):</strong> Передний (головной) конец тела плавно загнут на <strong>дорсальную</strong> (спинную) сторону («за спину»). Из-за этого изгиба тело червя в боковой проекции напоминает латинскую букву <strong>С</strong>, а сам паразит получил название <strong>«кривоголовка»</strong>.
+                </p>
+                <p>
+                    <strong>Органы фиксации:</strong> На головном конце — глубокая, чашеобразная кутикулярная ротовая капсула. Верхний край вооружён <strong>четырьмя крупными вентральными кутикулярными зубцами</strong> (загнутыми в виде клыков) и двумя мелкими дорсальными шипами. На дне капсулы открываются протоки парных желез, выделяющих ферменты и антикоагулянты (включая пептид AduNAP4), полностью блокирующие свертывание крови хозяина.
+                </p>
+                <h4>Половой диморфизм:</h4>
+                <ul>
+                    <li><strong>Самка:</strong> Задний (хвостовой) конец прямой, постепенно суживается и заканчивается коротким заострённым шипом.</li>
+                    <li><strong>Самец:</strong> Задний конец имеет колоколообразное расширение кутикулы — <strong>копулятивную (половую) бурсу</strong>, состоящую из двух крупных боковых лопастей и одной маленькой средней. Внутри бурсы лежат две тонкие кутикулярные спикулы для фиксации самки.</li>
+                </ul>
+                <p>
+                    <strong>Анатомические детали:</strong> Пищевод короткий и мышечный. Женская половая система трубчатая, парная (дидельфная). Петли яичников и маток густо оплетают кишечник. Мужская система непарная: один нитевидный семенник переходит в семяизвергательный канал, открывающийся в клоаку.
+                </p>
+            </div>
+
+            <div class="image-col">
+                <img src="images/helminths/ancylostoma_adult_scheme.jpg"
+                     alt="Взрослая особь анкилостомы — схема"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🪱</span>
+                    Взрослая особь <em>Ancylostoma duodenale</em>
+                    <span class="small">(ancylostoma_adult_scheme.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">самка (крупнее, хвост прямой) и самец (мельче, с копулятивной бурсой)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Яйцо -->
+        <h3>2. Яйцо</h3>
+
+        <div class="stage-row">
+            <div class="left-col">
+                <div class="text">
+                    <p>
+                        <strong>Размеры:</strong> в среднем <strong>60 × 40 мкм</strong>.
+                    </p>
+                    <p>
+                        <strong>Форма:</strong> Правильная широкоовальная форма с четко притупленными, симметричными полюсами.
+                    </p>
+                    <p>
+                        <strong>Цвет и оболочка:</strong> Полностью бесцветные и прозрачные. Покрыты очень тонкой, идеально гладкой однослойной оболочкой.
+                    </p>
+                    <p>
+                        <strong>Диагностические признаки:</strong> Главный признак при микроскопии свежевыделенного кала — наличие в самом центре прозрачного яйца компактной группы из <strong>4–8 бластомеров</strong> (крупных, округлых клеток зародыша). Пространство между бластомерами и оболочкой на полюсах остаётся абсолютно пустым и прозрачным.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Правая колонка: фото яйца -->
+            <div class="right-col">
+                <img src="images/helminths/ancylostoma_egg_microscope.jpg"
+                     alt="Микроскопическое фото яйца анкилостомы"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🔬</span>
+                    Микроскопическое фото яйца <em>Ancylostoma duodenale</em>
+                    <span class="small">(ancylostoma_egg_microscope.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">овальное, бесцветное, прозрачное, с 4–8 бластомерами внутри</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Личинка -->
+        <h3>3. Личинка</h3>
+
+        <div class="stage-row">
+            <div class="text-col">
+                <p>
+                    <strong>Размеры:</strong> Только что вылупившаяся рабдитовидная личинка — около <strong>0,25 мм</strong>; зрелая филяриевидная личинка — около <strong>0,5–0,7 мм</strong>.
+                </p>
+                <p>
+                    <strong>Где развивается:</strong> Развитие свободноживущих личинок происходит во внешней среде (влажная, тёплая почва при доступе кислорода).
+                </p>
+                <p>
+                    <strong>Особенности строения:</strong> В цикле развития последовательно сменяются две формы личинок:
+                </p>
+                <ul>
+                    <li><strong>Рабдитовидная личинка (неинвазионная):</strong> активно двигается и питается сапрофитной органикой почвы. Пищевод с двумя характерными мышечными утолщениями (бульбусами).</li>
+                    <li><strong>Филяриевидная личинка (инвазионная):</strong> образуется после двух линек. Имеет длинный цилиндрический пищевод без бульбусов. Не питается, тело покрыто тонким прозрачным защитным чехликом (отслоившейся кутикулой). Обладает выраженной подвижностью — способна совершать активные вертикальные и горизонтальные миграции по частицам почвы и стеблям растений навстречу хозяину.</li>
+                </ul>
+                <p>
+                    <strong>Сроки жизни:</strong> Во влажной среде филяриевидная личинка сохраняет инвазионность в среднем <strong>2–3 недели</strong> (в защитном чехлике — до 6 недель).
+                </p>
+                <p>
+                    <strong>Диапауза:</strong> Некоторые северные штаммы анкилостом способны останавливать развитие личинок в почве в неблагоприятный холодный сезон на <strong>7–8 месяцев</strong>, возобновляя его с наступлением тепла.
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== КРИТИЧЕСКОЕ ОТЛИЧИЕ ЛИЧИНКИ ===== -->
+        <div class="danger-note">
+            <strong>⚠️ КРИТИЧЕСКОЕ ОТЛИЧИЕ ЛИЧИНКИ АНКИЛОСТОМЫ:</strong><br />
+            При <strong>пероральном (алиментарном)</strong> заражении человека (например, при заглатывании личинок с немытыми овощами или недостаточно термически обработанном мясе травоядных животных) личинки анкилостомы <strong>полностью теряют способность к миграции</strong> по кровеносному руслу и лёгким. Они сразу оседают непосредственно в тонком кишечнике, проходя все последующие линьки на месте. Сложный гематогенный путь миграции совершается личинками <strong>строго при перкутанном</strong> (кожном) пути внедрения.
+        </div>
+
+        <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+        <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+        <p>
+            <strong>Окончательный хозяин:</strong> Человек (облигатный антропоноз).<br />
+            <strong>Промежуточный хозяин:</strong> Отсутствует (геогельминт).<br />
+            <strong>Патогенная стадия для человека:</strong> Половозрелая (взрослая) особь.<br />
+            <strong>Локализация в организме человека:</strong> Тонкий кишечник (преимущественно двенадцатиперстная кишка, реже начальный отдел тощей кишки).<br />
+            <strong>Инвазионная стадия для человека:</strong> Филяриевидная личинка.<br />
+            <strong>Механизм заражения:</strong> Контактный (перкутанный) или фекально-оральный.<br />
+            <strong>Пути передачи:</strong> Прямой (перкутанный), контактно-бытовой (через немытую зелень и овощи), алиментарный (через недостаточно термически обработанное мясо травоядных животных), водный (через сырую воду).
+        </p>
+
+        <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+        <div class="full-width-image">
+            <img src="images/helminths/ancylostoma_life_cycle.jpg"
+                 alt="Жизненный цикл анкилостомы"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🔄</span>
+                Жизненный цикл <em>Ancylostoma duodenale</em>
+                <span class="small">(ancylostoma_life_cycle.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">яйцо в почве → рабдитовидная личинка → филяриевидная личинка → перкутанное или пероральное заражение → миграция (или без миграции) → взрослая особь в кишечнике</span>
+            </div>
+        </div>
+
+        <h4>Пошаговое описание жизненного цикла:</h4>
+        <ol>
+            <li>
+                <strong>Выделение яиц во внешнюю среду:</strong> Оплодотворённая самка анкилостомы, паразитирующая в двенадцатиперстной кишке человека, ежедневно выделяет в просвет кишечника <strong>20–30 тысяч яиц</strong>. Яйца с фекалиями выносятся во внешнюю среду. На этой стадии внутри яйца находится эмбрион, состоящий из 4–8 бластомеров.
+            </li>
+            <li>
+                <strong>Личиночное развитие в почве:</strong> Попав во влажную, тёплую почву (оптимально +25…+30 °С при свободном доступе кислорода), эмбрион быстро созревает. Спустя <strong>24 часа</strong> из яйца выходит подвижная рабдитовидная личинка. Она активно питается органическими остатками в почве, растёт и дважды линяет. Спустя <strong>7–15 дней</strong> рабдитовидная личинка сбрасывает кутикулу и превращается в инвазионную филяриевидную личинку, покрытую защитным чехликом.
+            </li>
+            <li>
+                <strong>Заражение человека:</strong>
+                <ul>
+                    <li>При <strong>контактном</strong> механизме (основной): личинка сбрасывает чехлик и активно пробуравливает неповреждённую кожу человека (при ходьбе босиком или лежании на траве).</li>
+                    <li>При <strong>фекально-оральном</strong> механизме: человек случайно проглатывает личинок с загрязнёнными овощами, клубникой или сырой водой.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Поведение и миграция паразита в организме человека:</strong>
+                <ul>
+                    <li>
+                        <strong>При контактном заражении (с миграцией):</strong> Проникнув сквозь кожу, личинка попадает в мелкие венозные капилляры → током крови переносится в системные вены → нижнюю полую вену → правое предсердие и правый желудочек сердца → лёгочную артерию → капилляры лёгочных альвеол. Личинки активно пробуравливают стенки капилляров и выходят в просвет альвеол. Оттуда они поднимаются по бронхиолам, бронхам, трахее в глотку, вызывают кашлевой рефлекс и со слюной повторно заглатываются в желудочно-кишечный тракт. Гематогенная миграция занимает около <strong>7–10 суток</strong>.
+                    </li>
+                    <li>
+                        <strong>При фекально-оральном заражении (без миграции):</strong> Проглоченные личинки сразу проходят через пищевод и желудок в двенадцатиперстную кишку, минуя сосудистое русло и лёгкие.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>Формирование взрослой особи:</strong> Попав в двенадцатиперстную кишку, личинки проходят третью линьку, приобретая временную ротовую капсулу с 4 зубами. На <strong>15-е сутки</strong> в тощей кишке происходит четвёртая (последняя) линька, при которой формируется окончательная ротовая капсула с 4 крупными вентральными кутикулярными зубцами. Молодые черви прочно прикрепляются к слизистой оболочке кишечника и начинают сосать кровь.
+            </li>
+            <li>
+                <strong>Замыкание цикла:</strong> Спустя <strong>3–4 недели</strong> после внедрения личинки превращаются в половозрелых самцов и самок, а к началу <strong>6-й недели</strong> самки становятся способными откладывать яйца. Яйца в фекалиях больного обнаруживаются через <strong>6–8 недель</strong> после заражения. Общая продолжительность жизни половозрелой анкилостомы в кишечнике человека составляет <strong>5–6 лет</strong> (в редких случаях — до 7–8 лет).
+            </li>
+        </ol>
+
+        <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ И КЛИНИКА (ТАБЛИЦА) ===== -->
+        <h2><span class="emoji">⚡</span> Патогенное действие и клиника</h2>
+
+        <div class="table-wrapper">
+            <table class="pathogenic-table">
+                <thead>
+                    <tr>
+                        <th style="width:18%;">Фаза / Синдром</th>
+                        <th style="width:37%;">Механизм действия</th>
+                        <th style="width:45%;">Клинические проявления</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ранняя (миграционная) фаза</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Механическое повреждение тканей кожи личинками при внедрении</li>
+                                <li>Повреждение стенок кровеносных капилляров, альвеол и бронхов во время гематогенной миграции</li>
+                                <li>Токсико-аллергическое (сенсибилизирующее) действие продуктов метаболизма и распада личинок</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Местный зудящий дерматит, эритематозно-папулезная сыпь на коже в месте внедрения</li>
+                                <li>При миграции через дыхательные пути: кашель, одышка, першение в горле</li>
+                                <li>Длительность ранней фазы — <strong>2–4 недели</strong></li>
+                                <li>В анализе крови — высокая эозинофилия</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Хроническая (кишечная) фаза</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Механическое травмирование слизистой оболочки двенадцатиперстной кишки крупными вентральными кутикулярными зубцами при фиксации</li>
+                                <li>Выделение ферментов и антикоагулянтов, растворяющих ткани кишки и блокирующих свертывание крови</li>
+                                <li>Облигатная гематофагия (поглощение крови взрослыми червями)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Боли в эпигастральной области, схваткообразные боли в животе</li>
+                                <li>Выраженное снижение аппетита, тошнота, метеоризм, частый неустойчивый стул</li>
+                                <li>На месте фиксации — глубокие, длительно кровоточащие эрозии и трофические язвы</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Анемический синдром и нарушения обмена</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Хроническая железодефицитная анемия и диспротеинемия (потеря белка)</li>
+                                <li>Непрерывные микрокровотечения и поглощение паразитом крови хозяина</li>
+                                <li>Глубокое нарушение обмена веществ и авитаминоз B12</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Извращение вкуса (желание есть известь, глину, уголь)</li>
+                                <li>Стоматит, глоссит, дистрофические изменения и ломкость ногтей</li>
+                                <li>Выраженные отёки лица и конечностей</li>
+                                <li>Нарушения сердечно-сосудистой деятельности (тахикардия, одышка, приглушённые тоны)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Осложнения инвазии</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Механическое разрушение барьеров слизистой оболочки кишечника</li>
+                                <li>Присоединение вторичной бактериальной инфекции</li>
+                                <li>Массивная кровопотеря при интенсивной инвазии</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Гнойное инфицирование кожных расчёсов</li>
+                                <li>Перфорация язв двенадцатиперстной кишки с развитием перитонита</li>
+                                <li>Тяжёлая кахексия (истощение)</li>
+                                <li>Задержка умственного и физического развития у детей</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА (ТАБЛИЦА) ===== -->
+        <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+        <div class="note">
+            <strong>⚠️ Ловушки лабораторной диагностики:</strong><br />
+            <strong>1. Период клинического «окна»:</strong> В течение первых <strong>4–5 недель</strong> после инвазии (пока личинки мигрируют и созревают) овоскопия фекалий всегда даёт ложноотрицательный результат. Диагноз устанавливают исключительно серологически (ИФА) или при микроскопии мокроты.<br />
+            <strong>2. Морфологическое сходство:</strong> Яйца анкилостомы неотличимы от яиц других анкилостомид. В бланке пишется: <strong>«Обнаружены яйца анкилостомид»</strong>. Точный видовой диагноз ставится только после лярвоскопии по методу Харада–Мори.
+        </div>
+
+        <div class="table-wrapper">
+            <table class="pathogenic-table">
+                <thead>
+                    <tr>
+                        <th style="width:22%;">Метод</th>
+                        <th style="width:28%;">Материал для исследования</th>
+                        <th style="width:50%;">Особенности и диагностическое значение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Микроскопический (Копроовоскопия)</strong></td>
+                        <td>Свежевыделенные фекалии</td>
+                        <td>
+                            <strong>Основной метод.</strong> Обнаружение характерных яиц анкилостомид (овальные, бесцветные, с тонкой прозрачной оболочкой и 4–8 бластомерами).<br />
+                            <strong>Важно:</strong> кал необходимо исследовать сразу, так как во влажной и тёплой среде из яиц быстро выходят свободноживущие личинки.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Методы обогащения (Флотации)</strong></td>
+                        <td>Фекалии</td>
+                        <td>Методы <strong>Калантарян</strong> (насыщенный раствор нитрата натрия) или <strong>Фюллеборна</strong> (хлорид натрия). Позволяют выявить яйца при низкой интенсивности инвазии.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Лярвоскопия (метод Харада–Мори)</strong></td>
+                        <td>Фекалии (культивируемые)</td>
+                        <td>Культивирование и обнаружение личинок анкилостомы на фильтровальной бумаге в пробирке. Необходим для <strong>дифференциальной диагностики</strong>, так как яйца анкилостомы морфологически неотличимы от яиц других анкилостомид.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Микроскопический (Лярвоскопия мокроты)</strong></td>
+                        <td>Мокрота пациента</td>
+                        <td>Применяется в <strong>ранней (миграционной)</strong> фазе. Позволяет обнаружить живых мигрирующих личинок при прохождении ими лёгочного круга миграции.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Иммунологический (Серологический)</strong></td>
+                        <td>Сыворотка крови пациента</td>
+                        <td><strong>ИФА</strong> для поиска специфических антител класса IgG к антигенам анкилостом. Специфичен и эффективен на <strong>ранней стадии</strong> инвазии, когда яйца в кишечнике ещё отсутствуют.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Гемограмма (Общий анализ крови)</strong></td>
+                        <td>Периферическая кровь</td>
+                        <td>Признаки гипохромной железодефицитной анемии (резкое снижение гемоглобина и эритроцитов). Характерна стойкая <strong>высокая эозинофилия</strong> (особенно в ранней фазе).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== ПРОФИЛАКТИКА ===== -->
+        <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+        <h4>Личная профилактика:</h4>
+        <ul>
+            <li>Запрет на хождение босиком и лежание без подстилки на голой земле или траве в эндемичных районах (для исключения перкутанного проникновения личинок через кожу).</li>
+            <li>Тщательное мытьё рук с мылом после любого контакта с почвой и перед приёмом пищи.</li>
+            <li>Качественное мытьё под проточной водой и обязательное ошпаривание кипятком всех употребляемых в пищу овощей, зелени, ягод и фруктов (для предотвращения перорального заглатывания личинок).</li>
+            <li>Употребление для питья и бытовых нужд исключительно кипячёной или очищенной воды.</li>
+        </ul>
+
+        <h4>Общественная профилактика:</h4>
+        <ul>
+            <li>Выявление и обязательное лечение (дегельминтизация) больных анкилостомозом людей.</li>
+            <li>Санитарное благоустройство населённых мест для предотвращения фекального загрязнения почвы и открытых водоёмов.</li>
+            <li>Строжайший законодательный запрет на использование необеззараженных человеческих фекалий из выгребных ям в качестве удобрений.</li>
+            <li>Проведение планового санитарно-ветеринарного контроля и дегельминтизации шахтёров в глубоких, тёплых и влажных шахтах (подземные очаги анкилостомоза).</li>
+            <li>Санитарно-просветительная работа среди населения, подверженного высокому риску заражения.</li>
+        </ul>
+
+        <!-- ===== БЛОК ДЛЯ ЭКЗАМЕНА: СРАВНЕНИЕ С НЕКАТОРОМ ===== -->
+        <div class="exam-note">
+            <strong>📚 БЛОК ДЛЯ ЭКЗАМЕНА:</strong><br />
+            В вопросах к экзамену спрашивают про <strong>анкилостомиды</strong> в целом. В идеале необходимо знать не только кривоголовку (<em>Ancylostoma duodenale</em>), но и <strong>некатора</strong> (<em>Necator americanus</em>). Оба являются геогельминтами и антропонозами, очень похожи друг на друга (вплоть до идентичных яиц).<br />
+            Ниже приведена таблица ключевых отличий, которые необходимо запомнить для экзамена.
+        </div>
+
+        <h3>Сравнительная таблица: Кривоголовка vs Некатор</h3>
+
+        <div class="table-wrapper">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="col-criterion">Критерий сравнения</th>
+                        <th class="col-ancylo"><em>Ancylostoma duodenale</em> (Кривоголовка)</th>
+                        <th class="col-necator"><em>Necator americanus</em> (Некатор)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-criterion"><strong>Ротовой аппарат<br />(Главное отличие!)</strong></td>
+                        <td>Вооружён <strong>четырьмя вентральными</strong> и двумя дорсальными режущими кутикулярными <strong>зубцами</strong>.</td>
+                        <td>Вооружён <strong>двумя полулунными режущими пластинками</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-criterion"><strong>Изгиб переднего конца тела</strong></td>
+                        <td>Передний конец тела загнут на <strong>вентральную</strong> (брюшную) сторону.</td>
+                        <td>Передний конец тела загнут на <strong>дорсальную</strong> (спинную) сторону.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-criterion"><strong>Размеры половозрелых особей</strong></td>
+                        <td><strong>Крупнее:</strong> самка 10–13 мм, самец 8–10 мм.</td>
+                        <td><strong>Мельче:</strong> самка 9–10 мм, самец 5–8 мм.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-criterion"><strong>Потребление крови<br />(Объём гематофагии)</strong></td>
+                        <td><strong>Высокое:</strong> одна особь поглощает <strong>0,16–0,34 мл</strong> крови в сутки.</td>
+                        <td><strong>Низкое:</strong> одна особь поглощает <strong>0,03–0,05 мл</strong> крови в сутки.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-criterion"><strong>Тяжесть заболевания</strong></td>
+                        <td>Протекает <strong>более тяжело</strong>, анемия развивается быстрее.</td>
+                        <td>Протекает <strong>легче</strong> из-за меньшего объёма кровопотери.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-criterion"><strong>Основной путь заражения</strong></td>
+                        <td>Более характерен <strong>пероральный</strong> путь (через рот с водой и пищей).</td>
+                        <td>Более характерен <strong>перкутанный</strong> путь (активное проникновение личинок через кожу).</td>
+                    </tr>
+                    <tr>
+                        <td class="col-criterion"><strong>Продолжительность жизни в человеке</strong></td>
+                        <td>Живёт в среднем <strong>7–8 лет</strong>.</td>
+                        <td>Живёт значительно дольше — <strong>до 15 лет</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-criterion"><strong>Яйцепродукция</strong></td>
+                        <td>Самка выделяет <strong>10–25 тысяч</strong> яиц в сутки.</td>
+                        <td>Самка выделяет <strong>5–10 тысяч</strong> яиц в сутки.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

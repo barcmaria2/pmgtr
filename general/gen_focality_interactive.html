@@ -1,0 +1,902 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .interactive-wrapper {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #334155;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .interactive-wrapper h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+    }
+
+    .interactive-wrapper .section-sub {
+        color: #64748b;
+        font-size: 15px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e9edf3;
+        padding-bottom: 12px;
+    }
+
+    /* ===== ЗАДАНИЯ НА ВВОД ТЕРМИНА ===== */
+    .term-tasks {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 12px 0 30px;
+    }
+
+    .term-task {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px 22px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        border: 1px solid #f0f3f8;
+    }
+
+    .term-task .definition {
+        font-weight: 500;
+        font-size: 15px;
+        color: #1e293b;
+        margin-bottom: 12px;
+        padding-left: 4px;
+    }
+
+    .term-task .definition::before {
+        content: "📖 ";
+    }
+
+    .term-task .input-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .term-task input[type="text"] {
+        flex: 1;
+        min-width: 180px;
+        padding: 10px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        color: #1e293b;
+        background: #fafcff;
+        transition: 0.2s;
+        font-family: inherit;
+    }
+
+    .term-task input[type="text"]:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        background: #ffffff;
+    }
+
+    .term-task .task-btn {
+        padding: 10px 24px;
+        background: #2563eb;
+        color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+        white-space: nowrap;
+    }
+
+    .term-task .task-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+    }
+
+    .term-task .task-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+    }
+
+    .term-task .task-result {
+        margin-top: 10px;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        display: none;
+    }
+
+    .term-task .task-result.show {
+        display: block;
+    }
+
+    .term-task .task-result.pass {
+        background: #ecfdf5;
+        color: #065f46;
+    }
+
+    .term-task .task-result.fail {
+        background: #fef2f2;
+        color: #991b1b;
+    }
+
+    .term-task .task-result .correct-answer {
+        font-weight: 700;
+        color: #1e40af;
+    }
+
+    /* ===== ТЕСТЫ С ВЫБОРОМ ===== */
+    .test-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin: 12px 0 20px;
+    }
+
+    .test-item {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px 22px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        border: 1px solid #f0f3f8;
+    }
+
+    .test-item .question {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 14px;
+        color: #1e293b;
+    }
+
+    .test-options-custom {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .test-option-custom {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        background: #f8fafc;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: 0.2s;
+        font-size: 14px;
+        font-weight: 500;
+        color: #334155;
+    }
+
+    .test-option-custom:hover {
+        background: #f1f5f9;
+        border-color: #dbe7fe;
+    }
+
+    .test-option-custom.selected {
+        background: #eff6ff;
+        border-color: #2563eb;
+    }
+
+    .test-option-custom.correct {
+        background: #ecfdf5;
+        border-color: #10b981;
+        color: #065f46;
+    }
+
+    .test-option-custom.wrong {
+        background: #fef2f2;
+        border-color: #ef4444;
+        color: #991b1b;
+    }
+
+    .test-option-custom input[type="radio"] {
+        display: none;
+    }
+
+    .test-option-custom .radio-circle {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid #cbd5e1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: 0.2s;
+    }
+
+    .test-option-custom.selected .radio-circle {
+        border-color: #2563eb;
+        background: #2563eb;
+    }
+    .test-option-custom.selected .radio-circle::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #fff;
+    }
+    .test-option-custom.correct .radio-circle {
+        border-color: #10b981;
+        background: #10b981;
+    }
+    .test-option-custom.correct .radio-circle::after {
+        content: '✓';
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+    .test-option-custom.wrong .radio-circle {
+        border-color: #ef4444;
+        background: #ef4444;
+    }
+    .test-option-custom.wrong .radio-circle::after {
+        content: '✗';
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .test-btn-custom {
+        padding: 10px 28px;
+        background: #2563eb;
+        color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+    }
+
+    .test-btn-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+    }
+
+    .test-btn-custom:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+    }
+
+    .test-result-custom {
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        display: none;
+    }
+
+    .test-result-custom.show {
+        display: block;
+    }
+    .test-result-custom.pass {
+        background: #ecfdf5;
+        color: #065f46;
+    }
+    .test-result-custom.fail {
+        background: #fef2f2;
+        color: #991b1b;
+    }
+
+    @media (max-width: 600px) {
+        .term-task .input-row {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .term-task input[type="text"] {
+            min-width: unset;
+        }
+        .term-task .task-btn {
+            width: 100%;
+            justify-content: center;
+        }
+        .test-item {
+            padding: 16px;
+        }
+        .test-option-custom {
+            font-size: 13px;
+            padding: 8px 12px;
+        }
+        .test-btn-custom {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+
+<div class="interactive-wrapper">
+
+    <!-- ============================================================ -->
+    <!--  ЧАСТЬ 1: ЗАДАНИЯ НА ВВОД ТЕРМИНА (20 штук)                 -->
+    <!-- ============================================================ -->
+    <h3>📝 Задания на знание терминов</h3>
+    <div class="section-sub">Прочитайте описание и введите правильный термин или фамилию. Проверьте себя.</div>
+
+    <div class="term-tasks" id="termTasksContainer">
+        <!-- 1 -->
+        <div class="term-task" data-term="павловский">
+            <div class="definition">Учёный, который в 1939 году создал учение о природной очаговости трансмиссивных болезней. (Введите фамилию)</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите фамилию..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 2 -->
+        <div class="term-task" data-term="заболотный">
+            <div class="definition">Учёный, создавший учение о природной очаговости чумы в 1922 году, впервые выделивший чумную палочку из тарбагана. (Введите фамилию)</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите фамилию..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 3 -->
+        <div class="term-task" data-term="зильбер">
+            <div class="definition">Учёный, впервые выделивший вирус весенне-летнего клещевого энцефалита в 1937 году. (Введите фамилию)</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите фамилию..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 4 -->
+        <div class="term-task" data-term="природный очаг">
+            <div class="definition">Участок биогеоценоза, на котором эволюционно сложились межвидовые отношения и происходит циркуляция возбудителя независимо от человека.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 5 -->
+        <div class="term-task" data-term="вектор">
+            <div class="definition">Популяции кровососущих членистоногих (клещи, насекомые), осуществляющие передачу патогена от донора к реципиенту.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 6 -->
+        <div class="term-task" data-term="донор">
+            <div class="definition">Популяции восприимчивых диких позвоночных животных, обеспечивающих сохранение и размножение возбудителя в природе (грызуны, птицы, копытные).</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 7 -->
+        <div class="term-task" data-term="реципиент">
+            <div class="definition">Восприимчивый здоровый организм, в который переносчик передаёт возбудителя. В истинном природном очаге — дикое позвоночное животное.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 8 -->
+        <div class="term-task" data-term="антропургические очаги">
+            <div class="definition">Очаги, возникающие при освоении человеком территории природного очага; в циркуляцию возбудителей вовлекаются домашние животные.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 9 -->
+        <div class="term-task" data-term="синантропные очаги">
+            <div class="definition">Очаги, где циркуляция возбудителей связана исключительно с синантропными и домашними животными.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 10 -->
+        <div class="term-task" data-term="моногостальные">
+            <div class="definition">Тип очагов, где резервуаром является один вид животных (возбудитель узко адаптирован).</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 11 -->
+        <div class="term-task" data-term="полигостальные">
+            <div class="definition">Тип очагов, где резервуаром служат несколько видов животных.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 12 -->
+        <div class="term-task" data-term="моновекторные">
+            <div class="definition">Тип очагов, где возбудитель передаётся только одним видом или родом переносчиков.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 13 -->
+        <div class="term-task" data-term="поливекторные">
+            <div class="definition">Тип очагов, где возбудитель передаётся различными видами переносчиков.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 14 -->
+        <div class="term-task" data-term="ландшафтная паразитология">
+            <div class="definition">Понятие, введённое Е.Н. Павловским для обозначения территориальной приуроченности паразитарных болезней к географическим ландшафтам.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 15 -->
+        <div class="term-task" data-term="гамбузирование">
+            <div class="definition">Метод борьбы с переносчиками, основанный на разведении мелких рыб, питающихся личинками и куколками кровососущих комаров.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 16 -->
+        <div class="term-task" data-term="сверхпаразитизм">
+            <div class="definition">Метод борьбы с клещами-переносчиками, основанный на использовании животных и микроорганизмов, паразитирующих на клещах и их яйцах.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 17 -->
+        <div class="term-task" data-term="стерилизации самцов">
+            <div class="definition">Генетический метод борьбы с переносчиками, основанный на массовом внедрении бесплодных мужских особей в природную популяцию.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 18 -->
+        <div class="term-task" data-term="серебровский">
+            <div class="definition">Выдающийся отечественный генетик, впервые предложивший метод стерилизации самцов для борьбы с вредными насекомыми-переносчиками. (Введите фамилию)</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите фамилию..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 19 -->
+        <div class="term-task" data-term="парциальная девастация">
+            <div class="definition">Снижение популяции переносчиков и сведение риска заражения человека к минимуму без полного уничтожения вида.</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите термин..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+
+        <!-- 20 -->
+        <div class="term-task" data-term="муха цеце">
+            <div class="definition">Переносчик африканского трипаносомоза (сонной болезни), против которого применяется метод стерилизации самцов. (Введите название)</div>
+            <div class="input-row">
+                <input type="text" placeholder="Введите название..." autocomplete="off">
+                <button class="task-btn">✅ Проверить</button>
+            </div>
+            <div class="task-result"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--  ЧАСТЬ 2: ТЕСТЫ С ВЫБОРОМ ОТВЕТА (19 штук, без вопроса про год) -->
+    <!-- ============================================================ -->
+    <h3 style="margin-top: 48px;">🧪 Тесты с выбором ответа</h3>
+    <div class="section-sub">Выберите один правильный вариант из предложенных.</div>
+
+    <div class="test-list" id="testContainer">
+        <!-- 1 -->
+        <div class="test-item" data-correct="0">
+            <div class="question">1. Кто сформулировал учение о природной очаговости трансмиссивных болезней?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q1" value="0"><span class="radio-circle"></span> Е.Н. Павловский</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q1" value="1"><span class="radio-circle"></span> Д.К. Заболотный</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q1" value="2"><span class="radio-circle"></span> Л.А. Зильбер</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 2 -->
+        <div class="test-item" data-correct="1">
+            <div class="question">2. Кто создал учение о природной очаговости чумы в 1922 году?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q2" value="0"><span class="radio-circle"></span> Е.Н. Павловский</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q2" value="1"><span class="radio-circle"></span> Д.К. Заболотный</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q2" value="2"><span class="radio-circle"></span> К.И. Скрябин</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 3 -->
+        <div class="test-item" data-correct="2">
+            <div class="question">3. Кто впервые выделил вирус весенне-летнего клещевого энцефалита?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q3" value="0"><span class="radio-circle"></span> Е.Н. Павловский</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q3" value="1"><span class="radio-circle"></span> Д.К. Заболотный</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q3" value="2"><span class="radio-circle"></span> Л.А. Зильбер</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 4 -->
+        <div class="test-item" data-correct="0">
+            <div class="question">4. Что такое природный очаг?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q4" value="0"><span class="radio-circle"></span> Участок биогеоценоза с циркуляцией возбудителя независимо от человека</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q4" value="1"><span class="radio-circle"></span> Территория, где живут дикие животные</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q4" value="2"><span class="radio-circle"></span> Место обитания кровососущих насекомых</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 5 -->
+        <div class="test-item" data-correct="1">
+            <div class="question">5. Что такое вектор в структуре природного очага?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q5" value="0"><span class="radio-circle"></span> Возбудитель заболевания</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q5" value="1"><span class="radio-circle"></span> Кровососущее членистоногое-переносчик</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q5" value="2"><span class="radio-circle"></span> Дикое позвоночное животное</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 6 -->
+        <div class="test-item" data-correct="2">
+            <div class="question">6. Какие очаги называются антропургическими?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q6" value="0"><span class="radio-circle"></span> Где циркуляция идёт только среди диких животных</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q6" value="1"><span class="radio-circle"></span> Где циркуляция связана только с синантропными животными</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q6" value="2"><span class="radio-circle"></span> Где в циркуляцию вовлекаются домашние животные</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 7 -->
+        <div class="test-item" data-correct="0">
+            <div class="question">7. Что такое моногостальные очаги?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q7" value="0"><span class="radio-circle"></span> Резервуар — один вид животных</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q7" value="1"><span class="radio-circle"></span> Резервуар — несколько видов животных</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q7" value="2"><span class="radio-circle"></span> Переносчик — один вид</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 8 -->
+        <div class="test-item" data-correct="1">
+            <div class="question">8. Что такое поливекторные очаги?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q8" value="0"><span class="radio-circle"></span> Один вид переносчика</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q8" value="1"><span class="radio-circle"></span> Различные виды переносчиков</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q8" value="2"><span class="radio-circle"></span> Один вид резервуара</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 9 -->
+        <div class="test-item" data-correct="2">
+            <div class="question">9. Какое понятие ввёл Е.Н. Павловский для территориальной приуроченности болезней к ландшафтам?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q9" value="0"><span class="radio-circle"></span> Паразитоценоз</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q9" value="1"><span class="radio-circle"></span> Девастация</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q9" value="2"><span class="radio-circle"></span> Ландшафтная паразитология</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 10 -->
+        <div class="test-item" data-correct="0">
+            <div class="question">10. Какой переносчик характерен для клещевого весенне-летнего энцефалита в таёжной зоне?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q10" value="0"><span class="radio-circle"></span> Иксодовые клещи</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q10" value="1"><span class="radio-circle"></span> Москиты рода Phlebotomus</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q10" value="2"><span class="radio-circle"></span> Аргасовые клещи</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 11 -->
+        <div class="test-item" data-correct="1">
+            <div class="question">11. Какой переносчик характерен для лейшманиоза в степях и пустынях?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q11" value="0"><span class="radio-circle"></span> Иксодовые клещи</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q11" value="1"><span class="radio-circle"></span> Москиты рода Phlebotomus</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q11" value="2"><span class="radio-circle"></span> Муха це-це</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 12 -->
+        <div class="test-item" data-correct="2">
+            <div class="question">12. Какой переносчик характерен для африканского трипаносомоза (сонной болезни)?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q12" value="0"><span class="radio-circle"></span> Иксодовые клещи</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q12" value="1"><span class="radio-circle"></span> Москиты</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q12" value="2"><span class="radio-circle"></span> Муха це-це</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 13 -->
+        <div class="test-item" data-correct="0">
+            <div class="question">13. В чём заключается главный принцип биологической борьбы с трансмиссивными болезнями?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q13" value="0"><span class="radio-circle"></span> Избирательное уничтожение паразита или переносчика без вреда биогеоценозу</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q13" value="1"><span class="radio-circle"></span> Массовое применение инсектицидов</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q13" value="2"><span class="radio-circle"></span> Полное уничтожение всех животных в очаге</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 14 -->
+        <div class="test-item" data-correct="1">
+            <div class="question">14. В чём суть метода гамбузирования водоёмов?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q14" value="0"><span class="radio-circle"></span> Выпуск стерилизованных самцов</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q14" value="1"><span class="radio-circle"></span> Разведение рыб, питающихся личинками комаров</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q14" value="2"><span class="radio-circle"></span> Использование паразитов клещей</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 15 -->
+        <div class="test-item" data-correct="2">
+            <div class="question">15. В чём суть метода сверхпаразитизма?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q15" value="0"><span class="radio-circle"></span> Выпуск стерилизованных самцов</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q15" value="1"><span class="radio-circle"></span> Использование хищных рыб</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q15" value="2"><span class="radio-circle"></span> Использование паразитов клещей и их яиц</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 16 -->
+        <div class="test-item" data-correct="0">
+            <div class="question">16. Кто впервые предложил метод стерилизации самцов для борьбы с вредными насекомыми-переносчиками?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q16" value="0"><span class="radio-circle"></span> А.С. Серебровский</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q16" value="1"><span class="radio-circle"></span> Е.Н. Павловский</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q16" value="2"><span class="radio-circle"></span> Д.К. Заболотный</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 17 -->
+        <div class="test-item" data-correct="1">
+            <div class="question">17. Что такое парциальная девастация?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q17" value="0"><span class="radio-circle"></span> Полное уничтожение вида паразита на всей планете</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q17" value="1"><span class="radio-circle"></span> Снижение численности переносчиков до безопасного уровня</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q17" value="2"><span class="radio-circle"></span> Уничтожение всех домашних животных в очаге</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 18 -->
+        <div class="test-item" data-correct="2">
+            <div class="question">18. Какой метод используется для профилактики африканского трипаносомоза путём выпуска стерилизованных самцов?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q18" value="0"><span class="radio-circle"></span> Гамбузирование</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q18" value="1"><span class="radio-circle"></span> Сверхпаразитизм</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q18" value="2"><span class="radio-circle"></span> Метод стерилизации самцов</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+
+        <!-- 19 -->
+        <div class="test-item" data-correct="0">
+            <div class="question">19. Что такое синантропные очаги?</div>
+            <div class="test-options-custom">
+                <label class="test-option-custom" data-value="0"><input type="radio" name="q19" value="0"><span class="radio-circle"></span> Очаги с циркуляцией только среди синантропных и домашних животных</label>
+                <label class="test-option-custom" data-value="1"><input type="radio" name="q19" value="1"><span class="radio-circle"></span> Очаги с циркуляцией только среди диких животных</label>
+                <label class="test-option-custom" data-value="2"><input type="radio" name="q19" value="2"><span class="radio-circle"></span> Очаги, где переносчик отсутствует</label>
+            </div>
+            <button class="test-btn-custom">✅ Проверить</button>
+            <div class="test-result-custom"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        function normalizeTermAnswer(value) {
+            return String(value || '')
+                .toLowerCase()
+                .replace(/ё/g, 'е')
+                .replace(/[«»"'`]/g, '')
+                .replace(/[–—−-]/g, ' ')
+                .replace(/[.,;:!?]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function acceptedTermAnswers(task, correctTerm) {
+            const values = [correctTerm];
+            const extra = (task.dataset.answers || '').split('|').map(v => v.trim()).filter(Boolean);
+            values.push(...extra);
+            // Если кафедральный термин содержит синоним в скобках,
+            // принимаем как полную запись, так и каждую часть отдельно.
+            const paren = correctTerm.match(/^(.+?)\s*\(([^)]+)\)\s*$/);
+            if (paren) values.push(paren[1], paren[2]);
+            return new Set(values.map(normalizeTermAnswer).filter(Boolean));
+        }
+
+        // ============================================================
+        // 1. ЗАДАНИЯ НА ВВОД ТЕРМИНА
+        // ============================================================
+        const tasks = document.querySelectorAll('.term-task');
+        tasks.forEach(task => {
+            const input = task.querySelector('input[type="text"]');
+            const btn = task.querySelector('.task-btn');
+            const resultDiv = task.querySelector('.task-result');
+            const correctTerm = task.dataset.term.trim();
+            const acceptedAnswers = acceptedTermAnswers(task, correctTerm);
+
+            btn.addEventListener('click', function() {
+                const userAnswer = input.value.trim();
+                resultDiv.className = 'task-result';
+
+                if (userAnswer === '') {
+                    resultDiv.className = 'task-result show fail';
+                    resultDiv.innerHTML = '⚠️ Пожалуйста, введите ответ.';
+                    return;
+                }
+
+                const isCorrect = acceptedAnswers.has(normalizeTermAnswer(userAnswer));
+
+                if (isCorrect) {
+                    resultDiv.className = 'task-result show pass';
+                    resultDiv.innerHTML = '✅ Правильно! Отлично!';
+                } else {
+                    resultDiv.className = 'task-result show fail';
+                    resultDiv.innerHTML = `❌ Неправильно. Правильный ответ: <span class="correct-answer">${correctTerm}</span>`;
+                }
+
+                btn.disabled = true;
+                setTimeout(() => {
+                    btn.disabled = false;
+                }, 1500);
+            });
+
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    btn.click();
+                }
+            });
+        });
+
+        // ============================================================
+        // 2. ТЕСТЫ С ВЫБОРОМ ОТВЕТА
+        // ============================================================
+        const tests = document.querySelectorAll('.test-item');
+        tests.forEach(testItem => {
+            const options = testItem.querySelectorAll('.test-option-custom');
+            const btn = testItem.querySelector('.test-btn-custom');
+            const resultDiv = testItem.querySelector('.test-result-custom');
+            const correctIndex = parseInt(testItem.dataset.correct, 10);
+
+            options.forEach(opt => {
+                opt.addEventListener('click', function() {
+                    options.forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const radio = this.querySelector('input[type="radio"]');
+                    if (radio) radio.checked = true;
+                });
+            });
+
+            btn.addEventListener('click', function() {
+                let selected = null;
+                let selectedIndex = null;
+                options.forEach((opt, idx) => {
+                    const radio = opt.querySelector('input[type="radio"]');
+                    if (radio && radio.checked) {
+                        selected = opt;
+                        selectedIndex = idx;
+                    }
+                });
+
+                if (!selected) {
+                    resultDiv.className = 'test-result-custom show fail';
+                    resultDiv.textContent = '⚠️ Выберите вариант ответа';
+                    return;
+                }
+
+                options.forEach(opt => {
+                    opt.classList.remove('correct', 'wrong');
+                });
+
+                const isCorrect = (selectedIndex === correctIndex);
+
+                if (isCorrect) {
+                    selected.classList.add('correct');
+                    resultDiv.className = 'test-result-custom show pass';
+                    resultDiv.textContent = '✅ Правильно! Отлично!';
+                } else {
+                    selected.classList.add('wrong');
+                    options.forEach((opt, idx) => {
+                        if (idx === correctIndex) {
+                            opt.classList.add('correct');
+                        }
+                    });
+                    resultDiv.className = 'test-result-custom show fail';
+                    const correctText = options[correctIndex].textContent.trim();
+                    resultDiv.textContent = `❌ Неправильно. Правильный ответ: ${correctText}`;
+                }
+
+                btn.disabled = true;
+                setTimeout(() => {
+                    btn.disabled = false;
+                }, 1500);
+            });
+        });
+    })();
+</script>

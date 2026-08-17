@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Класс Паукообразные (Arachnida) — общая характеристика</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+        .taxonomy-card p { margin: 0; font-size: 15px; color: #475569; }
+        .taxonomy-card p strong { color: #1e293b; }
+        .species-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 20px;
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #e9edf3;
+            margin: 10px 0 16px 0;
+        }
+        .species-list .item { font-size: 14px; }
+        .species-list .item em { font-style: italic; color: #1e293b; }
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.02em;
+        }
+        h2 .emoji { font-size: 28px; }
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+        p { margin: 0 0 12px 0; font-size: 15px; color: #334155; }
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .system-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 600px;
+        }
+        .system-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .system-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+            letter-spacing: 0.02em;
+        }
+        .system-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .system-table tbody tr:last-child td { border-bottom: none; }
+        .system-table tbody tr:hover { background: #f8faff; }
+        .system-table tbody tr:nth-child(even) { background: #fafcff; }
+        .system-table tbody tr:nth-child(even):hover { background: #f4f8ff; }
+        .system-table .col-system {
+            font-weight: 700;
+            color: #1e3a8a;
+            background: #f8fafc;
+            width: 20%;
+        }
+        .system-table ul { margin: 4px 0 4px 18px; font-size: 13px; }
+        .system-table li { margin-bottom: 2px; }
+
+        .med-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+        .med-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+        }
+        .med-card h4 { margin-top: 0; margin-bottom: 6px; color: #1e3a8a; }
+        .med-card ul { margin: 6px 0 0 18px; }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .system-table { font-size: 12px; min-width: 400px; }
+            .system-table .col-system { width: auto; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .system-table { font-size: 11px; min-width: 320px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1><span class="emoji">🕷️</span> Класс Паукообразные (Arachnida)</h1>
+    <div class="subtitle">Систематика, морфофизиологическая характеристика и <strong>медицинское значение</strong></div>
+
+    <!-- ===== СИСТЕМАТИЧЕСКОЕ ПОЛОЖЕНИЕ ===== -->
+    <div class="taxonomy-card">
+        <p><strong>Домен:</strong> Эукариоты (<em>Eukaryota</em>)</p>
+        <p><strong>Царство:</strong> Животные (<em>Animalia</em>)</p>
+        <p><strong>Тип:</strong> Членистоногие (<em>Arthropoda</em>)</p>
+        <p><strong>Подтип:</strong> Хелицеровые (<em>Chelicerata</em>)</p>
+        <p><strong>Класс:</strong> Паукообразные (<em>Arachnida</em>, или <em>Arachnoidea</em>)</p>
+        <p><strong>Медицински значимые отряды (надотряды):</strong></p>
+        <div class="species-list">
+            <span class="item"><strong>Скорпионы</strong> (<em>Scorpiones</em>)</span>
+            <span class="item"><strong>Пауки</strong> (<em>Aranei</em>)</span>
+            <span class="item"><strong>Сольпуги</strong> (<em>Solifugae</em>)</span>
+            <span class="item"><strong>Клещи</strong> (<em>Acari</em>, или <em>Acarina</em>)</span>
+        </div>
+    </div>
+
+    <!-- ===== ХАРАКТЕРНЫЕ ЧЕРТЫ ===== -->
+    <h2><span class="emoji">🧬</span> Характерные черты организации класса</h2>
+    <p>Класс объединяет более 63 000 видов преимущественно наземных членистоногих. Переход к жизни на суше обусловил развитие плотных водонепроницаемых покровов, воздушного дыхания и концентрированной нервной системы.</p>
+
+    <h3>1. Внешнее морфологическое строение</h3>
+    <ul>
+        <li><strong>Отделы тела (тагмы):</strong> тело разделено на <strong>головогрудь (<em>cephalothorax</em>) и брюшко (<em>abdomen</em>)</strong>. Степень сегментации варьирует:
+            <ul>
+                <li><em>У скорпионов:</em> головогрудь слитная, брюшко сегментировано (преабдомен + постабдомен с тельсоном).</li>
+                <li><em>У пауков:</em> головогрудь и брюшко нерасчленённые, соединены стебельком.</li>
+                <li><em>У сольпуг:</em> тело состоит из головогруди, груди (2 свободных сегмента) и сегментированного брюшка.</li>
+                <li><em>У клещей:</em> в связи с паразитизмом – тотальная олигомеризация, тело полностью <strong>слитное и несегментированное</strong>.</li>
+            </ul>
+        </li>
+        <li><strong>Покровы и мускулатура:</strong> многослойная хитинизированная кутикула с восковым слоем (защита от испарения); поперечно-полосатая мускулатура в виде отдельных пучков (кожно-мускульный мешок отсутствует).</li>
+        <li><strong>Головогрудные конечности (6 пар):</strong>
+            <ul>
+                <li><em>1-я пара — хелицеры:</em> захват и умерщвление пищи (клешневидные у скорпионов, крючковидные с ядовитым протоком у пауков, колюще-режущие у клещей).</li>
+                <li><em>2-я пара — педипальпы:</em> осязательные, у скорпионов – мощные клешни, у самцов пауков – копулятивный орган.</li>
+                <li><em>3–6-я пары — ходильные ноги:</em> всегда <strong>4 пары (8 ног)</strong>, состоят из 6–7 члеников, заканчиваются коготками.</li>
+            </ul>
+        </li>
+        <li><strong>Брюшные конечности:</strong> отсутствуют; видоизменены в лёгочные мешки, паутинные бородавки, осязательные органы.</li>
+    </ul>
+
+    <h3>2. Анатомо-физиологические особенности систем органов</h3>
+    <div class="table-wrapper">
+        <table class="system-table">
+            <thead>
+                <tr>
+                    <th class="col-system">Система органов</th>
+                    <th>Особенности организации</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-system">Полость тела</td>
+                    <td><strong>Смешанная (миксоцель)</strong> — слияние целома с первичной полостью в эмбриогенезе. Заполнена гемолимфой.</td>
+                </tr>
+                <tr>
+                    <td class="col-system">Пищеварительная</td>
+                    <td>Внекишечное пищеварение: впрыскивание секрета слюнных желез и печени в тело жертвы, всасывание полужидкой пищи мускулистой глоткой и сосательным желудком. Средняя кишка с боковыми выростами.</td>
+                </tr>
+                <tr>
+                    <td class="col-system">Выделительная</td>
+                    <td><strong>Мальпигиевы сосуды</strong> (выводят гуанин), <strong>коксальные железы</strong> (метанефридии), почки накопления (нефроциты).</td>
+                </tr>
+                <tr>
+                    <td class="col-system">Дыхательная</td>
+                    <td>Листовидные <strong>лёгкие (легочные мешки)</strong> и/или система <strong>трахей</strong>. Мелкие клещи дышат через покровы.</td>
+                </tr>
+                <tr>
+                    <td class="col-system">Кровеносная</td>
+                    <td><strong>Незамкнутая</strong>. На спинной стороне брюшка — трубчатое <strong>сердце</strong> с остиями. Гемолимфа циркулирует по сосудам и синусам миксоцеля.</td>
+                </tr>
+                <tr>
+                    <td class="col-system">Нервная</td>
+                    <td>Окологлоточное кольцо (головной мозг + подглоточный ганглий) и брюшная цепочка. Высокая концентрация — ганглии сливаются в головогрудный узел.</td>
+                </tr>
+                <tr>
+                    <td class="col-system">Органы чувств</td>
+                    <td>Глаза только <strong>простые</strong> (2–12), фасеточные отсутствуют. Хеморецепторы и трихоботрии (осязательные волоски) на педипальпах и ногах.</td>
+                </tr>
+                <tr>
+                    <td class="col-system">Половая</td>
+                    <td>Раздельнополые, половой диморфизм. Развитие <strong>прямое</strong> (пауки, скорпионы; скорпионы живородящи). У клещей — с <strong>метаморфозом</strong> (яйцо → 6-ногая личинка → 8-ногая нимфа → имаго).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== МЕДИЦИНСКОЕ ЗНАЧЕНИЕ ===== -->
+    <h2><span class="emoji">🩺</span> Медицинское значение представителей класса</h2>
+
+    <div class="med-grid">
+
+        <div class="med-card">
+            <h4>1. Возбудители заболеваний (инфестации)</h4>
+            <ul>
+                <li><strong><em>Sarcoptes scabiei</em> (Чесоточный зудень)</strong> — внутрикожный паразит, прогрызает ходы в роговом слое эпидермиса, вызывая мучительный зуд (особенно ночью). Заболевание — <strong>чесотка (скабиоз)</strong>.</li>
+                <li><strong><em>Demodex folliculorum</em> (Железница угревая)</strong> — микроскопический клещ, обитает в волосяных фолликулах и сальных железах лица, шеи, груди. Вызывает <strong>демодекоз</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="med-card">
+            <h4>2. Переносчики возбудителей (трансмиссивные инфекции)</h4>
+            <ul>
+                <li><strong><em>Ixodes persulcatus</em> (Таёжный клещ)</strong> и <strong><em>I. ricinus</em> (Собачий клещ)</strong> — переносят вирус клещевого энцефалита и бактерии боррелиоза (болезнь Лайма).</li>
+                <li><strong><em>Ornithodoros papillipes</em> (Поселковый клещ)</strong> — переносчик спирохет — возбудителей клещевого возвратного тифа.</li>
+            </ul>
+        </div>
+
+        <div class="med-card">
+            <h4>3. Ядовитые животные</h4>
+            <ul>
+                <li><strong>Каракурт (<em>Latrodectus tredecimguttatus</em>)</strong> — укус самки выделяет нейротоксин, вызывающий сильные боли, судороги, парез кишечника, нарушение дыхания. Без сыворотки возможен летальный исход.</li>
+                <li><strong>Южнорусский тарантул (<em>Lycosa singoriensis</em>)</strong> — болезненный укус, местный отёк, общая интоксикация (не смертелен).</li>
+                <li><strong>Скорпионы (<em>Scorpiones</em>)</strong> — яд кардио- и нейротоксического действия, укусы крупных тропических видов могут быть смертельны.</li>
+                <li><strong>Сольпуги (фаланги, <em>Solifugae</em>)</strong> — не имеют ядовитых желёз, но наносят болезненные укусы мощными хелицерами, занося в ранку гнилостные микроорганизмы.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="note">
+        <strong>📌 Важно:</strong> Паукообразные — преимущественно наземные хелицеровые, обладающие 4 парами ходильных ног, простыми глазами и смешанной полостью тела. Их медицинское значение определяется ролью как <strong>возбудителей</strong> (чесотка, демодекоз), <strong>переносчиков</strong> (клещевой энцефалит, боррелиоз, возвратный тиф) и <strong>ядовитых животных</strong> (каракурт, скорпионы).
+    </div>
+
+</div>
+</body>
+</html>

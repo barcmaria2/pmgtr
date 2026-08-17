@@ -1,0 +1,183 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* Карточки определений */
+    .definition-card {
+        background: #f0f9ff;
+        border-left: 4px solid #2563eb;
+        border-radius: 0 12px 12px 0;
+        padding: 20px 24px;
+        margin: 20px 0 24px 0;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+    }
+
+    .definition-card p {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 500;
+        color: #1e3a8a;
+    }
+
+    .definition-card p strong {
+        color: #1e40af;
+    }
+
+    /* Списки */
+    .tab-content-inner ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ul li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .tab-content-inner ul li::before {
+        content: "✓";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+
+    .tab-content-inner ul ul {
+        margin: 6px 0 6px 20px;
+    }
+
+    .tab-content-inner ul ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-size: 22px;
+        top: -2px;
+    }
+
+    .tab-content-inner ol {
+        padding-left: 24px;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ol li {
+        margin-bottom: 10px;
+        line-height: 1.7;
+    }
+
+    .tab-content-inner ol li strong {
+        color: #1e3a8a;
+    }
+
+    /* Адаптация */
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .definition-card {
+            padding: 16px 18px;
+        }
+        .definition-card p {
+            font-size: 16px;
+        }
+        .tab-content-inner ul li {
+            padding-left: 24px;
+        }
+        .tab-content-inner ul ul {
+            margin-left: 12px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2>Классификация межвидовых биотических связей</h2>
+
+    <p>В природных биоценозах живые организмы формируют разнообразные формы биотических взаимодействий. Согласно кафедральной классификации, выделяют следующие основные категории биотических связей:</p>
+
+    <ul>
+        <li>
+            <strong>Симбиоз</strong> — совместное сосуществование организмов разных видов в рамках одного биоценоза. В данном контексте термин «симбиоз» используется в <em>широком смысле</em> (как любое совместное существование), в отличие от <em>узкого понимания</em> (только как взаимовыгодное). Включает в себя:
+            <ul>
+                <li><strong>Мутуализм</strong> — взаимополезное сосуществование, при котором оба вида извлекают выгоду из взаимодействия. Классический пример — обитание симбиотических бактерий в кишечнике человека (<em>Homo sapiens</em>).</li>
+                <li><strong>Комменсализм</strong> — форма взаимодействия, характеризующаяся односторонней пользой для одного вида без нанесения ущерба другой стороне. Пример — обитание кишечной амёбы (<em>Entamoeba coli</em>) или ротовой амёбы (<em>Entamoeba gingivalis</em>) в организме человека.</li>
+                <li><strong>Хищничество</strong> — однократное использование одного организма (жертвы) другим организмом (хищником) в качестве источника пищи путём лишения жертвы жизни.</li>
+                <li><strong>Паразитизм</strong> — многократное использование одного организма в качестве источника пищи и среды обитания.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Антибиоз</strong> — невозможность сосуществования видов на одной территории. Проявляется в угнетении или гибели одних организмов под воздействием специфических веществ, выделяемых другими. Пример — плесневые грибы, выделяющие антибиотики, подавляющие жизнедеятельность микроорганизмов.
+        </li>
+    </ul>
+
+    <h3>Определение паразитизма как биологического явления</h3>
+
+    <div class="definition-card">
+        <p><strong>Паразитизм</strong> — это эволюционно закреплённая форма отношений между организмами разных видов, из которых один (паразит) использует другого (хозяина) в качестве источника пищи и постоянного или временного места обитания, нанося ему определённый вред, но, как правило, не уничтожая его (согласно определению Е.Н. Павловского, 1961).</p>
+    </div>
+
+    <p><strong>Паразитизм</strong> представляет собой экологический феномен, характеризующийся биологическим дуализмом:</p>
+
+    <ol>
+        <li>С одной стороны, это <strong>антагонистический симбиоз</strong>, при котором паразит оказывает патогенное (механическое, токсическое) воздействие на хозяина.</li>
+        <li>С другой стороны, в процессе коэволюции формируется <strong>адаптивная равновесная система</strong>, способствующая сохранению обоих видов (через коадаптацию): паразит совершенствует механизмы адаптации к жизни внутри хозяина, а хозяин формирует защитные иммунные реакции.</li>
+    </ol>
+
+    <p><strong>Экология паразита</strong> строго детерминирована:</p>
+    <ul>
+        <li><strong>Средой первого порядка</strong> — организмом хозяина, оказывающим прямое воздействие.</li>
+        <li><strong>Средой второго порядка</strong> — внешней средой, действующей опосредованно (через организм хозяина).</li>
+    </ul>
+
+</div>

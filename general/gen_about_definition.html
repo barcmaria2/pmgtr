@@ -1,0 +1,200 @@
+<style>
+    /* ===== Базовые стили для сниппета ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .definition-card {
+        background: #f0f9ff;
+        border-left: 4px solid #2563eb;
+        border-radius: 0 12px 12px 0;
+        padding: 20px 24px;
+        margin: 20px 0 24px 0;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+    }
+
+    .definition-card p {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 500;
+        color: #1e3a8a;
+    }
+
+    .definition-card p strong {
+        color: #1e40af;
+    }
+
+    .tab-content-inner ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ul li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 8px;
+        line-height: 1.6;
+    }
+
+    .tab-content-inner ul li::before {
+        content: "✓";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+
+    .tab-content-inner ul ul {
+        margin: 6px 0 6px 20px;
+    }
+
+    .tab-content-inner ul ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-size: 22px;
+        top: -2px;
+    }
+
+    .tab-content-inner ol {
+        padding-left: 24px;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ol li {
+        margin-bottom: 10px;
+        line-height: 1.7;
+    }
+
+    .tab-content-inner ol li strong {
+        color: #1e3a8a;
+    }
+
+    /* Компактный подзаголовок внутри списка */
+    .tab-content-inner .sub-label {
+        margin: 8px 0 4px 0;
+        font-weight: 600;
+        color: #1e3a8a;
+    }
+
+    .alert-box {
+        background: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        border-radius: 0 12px 12px 0;
+        padding: 16px 20px 16px 48px;
+        margin: 24px 0;
+        position: relative;
+    }
+
+    .alert-box::before {
+        content: "💡";
+        position: absolute;
+        left: 16px;
+        top: 16px;
+        font-size: 20px;
+    }
+
+    .alert-box p {
+        margin: 0;
+    }
+
+    .content-image {
+        display: block;
+        max-width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        margin: 20px auto;
+        height: auto;
+    }
+
+    .tab-content-inner .intro-text {
+        font-size: 17px;
+        font-weight: 450;
+        color: #1e293b;
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .definition-card {
+            padding: 16px 18px;
+        }
+        .definition-card p {
+            font-size: 16px;
+        }
+        .tab-content-inner ul li {
+            padding-left: 24px;
+        }
+        .tab-content-inner ul ul {
+            margin-left: 12px;
+        }
+        .alert-box {
+            padding: 14px 16px 14px 44px;
+        }
+        .alert-box::before {
+            left: 12px;
+            top: 14px;
+            font-size: 18px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2>Определение паразитологии и значение зоологии для медицины</h2>
+
+    <div class="definition-card">
+        <p><strong>Паразитология</strong> — это комплексная биологическая наука, изучающая явление паразитизма.</p>
+    </div>
+
+    <p><strong>Медицинская паразитология</strong> изучает: морфофизиологические особенности паразитов, их жизненные циклы, географическое распространение, способы заражения, локализацию в организме человека, методы лабораторной диагностики, а также возможные меры профилактики и лечения паразитарных заболеваний.</p>
+
+    <p>Значение зоологии для медицины фундаментально, так как значительная часть возбудителей, переносчиков и природных резервуаров болезней человека относится к царству <strong>Животные (Animalia)</strong>. На долю зоопаразитов приходится 6–7 % от общего числа известных видов животных. Зоологическое изучение систематики организмов, их экологии и путей циркуляции в природе составляет теоретическую базу для постановки точного клинического диагноза и разработки систем эпидемиологических и профилактических мероприятий.</p>
+
+    <ol>
+
+</div>

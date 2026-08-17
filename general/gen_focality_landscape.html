@@ -1,0 +1,342 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner .intro {
+        font-size: 17px;
+        color: #475569;
+        margin-bottom: 20px;
+        padding: 16px 22px;
+        background: #f8fafc;
+        border-radius: 12px;
+        border-left: 4px solid #2563eb;
+    }
+
+    .tab-content-inner .intro strong {
+        color: #1e293b;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Таблица ===== */
+    .table-wrapper {
+        overflow-x: auto;
+        margin: 16px 0 20px 0;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .table-wrapper:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .landscape-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        min-width: 650px;
+    }
+
+    .landscape-table thead {
+        background: #f1f5f9;
+        border-bottom: 2px solid #e9edf3;
+    }
+
+    .landscape-table thead th {
+        padding: 14px 18px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #1e3a8a;
+    }
+
+    .landscape-table td {
+        padding: 14px 18px;
+        border-bottom: 1px solid #f0f2f5;
+        vertical-align: middle;
+        line-height: 1.6;
+    }
+
+    .landscape-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .landscape-table tbody tr {
+        transition: background 0.2s ease;
+    }
+
+    .landscape-table tbody tr:hover {
+        background: #f8faff;
+    }
+
+    .landscape-table tbody tr:nth-child(even) {
+        background: #fafcff;
+    }
+
+    .landscape-table tbody tr:nth-child(even):hover {
+        background: #f4f8ff;
+    }
+
+    .landscape-table .col-zone {
+        width: 15%;
+        font-weight: 700;
+        font-size: 16px;
+        color: #1e3a8a;
+    }
+
+    .landscape-table .col-disease {
+        width: 40%;
+        color: #334155;
+    }
+
+    .landscape-table .col-vector {
+        width: 45%;
+        color: #475569;
+    }
+
+    .landscape-table .col-disease .disease {
+        display: block;
+        padding: 2px 0;
+    }
+
+    .landscape-table .col-disease .disease strong {
+        color: #1e293b;
+    }
+
+    .landscape-table .col-vector .vector {
+        display: block;
+        padding: 2px 0;
+    }
+
+    .landscape-table .col-vector .vector em {
+        font-style: italic;
+        color: #2563eb;
+    }
+
+    /* Цветовые индикаторы зон */
+    .zone-taiga {
+        border-left: 4px solid #10b981;
+    }
+    .zone-taiga .col-zone {
+        color: #065f46;
+    }
+
+    .zone-meadow {
+        border-left: 4px solid #f59e0b;
+    }
+    .zone-meadow .col-zone {
+        color: #92400e;
+    }
+
+    .zone-steppe {
+        border-left: 4px solid #ef4444;
+    }
+    .zone-steppe .col-zone {
+        color: #991b1b;
+    }
+
+    .zone-savanna {
+        border-left: 4px solid #8b5cf6;
+    }
+    .zone-savanna .col-zone {
+        color: #5b21b6;
+    }
+
+    /* Иконки в заголовках */
+    .landscape-table thead th:first-child::before {
+        content: "🌍 ";
+    }
+    .landscape-table thead th:nth-child(2)::before {
+        content: "🦠 ";
+    }
+    .landscape-table thead th:nth-child(3)::before {
+        content: "🦟 ";
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 700px) {
+        .landscape-table {
+            font-size: 13px;
+            min-width: 480px;
+        }
+        .landscape-table th,
+        .landscape-table td {
+            padding: 10px 12px;
+        }
+        .landscape-table .col-zone {
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 24px;
+        }
+        .tab-content-inner .intro {
+            padding: 14px 16px;
+            font-size: 15px;
+        }
+        .landscape-table {
+            font-size: 12px;
+            min-width: 400px;
+        }
+        .landscape-table th,
+        .landscape-table td {
+            padding: 8px 10px;
+        }
+        .landscape-table .col-zone {
+            font-size: 14px;
+        }
+        .landscape-table thead th {
+            font-size: 12px;
+            padding: 10px 12px;
+        }
+        .landscape-table .col-disease .disease,
+        .landscape-table .col-vector .vector {
+            font-size: 12px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">🗺️</span> Ландшафтная паразитология</h2>
+
+    <div class="intro">
+        <strong>Территориальная приуроченность</strong> паразитарных болезней к конкретным географическим ландшафтам выделена Е.Н. Павловским в самостоятельное понятие — <strong>«ландшафтная паразитология»</strong>.
+    </div>
+
+    <div class="table-wrapper">
+        <table class="landscape-table">
+            <thead>
+                <tr>
+                    <th class="col-zone">Ландшафтная зона</th>
+                    <th class="col-disease">Природный очаг (Заболевание)</th>
+                    <th class="col-vector">Переносчик</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 1. ТАЙГА -->
+                <tr class="zone-taiga">
+                    <td class="col-zone">🌲 Тайга</td>
+                    <td class="col-disease">
+                        <span class="disease"><strong>Клещевой (весенне-летний) энцефалит</strong></span>
+                        <span class="disease"><strong>Клещевой боррелиоз</strong> (болезнь Лайма)</span>
+                    </td>
+                    <td class="col-vector">
+                        <span class="vector">Иксодовые клещи: <em>Ixodes ricinus</em>, <em>Ixodes persulcatus</em></span>
+                    </td>
+                </tr>
+                <tr class="zone-taiga">
+                    <td class="col-zone" style="color:#065f46;font-size:14px;font-weight:400;padding-left:36px;">↳</td>
+                    <td class="col-disease">
+                        <span class="disease"><strong>Сыпной клещевой тиф</strong></span>
+                    </td>
+                    <td class="col-vector">
+                        <span class="vector">Иксодовые клещи: <em>Dermacentor nuttalli</em>, <em>Dermacentor silvarum</em></span>
+                    </td>
+                </tr>
+
+                <!-- 2. ПОЙМЕННЫЕ ЛУГА -->
+                <tr class="zone-meadow">
+                    <td class="col-zone">🌾 Пойменные луга</td>
+                    <td class="col-disease">
+                        <span class="disease"><strong>Японский энцефалит</strong></span>
+                    </td>
+                    <td class="col-vector">
+                        <span class="vector">Комары рода <em>Culex</em> и <em>Aedes</em></span>
+                    </td>
+                </tr>
+
+                <!-- 3. СТЕПИ И ПУСТЫНИ -->
+                <tr class="zone-steppe">
+                    <td class="col-zone">🏜️ Степи и пустыни</td>
+                    <td class="col-disease">
+                        <span class="disease"><strong>Клещевой возвратный тиф</strong></span>
+                    </td>
+                    <td class="col-vector">
+                        <span class="vector">Аргасовые клещи рода <em>Ornithodoros</em></span>
+                    </td>
+                </tr>
+                <tr class="zone-steppe">
+                    <td class="col-zone" style="color:#991b1b;font-size:14px;font-weight:400;padding-left:36px;">↳</td>
+                    <td class="col-disease">
+                        <span class="disease"><strong>Лейшманиоз</strong></span>
+                    </td>
+                    <td class="col-vector">
+                        <span class="vector">Москиты рода <em>Phlebotomus</em></span>
+                    </td>
+                </tr>
+                <tr class="zone-steppe">
+                    <td class="col-zone" style="color:#991b1b;font-size:14px;font-weight:400;padding-left:36px;">↳</td>
+                    <td class="col-disease">
+                        <span class="disease"><strong>Чума</strong></span>
+                    </td>
+                    <td class="col-vector">
+                        <span class="vector">Человечья блоха <em>Pulex irritans</em></span>
+                    </td>
+                </tr>
+
+                <!-- 4. ПУСТЫНИ И САВАННЫ -->
+                <tr class="zone-savanna">
+                    <td class="col-zone">🌴 Пустыни и саванны</td>
+                    <td class="col-disease">
+                        <span class="disease"><strong>Трипаносомоз</strong> (Африканская сонная болезнь)</span>
+                    </td>
+                    <td class="col-vector">
+                        <span class="vector">Муха це-це <em>Glossina palpalis</em></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

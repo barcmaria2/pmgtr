@@ -1,0 +1,328 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+    }
+
+    .tab-content-inner h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 22px 0 8px 0;
+        padding-bottom: 4px;
+        border-bottom: 2px solid #e9edf3;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    /* Карточки определений */
+    .definition-card {
+        background: #f0f9ff;
+        border-left: 4px solid #2563eb;
+        border-radius: 0 12px 12px 0;
+        padding: 20px 24px;
+        margin: 20px 0 24px 0;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+    }
+
+    .definition-card p {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 500;
+        color: #1e3a8a;
+    }
+
+    .definition-card p strong {
+        color: #1e40af;
+    }
+
+    /* Блок с примерами */
+    .example-box {
+        background: #f8fafc;
+        border-left: 4px solid #64748b;
+        border-radius: 0 12px 12px 0;
+        padding: 14px 20px;
+        margin: 12px 0 16px 0;
+        font-size: 15px;
+        color: #475569;
+    }
+
+    .example-box .label {
+        font-weight: 600;
+        color: #334155;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    /* ===== Списки ===== */
+    .tab-content-inner ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ul li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .tab-content-inner ul li::before {
+        content: "✓";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+
+    .tab-content-inner ul ul {
+        margin: 6px 0 6px 20px;
+    }
+
+    .tab-content-inner ul ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-size: 22px;
+        top: -2px;
+    }
+
+    .tab-content-inner ul ul ul li::before {
+        content: "◦";
+        color: #2563eb;
+        font-size: 20px;
+        top: -2px;
+    }
+
+    .tab-content-inner ol {
+        padding-left: 24px;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ol li {
+        margin-bottom: 10px;
+        line-height: 1.7;
+    }
+
+    .tab-content-inner ol li strong {
+        color: #1e3a8a;
+    }
+
+    /* Карточка для этапов цикла */
+    .stage-card {
+        background: #ffffff;
+        border: 1px solid #e9edf3;
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin: 12px 0 16px 0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        position: relative;
+    }
+
+    .stage-card .stage-number {
+        display: inline-block;
+        background: #2563eb;
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        text-align: center;
+        line-height: 28px;
+        margin-right: 10px;
+    }
+
+    .stage-card .stage-title {
+        font-weight: 700;
+        font-size: 16px;
+        color: #1e3a8a;
+    }
+
+    .stage-card .stage-desc {
+        margin-top: 4px;
+        padding-left: 38px;
+        color: #334155;
+    }
+
+    .stage-card .stage-desc strong {
+        color: #1e293b;
+    }
+
+    /* Адаптация */
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .tab-content-inner h4 {
+            font-size: 16px;
+        }
+        .definition-card {
+            padding: 16px 18px;
+        }
+        .definition-card p {
+            font-size: 16px;
+        }
+        .tab-content-inner ul li {
+            padding-left: 24px;
+        }
+        .tab-content-inner ul ul {
+            margin-left: 12px;
+        }
+        .stage-card {
+            padding: 14px 16px;
+        }
+        .stage-card .stage-desc {
+            padding-left: 0;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2>Жизненные циклы паразитов</h2>
+
+    <div class="definition-card">
+        <p><strong>Жизненный цикл паразита</strong> — это совокупность всех стадий развития от зиготы (или инвазионной стадии) до половозрелой особи, включая смену сред обитания, хозяев и способов размножения.</p>
+    </div>
+
+    <p>В зависимости от особенностей прохождения этих стадий жизненные циклы подразделяются на <strong>простые</strong> и <strong>сложные</strong>:</p>
+
+    <ul>
+        <li><strong>Простые циклы</strong> проходят без смены хозяев (характерно для геопротистов и геогельминтов).</li>
+        <li><strong>Сложные циклы</strong> протекают с обязательным чередованием (сменой) хозяев разных видов (характерно для биопротистов и биогельминтов).</li>
+    </ul>
+
+    <h3>Значение знания жизненного цикла</h3>
+
+    <p>Знание жизненного цикла имеет фундаментальное значение для медицинской паразитологии, поскольку позволяет:</p>
+
+    <ul>
+        <li>установить <strong>источник и пути заражения</strong> человека;</li>
+        <li>определить <strong>инвазионную стадию</strong> и <strong>диагностическую стадию</strong>;</li>
+        <li>разработать эффективные меры профилактики (разрыв цикла на наиболее уязвимом этапе);</li>
+        <li>прогнозировать эпидемиологическую ситуацию в конкретных регионах.</li>
+    </ul>
+
+    <h3>Чередование поколений и феномен смены хозяев</h3>
+
+    <p><strong>Чередование поколений и смена хозяев</strong> — это две взаимосвязанные эволюционные адаптации, которые позволяют паразиту компенсировать высокую смертность на личиночных стадиях и одновременно избегать иммунного ответа одного хозяина.</p>
+
+    <h4>🔄 Чередование поколений</h4>
+
+    <p><strong>Чередование поколений</strong> — это закономерная смена в жизненном цикле полового и бесполого (или партеногенетического) размножения.</p>
+
+    <ul>
+        <li><strong>Половое размножение</strong> обеспечивает генетическое разнообразие и образование зиготы.</li>
+        <li><strong>Бесполое (или партеногенетическое) размножение</strong> даёт многократное увеличение числа особей на личиночных стадиях, что компенсирует высокую гибель потомства при переходе от одного хозяина к другому.</li>
+    </ul>
+
+    <div class="example-box">
+        <span class="label">📌 Классический пример</span>
+        Жизненный цикл представителей класса <strong>Сосальщики</strong> (печеночный, кошачий, легочный сосальщики), так как все виды этого класса являются биогельминтами с участием обязательных промежуточных хозяев — моллюсков.
+    </div>
+
+    <h4>⚙️ Механизм чередования поколений (на примере сосальщиков)</h4>
+
+    <div class="stage-card">
+        <span class="stage-number">1</span>
+        <span class="stage-title">Половое поколение</span>
+        <div class="stage-desc">
+            В организме <strong>окончательного (дефинитивного) хозяина</strong> (позвоночного животного или человека) обитает половозрелая форма паразита — <strong>марита</strong>. Марита размножается половым путём и продуцирует <strong>яйца</strong>, которые выделяются во внешнюю среду (чаще всего в воду).
+        </div>
+    </div>
+
+    <div class="stage-card">
+        <span class="stage-number">2</span>
+        <span class="stage-title">Партеногенетическое (бесполое) поколение</span>
+        <div class="stage-desc">
+            В воде из яйца выходит ресничная личинка — <strong>мирацидий</strong>, которая активно внедряется в тело <strong>первого промежуточного хозяина</strong> (специфического моллюска). В теле моллюска мирацидий превращается в мешковидную <strong>спороцисту</strong>.
+        </div>
+    </div>
+
+    <div class="stage-card">
+        <span class="stage-number">3</span>
+        <span class="stage-title">Образование редий</span>
+        <div class="stage-desc">
+            Характерной биологической особенностью трематод является то, что внутри спороцисты из специализированных зародышевых клеток путём <strong>партеногенеза</strong> (бесполого развития из неоплодотворенных клеток) формируются новые поколения личинок — <strong>редии</strong>.
+        </div>
+    </div>
+
+    <div class="stage-card">
+        <span class="stage-number">4</span>
+        <span class="stage-title">Образование церкариев</span>
+        <div class="stage-desc">
+            Внутри редий, также путём партеногенеза, образуется следующее, ещё более многочисленное поколение личинок — хвостатые <strong>церкарии</strong>.
+        </div>
+    </div>
+
+    <h4>🔄 Смена хозяев</h4>
+
+    <p><strong>Смена хозяев</strong> — это обязательная или факультативная последовательность использования разных организмов-хозяев для прохождения разных стадий жизненного цикла. Она возникла в эволюции как адаптация, позволяющая:</p>
+
+    <ul>
+        <li>избежать уничтожения паразита иммунной системой одного хозяина;</li>
+        <li>увеличить шансы на расселение и встречу с новым хозяином;</li>
+        <li>использовать разные источники питания на разных стадиях развития.</li>
+    </ul>
+
+    <p>Смена хозяев может быть:</p>
+
+    <ul>
+        <li>
+            <strong>Облигатной (обязательной)</strong> — без смены хозяев жизненный цикл не завершается (например, у малярийного плазмодия — комар и человек).
+        </li>
+        <li>
+            <strong>Факультативной</strong> — смена хозяев возможна, но не обязательна (например, у токсоплазмы — окончательный хозяин кошачьи, промежуточные — множество позвоночных, но цикл может замыкаться и без смены).
+        </li>
+    </ul>
+
+    <div class="definition-card" style="border-left-color: #f59e0b;">
+        <p><em>Виды хозяев см. в разделе <strong>«Паразит и Хозяин»</strong>.</em></p>
+    </div>
+
+</div>

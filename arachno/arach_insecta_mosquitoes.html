@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сравнительный конспект: комары (Culicidae) и москиты (Phlebotomidae)</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card p strong { color: #1e293b; }
+        .taxonomy-card ol {
+            margin: 6px 0 0 20px;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card ol li {
+            margin-bottom: 4px;
+        }
+        .taxonomy-card ol ul {
+            margin: 2px 0 6px 20px;
+            font-size: 14px;
+            color: #475569;
+        }
+        .taxonomy-card ol ul li {
+            margin-bottom: 2px;
+        }
+
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+        .epi-grid .item {
+            font-size: 14px;
+        }
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+        .epi-grid .item.full {
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+
+        .tree-scheme {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border: 1px solid #e9edf3;
+            margin: 12px 0 16px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 900px;
+        }
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .compare-table thead th {
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+            letter-spacing: 0.02em;
+        }
+        .compare-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table tbody tr:hover { background: #f8faff; }
+        .compare-table tbody tr:nth-child(even) { background: #fafcff; }
+        .compare-table tbody tr:nth-child(even):hover { background: #f4f8ff; }
+        .compare-table .col-label {
+            font-weight: 600;
+            color: #1e3a8a;
+            background: #f8fafc;
+        }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .epi-grid { grid-template-columns: 1fr; }
+            .compare-table { font-size: 12px; min-width: 700px; }
+            .tree-scheme { font-size: 12px; white-space: normal; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .compare-table { font-size: 11px; min-width: 600px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">🦟</span> Комары и Москиты:сравнение</h1>
+    <div class="subtitle">
+        <strong>Комары (Culicidae)</strong> и <strong>Москиты (Phlebotomidae)</strong> — систематика, морфология, медицинское значение
+    </div>
+
+    <!-- ===== СИСТЕМАТИЧЕСКОЕ ПОЛОЖЕНИЕ ===== -->
+    <div class="taxonomy-card">
+        <p><strong>Тип:</strong> Членистоногие (Arthropoda)</p>
+        <p><strong>Подтип:</strong> Трахеодышащие, или Трахейные (Tracheata)</p>
+        <p><strong>Класс:</strong> Насекомые (Insecta)</p>
+        <p><strong>Отряд:</strong> Двукрылые (Diptera)</p>
+        <p style="margin-top:8px;"><strong>Семейства и изучаемые роды:</strong></p>
+        <ol>
+            <li><strong>Семейство Комариные (Culicidae)</strong>
+                <ul>
+                    <li><em>Род Anopheles</em> (Малярийные комары)</li>
+                    <li><em>Род Culex</em> (Немалярийные комары)</li>
+                    <li><em>Род Aedes</em> (Немалярийные комары)</li>
+                </ul>
+            </li>
+            <li><strong>Семейство Москиты (Phlebotomidae / Psychodidae)</strong>
+                <ul>
+                    <li><em>Род Phlebotomus</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item full"><strong>Географическое распространение:</strong> Комары — повсеместное (космополиты); москиты — тропические, субтропические и южные районы умеренного климата (Средняя Азия, Кавказ, Крым).</div>
+        <div class="item full"><strong>Специфичность к хозяину:</strong> Временные эктопаразиты-гематофаги (кровь сосут исключительно самки, необходимые для созревания яиц — гонотрофический цикл).</div>
+        <div class="item full"><strong>Специфический переносчик чего:</strong> Облигатно-трансмиссивных инфекций и инвазий.</div>
+        <div class="item full"><strong>Характер трансмиссивности:</strong> Облигатно-трансмиссивные (возбудители проходят обязательные стадии развития в организме переносчика).</div>
+    </div>
+
+    <!-- ===== КЛЮЧЕВЫЕ РАЗЛИЧИЯ ===== -->
+    <h2><span class="emoji">🔍</span> Ключевые различия: Комары (Culicidae) vs. Москиты (Phlebotomidae)</h2>
+
+    <ul>
+        <li><strong>Личиночный биотоп:</strong>
+            <ul>
+                <li><em>Комары:</em> Развитие личинок происходит <strong>исключительно в водной среде</strong> (чистые или загрязнённые стоячие водоёмы).</li>
+                <li><em>Москиты:</em> Личинки развиваются <strong>строго вне воды</strong> — во влажной, богатой органикой почве, норах пустынных грызунов (песчанок), сырых подвалах, кучах строительного и бытового мусора.</li>
+            </ul>
+        </li>
+        <li><strong>Размеры имаго:</strong>
+            <ul>
+                <li><em>Комары:</em> Относительно крупные (длина тела <strong>5–12 мм</strong>).</li>
+                <li><em>Москиты:</em> Мелкие, мошковидные (длина тела <strong>1,3–3,5 мм</strong>).</li>
+            </ul>
+        </li>
+        <li><strong>Покровы тела и крыльев:</strong>
+            <ul>
+                <li><em>Комары:</em> Тело стройное, покрыто мелкими чешуйками.</li>
+                <li><em>Москиты:</em> Тело и крылья <strong>густо покрыты длинными желтоватыми волосками</strong>.</li>
+            </ul>
+        </li>
+        <li><strong>Положение крыльев и полёт:</strong>
+            <ul>
+                <li><em>Комары:</em> В покое крылья сложены плоско вдоль брюшка. Полёт сопровождается характерным писком.</li>
+                <li><em>Москиты:</em> В покое крылья <strong>приподняты под углом 45°</strong> и разведены в стороны. <strong>Летают абсолютно бесшумно</strong> (<em>pappa taci</em> — «кусает молча») короткими скачкообразными прыжками.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- ===== ДИФФЕРЕНЦИАЛЬНЫЙ АНАЛИЗ ПРИДАТКОВ ГОЛОВЫ ===== -->
+    <h2><span class="emoji">🧬</span> Дифференциальный анализ придатков головы комаров</h2>
+
+    <p>При выполнении лабораторных работ используются строгие морфологические критерии строения нижнечелюстных щупиков и усиков (сяжек):</p>
+
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🦟</span>
+            Головки малярийного и обыкновенного комаров
+            <span class="small">сравнение строения нижнечелюстных щупиков и усиков у самок и самцов родов Anopheles, Culex, Aedes</span>
+            <span class="filename">imagine/head_comparison_culicidae.jpg</span>
+        </div>
+    </div>
+
+    <h3>1. Самки (усики покрыты короткими редкими щетинками — слабое опушение)</h3>
+    <ul>
+        <li><strong>Род <em>Anopheles</em>:</strong> Нижнечелюстные щупики <strong>равны по длине хоботку</strong>.</li>
+        <li><strong>Роды <em>Culex</em> / <em>Aedes</em>:</strong> Нижнечелюстные щупики короткие, составляют <strong>не более 1/3–1/4 длины хоботка</strong>.</li>
+    </ul>
+
+    <h3>2. Самцы (усики с мутовками длинных густых щетинок — сильное «пушистое» опушение)</h3>
+    <ul>
+        <li><strong>Род <em>Anopheles</em>:</strong> Нижнечелюстные щупики <strong>равны по длине хоботка и имеют булавовидные утолщения на концах</strong>.</li>
+        <li><strong>Роды <em>Culex</em> / <em>Aedes</em>:</strong> Нижнечелюстные щупики <strong>длиннее хоботка и лишены булавовидных утолщений на концах</strong> (направлены вверх и в стороны).</li>
+    </ul>
+
+    <!-- ===== СРАВНИТЕЛЬНАЯ ТАБЛИЦА МОРФОЛОГИЧЕСКИХ ОСОБЕННОСТЕЙ ===== -->
+    <h2><span class="emoji">📊</span> Сравнительная характеристика МОРФОЛОГИЧЕСКИХ ОСОБЕННОСТЕЙ</h2>
+
+    <p>Все представители развиваются с <strong>полным метаморфозом</strong> (голометаболия): яйцо ⟶ личинка ⟶ куколка ⟶ имаго.</p>
+
+    <div class="table-wrapper">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th style="width:14%;">Стадия развития</th>
+                    <th style="width:22%;">Комары рода <em>Anopheles</em></th>
+                    <th style="width:22%;">Комары рода <em>Culex</em></th>
+                    <th style="width:20%;">Комары рода <em>Aedes</em></th>
+                    <th style="width:22%;">Москиты рода <em>Phlebotomus</em></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-label">1. Яйцо (морфология и откладка)</td>
+                    <td>Откладываются <strong>поодиночке</strong>. Имеют форму лодочки, <strong>снабжены воздушными камерами (поплавками)</strong>. На поверхности чистой воды.</td>
+                    <td>Склеиваются в <strong>«плотики»</strong> (до 100–300 шт.). <strong>Не имеют воздушных камер</strong>. На поверхности загрязнённой воды.</td>
+                    <td>Откладываются <strong>поодиночке</strong> во временные пересыхающие водоёмы или влажную почву. Без воздушных камер.</td>
+                    <td>Откладываются кучками в норы, мусор, сырые подвалы. Мелкие, удлинённые, тёмные. <strong>Вне воды</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="col-label">2. Личинка (морфология)</td>
+                    <td>Червеобразная. <strong>Не имеет дыхательного сифона</strong>. Дыхальца лежат непосредственно на предпоследнем сегменте брюшка.</td>
+                    <td>Имеет <strong>цилиндрический, длинный дыхательный сифон</strong> на предпоследнем сегменте.</td>
+                    <td>Имеет <strong>короткий, бочонковидный дыхательный сифон</strong> с одной парой пучков волосков.</td>
+                    <td>Червеобразная, густо покрыта волосками, с четырьмя длинными нитями на заднем конце. <strong>Вне воды</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="col-label">3. Положение личинки в воде</td>
+                    <td>Располагается <strong>строго горизонтально (параллельно)</strong> под поверхностной плёнкой воды.</td>
+                    <td>Располагается <strong>под углом к поверхности воды, головой вниз</strong>.</td>
+                    <td>Располагается <strong>под углом к поверхности воды, головой вниз</strong>.</td>
+                    <td>Развивается во влажной почве/гнили. Подвижна, линяет 4 раза.</td>
+                </tr>
+                <tr>
+                    <td class="col-label">4. Куколка (дыхательные сифоны)</td>
+                    <td>Подвижная «запятая». Дыхательные сифоны на головогруди имеют <strong>широкую воронкообразную форму</strong>.</td>
+                    <td>Дыхательные сифоны имеют <strong>узкую цилиндрическую форму</strong>.</td>
+                    <td>Дыхательные сифоны имеют <strong>цилиндрическую форму</strong>.</td>
+                    <td>Неподвижная, прикреплена к субстрату сброшенной шкуркой личинки. Развивается в почве.</td>
+                </tr>
+                <tr>
+                    <td class="col-label">5. Посадка имаго</td>
+                    <td>Брюшко приподнято, тело находится <strong>под углом 30–45° к поверхности</strong>.</td>
+                    <td>Брюшко опущено, тело располагается <strong>параллельно поверхности</strong>.</td>
+                    <td>Тело располагается <strong>параллельно поверхности</strong>.</td>
+                    <td>Тело параллельно поверхности, крылья приподняты вверх под углом.</td>
+                </tr>
+                <tr>
+                    <td class="col-label">6. Морфология крыла</td>
+                    <td>Имеет <strong>тёмные пятна</strong> (скопления пигментированных чешуек).</td>
+                    <td>Полностью <strong>прозрачные крылья</strong>, без пятен.</td>
+                    <td>Полностью <strong>прозрачные крылья</strong>, без пятен.</td>
+                    <td>Крылья без чешуек, густо покрыты волосками, остроконечные.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== БОЛЬШАЯ КАРТИНКА ===== -->
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🦟</span>
+            Сравнительная морфология комаров и москитов
+            <span class="small">личинки, куколки и имаго родов Anopheles, Culex, Aedes, Phlebotomus</span>
+            <span class="filename">imagine/culicidae_phlebotomidae_comparison.jpg</span>
+        </div>
+    </div>
+
+    <!-- ===== МЕДИЦИНСКОЕ ЗНАЧЕНИЕ ===== -->
+    <h2><span class="emoji">⚠️</span> Медицинское значение (специфические переносчики)</h2>
+
+    <p>Все рассматриваемые группы являются <strong>временными эктопаразитами-гематофагами</strong> (кровь сосут исключительно самки, необходимо для созревания яиц — гонотрофический цикл).</p>
+
+    <p>Они выступают в роли <strong>специфических (биологических) переносчиков</strong> опасных трансмиссивных инфекций и инвазий, в организме которых возбудители проходят обязательные стадии развития или размножения.</p>
+
+    <h3>1. Комары рода <em>Anopheles</em></h3>
+    <ul>
+        <li><strong>Малярия человека</strong> (возбудители — простейшие-споровики <em>Plasmodium vivax</em>, <em>P. falciparum</em>, <em>P. malariae</em>, <em>P. ovale</em>) — <strong>облигатно-трансмиссивный антропоноз</strong>. Комар является окончательным хозяином (в нём происходит половой процесс и спорогония плазмодия).</li>
+        <li><strong>Вухерериоз</strong> и <strong>Бругиоз</strong> (филяриатозы, возбудители — круглые черви <em>Wuchereria bancrofti</em>, <em>Brugia malayi</em>) — <strong>облигатно-трансмиссивные инвазии</strong>. Комар является промежуточным хозяином.</li>
+        <li><strong>Способ заражения человека:</strong> <strong>Инокуляция</strong> (введение возбудителя со слюной при укусе).</li>
+    </ul>
+
+    <h3>2. Комары рода <em>Culex</em></h3>
+    <ul>
+        <li><strong>Японский энцефалит</strong> (арбовирусная облигатно-трансмиссивная инфекция).</li>
+        <li><strong>Вухерериоз</strong> и <strong>Бругиоз</strong> (трансмиссивные гельминтозы).</li>
+        <li><strong>Дирофиляриоз</strong> (<em>Dirofilaria immitis</em>, <em>D. repens</em>).</li>
+        <li><strong>Способ заражения человека:</strong> <strong>Инокуляция</strong>.</li>
+    </ul>
+
+    <h3>3. Комары рода <em>Aedes</em></h3>
+    <ul>
+        <li><strong>Жёлтая лихорадка</strong> и <strong>Лихорадка Денге</strong> (тяжёлые арбовирусные облигатно-трансмиссивные инфекции).</li>
+        <li><strong>Японский энцефалит</strong>.</li>
+        <li><strong>Вухерериоз</strong> и <strong>Бругиоз</strong>.</li>
+        <li><strong>Способ заражения человека:</strong> <strong>Инокуляция</strong>.</li>
+    </ul>
+
+    <h3>4. Москиты рода <em>Phlebotomus</em></h3>
+    <ul>
+        <li><strong>Висцеральный лейшманиоз</strong> (возбудитель — <em>Leishmania donovani</em>).</li>
+        <li><strong>Кожный лейшманиоз</strong> (возбудитель — <em>Leishmania tropica</em>).</li>
+        <li><strong>Лихорадка паппатачи</strong> (москитная трёхдневная лихорадка, вызываемая флебовирусом).</li>
+        <li><strong>Способ заражения человека:</strong> <strong>Инокуляция</strong> (лейшмании вводятся в ранку при укусе).</li>
+    </ul>
+
+    <!-- ===== ШПАРГАЛКА ДЛЯ ЗАПОЛНЕНИЯ ТАБЛИЦЫ 13.1 ===== -->
+    <h2><span class="emoji">📝</span> Шпаргалка для заполнения таблицы 13.1 альбома ПИМУ (стр. 73)</h2>
+
+    <div class="table-wrapper">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th style="width:14%;">Название рода</th>
+                    <th style="width:18%;">Название заболевания</th>
+                    <th style="width:18%;">Возбудитель заболевания</th>
+                    <th style="width:16%;">Переносчик</th>
+                    <th style="width:14%;">Путь заражения</th>
+                    <th style="width:10%;">Механизм</th>
+                    <th style="width:10%;">Облигатно/факультативно</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong><em>Anopheles</em></strong></td>
+                    <td>Малярия</td>
+                    <td><em>Plasmodium vivax</em> / <em>falciparum</em> / <em>malariae</em></td>
+                    <td>Специфический</td>
+                    <td>Трансмиссивный</td>
+                    <td>Инокуляция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td><strong><em>Culex</em></strong></td>
+                    <td>Японский энцефалит</td>
+                    <td>Вирус японского энцефалита</td>
+                    <td>Специфический</td>
+                    <td>Трансмиссивный</td>
+                    <td>Инокуляция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td><strong><em>Culex</em></strong></td>
+                    <td>Вухерериоз</td>
+                    <td><em>Wuchereria bancrofti</em> (круглый червь)</td>
+                    <td>Специфический</td>
+                    <td>Трансмиссивный</td>
+                    <td>Инокуляция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td><strong><em>Aedes</em></strong></td>
+                    <td>Жёлтая лихорадка</td>
+                    <td>Вирус жёлтой лихорадки</td>
+                    <td>Специфический</td>
+                    <td>Трансмиссивный</td>
+                    <td>Инокуляция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td><strong><em>Aedes</em></strong></td>
+                    <td>Лихорадка Денге</td>
+                    <td>Вирус Денге</td>
+                    <td>Специфический</td>
+                    <td>Трансмиссивный</td>
+                    <td>Инокуляция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td><strong><em>Phlebotomus</em></strong></td>
+                    <td>Кожный / висцеральный лейшманиоз</td>
+                    <td><em>Leishmania tropica</em> / <em>L. donovani</em></td>
+                    <td>Специфический</td>
+                    <td>Трансмиссивный</td>
+                    <td>Инокуляция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ришта (Dracunculus medinensis) — урок 3</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        .epi-grid .item.span2 {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul, ol ol, ul ol, ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== ТАБЛИЦА ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 60%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image {
+            margin-top: 12px;
+            flex: 1 1 auto;
+            display: flex;
+            align-items: stretch;
+            min-height: 280px;
+        }
+
+        .stage-row .left-col .additional-image img,
+        .stage-row .left-col .additional-image .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .left-col .additional-image .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .left-col .additional-image .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .left-col .additional-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .stage-row .left-col .additional-image {
+                flex: 0 0 auto;
+                margin-top: 12px;
+                min-height: 200px;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .pathogenic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+
+            .stage-row .left-col .additional-image {
+                min-height: 160px;
+            }
+
+            .pathogenic-table {
+                font-size: 12px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🧬</span> Ришта (Мединский струнец)</h1>
+    <div class="subtitle"><strong>Dracunculus medinensis</strong> — возбудитель <strong>дракункулеза</strong></div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Круглые черви (Nemathelminthes)<br>
+            <strong>Класс:</strong> Собственно круглые черви, или Нематоды (Nematoda)<br>
+            <strong>Вид:</strong> Ришта, или Мединский струнец (<em>Dracunculus medinensis</em>)
+        </p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Дракункулез.</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт (развитие обязательно происходит со сменой хозяев, и личинка развивается в промежуточном хозяине), антропоноз (главный окончательный хозяин и источник инвазии — человек, хотя в редких случаях могут заражаться собаки и обезьяны).</div>
+        <div class="item span2"><strong>Географическое распространение:</strong> Очаги расположены строго в странах с тропическим и субтропическим климатом: Индия, Пакистан, Саудовровская Аравия, Иран, Ирак, страны Центральной Африки и Южной Америки.</div>
+        <div class="item span2">
+            <strong>⚠️ Важные историко-эпидемиологические особенности:</strong>
+            <ul style="margin-top:6px;">
+                <li>Дракункулез известен с глубокой древности. Описания этой болезни есть в папирусах Древнего Египта (XVII в. до н.э.) и глиняных табличках библиотеки Ашшурбанипала. Существует даже гипотеза, что знаменитый медицинский символ — посох Асклепия (Эскулапа) — исходно изображал процесс наматывания длинной ришты на палочку при ее извлечении хирургом.</li>
+                <li><strong>Гордость отечественной науки:</strong> В середине XX века в мире насчитывалось более 45 миллионов больных дракункулезом, однако СССР стал первой страной, где ришта была полностью уничтожена (девастирована). Выдающийся советский паразитолог Л.М. Исаев ликвидировал крупнейший многовековой очаг ришты в старой Бухаре, доказав, что девастация паразита возможна.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 1. Взрослая особь -->
+    <h3>1. Взрослая (половозрелая) особь</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Размеры:</strong> Это самая длинная нематода, паразитирующая у человека. Самка достигает невероятных размеров: от 30 до 120 см (иногда до 150 см) в длину при ширине всего 0,5–1,7 мм. Самцы микроскопические по сравнению с самкой: длина 12–30 мм, ширина 0,2–0,4 мм.
+            </p>
+            <p>
+                <strong>Окраска:</strong> Тело белого цвета.
+            </p>
+            <p>
+                <strong>Форма тела:</strong> Очень длинное, шнуровидное (нитевидное) тело.
+            </p>
+            <p>
+                <strong>Важные анатомические детали:</strong> У взрослой самки кишечник сдавлен колоссально разросшейся маткой и практически не функционирует (предполагается, что она впитывает питательные вещества/кровь поверхностью). Наружное половое отверстие (вульва) атрофируется и закрывается. Хвостовой конец самки заканчивается шиповидным придатком, загнутым вентрально. У самца задний конец загнут на брюшную сторону, имеет копулятивные сосочки и две темно-коричневые хитиновые спикулы.
+            </p>
+            <p>
+                <strong>Половой диморфизм:</strong> Выражен экстремально (самка в десятки раз больше самца).
+            </p>
+        </div>
+
+        <!-- Изображение взрослой особи -->
+        <div class="image-col">
+            <img src="images/helminths/dracunculus_adult_scheme.jpg"
+                 alt="Схема взрослой ришты"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Взрослая особь <em>Dracunculus medinensis</em>
+                <span class="small">(dracunculus_adult_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">самка (гигантская, с загнутым хвостом) и самец (мелкий)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Яйцо -->
+    <h3>2. Яйцо</h3>
+
+    <div class="note">
+        <strong>ВНИМАНИЕ!</strong> Ришта — живородящая нематода! Яйца во внешнюю среду не выделяются, знать морфологию яйца не требуется. Личинки вылупляются из яиц прямо внутри матки червя.
+    </div>
+
+    <!-- 3. Личинка -->
+    <h3>3. Личинка</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Размеры:</strong> Сразу после отрождения в воду рабдитовидная личинка (стадия L1) имеет микроскопические размеры: <strong>0,5–0,75 мм</strong> в длину и 15–25 мкм в ширину. После проникновения и созревания внутри рачка-циклопа (стадия L3) она дорастает до <strong>1 мм</strong>.
+            </p>
+            <p>
+                <strong>Где развивается:</strong> Первые дни жизни личинка L1 свободно плавает <strong>в воде</strong>. Дальнейший рост, метаморфоз и две линьки происходят строго в полости тела промежуточного хозяина — <strong>пресноводного рачка-циклопа</strong>.
+            </p>
+            <p>
+                <strong>Особенности строения:</strong> Только что отрожденная в воду рабдитовидная личинка (L1) имеет характерный <strong>длинный тонкий нитевидный хвост</strong>. Пройдя две линьки внутри циклопа, она превращается в личинку третьей стадии (L3), которую в учебной литературе называют <strong>микрофилярией</strong>.
+            </p>
+            <p>
+                <strong>Сколько живёт и инвазионна ли:</strong> Свободно плавающая в воде личинка (L1) живет всего от 3 до 7 суток, после чего погибает, если не будет проглочена циклопом. Для человека на этом этапе она <strong>абсолютно не инвазионна</strong>! Внутри циклопа личинка созревает в среднем за <strong>2 недели</strong> (около 12–14 дней) и становится <strong>единственной инвазионной стадией (микрофилярией)</strong> для окончательного хозяина (человека).
+            </p>
+            <div class="note">
+                <strong>⚠️ КРИТИЧЕСКОЕ ОТЛИЧИЕ (ОСОБЕННОСТИ ЛИЧИНКИ РИШТЫ):</strong><br>
+                1. <strong>Способ рождения:</strong> Личинки не выходят естественным путем с фекалиями! Самка выстреливает их в воду миллионами через <strong>разрывы матки и кутикулы на переднем конце своего тела</strong>, которые происходят от резкого перепада температур при контакте язвы на коже человека с водой.<br>
+                2. <strong>Отсутствие почвенной стадии:</strong> В отличие от геогельминтов, личинка ришты не имеет свободноживущей филяриевидной формы в почве. Инвазионная стадия формируется исключительно <strong>внутри пресноводного ракообразного</strong>.
+            </div>
+        </div>
+        <!-- изображений личинок нет -->
+    </div>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Окончательный хозяин:</strong> Человек (редко собаки, обезьяны).<br>
+        <strong>Промежуточный хозяин:</strong> Мелкие пресноводные ракообразные — рачки-циклопы (род <em>Cyclops</em>).<br>
+        <strong>Патогенная стадия для человека:</strong> Половозрелая особь (гигантская самка).<br>
+        <strong>Локализация в организме человека:</strong> Подкожная жировая клетчатка, преимущественно нижних конечностей (стопы, голени).<br>
+        <strong>Инвазионная стадия для человека:</strong> Личинка (микрофилярия), созревшая в теле рачка-циклопа.<br>
+        <strong>Механизм заражения:</strong> Фекально-оральный.<br>
+        <strong>Пути передачи:</strong> Водный (случайное проглатывание зараженных циклопов с сырой водой из открытых непроточных водоемов).
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/dracunculus_life_cycle.jpg"
+             alt="Жизненный цикл ришты"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🌊</span>
+            Жизненный цикл <em>Dracunculus medinensis</em>
+            <span class="small">(dracunculus_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">человек → вода (личинки) → циклоп → человек</span>
+        </div>
+    </div>
+
+    <h4>Пошаговое описание цикла:</h4>
+    <ol>
+        <li><strong>Выделение личинок:</strong> Через 8–10 месяцев после заражения оплодотворенная самка ришты мигрирует под кожу ног. Выделяемый ею токсин вызывает образование пузыря (2–7 см), который через несколько дней лопается с образованием язвы. При попадании воды в язву (когда человек моет ноги или заходит в пруд) матка червя разрывается, и в воду выстреливаются сотни тысяч живых личинок.</li>
+        <li><strong>Развитие в промежуточном хозяине:</strong> В воде плавающих личинок в течение 4–7 дней должен проглотить рачок-циклоп. В полости его тела личинки линяют и за 12–14 дней достигают инвазионной стадии (вырастают до 1 мм).</li>
+        <li><strong>Заражение:</strong> Человек выпивает сырую воду вместе с инвазированными циклопами.</li>
+        <li><strong>Миграция в человеке:</strong> В желудке циклоп переваривается, а личинки ришты высвобождаются, проникают через стенку кишечника и совершают долгую миграцию (до 9–12 месяцев) по лимфатическим и кровеносным путям в подкожную клетчатку ног.</li>
+        <li><strong>Замыкание цикла:</strong> После спаривания в глубоких тканях самцы погибают (и обызвествляются), а самки вырастают до гигантских размеров, продвигаются к коже и образуют новый пузырь для выброса потомства.</li>
+    </ol>
+
+    <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ И КЛИНИКА ===== -->
+    <h2><span class="emoji">⚡</span> Патогенное действие и клиника</h2>
+
+    <div class="table-wrapper">
+        <table class="pathogenic-table">
+            <thead>
+                <tr>
+                    <th class="col-mechanism">Фаза / Синдром</th>
+                    <th>Механизм действия</th>
+                    <th>Клинические проявления</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-mechanism">Ранняя (аллергическая) фаза</td>
+                    <td>Мощная сенсибилизация организма токсичными продуктами обмена растущего гельминта</td>
+                    <td>За 8–10 дней до появления пузыря на коже возникает сильный кожный зуд, крапивница, одутловатость лица, приступы удушья (напоминающие астму), тошнота и рвота.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Поздняя (механическая) фаза</td>
+                    <td>Механическое повреждение тканей гигантским червём. Токсическое расплавление кожи секретами паразита над его головным концом.</td>
+                    <td>Под кожей контурируется извитой валик (тело червя). Формируется эритема и пузырь (2–7 см), прорывающийся в болезненную эрозию-язву. Процесс протекает мучительно, лишая больного трудоспособности.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Осложнения инвазии</td>
+                    <td>Растянутое во времени (до 3-х недель) выделение личинок. В открытую язву неизбежно попадает вторичная бактериальная инфекция.</td>
+                    <td>Развитие гнойных абсцессов, флегмон, гангрены, сепсиса. При локализации паразита вблизи суставов развиваются тяжелые артриты и синовииты, часто заканчивающиеся <strong>анкилозом</strong> (полной потерей подвижности сустава).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <div class="note">
+        <strong>⚠️ КРИТИЧЕСКАЯ ЛОВУШКА ДЛЯ ЭКЗАМЕНА:</strong> Студенты по инерции часто говорят, что диагноз ставится по анализу кала (копроовоскопии). <strong>При дракункулезе это грубейшая ошибка!</strong> Ришта — живородящий тканевый паразит, локализующийся под кожей. Яйца она не откладывает в принципе, а личинок выстреливает в воду, поэтому в кале искать нечего!
+    </div>
+
+    <div class="table-wrapper">
+        <table class="pathogenic-table">
+            <thead>
+                <tr>
+                    <th class="col-mechanism">Метод</th>
+                    <th>Материал для исследования</th>
+                    <th>Особенности и диагностическое значение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-mechanism">Макроскопический (Клинический)</td>
+                    <td>Осмотр нижних конечностей</td>
+                    <td><strong>Главный и самый точный метод.</strong> Врач визуально и пальпаторно обнаруживает тело паразита (в виде шнуровидного тяжа под кожей) или передний конец самки на дне лопнувшего пузыря.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Рентгенологический</td>
+                    <td>Ткани пациента (суставы, мягкие ткани)</td>
+                    <td>Позволяет выявить уже погибших и <strong>обызвествленных</strong> (покрытых кристаллами кальция) самок или самцов ришты глубоко в тканях, если болезнь протекала бессимптомно.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="margin-top:12px;">
+        <em>Медицинский факт:</em> Лечение часто проводится тем же древним методом — очень медленным (по несколько сантиметров в день) наматыванием живого червя на марлевый валик или палочку, чтобы не разорвать тело паразита, иначе токсичная жидкость из его тела вызовет анафилактический шок или флегмону.
+    </p>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная:</h4>
+    <ul>
+        <li>Употребление в эндемичных районах исключительно <strong>кипяченой воды</strong> (кипячение гарантированно убивает циклопов вместе с личинками ришты). Использование современных фильтров.</li>
+        <li>Не купаться в водоемах со стоячей водой в странах тропического пояса.</li>
+    </ul>
+
+    <h4>Общественная (как это сделал Исаев):</h4>
+    <ul>
+        <li>Полный запрет на использование сырой воды из открытых стоячих водоемов (арыков, хаузов) для питья.</li>
+        <li>Благоустройство водоемов: строительство современных колодцев и водопроводов, устройство закрытых источников питьевой воды, куда водоносы не могут зайти босыми ногами.</li>
+        <li>Химическое уничтожение циклопов в природных водоемах с помощью препаратов (например, диметилдитиокарбамат цинка).</li>
+        <li>Выявление и немедленное лечение всех больных для прекращения выброса личинок в водоемы.</li>
+        <li>Строгий запрет на совершение ритуальных омовений в питьевых прудах верующим населением.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

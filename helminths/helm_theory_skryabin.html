@@ -1,0 +1,380 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+    }
+
+    .tab-content-inner .intro {
+        font-size: 17px;
+        color: #475569;
+        margin-bottom: 20px;
+        padding: 16px 22px;
+        background: #f8fafc;
+        border-radius: 12px;
+        border-left: 4px solid #2563eb;
+    }
+
+    .tab-content-inner .intro strong {
+        color: #1e293b;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #e9edf3;
+    }
+
+    .tab-content-inner h4 {
+        font-size: 17px;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin: 20px 0 8px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Карточки ===== */
+    .concept-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 22px;
+        border: 1px solid #e9edf3;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        margin: 16px 0 20px 0;
+    }
+
+    .concept-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .concept-card .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+    }
+
+    .concept-card .card-title .icon {
+        font-size: 22px;
+    }
+
+    .concept-card .card-body {
+        color: #334155;
+        font-size: 15px;
+    }
+
+    .concept-card .card-body .feature {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .concept-card .card-body .feature::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .concept-card .card-body .examples {
+        display: block;
+        margin-top: 8px;
+        padding: 10px 16px;
+        background: #f8fafc;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #2563eb;
+        font-weight: 500;
+    }
+
+    .concept-card .card-body .examples .label {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .concept-card .card-body .examples ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 4px 0 0 0;
+    }
+
+    .concept-card .card-body .examples ul li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 2px;
+        line-height: 1.5;
+        font-size: 14px;
+        color: #475569;
+        font-weight: 400;
+    }
+
+    .concept-card .card-body .examples ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -2px;
+    }
+
+    .concept-card.bio {
+        border-left: 4px solid #ef4444;
+    }
+
+    .concept-card.geo {
+        border-left: 4px solid #10b981;
+    }
+
+    .concept-card.transit {
+        border-left: 4px solid #f59e0b;
+    }
+
+    .concept-card.symbio {
+        border-left: 4px solid #8b5cf6;
+    }
+
+    .concept-card.dehelminth {
+        border-left: 4px solid #2563eb;
+    }
+
+    .concept-card.devastation {
+        border-left: 4px solid #ec4899;
+    }
+
+    /* ===== Список для научных достижений ===== */
+    .achievement-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 8px 0 0 0;
+    }
+
+    .achievement-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 6px;
+        line-height: 1.6;
+        font-size: 15px;
+        color: #475569;
+    }
+
+    .achievement-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .achievement-list li strong {
+        color: #1e293b;
+    }
+
+    /* ===== Две колонки для концепций ===== */
+    .concept-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 16px 0 24px 0;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 768px) {
+        .concept-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .tab-content-inner .intro {
+            padding: 14px 16px;
+            font-size: 15px;
+        }
+        .concept-card {
+            padding: 16px 18px;
+        }
+        .tab-content-inner h4 {
+            font-size: 16px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2>Учение К.И. Скрябина</h2>
+
+    <div class="intro">
+        <strong>Константин Иванович Скрябин (1876–1972)</strong> — выдающийся советский учёный, академик АН СССР, чьё имя по праву стоит в ряду основоположников медицинской и ветеринарной гельминтологии как в России, так и в мировой науке. Его труды не только заложили методологическую базу для изучения паразитических червей, но и предложили действенные стратегии борьбы с гельминтозами, многие из которых сохраняют актуальность и в XXI веке.
+    </div>
+
+    <!-- ===== 1. НАУЧНЫЕ ОТКРЫТИЯ ===== -->
+    <h3>🔬 1. Научные открытия и экспедиционная деятельность</h3>
+
+    <p>Масштаб научной работы К.И. Скрябина поражает даже по современным меркам. За свою долгую карьеру он:</p>
+
+    <ul class="achievement-list">
+        <li><strong>Открыл и детально описал более 200 новых видов гельминтов</strong>, что само по себе является уникальным вкладом в систематику и биоразнообразие паразитических червей;</li>
+        <li><strong>Дал научное обоснование 120 новым родам</strong>, существенно расширив и пересмотрев филогенетические связи внутри типов <em>Platyhelminthes</em> и <em>Nemathelminthes</em>;</li>
+        <li><strong>Организовал и провёл свыше 300 масштабных научных экспедиций</strong> общегосударственного уровня, охвативших практически все природно-климатические зоны СССР — от степей Казахстана до Дальнего Востока и Заполярья. Эти экспедиции позволили впервые составить полноценные гельминтологические карты регионов и выявить эпидемиологически значимые очаги инвазий.</li>
+    </ul>
+
+    <!-- ===== 2. ФУНДАМЕНТАЛЬНЫЕ ПОНЯТИЯ ===== -->
+    <h3>📚 2. Фундаментальные понятия и концепции</h3>
+
+    <p>Одним из важнейших теоретических вкладов Скрябина стала разработка чёткой классификации паразитов по типу их жизненного цикла. Он разделил все гельминтозы на две принципиально разные группы — <strong>биогельминтозы</strong> и <strong>геогельминтозы</strong>, что имело глубочайшее эпидемиологическое и практическое значение.</p>
+
+    <div class="concept-grid">
+
+        <!-- 2.1. БИОГЕЛЬМИНТЫ -->
+        <div class="concept-card bio">
+            <div class="card-title"><span class="icon">🔄</span> Биогельминты и биогельминтозы</div>
+            <div class="card-body">
+                <div><strong>Биогельминты</strong> — это паразитические черви, чей цикл развития обязательно сопровождается последовательной <strong>сменой хозяев разных видов</strong>. Без промежуточного хозяина завершение жизненного цикла невозможно.</div>
+                <span class="feature"><strong>Особенности развития:</strong> Личиночные стадии биогельминтов развиваются в теле одного (реже — двух) промежуточных хозяев, тогда как половозрелая марита формируется исключительно в окончательном (дефинитивном) хозяине.</span>
+                <span class="feature"><strong>Пути заражения:</strong> Передача паразита окончательному хозяину (включая человека) реализуется преимущественно по трофическим (пищевым) цепям — при поедании сырого или недостаточно термически обработанного мяса заражённого промежуточного хозяина, либо, реже, трансмиссивно — через укусы специфических кровососущих переносчиков.</span>
+                <div class="examples">
+                    <span class="label">📌 Типичные представители:</span>
+                    <ul>
+                        <li>Все <strong>трематоды</strong> (сосальщики): <em>Fasciola hepatica</em>, <em>Opisthorchis felineus</em>, <em>Paragonimus westermani</em>, шистосомы;</li>
+                        <li>Большинство <strong>цестод</strong> (ленточные черви): <em>Taenia solium</em>, <em>Taenia saginata</em>, <em>Diphyllobothrium latum</em>, <em>Echinococcus</em> spp.;</li>
+                        <li>Некоторые <strong>нематоды</strong>: <em>Trichinella spiralis</em>, <em>Dracunculus medinensis</em>, филярии.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2.2. ГЕОГЕЛЬМИНТЫ -->
+        <div class="concept-card geo">
+            <div class="card-title"><span class="icon">🌍</span> Геогельминты и геогельминтозы</div>
+            <div class="card-body">
+                <div><strong>Геогельминты</strong> — паразиты с прямым циклом развития, который протекает <strong>без участия промежуточных хозяев</strong>. Весь цикл осуществляется в двух средах: организме окончательного хозяина и внешней среде.</div>
+                <span class="feature"><strong>Особенности развития:</strong> Яйца или свободноживущие личинки геогельминтов выделяются с фекалиями во внешнюю среду (преимущественно в почву), где проходят обязательное созревание до инвазионной стадии. Этот процесс строго зависит от абиотических факторов: наличия свободного кислорода, влажности (обычно не ниже 60–70 %) и температурного режима.</span>
+                <span class="feature"><strong>Пути заражения:</strong> Инвазия происходит непосредственно из окружающей среды — через загрязнённые почвой овощи, ягоды, зелень, воду (фекально-оральный механизм), либо путём активного внедрения личинок через неповреждённую кожу при контакте с почвой (перкутантный путь).</span>
+                <div class="examples">
+                    <span class="label">📌 Типичные представители:</span>
+                    <ul>
+                        <li>Классические почвенные нематоды — <em>Ascaris lumbricoides</em>, <em>Trichuris trichiura</em>,</li>
+                        <li>Анкилостомиды (<em>Ancylostoma duodenale</em>, <em>Necator americanus</em>),</li>
+                        <li><em>Strongyloides stercoralis</em>.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 3. ДОПОЛНИТЕЛЬНЫЕ КАТЕГОРИИ ===== -->
+    <h3>🧩 3. Расширение теоретической базы</h3>
+
+    <p>Помимо базового разделения на био- и геогельминтов, Скрябин и его школа детально разработали понятийный аппарат, описывающий более сложные формы паразитарных взаимодействий.</p>
+
+    <div class="concept-grid">
+
+        <!-- 3.1. ТРАНЗИТНЫЙ ПАРАЗИТИЗМ -->
+        <div class="concept-card transit">
+            <div class="card-title"><span class="icon">🚶</span> Транзитный (транзиторный) паразитизм</div>
+            <div class="card-body">
+                <div>Это феномен случайного попадания паразита (или его яиц/личинок) в организм <strong>неспецифического</strong> для него хозяина, где червь не находит условий для дальнейшего развития и пассивно проходит через пищеварительный тракт, не вызывая клинически выраженного заболевания.</div>
+                <span class="feature"><strong>Клинико-диагностическое значение:</strong> Транзитные яйца нередко выявляются при копроовоскопии. Например, яйца ланцетовидной или печёночной двуустки могут обнаруживаться у человека после употребления в пищу заражённой печени сельскохозяйственных животных. Это чревато постановкой ложного диагноза, если врач не перепроверит результаты анализа после исключения из рациона субпродуктов.</span>
+                <span class="feature">Также транзиторным паразитизмом называют временное пребывание личинки в теле <strong>паратенического (транспортного) хозяина</strong>, где она сохраняет жизнеспособность, но не развивается, до момента попадания в окончательного хозяина.</span>
+            </div>
+        </div>
+
+        <!-- 3.2. СИМБИОПАРАЗИТИЗМ -->
+        <div class="concept-card symbio">
+            <div class="card-title"><span class="icon">🔄</span> Симбиопаразитизм</div>
+            <div class="card-body">
+                <div>Сложное экологическое явление, при котором сам многоклеточный паразит (например, гельминт) выступает в роли <strong>вторичного хозяина</strong> или биологического резервуара для других патогенов — бактерий, вирусов или простейших.</div>
+                <span class="feature"><strong>Клиническая значимость:</strong> Гельминт может механически переносить микроорганизмы (например, сальмонеллы или кишечную палочку) на своей поверхности или в просвете кишечника, тем самым усугубляя течение инфекционного процесса, модулируя иммунный ответ хозяина в сторону иммуносупрессии, а также способствуя транслокации бактерий через повреждённую паразитом слизистую. Это формирует устойчивые <strong>паразитоценозы</strong> — сочетанные инвазии, требующие комплексной терапевтической стратегии.</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 4. ПРИНЦИПЫ БОРЬБЫ ===== -->
+    <h3>⚔️ 4. Принципы борьбы с гельминтозами</h3>
+
+    <p>К.И. Скрябин не только описал гельминтов, но и предложил научно обоснованную систему противодействия им, введя в медицинский и ветеринарный лексикон два ключевых понятия.</p>
+
+    <div class="concept-grid">
+
+        <!-- 4.1. ДЕГЕЛЬМИНТИЗАЦИЯ -->
+        <div class="concept-card dehelminth">
+            <div class="card-title"><span class="icon">💊</span> Дегельминтизация</div>
+            <div class="card-body">
+                <div>Это комплекс лечебно-профилактических мероприятий, направленных одновременно на <strong>излечение конкретного больного</strong> (или группы животных) от гельминтоза и на <strong>санацию внешней среды</strong> от выделяемого инвазионного материала, что разрывает эпидемиологическую цепочку передачи.</div>
+                <span class="feature"><strong>Преимагинальная дегельминтизация</strong> — медикаментозное уничтожение гельминтов в организме хозяина <strong>до достижения ими половой зрелости</strong>. Это наиболее эффективная с эпидемиологической точки зрения стратегия, поскольку она полностью исключает выделение яиц во внешнюю среду и предотвращает распространение инвазии.</span>
+            </div>
+        </div>
+
+        <!-- 4.2. ДЕВАСТАЦИЯ -->
+        <div class="concept-card devastation">
+            <div class="card-title"><span class="icon">💥</span> Девастация</div>
+            <div class="card-body">
+                <div>Это радикальный эволюционный подход — комплекс активных методов борьбы, нацеленный на <strong>физическое уничтожение паразита как биологического (зоологического) вида</strong> в глобальном масштабе или в пределах отдельно взятого региона.</div>
+                <span class="feature"><strong>Полная (тотальная) девастация</strong> — абсолютное и необратимое истребление гельминта как вида на всей планете. Данная цель крайне амбициозна и достижима лишь для паразитов с простыми циклами и ограниченным кругом хозяев.</span>
+                <span class="feature"><strong>Частичная (парциальная) девастация</strong> — уничтожение возбудителя конкретного гельминтоза на строго ограниченной территории. Классическим историческим примером служит ликвидация очагов дракункулеза (ришты) в Средней Азии, блестяще осуществлённая под руководством ученика Скрябина — <strong>Л.М. Исаева</strong>.</span>
+                <span class="feature" style="padding-top:4px;border-top:1px dashed #e9edf3;margin-top:6px;"><strong>Экологический аспект:</strong> Именно парциальная девастация признана наиболее перспективным направлением, так как она позволяет снизить численность популяции паразита до уровня, при котором риск заражения человека становится клинически незначимым, без грубого вмешательства в естественные биоценозы.</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>

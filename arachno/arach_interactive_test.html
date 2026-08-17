@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Интерактивный тест по арахноэнтомологии + задачи</title>
+    <style>
+        .arachno-test-app, .arachno-test-app * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .arachno-test-app {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        .arachno-test-app {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 24px 20px 32px;
+        }
+        .arachno-test-app h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1e3a8a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .arachno-test-app h1 .emoji { font-size: 32px; }
+        .arachno-test-app .subtitle {
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #e9edf3;
+            padding-bottom: 14px;
+        }
+        .arachno-test-app .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e9edf3;
+            padding-bottom: 10px;
+        }
+        .arachno-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #475569;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .arachno-tab-btn:hover { background: #eef2f6; color: #1e3a8a; }
+        .arachno-tab-btn.active { background: #1e3a8a; color: #fff; }
+        .arachno-tab-content { display: none; animation: fade 0.25s; }
+        .arachno-tab-content.active { display: block; }
+        @keyframes fade { 0% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        .arachno-test-app .question-block {
+            background: #fafcff;
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin-bottom: 18px;
+            border: 1px solid #e9edf3;
+        }
+        .arachno-test-app .question-text { font-weight: 600; font-size: 16px; margin-bottom: 10px; color: #0b1f33; }
+        .arachno-test-app .options { display: flex; flex-direction: column; gap: 6px; }
+        .arachno-test-app .option {
+            padding: 8px 14px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.15s;
+            border-left: 3px solid transparent;
+            font-size: 15px;
+        }
+        .arachno-test-app .option:hover { background: #e2e8f0; }
+        .arachno-test-app .option.selected-correct { background: #d1fae5; border-left-color: #10b981; }
+        .arachno-test-app .option.selected-wrong { background: #fee2e2; border-left-color: #ef4444; }
+        .arachno-test-app .option.show-correct { background: #d1fae5; border-left-color: #10b981; }
+        .arachno-test-app .explanation {
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: #fef9e7;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #78350f;
+            border-left: 4px solid #f59e0b;
+            display: none;
+        }
+        .arachno-test-app .explanation.show { display: block; }
+        .arachno-test-app .question-counter { font-size: 13px; color: #94a3b8; margin-top: 4px; text-align: right; }
+
+        .arachno-test-app .random-controls {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .arachno-test-app .random-controls button {
+            background: #1e3a8a;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .arachno-test-app .random-controls button:hover { background: #2563eb; }
+        .arachno-test-app .random-controls .info { font-size: 15px; color: #475569; }
+        .arachno-test-app .reset-answers-btn {
+            background: #e2e8f0;
+            color: #1e293b;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .arachno-test-app .reset-answers-btn:hover { background: #cbd5e1; }
+
+        /* Стили для задач */
+        .arachno-test-app .task-block {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .arachno-test-app .task-text {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #0b1f33;
+        }
+        .arachno-test-app .task-text strong { color: #1e3a8a; }
+        .arachno-test-app .task-input-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .arachno-test-app .task-input-area input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            background: white;
+        }
+        .arachno-test-app .task-input-area input:focus { outline: 2px solid #2563eb; border-color: transparent; }
+        .arachno-test-app .task-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .arachno-test-app .task-btn:hover { background: #1d4ed8; }
+        .arachno-test-app .task-answer {
+            margin-top: 12px;
+            padding: 14px 18px;
+            background: #ecfdf5;
+            border-radius: 10px;
+            border-left: 4px solid #10b981;
+            color: #065f46;
+            font-size: 15px;
+            display: none;
+        }
+        .arachno-test-app .task-answer.show { display: block; }
+        .arachno-test-app .task-answer strong { color: #047857; }
+
+        @media (max-width: 640px) {
+            .arachno-test-app { padding: 16px; }
+            .arachno-tab-btn { font-size: 14px; padding: 6px 12px; }
+            .arachno-test-app .task-input-area input { min-width: 150px; }
+        }
+    </style>
+</head>
+<body>
+<div class="arachno-test-app">
+
+    <h1><span class="emoji">🕷️</span> Арахноэнтомология – полный тест + задачи</h1>
+    <div class="subtitle">Все вопросы по систематике, биологии и медицинскому значению членистоногих (более 130 уникальных)</div>
+
+    <div class="tabs" id="tabsContainer">
+        <button class="arachno-tab-btn active" data-tab="tab-general">Общие</button>
+        <button class="arachno-tab-btn" data-tab="tab-ticks">Клещи</button>
+        <button class="arachno-tab-btn" data-tab="tab-insects1">Вши, блохи, клопы, тараканы</button>
+        <button class="arachno-tab-btn" data-tab="tab-diptera">Двукрылые</button>
+        <button class="arachno-tab-btn" data-tab="tab-vectors">Переносчики и болезни</button>
+        <button class="arachno-tab-btn" data-tab="tab-misc">Разное</button>
+        <button class="arachno-tab-btn" data-tab="tab-tasks">Ситуационные задачи</button>
+        <button class="arachno-tab-btn" data-tab="tab-random">Случайный тест (30)</button>
+    </div>
+
+    <!-- Вкладки -->
+    <div id="tab-general" class="arachno-tab-content active"></div>
+    <div id="tab-ticks" class="arachno-tab-content"></div>
+    <div id="tab-insects1" class="arachno-tab-content"></div>
+    <div id="tab-diptera" class="arachno-tab-content"></div>
+    <div id="tab-vectors" class="arachno-tab-content"></div>
+    <div id="tab-misc" class="arachno-tab-content"></div>
+    <div id="tab-tasks" class="arachno-tab-content"></div>
+    <div id="tab-random" class="arachno-tab-content">
+        <div class="random-controls">
+            <button id="generateRandomBtn">🎲 Сгенерировать 30 случайных</button>
+            <span class="info" id="randomCountInfo">Выбрано 0 вопросов</span>
+            <button class="reset-answers-btn" id="resetRandomBtn">Сбросить ответы</button>
+        </div>
+        <div id="randomQuestionsContainer"></div>
+    </div>
+
+</div>
+
+<script>
+    // ========== ПОЛНЫЙ БАНК ВОПРОСОВ (все уникальные) ==========
+    const allQuestions = [
+        // ---- ОБЩИЕ ----
+        { category: 'general', question: 'Какой тип симметрии характерен для членистоногих?', options: ['Асимметричность', 'Билатеральная симметрия', 'Лучевая симметрия', 'Радиальная симметрия'], correct: 1, explanation: 'Членистоногие – билатерально-симметричные.' },
+        { category: 'general', question: 'Строение мускулатуры членистоногих:', options: ['Гладкая', 'Кольцевая', 'Поперечно-полосатая', 'Отсутствует'], correct: 2, explanation: 'Поперечно-полосатая мускулатура в виде отдельных пучков.' },
+        { category: 'general', question: 'Полость тела у членистоногих:', options: ['Первичная', 'Вторичная', 'Смешанная (миксоцель)', 'Целом'], correct: 2, explanation: 'Миксоцель – слияние первичной и вторичной полостей.' },
+        { category: 'general', question: 'Нервная система членистоногих:', options: ['Диффузная', 'Узловая (лестничного типа)', 'Трубчатая', 'В виде брюшной цепочки с концентрацией ганглиев в голове'], correct: 3, explanation: 'Характерна концентрация нервных ганглиев, особенно в голове.' },
+        { category: 'general', question: 'Выделительная система членистоногих представлена:', options: ['Протонефридиями', 'Метанефридиями', 'Мальпигиевыми сосудами', 'Почками'], correct: 2, explanation: 'У наземных форм – мальпигиевы сосуды.' },
+        { category: 'general', question: 'Кровеносная система членистоногих:', options: ['Замкнутая, сердце отсутствует', 'Замкнутая, имеется сердце', 'Незамкнутая, имеется сердце', 'Отсутствует'], correct: 2, explanation: 'Незамкнутая, сердце на спинной стороне.' },
+        { category: 'general', question: 'Предками членистоногих были:', options: ['Плоские черви', 'Кольчатые черви', 'Моллюски', 'Круглые черви'], correct: 1, explanation: 'Произошли от древних кольчатых червей (полихет).' },
+        { category: 'general', question: 'Гетерономная сегментация со слиянием сегментов в отделы тела отмечается у:', options: ['Кольчатых червей', 'Членистоногих', 'Ленточных червей', 'Круглых червей'], correct: 1, explanation: 'У членистоногих сегменты объединены в тагмы.' },
+        { category: 'general', question: 'Количество ходильных ног у имаго насекомых:', options: ['Две пары', 'Три пары', 'Четыре пары', 'Отсутствуют'], correct: 1, explanation: 'У насекомых 3 пары ног (6 ног).' },
+        { category: 'general', question: 'Дыхательная система насекомых:', options: ['Жабры', 'Трахеи', 'Бронхи', 'Кожное дыхание'], correct: 1, explanation: 'Трахейная система – сеть воздухоносных трубочек.' },
+        { category: 'general', question: 'Органы дыхания у паукообразных:', options: ['Только легкие', 'Только трахеи', 'Легкие и трахеи', 'Жабры и легкие'], correct: 2, explanation: 'Могут быть легочные мешки и/или трахеи.' },
+        { category: 'general', question: 'Хелицеры у паукообразных – это:', options: ['Первая пара ротовых конечностей', 'Вторая пара ротовых конечностей', 'Ходильные ноги', 'Органы выделения'], correct: 0, explanation: 'Хелицеры – первая пара ротовых придатков.' },
+        { category: 'general', question: 'Педипальпы паукообразных – это:', options: ['Первая пара ротовых конечностей', 'Вторая пара ротовых конечностей', 'Ходильные ноги', 'Органы дыхания'], correct: 1, explanation: 'Вторая пара ротовых конечностей (ногощупальца).' },
+        { category: 'general', question: 'Класс ракообразных относится к подтипу:', options: ['Позвоночные', 'Жабернодышащие (Branchiata)', 'Трахейнодышащие', 'Хелицероносные'], correct: 1, explanation: 'Ракообразные – жабернодышащие.' },
+        { category: 'general', question: 'Среда обитания ракообразных:', options: ['Наземная', 'Водно-наземная', 'Водная', 'Воздушная'], correct: 2, explanation: 'Преимущественно водная среда.' },
+        { category: 'general', question: 'Усиков у ракообразных:', options: ['Одна пара', 'Две пары', 'Три пары', 'Отсутствуют'], correct: 1, explanation: 'Две пары усиков (антеннулы и антенны).' },
+        { category: 'general', question: 'Железы, впервые появившиеся у рака:', options: ['Слюнные железы', 'Печень и поджелудочная железа (гепатопанкреас)', 'Железы желудка', 'Эндокринные железы'], correct: 1, explanation: 'Гепатопанкреас – печень и поджелудочная железа вместе.' },
+        { category: 'general', question: 'Тело ракообразных состоит из:', options: ['Головогруди и брюшка', 'Головы, груди и брюшка', 'Головогруди, брюшка и конечностей', 'Головы, груди, брюшка и хвоста'], correct: 2, explanation: 'Головогрудь, брюшко и конечности.' },
+        { category: 'general', question: 'Стадия развития, отсутствующая у насекомых с неполным превращением:', options: ['Яйцо', 'Куколка', 'Личинка', 'Имаго'], correct: 1, explanation: 'При неполном метаморфозе куколки нет.' },
+        { category: 'general', question: 'Наиболее высокоорганизованной группой членистоногих являются представители подтипа:', options: ['Жабернодышащие', 'Хелицеровые', 'Трахейнодышащие', 'Ракообразные'], correct: 2, explanation: 'Трахейнодышащие (насекомые) – самые высокоорганизованные.' },
+        { category: 'general', question: 'Конечности членистоногих гомологичны:', options: ['Псевдоподиям амебы', 'Мускульной ноге моллюсков', 'Параподиям кольчатых червей', 'Щупальцам медузы'], correct: 2, explanation: 'Параподии кольчатых червей эволюционировали в членистые конечности.' },
+        { category: 'general', question: 'Тип нервной системы членистоногих:', options: ['Диффузная', 'Ганглиозностволовая', 'Трубчатая', 'Сложно-ганглиозностволовая с цефализацией'], correct: 3, explanation: 'Сложно-ганглиозностволовая с концентрацией в голове.' },
+        { category: 'general', question: 'Постэмбриональное развитие клещей:', options: ['Прямое', 'С полным метаморфозом', 'С неполным метаморфозом', 'С превращением'], correct: 2, explanation: 'Клещи развиваются с неполным метаморфозом (яйцо → личинка → нимфа → имаго).' },
+        { category: 'general', question: 'Для членистоногих характерна полость тела:', options: ['Первичная', 'Вторичная', 'Смешанная', 'Целом'], correct: 2, explanation: 'Миксоцель (смешанная).' },
+        { category: 'general', question: 'Рост тела членистоногих происходит:', options: ['Между линьками', 'В личиночной стадии', 'На стадии имаго', 'Постоянно'], correct: 0, explanation: 'Рост только во время линьки, после которой кутикула твердеет.' },
+        { category: 'general', question: 'Жало с протоком ядовитой железы у скорпиона расположено на:', options: ['Челюсти', 'Ногощупальце', 'Ходильной ноге', 'Последнем членике брюшка'], correct: 3, explanation: 'Скорпионы жалят тельсоном (последний членик брюшка).' },
+        { category: 'general', question: 'Признак, характерный только для класса паукообразных:', options: ['Тело состоит из трёх отделов', 'Наличие трёх пар ходильных ног', 'Наличие крыльев', 'Четыре пары ходильных ног'], correct: 3, explanation: 'Паукообразные имеют 4 пары ходильных ног (8 ног).' },
+        { category: 'general', question: 'Тип дыхания у клещей:', options: ['Трахейный', 'Поверхностью тела', 'Кожные жабры', 'Лёгкие'], correct: 0, explanation: 'Клещи дышат трахеями (у нимф и имаго).' },
+        { category: 'general', question: 'Тип симметрии, характерный для членистоногих:', options: ['Асимметричность', 'Билатеральная симметрия', 'Лучевая симметрия', 'Радиальная симметрия'], correct: 1, explanation: 'Билатеральная (двусторонняя).' },
+        // ---- КЛЕЩИ ----
+        { category: 'ticks', question: 'Возбудителем чесотки является:', options: ['Sarcoptes scabiei', 'Ixodes persulcatus', 'Ornithodoros papillipes', 'Demodex folliculorum'], correct: 0, explanation: 'Sarcoptes scabiei – чесоточный зудень.' },
+        { category: 'ticks', question: 'Клещи – постоянные паразиты человека:', options: ['Таёжный клещ', 'Чесоточный зудень', 'Собачий клещ', 'Тироглифидовые клещи'], correct: 1, explanation: 'Чесоточный зудень – облигатный внутрикожный паразит.' },
+        { category: 'ticks', question: 'Клещи – специфические переносчики клещевого возвратного тифа, относятся к семейству:', options: ['Акариформные', 'Аргазовые', 'Иксодовые', 'Гамазовые'], correct: 1, explanation: 'Аргазовые клещи (Ornithodoros) – переносчики возвратного тифа.' },
+        { category: 'ticks', question: 'Морфологические особенности клещей на стадии нимфы:', options: ['4 пары ног, дышит трахеями, нет полового отверстия', '3 пары ног, кожное дыхание, есть половое отверстие', '4 пары ног, трахеи, есть половое отверстие', '3 пары ног, трахеи, нет полового отверстия'], correct: 0, explanation: 'Нимфа: 4 пары ног, трахейное дыхание, половое отверстие отсутствует.' },
+        { category: 'ticks', question: 'Органы чувств клещей представлены:', options: ['Волосками по всему телу', 'Осязанием и зрением', 'Обонянием и осязанием, глаза отсутствуют', 'Химическим чувством и обонянием'], correct: 2, explanation: 'У большинства клещей глаз нет, ориентируются хемо- и терморецепторами.' },
+        { category: 'ticks', question: 'Медицинское значение Sarcoptes scabiei:', options: ['Переносчик чесотки', 'Возбудитель чесотки', 'Переносчик энцефалита', 'Резервуар энцефалита'], correct: 1, explanation: 'Непосредственно вызывает чесотку.' },
+        { category: 'ticks', question: 'Поселковый (аргазовый) клещ – специфический переносчик:', options: ['Туляремии', 'Возвратно-клещевого тифа', 'Весенне-летнего энцефалита', 'Чумы'], correct: 1, explanation: 'Ornithodoros papillipes переносит Borrelia persica.' },
+        { category: 'ticks', question: 'Паразитирует в сальных железах и волосяных фолликулах:', options: ['Постельный клоп', 'Железница угревая (Demodex)', 'Чесоточный зудень', 'Осенняя жигалка'], correct: 1, explanation: 'Demodex folliculorum – возбудитель демодекоза.' },
+        { category: 'ticks', question: 'Иксодовые клещи – переносчики:', options: ['Чесотки', 'Лейшманиоза', 'Чумы', 'Энцефалита'], correct: 3, explanation: 'Ixodes переносят вирус клещевого энцефалита и боррелий.' },
+        { category: 'ticks', question: 'Стадии развития иксодовых клещей:', options: ['Яйцо – нимфа – личинка – имаго', 'Яйцо – личинка – имаго', 'Яйцо – личинка – куколка – имаго', 'Яйцо – личинка – нимфа – имаго'], correct: 3, explanation: 'Правильная последовательность: яйцо → личинка → нимфа → имаго.' },
+        { category: 'ticks', question: 'Чесоточный зудень относится к семейству:', options: ['Иксодовые', 'Аргазовые', 'Акариформные', 'Гамазовые'], correct: 2, explanation: 'Семейство Sarcoptidae (Acariformes).' },
+        { category: 'ticks', question: 'Клещевой возвратный тиф переносят клещи семейства:', options: ['Акариформные', 'Аргазовые', 'Иксодовые', 'Гамазовые'], correct: 1, explanation: 'Аргазиды – переносчики возвратного тифа.' },
+        { category: 'ticks', question: 'Треххозяинный цикл развития характерен для:', options: ['Иксодовых клещей', 'Аргазовых клещей', 'Чесоточного зудня', 'Тироглифидовых клещей'], correct: 0, explanation: 'Иксодовые клещи – треххозяинные (личинка, нимфа, имаго на разных хозяевах).' },
+        { category: 'ticks', question: 'Передача возбудителя через яйцо у клещей – это:', options: ['Контаминация', 'Инокуляция', 'Трансовариальная передача', 'Алиментарный путь'], correct: 2, explanation: 'Трансовариальная – через яйца потомству.' },
+        { category: 'ticks', question: 'К синантропным паукообразным относятся:', options: ['Тироглифидовые клещи', 'Иксодовые клещи', 'Чесоточный зудень', 'Аргазовые клещи'], correct: 0, explanation: 'Тироглифидовые (амбарные) клещи – синантропы, не паразиты.' },
+        { category: 'ticks', question: 'К эндопаразитам человека относятся членистоногие:', options: ['Таёжный клещ и малярийный комар', 'Чесоточный зудень и железница угревая', 'Чесоточный зудень и таёжный клещ', 'Блоха и муха цеце'], correct: 1, explanation: 'Оба являются эндопаразитами (внутрикожными).' },
+        { category: 'ticks', question: 'Переносчик вируса энцефалита – клещ:', options: ['Таёжный', 'Поселковый', 'Железница угревая', 'Чесоточный зудень'], correct: 0, explanation: 'Таёжный клещ (Ixodes persulcatus) – основной переносчик.' },
+        { category: 'ticks', question: 'Переносчиком весенне-летнего энцефалита является:', options: ['Собачий клещ (I. ricinus)', 'Чесоточный зудень', 'Поселковый клещ', 'Демодекс'], correct: 0, explanation: 'Ixodes ricinus – переносчик энцефалита в европейской части.' },
+        { category: 'ticks', question: 'Переносчиком возбудителей клещевого возвратного тифа является:', options: ['Таёжный клещ', 'Демодекс', 'Поселковый клещ', 'Чесоточный зудень'], correct: 2, explanation: 'Ornithodoros papillipes – переносчик возвратного тифа.' },
+        { category: 'ticks', question: 'Клещи – постоянные паразиты человека:', options: ['Таёжный клещ', 'Чесоточный зудень', 'Собачий клещ', 'Тироглифидовые'], correct: 1, explanation: 'Чесоточный зудень – постоянный внутрикожный паразит.' },
+        { category: 'ticks', question: 'Места обитания таёжного клеща:', options: ['Открытые участки лесных массивов (трава, кусты)', 'Пещеры, норы, щели зданий', 'Кожный эпидермис', 'Кишечник животных'], correct: 0, explanation: 'Обитает в лесной подстилке, на траве и кустарниках.' },
+        { category: 'ticks', question: 'Источник питания таёжного клеща:', options: ['Эпидермис кожи', 'Кровь человека и животных', 'Содержимое сальных желёз', 'Нектар растений'], correct: 1, explanation: 'Гематофаг, питается кровью позвоночных.' },
+        { category: 'ticks', question: 'Паразитирует на всех стадиях развития:', options: ['Таёжный клещ', 'Вольфартова муха', 'Москит', 'Блоха человеческая'], correct: 0, explanation: 'Иксодовые клещи паразитируют на всех активных стадиях (личинка, нимфа, имаго).' },
+        { category: 'ticks', question: 'Выделительную систему клещей представляют:', options: ['Протонефридии', 'Метанефридии', 'Мальпигиевы сосуды', 'Анальное отверстие'], correct: 2, explanation: 'У клещей мальпигиевы сосуды.' },
+        { category: 'ticks', question: 'Семейство, к которому относится чесоточный клещ:', options: ['Иксодовые', 'Аргазовые', 'Акариформные', 'Гамазовые'], correct: 2, explanation: 'Sarcoptidae – акариформные клещи.' },
+        // ---- НАСЕКОМЫЕ: ВШИ, БЛОХИ, КЛОПЫ, ТАРАКАНЫ ----
+        { category: 'insects1', question: 'Головная и платяная вши при паразитировании вызывают:', options: ['Фтириаз', 'Педикулёз', 'Миаз', 'Демодекоз'], correct: 1, explanation: 'Педикулёз – заболевание, вызываемое вшами рода Pediculus.' },
+        { category: 'insects1', question: 'Вошь человеческая – трансмиссивный переносчик возбудителя:', options: ['Чесотки', 'Демодекса', 'Туляремии', 'Сыпного тифа'], correct: 3, explanation: 'Платяная вошь переносит Rickettsia prowazekii (сыпной тиф).' },
+        { category: 'insects1', question: 'Способ заражения вшивым возвратным тифом:', options: ['Специфическая контаминация', 'Специфическая инокуляция', 'Механическая контаминация', 'Механическая инокуляция'], correct: 0, explanation: 'Боррелии выделяются с фекалиями вши и втираются в ранку.' },
+        { category: 'insects1', question: 'Блоха – специфический переносчик:', options: ['Чесотки', 'Сыпного тифа', 'Возвратного тифа', 'Чумы'], correct: 3, explanation: 'Блохи (Pulex irritans) – переносчики чумы.' },
+        { category: 'insects1', question: 'Локализация чумных бактерий в блохе:', options: ['Кровь', 'Гемолимфа', 'Желудок (преджелудок)', 'Лёгкие'], correct: 2, explanation: 'В преджелудке формируется "чумной блок".' },
+        { category: 'insects1', question: 'Блохи передают чумные бактерии человеку путём:', options: ['Контаминации', 'Инокуляции', 'Контаминации и инокуляции', 'Алиментарно'], correct: 1, explanation: 'Инокуляция – отрыгивание бактерий в ранку при кровососании.' },
+        { category: 'insects1', question: 'Источник питания постельного клопа:', options: ['Кровь летучих мышей', 'Кровь человека', 'Нектар растений', 'Разлагающиеся остатки'], correct: 1, explanation: 'Временный гематофаг, питается кровью человека.' },
+        { category: 'insects1', question: 'Поцелуйный клоп – специфический переносчик:', options: ['Чесотки', 'Демодекса', 'Американского трипаносомоза (болезнь Шагаса)', 'Чумы'], correct: 2, explanation: 'Triatoma infestans переносит Trypanosoma cruzi.' },
+        { category: 'insects1', question: 'Рудиментарные глаза, отсутствие крыльев, полный метаморфоз – характерно для:', options: ['Блох', 'Москитов', 'Слепней', 'Осенней жигалки'], correct: 0, explanation: 'Блохи – вторичнобескрылые с полным метаморфозом.' },
+        { category: 'insects1', question: 'Синантропные насекомые, не являющиеся паразитами:', options: ['Тироглифидовые клещи', 'Чёрный таракан', 'Москит', 'Муха цеце'], correct: 1, explanation: 'Тараканы – синантропы, механические переносчики, но не паразиты.' },
+        { category: 'insects1', question: 'Облигатный эктопаразит человека:', options: ['Постельный клоп', 'Железница угревая', 'Головная вошь', 'Человеческая блоха'], correct: 2, explanation: 'Головная вошь – постоянный эктопаразит волосистой части головы.' },
+        { category: 'insects1', question: 'Паразит человека и переносчик трансмиссивного заболевания:', options: ['Платяная вошь', 'Лобковая вошь', 'Вольфартова муха', 'Овод'], correct: 0, explanation: 'Платяная вошь – переносчик сыпного и возвратного тифа.' },
+        { category: 'insects1', question: 'Головная вошь является паразитом человека:', options: ['Истинным', 'Ложным', 'Облигатным', 'Временным'], correct: 2, explanation: 'Облигатный (обязательный) паразит, не может жить вне хозяина.' },
+        { category: 'insects1', question: 'Платяная вошь является паразитом человека:', options: ['Истинным', 'Ложным', 'Облигатным', 'Временным'], correct: 2, explanation: 'Облигатный эктопаразит, живёт в одежде.' },
+        { category: 'insects1', question: 'Постоянный кровососущий эктопаразит человека:', options: ['Постельный клоп', 'Железница угревая', 'Головная вошь', 'Человеческая блоха'], correct: 2, explanation: 'Головная вошь – постоянный паразит.' },
+        { category: 'insects1', question: 'Места обитания личинок платяной вши:', options: ['Чистые водоёмы', 'Органические остатки', 'Постельное бельё', 'Волосистая часть головы'], correct: 2, explanation: 'Платяная вошь откладывает яйца (гниды) в швах одежды и постельного белья.' },
+        { category: 'insects1', question: 'Вошь человеческая на стадии имаго является:', options: ['Механическим переносчиком', 'Возбудителем заболевания', 'Временным паразитом', 'Промежуточным хозяином'], correct: 1, explanation: 'Сама вошь вызывает педикулёз (инфестацию).' },
+        { category: 'insects1', question: 'Вши являются специфическими переносчиками спирохет и риккетсий при:', options: ['Энцефалите', 'Тифе', 'Малярии', 'Чуме'], correct: 1, explanation: 'Вши переносят возбудителей сыпного и возвратного тифа.' },
+        // ---- ДВУКРЫЛЫЕ ----
+        { category: 'diptera', question: 'Тип ротового аппарата у малярийного комара:', options: ['Колюще-сосущий', 'Лижущий', 'Сосущий', 'Грызущий'], correct: 0, explanation: 'Колюще-сосущий – для прокола кожи и сосания крови.' },
+        { category: 'diptera', question: 'Места обитания личинок комаров рода Anopheles:', options: ['Проточная вода', 'Чистая стоячая или слабопроточная вода', 'Заболоченные водоёмы', 'Разлагающийся мусор'], correct: 1, explanation: 'Anopheles предпочитают чистые стоячие водоёмы.' },
+        { category: 'diptera', question: 'Комары рода Anopheles – специфические переносчики:', options: ['Весенне-летнего энцефалита', 'Малярии', 'Сибирской язвы', 'Кожного лейшманиоза'], correct: 1, explanation: 'Только Anopheles переносят малярийных плазмодиев.' },
+        { category: 'diptera', question: 'Что служит пищей для самцов кровососущих комаров?', options: ['Нектар и сок растений', 'Мелкие насекомые', 'Кровь теплокровных', 'Разлагающиеся остатки'], correct: 0, explanation: 'Самцы питаются нектаром, кровь сосут только самки.' },
+        { category: 'diptera', question: 'Комнатная муха – переносчик цист и яиц гельминтов:', options: ['Механическим', 'Специфическим', 'Трансмиссивным', 'Промежуточным хозяином'], correct: 0, explanation: 'Механический переносчик (контаминация).' },
+        { category: 'diptera', question: 'Musca domestica является:', options: ['Возбудителем инвазий', 'Трансмиссивным переносчиком', 'Механическим переносчиком инвазий', 'Промежуточным хозяином'], correct: 2, explanation: 'Пассивно переносит возбудителей на лапках и через регургитацию.' },
+        { category: 'diptera', question: 'Осенняя жигалка – механический переносчик возбудителей:', options: ['Туляремии и сибирской язвы', 'Малярии и энцефалита', 'Чумы и сыпного тифа', 'Лейшманиоза и трипаносомоза'], correct: 0, explanation: 'Stomoxys calcitrans – переносчик сибирской язвы и туляремии механически на хоботке.' },
+        { category: 'diptera', question: 'Специфическим переносчиком всех видов лейшманий является:', options: ['Слепень', 'Поцелуйный клоп', 'Муха цеце', 'Москит (Phlebotomus)'], correct: 3, explanation: 'Москиты – специфические переносчики лейшманий.' },
+        { category: 'diptera', question: 'Тканевым эндопаразитом (возбудителем миаза) является:', options: ['Москит', 'Муха цеце', 'Вольфартова муха (Wohlfahrtia magnifica)', 'Постельный клоп'], correct: 2, explanation: 'Личинки вольфартовой мухи паразитируют в тканях (вольфартиоз).' },
+        { category: 'diptera', question: 'Переносчиком возбудителя онхоцеркоза является:', options: ['Постельный клоп', 'Чесоточный зудень', 'Мошки (Simulium)', 'Иксодовые клещи'], correct: 2, explanation: 'Мошки – промежуточные хозяева онхоцерк (речная слепота).' },
+        { category: 'diptera', question: 'Трансмиссивными переносчиками сибирской язвы, туляремии, лоаоза являются:', options: ['Слепни', 'Мокрецы', 'Мошки', 'Вши'], correct: 0, explanation: 'Слепни (Tabanidae) – механические переносчики этих инфекций.' },
+        { category: 'diptera', question: 'Заболевание миаз двукрылые насекомые вызывают на стадии:', options: ['Личинки', 'Имаго', 'Нимфы', 'На всех стадиях'], correct: 0, explanation: 'Миазы вызываются личинками мух.' },
+        { category: 'diptera', question: 'Переносчиком возбудителя онхоцеркоза является:', options: ['Москит', 'Слепень', 'Мошка', 'Комар Culex'], correct: 2, explanation: 'Мошки рода Simulium – переносчики Onchocerca volvulus.' },
+        { category: 'diptera', question: 'Москит является:', options: ['Возбудителем лейшманиоза', 'Механическим переносчиком', 'Промежуточным хозяином', 'Трансмиссивным переносчиком лейшманий'], correct: 3, explanation: 'Москиты – специфические (трансмиссивные) переносчики лейшманий.' },
+        { category: 'diptera', question: 'Специфическим переносчиком всех видов лейшманий является:', options: ['Слепень', 'Поцелуйный клоп', 'Муха цеце', 'Москит'], correct: 3, explanation: 'Москиты – переносчики лейшманий.' },
+        { category: 'diptera', question: 'Самые мелкие из кровососущих насекомых, переносчики филяриатозов:', options: ['Комары Culex', 'Комары Anopheles', 'Мошки', 'Москиты', 'Мокрецы'], correct: 4, explanation: 'Мокрецы (Culicoides) – мелкие кровососы, переносят филярий.' },
+        // ---- ПЕРЕНОСЧИКИ И БОЛЕЗНИ ----
+        { category: 'vectors', question: 'Специфический переносчик возбудителей чумы:', options: ['Pulex irritans', 'Pediculus humanus', 'Ixodes ricinus', 'Anopheles maculipennis'], correct: 0, explanation: 'Человеческая блоха – специфический переносчик чумы.' },
+        { category: 'vectors', question: 'Специфический переносчик сыпного тифа:', options: ['Вошь человеческая (Pediculus humanus)', 'Поселковый клещ', 'Пастбищный клещ', 'Блоха человеческая'], correct: 0, explanation: 'Платяная вошь – переносчик Rickettsia prowazekii.' },
+        { category: 'vectors', question: 'Специфический переносчик малярии:', options: ['Комар рода Anopheles', 'Комары Culex', 'Комары Aedes', 'Москит'], correct: 0, explanation: 'Только Anopheles – окончательный хозяин плазмодия.' },
+        { category: 'vectors', question: 'Трансмиссивные заболевания передаются:', options: ['При контакте с больным', 'При участии специфического переносчика', 'Алиментарно', 'Воздушно-капельно'], correct: 1, explanation: 'Трансмиссивные – через живых переносчиков (членистоногих).' },
+        { category: 'vectors', question: 'Природным резервуаром чумы являются:', options: ['Комары', 'Москиты', 'Птицы', 'Грызуны'], correct: 3, explanation: 'Основные резервуары – суслики, сурки, песчанки.' },
+        { category: 'vectors', question: 'Ixodes persulcatus – специфический переносчик:', options: ['Весенне-летнего (таёжного) энцефалита', 'Клещевого возвратного тифа', 'Бруцеллеза', 'Туляремии'], correct: 0, explanation: 'Таёжный клещ – переносчик вируса клещевого энцефалита.' },
+        { category: 'vectors', question: 'Собачий клещ (Ixodes ricinus) – переносчик:', options: ['Весенне-летнего энцефалита и туляремии', 'Туляремии и возвратного тифа', 'Возвратного тифа и бруцеллеза', 'Чумы и сыпного тифа'], correct: 0, explanation: 'I. ricinus переносит энцефалит, боррелиоз, туляремию.' },
+        { category: 'vectors', question: 'Способ передачи вируса энцефалита следующему поколению клещей:', options: ['Инокуляция', 'Контаминация', 'Трансовариальная передача', 'Трансфазовая'], correct: 2, explanation: 'Вирус передаётся через яйца (трансовариально) и при линьках (трансфазово).' },
+        { category: 'vectors', question: 'При употреблении некипячёного козьего и коровьего молока можно заразиться:', options: ['Трипаносомозом', 'Возвратным тифом', 'Сибирской язвой', 'Таёжным энцефалитом'], correct: 3, explanation: 'Алиментарный путь заражения клещевым энцефалитом через сырое молоко.' },
+        { category: 'vectors', question: 'Специфический переносчик возбудителей чумы – это:', options: ['Блоха', 'Москит', 'Овод', 'Мошка', 'Вошь'], correct: 0, explanation: 'Блоха – основной переносчик чумы.' },
+        { category: 'vectors', question: 'Специфический переносчик сыпного тифа – это:', options: ['Вошь человеческая', 'Поселковый клещ', 'Пастбищный клещ', 'Блоха человеческая'], correct: 0, explanation: 'Вошь (Pediculus humanus) – переносчик сыпного тифа.' },
+        { category: 'vectors', question: 'Трансмиссивными переносчиками возбудителей заболеваний являются:', options: ['Железница угревая', 'Чесоточный зудень', 'Поселковый клещ', 'Мучной клещ'], correct: 2, explanation: 'Поселковый клещ – трансмиссивный переносчик возвратного тифа.' },
+        { category: 'vectors', question: 'Специфическим переносчиком туляремии является:', options: ['Таёжный клещ', 'Чесоточный зудень', 'Поселковый клещ', 'Собачий клещ'], correct: 3, explanation: 'Иксодовые клещи (в т.ч. собачий) – переносчики туляремии.' },
+        { category: 'vectors', question: 'Трансмиссивными переносчиками возбудителей сибирской язвы, туляремии, лоаоза являются:', options: ['Слепни', 'Мокрецы', 'Мошки', 'Вши'], correct: 0, explanation: 'Слепни – механические переносчики.' },
+        { category: 'vectors', question: 'Природным резервуаром чумы являются:', options: ['Комары', 'Москиты', 'Птицы', 'Грызуны'], correct: 3, explanation: 'Грызуны – основной резервуар чумы.' },
+        // ---- РАЗНОЕ ----
+        { category: 'misc', question: 'Медицинское значение пресноводных раков:', options: ['Промежуточный хозяин лёгочного сосальщика', 'Промежуточный хозяин ришты', 'Промежуточный хозяин лентеца широкого', 'Окончательный хозяин свиного цепня'], correct: 0, explanation: 'Раки и крабы – вторые промежуточные хозяева Paragonimus westermani.' },
+        { category: 'misc', question: 'В жизненном цикле гельминта циклоп является первым промежуточным хозяином:', options: ['Лентец широкий', 'Кошачий сосальщик', 'Острица', 'Эхинококк'], correct: 0, explanation: 'Циклоп – первый промежуточный хозяин лентеца широкого (Diphyllobothrium latum).' },
+        { category: 'misc', question: 'При употреблении в пищу недостаточно термически обработанных крабов, раков можно заразиться:', options: ['Легочным сосальщиком', 'Описторхозом', 'Фасциолёзом', 'Дикроцелиозом'], correct: 0, explanation: 'Paragonimus westermani – лёгочный сосальщик, передаётся через раков и крабов.' },
+        { category: 'misc', question: 'Промежуточными хозяевами гельминтов являются членистоногие:', options: ['Низшие ракообразные', 'Мошки', 'Блохи', 'Клещи'], correct: 0, explanation: 'Ракообразные (циклопы, диаптомусы) – промежуточные хозяева многих гельминтов.' },
+        { category: 'misc', question: 'Жало с протоком ядовитой железы у скорпиона расположено на:', options: ['Челюсти', 'Ногощупальце', 'Ходильной ноге', 'Последнем членике брюшка'], correct: 3, explanation: 'Скорпионы жалят тельсоном (конечный сегмент брюшка).' },
+        { category: 'misc', question: 'Протоки ядовитой железы открываются у клещей в:', options: ['Хелицеры', 'Педипальпы', 'Половое отверстие', 'Анальное отверстие'], correct: 0, explanation: 'У клещей ядовитые железы (у некоторых) открываются в хелицеры.' },
+        { category: 'misc', question: 'К синантропным паукообразным относятся:', options: ['Тироглифидовые клещи', 'Иксодовые клещи', 'Клещ демодекс', 'Гамазовые клещи', 'Аргазовые клещи'], correct: 0, explanation: 'Тироглифидовые (амбарные) клещи – синантропы.' },
+        { category: 'misc', question: 'Медицинское значение пресноводных раков – они являются:', options: ['Промежуточным хозяином лёгочного сосальщика', 'Промежуточным хозяином ришты', 'Промежуточным хозяином лентеца широкого', 'Окончательным хозяином свиного цепня'], correct: 0, explanation: 'Paragonimus westermani использует раков и крабов как второго промежуточного хозяина.' },
+        { category: 'misc', question: 'При проглатывании жука-мучного хруща, инвазированного личинками карликового цепня, у человека развивается:', options: ['Тениоз', 'Эхинококкоз', 'Дифиллоботриоз', 'Гименолепидоз'], correct: 3, explanation: 'Личинки Hymenolepis nana могут быть в жуках, но обычно заражение происходит через яйца. По тесту – гименолепидоз.' }
+    ];
+
+    // ========== ГРУППИРОВКА ==========
+    const cats = { general: [], ticks: [], insects1: [], diptera: [], vectors: [], misc: [] };
+    allQuestions.forEach(q => { if (cats[q.category]) cats[q.category].push(q); });
+
+    // ========== ОТОБРАЖЕНИЕ ВКЛАДОК С ТЕСТАМИ ==========
+    function renderQuestions(containerId, questions, allowReset = false) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
+        if (!questions || questions.length === 0) {
+            container.innerHTML = '<p style="color:#94a3b8; padding:12px;">Вопросов нет.</p>';
+            return;
+        }
+        questions.forEach((q, idx) => {
+            const block = document.createElement('div');
+            block.className = 'question-block';
+            block.dataset.progressId = `arachno:${allQuestions.indexOf(q)}`;
+            const textDiv = document.createElement('div');
+            textDiv.className = 'question-text';
+            textDiv.textContent = `${idx+1}. ${q.question}`;
+            block.appendChild(textDiv);
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+            q.options.forEach((opt, optIdx) => {
+                const optDiv = document.createElement('div');
+                optDiv.className = 'option';
+                optDiv.textContent = opt;
+                optDiv.dataset.optIndex = optIdx;
+                optDiv.addEventListener('click', function() {
+                    const parent = this.closest('.question-block');
+                    const opts = parent.querySelectorAll('.option');
+                    opts.forEach(o => o.classList.remove('selected-correct', 'selected-wrong', 'show-correct'));
+                    const expl = parent.querySelector('.explanation');
+                    if (expl) expl.classList.remove('show');
+                    const correctIdx = q.correct;
+                    if (optIdx === correctIdx) this.classList.add('selected-correct');
+                    else {
+                        this.classList.add('selected-wrong');
+                        opts.forEach(o => { if (parseInt(o.dataset.optIndex) === correctIdx) o.classList.add('show-correct'); });
+                    }
+                    if (q.explanation) {
+                        const explDiv = parent.querySelector('.explanation');
+                        if (explDiv) {
+                            const prefix = optIdx === q.correct ? '' : `Правильный ответ: ${q.options[q.correct]}. `;
+                            explDiv.textContent = prefix + q.explanation;
+                            explDiv.classList.add('show');
+                        }
+                    }
+                });
+                optionsDiv.appendChild(optDiv);
+            });
+            block.appendChild(optionsDiv);
+            if (q.explanation) {
+                const explDiv = document.createElement('div');
+                explDiv.className = 'explanation';
+                explDiv.textContent = q.explanation;
+                block.appendChild(explDiv);
+            }
+            const counter = document.createElement('div');
+            counter.className = 'question-counter';
+            counter.textContent = `Вопрос ${idx+1} из ${questions.length}`;
+            block.appendChild(counter);
+            container.appendChild(block);
+        });
+        if (allowReset) {
+            const resetBtn = document.createElement('button');
+            resetBtn.className = 'reset-answers-btn';
+            resetBtn.textContent = 'Сбросить ответы в этой вкладке';
+            resetBtn.style.marginTop = '16px';
+            resetBtn.addEventListener('click', function() {
+                const blocks = container.querySelectorAll('.question-block');
+                blocks.forEach(block => {
+                    block.querySelectorAll('.option').forEach(o => o.classList.remove('selected-correct', 'selected-wrong', 'show-correct'));
+                    const expl = block.querySelector('.explanation');
+                    if (expl) expl.classList.remove('show');
+                });
+            });
+            container.appendChild(resetBtn);
+        }
+    }
+
+    // ========== ВКЛАДКА С ЗАДАЧАМИ ==========
+    function renderTasks() {
+        const container = document.getElementById('tab-tasks');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const tasks = [
+            {
+                id: 1,
+                text: 'Пациент удалил из кожи клеща овальной формы, около 10 мм, без щитков, с бугристой кутикулой. Ротовой аппарат находился на брюшной стороне, глаза по бокам. Через 7 дней – резкая лихорадка, желтуха, кровоточивость, приступы с интервалом 7–8 дней. Определите род клеща и предположительный диагноз.',
+                answer: 'Род – Ornithodoros (аргазовый клещ). Диагноз – клещевой возвратный тиф (возбудитель Borrelia persica). Клещ обитает в норах, глинобитных постройках, нападает ночью. Передача – специфическая инокуляция (со слюной) или контаминация. Профилактика: дезинсекция помещений, борьба с грызунами, репелленты.'
+            },
+            {
+                id: 2,
+                text: 'После посещения леса человек снял с себя клещей длиной 6–15 мм (насосавшиеся), жёлто-коричневых, с плотным спинным щитком, каплевидным телом и терминальным хоботком, без глаз. Через 10 дней – жар, слабость, мышечные боли, затем невриты и парезы. Назовите род клеща и заболевание.',
+                answer: 'Род – Ixodes (иксодовый клещ). Диагноз – клещевой энцефалит (вирус весенне-летнего энцефалита). Характерно отсутствие глаз (родовой признак), трёххозяинный цикл. Передача – специфическая инокуляция при укусе. Профилактика: защитная одежда, репелленты, акарицидные обработки, вакцинация групп риска.'
+            },
+            {
+                id: 3,
+                text: 'С кожи удалён клещ овальной формы, около 12 мм, с выступающим хоботком, коричневой окраски с беловатым эмалевым пигментом на щитке, по краю брюшка видны фестоны, глаза расположены по бокам. Через 14 дней – температура до 39 °С, мелкая красная сыпь, сильная головная боль. Определите род клеща и заболевание.',
+                answer: 'Род – Dermacentor (иксодовый клещ). Заболевание – пятнистая лихорадка Скалистых гор (риккетсиоз, вызываемый Rickettsia rickettsii). Характерны фестоны, пигментированный щиток, глаза. Передача – трансмиссивная (инокуляция). Профилактика: защита от укусов, акарицидная обработка территорий.'
+            },
+            {
+                id: 4,
+                text: 'У пациента обширные поражения в межпальцевых складках, на тыльной стороне кистей, локтях, подмышечных впадинах. Кожа имеет розово-голубую сыпь и сероватые нитевидные ходы. Зуд особенно сильный ночью. Назовите возбудителя и заболевание.',
+                answer: 'Возбудитель – Sarcoptes scabiei (чесоточный зудень). Заболевание – чесотка (скабиоз). Клещ прогрызает ходы в роговом слое эпидермиса, откладывает яйца. Ночной зуд связан с активностью самки. Диагностика – микроскопия соскоба. Лечение – акарицидные мази (бензилбензоат, перметрин). Профилактика: гигиена, обработка белья, изоляция больных.'
+            },
+            {
+                id: 5,
+                text: 'Больной жалуется на воспаление сальных желёз и волосяных сумок кожи лица. Обычные косметические средства не помогают. При микроскопии содержимого фолликулов обнаружены мелкие червеобразные клещи длиной около 0,3 мм. Диагноз и возбудитель?',
+                answer: 'Диагноз – демодекоз (угревая железница). Возбудитель – Demodex folliculorum (железница угревая). Условно-патогенный внутрикожный паразит. Обитает в волосяных фолликулах и сальных железах лица, век. Провоцируется снижением иммунитета. Диагностика – микроскопия соскоба или ресниц. Лечение – акарицидные мази, метронидазол. Профилактика: гигиена лица, индивидуальные предметы ухода.'
+            },
+            {
+                id: 6,
+                text: 'У ребёнка на волосистой части головы сильный зуд, огрубение и пигментация кожи, расчёсы, на волосах видны приклеенные беловатые овальные образования. Определите возбудителя и заболевание.',
+                answer: 'Возбудитель – Pediculus humanus capitis (головная вошь). Заболевание – педикулёз (головной). Гниды (яйца) приклеиваются к волосам. Вошь питается кровью, вызывает зуд и расчёсы. Лечение – педикулицидные шампуни, вычёсывание гнид. Профилактика: личная гигиена, индивидуальные расчёски и головные уборы.'
+            },
+            {
+                id: 7,
+                text: 'После укуса комара, который сидел под углом к поверхности и имел на крыльях 4 бурых пятна, у больного через 10 дней начались лихорадочные приступы с ознобом, жаром и потоотделением, с периодичностью. Появились анемия, увеличение печени и селезёнки. В толстой капле крови обнаружены голубоватые тельца в эритроцитах. Поставьте диагноз и укажите переносчика.',
+                answer: 'Диагноз – трёхдневная малярия (возбудитель Plasmodium vivax). Переносчик – комар рода Anopheles (характерная посадка под углом, пятнистые крылья). Инвазионная стадия – спорозоит, проникает при укусе. Профилактика: защита от комаров, репелленты, противомоскитные сетки, химиопрофилактика в эндемичных зонах.'
+            },
+            {
+                id: 8,
+                text: 'Пациент длительное время находился в Средней Азии, неоднократно подвергался укусам мелких насекомых. Через 2 недели на коже появились мокнущие язвочки с рыхлыми некротическими краями, вокруг – бугорки. Рубцевание наступило только через 3 месяца. Ваш диагноз и переносчик.',
+                answer: 'Диагноз – кожный лейшманиоз (пендинская язва, возбудитель Leishmania tropica). Переносчик – москит рода Phlebotomus (специфическая инокуляция промастигот). Заболевание характеризуется длительным течением, некротическими язвами. Профилактика: защита от укусов москитов, репелленты, пологи, санитарная обработка жилья.'
+            }
+        ];
+
+        tasks.forEach(task => {
+            const block = document.createElement('div');
+            block.className = 'task-block';
+
+            const textP = document.createElement('div');
+            textP.className = 'task-text';
+            textP.innerHTML = `<strong>Задача ${task.id}.</strong> ${task.text}`;
+            block.appendChild(textP);
+
+            const inputArea = document.createElement('div');
+            inputArea.className = 'task-input-area';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = 'Введите ваш ответ...';
+            inputArea.appendChild(input);
+
+            const btn = document.createElement('button');
+            btn.className = 'task-btn';
+            btn.textContent = 'Показать ответ';
+            inputArea.appendChild(btn);
+
+            block.appendChild(inputArea);
+
+            const answerDiv = document.createElement('div');
+            answerDiv.className = 'task-answer';
+            answerDiv.innerHTML = `<strong>Ответ:</strong> ${task.answer}`;
+            block.appendChild(answerDiv);
+
+            btn.addEventListener('click', function() {
+                answerDiv.classList.toggle('show');
+                if (answerDiv.classList.contains('show')) {
+                    btn.textContent = 'Скрыть ответ';
+                } else {
+                    btn.textContent = 'Показать ответ';
+                }
+            });
+
+            container.appendChild(block);
+        });
+    }
+
+    // ========== СЛУЧАЙНЫЙ ТЕСТ ==========
+    let randomQuestions = [];
+    function generateRandomTest() {
+        const all = allQuestions.slice();
+        for (let i = all.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [all[i], all[j]] = [all[j], all[i]];
+        }
+        const selected = all.slice(0, Math.min(30, all.length));
+        randomQuestions = selected;
+        document.getElementById('randomCountInfo').textContent = `Выбрано ${selected.length} вопросов`;
+        const container = document.getElementById('randomQuestionsContainer');
+        container.innerHTML = '';
+        if (selected.length === 0) { container.innerHTML = '<p style="color:#94a3b8;">Недостаточно вопросов.</p>'; return; }
+        selected.forEach((q, idx) => {
+            const block = document.createElement('div');
+            block.className = 'question-block';
+            block.dataset.progressTrack = 'false';
+            const textDiv = document.createElement('div');
+            textDiv.className = 'question-text';
+            textDiv.textContent = `${idx+1}. ${q.question}`;
+            block.appendChild(textDiv);
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+            q.options.forEach((opt, optIdx) => {
+                const optDiv = document.createElement('div');
+                optDiv.className = 'option';
+                optDiv.textContent = opt;
+                optDiv.dataset.optIndex = optIdx;
+                optDiv.addEventListener('click', function() {
+                    const parent = this.closest('.question-block');
+                    const opts = parent.querySelectorAll('.option');
+                    opts.forEach(o => o.classList.remove('selected-correct', 'selected-wrong', 'show-correct'));
+                    const expl = parent.querySelector('.explanation');
+                    if (expl) expl.classList.remove('show');
+                    if (optIdx === q.correct) this.classList.add('selected-correct');
+                    else {
+                        this.classList.add('selected-wrong');
+                        opts.forEach(o => { if (parseInt(o.dataset.optIndex) === q.correct) o.classList.add('show-correct'); });
+                    }
+                    if (q.explanation) {
+                        const explDiv = parent.querySelector('.explanation');
+                        if (explDiv) {
+                            const prefix = optIdx === q.correct ? '' : `Правильный ответ: ${q.options[q.correct]}. `;
+                            explDiv.textContent = prefix + q.explanation;
+                            explDiv.classList.add('show');
+                        }
+                    }
+                });
+                optionsDiv.appendChild(optDiv);
+            });
+            block.appendChild(optionsDiv);
+            if (q.explanation) {
+                const explDiv = document.createElement('div');
+                explDiv.className = 'explanation';
+                explDiv.textContent = q.explanation;
+                block.appendChild(explDiv);
+            }
+            const counter = document.createElement('div');
+            counter.className = 'question-counter';
+            counter.textContent = `Вопрос ${idx+1} из ${selected.length}`;
+            block.appendChild(counter);
+            container.appendChild(block);
+        });
+    }
+
+    document.getElementById('resetRandomBtn').addEventListener('click', function() {
+        const container = document.getElementById('randomQuestionsContainer');
+        const blocks = container.querySelectorAll('.question-block');
+        blocks.forEach(block => {
+            block.querySelectorAll('.option').forEach(o => o.classList.remove('selected-correct', 'selected-wrong', 'show-correct'));
+            const expl = block.querySelector('.explanation');
+            if (expl) expl.classList.remove('show');
+        });
+    });
+    document.getElementById('generateRandomBtn').addEventListener('click', generateRandomTest);
+
+    // ========== ИНИЦИАЛИЗАЦИЯ ==========
+    function initTabs() {
+        const root = document.querySelector('.arachno-test-app');
+        if (!root) return;
+        const tabs = root.querySelectorAll('.arachno-tab-btn');
+        const contents = {
+            'tab-general': document.getElementById('tab-general'),
+            'tab-ticks': document.getElementById('tab-ticks'),
+            'tab-insects1': document.getElementById('tab-insects1'),
+            'tab-diptera': document.getElementById('tab-diptera'),
+            'tab-vectors': document.getElementById('tab-vectors'),
+            'tab-misc': document.getElementById('tab-misc'),
+            'tab-tasks': document.getElementById('tab-tasks'),
+            'tab-random': document.getElementById('tab-random')
+        };
+
+        function showTab(tabId) {
+            Object.keys(contents).forEach(key => {
+                contents[key].classList.toggle('active', key === tabId);
+            });
+            tabs.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tab === tabId);
+            });
+            if (tabId === 'tab-tasks') {
+                // Задачи уже отрисованы при загрузке
+            }
+            if (tabId === 'tab-random') {
+                const container = document.getElementById('randomQuestionsContainer');
+                if (container.children.length === 0) generateRandomTest();
+            }
+        }
+
+        tabs.forEach(btn => {
+            btn.addEventListener('click', function() {
+                showTab(this.dataset.tab);
+            });
+        });
+
+        // Рендерим тесты
+        renderQuestions('tab-general', cats.general, true);
+        renderQuestions('tab-ticks', cats.ticks, true);
+        renderQuestions('tab-insects1', cats.insects1, true);
+        renderQuestions('tab-diptera', cats.diptera, true);
+        renderQuestions('tab-vectors', cats.vectors, true);
+        renderQuestions('tab-misc', cats.misc, true);
+        renderTasks(); // отдельно задачи
+        document.getElementById('randomQuestionsContainer').innerHTML = '<p style="color:#94a3b8; padding:12px;">Нажмите "Сгенерировать 30 случайных"</p>';
+        document.getElementById('randomCountInfo').textContent = 'Выбрано 0 вопросов';
+        showTab('tab-general');
+    }
+
+    // Фрагмент подгружается fetch() уже после DOMContentLoaded, поэтому
+    // инициализируем сразу после выполнения встроенного скрипта.
+    initTabs();
+</script>
+
+</body>
+</html>

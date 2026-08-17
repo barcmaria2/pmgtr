@@ -1,0 +1,271 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Карточки ===== */
+    .def-card {
+        background: #f0f9ff;
+        border-left: 4px solid #2563eb;
+        border-radius: 0 12px 12px 0;
+        padding: 20px 24px;
+        margin: 20px 0 24px 0;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+    }
+
+    .def-card p {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 500;
+        color: #1e3a8a;
+    }
+
+    .def-card p strong {
+        color: #1e40af;
+    }
+
+    .def-card.orange {
+        border-left-color: #f59e0b;
+        background: #fffbeb;
+    }
+
+    .def-card.orange p {
+        color: #92400e;
+    }
+
+    .def-card.green {
+        border-left-color: #10b981;
+        background: #ecfdf5;
+    }
+
+    .def-card.green p {
+        color: #065f46;
+    }
+
+    .def-card.purple {
+        border-left-color: #8b5cf6;
+        background: #f5f3ff;
+    }
+
+    .def-card.purple p {
+        color: #5b21b6;
+    }
+
+    .def-card.red {
+        border-left-color: #ef4444;
+        background: #fef2f2;
+    }
+
+    .def-card.red p {
+        color: #991b1b;
+    }
+
+    /* ===== Карточка для группы ===== */
+    .group-card {
+        background: #ffffff;
+        border: 1px solid #e9edf3;
+        border-radius: 12px;
+        padding: 18px 22px;
+        margin: 16px 0 20px 0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .group-card .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .group-card .card-title .icon {
+        font-size: 20px;
+    }
+
+    .group-card .card-desc {
+        color: #334155;
+        margin-bottom: 6px;
+    }
+
+    .group-card .card-examples {
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 10px 16px;
+        font-size: 14px;
+        color: #475569;
+        margin-top: 6px;
+    }
+
+    .group-card .card-examples .label {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    /* ===== Списки ===== */
+    .tab-content-inner ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ul li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .tab-content-inner ul li::before {
+        content: "✓";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+
+    .tab-content-inner ul ul {
+        margin: 6px 0 6px 20px;
+    }
+
+    .tab-content-inner ul ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-size: 22px;
+        top: -2px;
+    }
+
+    .tab-content-inner ol {
+        padding-left: 24px;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ol li {
+        margin-bottom: 10px;
+        line-height: 1.7;
+    }
+
+    .tab-content-inner ol li strong {
+        color: #1e3a8a;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .def-card {
+            padding: 16px 18px;
+        }
+        .def-card p {
+            font-size: 16px;
+        }
+        .tab-content-inner ul li {
+            padding-left: 24px;
+        }
+        .tab-content-inner ul ul {
+            margin-left: 12px;
+        }
+        .group-card {
+            padding: 14px 16px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2>Понятие об инфекционных и инвазионных болезнях</h2>
+
+    <p>В зависимости от природы возбудителя (прокариоты, вирусы или эукариоты) все болезни, передающиеся человеку, классифицируются следующим образом:</p>
+
+    <div class="def-card">
+        <p><strong>Инфекции (инфекционные болезни)</strong> — болезни, возбудителями которых являются прокариоты (бактерии) или вирусы.</p>
+    </div>
+
+    <div class="def-card orange">
+        <p><strong>Инвазии (инвазионные болезни)</strong> — болезни, возбудителями которых являются исключительно простейшие или гельминты.</p>
+    </div>
+
+    <div class="def-card green">
+        <p><strong>Инфестации</strong> — паразитарные болезни, возбудители которых относятся к типу Членистоногие (например, чесотка или педикулёз).</p>
+    </div>
+
+    <h3>Классификация заболеваний в зависимости от источника заражения</h3>
+
+    <p>В зависимости от того, какой организм выступает резервуаром и источником возбудителя, заболевания делятся на три группы:</p>
+
+    <div class="group-card">
+        <div class="card-title"><span class="icon">🧑</span> Антропонозное заболевание</div>
+        <div class="card-desc">Заболевание, источником которого является исключительно заражённый человек (возбудители поражают только людей).</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span> малярия, амёбиаз, лямблиоз, энтеробиоз (возбудитель — острица детская), трихоцефалёз.
+        </div>
+    </div>
+
+    <div class="group-card">
+        <div class="card-title"><span class="icon">🐾</span> Зоонозное заболевание</div>
+        <div class="card-desc">Заболевание, источником которого являются заражённые животные.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span> туляремия, японский энцефалит.
+        </div>
+    </div>
+
+    <div class="group-card">
+        <div class="card-title"><span class="icon">🔄</span> Антропозоонозное заболевание</div>
+        <div class="card-desc">Заболевание, возбудители которого могут поражать как человека, так и животных (источником могут быть дикие и домашние животные, а также человек).</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span> лейшманиозы, парагонимоз, трихинеллёз, американский трипаносомоз (болезнь Шагаса).
+        </div>
+    </div>
+
+</div>

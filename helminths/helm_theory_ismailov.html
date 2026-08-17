@@ -1,0 +1,343 @@
+<style>
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner .intro {
+        font-size: 17px;
+        color: #475569;
+        margin-bottom: 20px;
+        padding: 16px 22px;
+        background: #f8fafc;
+        border-radius: 12px;
+        border-left: 4px solid #2563eb;
+    }
+
+    .tab-content-inner .intro strong {
+        color: #1e293b;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #e9edf3;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .tab-content-inner h3 .badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 12px;
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 4px;
+        letter-spacing: 0.02em;
+    }
+
+    .badge-plague { background: #ef4444; }
+    .badge-dracunculiasis { background: #f59e0b; }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    .tab-content-inner ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 8px 0 12px 0;
+    }
+
+    .tab-content-inner ul li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 6px;
+        line-height: 1.6;
+    }
+
+    .tab-content-inner ul li::before {
+        content: "▹";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 16px;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+
+    .tab-content-inner ul li strong {
+        color: #1e293b;
+    }
+
+    .tab-content-inner .quote {
+        background: #f8fafc;
+        border-radius: 10px;
+        padding: 14px 20px;
+        margin: 12px 0 16px 0;
+        font-style: italic;
+        font-size: 15px;
+        color: #475569;
+        border-left: 4px solid #f59e0b;
+        position: relative;
+    }
+
+    .tab-content-inner .quote::before {
+        content: "“";
+        font-size: 32px;
+        color: #f59e0b;
+        position: absolute;
+        top: 2px;
+        left: 6px;
+        font-family: Georgia, serif;
+        line-height: 1;
+    }
+
+    .tab-content-inner .quote strong {
+        font-style: normal;
+        color: #1e3a8a;
+    }
+
+    .achievement-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 22px;
+        border: 1px solid #e9edf3;
+        margin: 16px 0 20px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .achievement-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .achievement-card .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+    }
+
+    .achievement-card .card-title .icon {
+        font-size: 22px;
+    }
+
+    .achievement-card .card-body {
+        color: #334155;
+        font-size: 15px;
+    }
+
+    .achievement-card .card-body strong {
+        color: #1e293b;
+    }
+
+    .achievement-card.plague {
+        border-left: 4px solid #ef4444;
+    }
+
+    .achievement-card.dracunculiasis {
+        border-left: 4px solid #f59e0b;
+    }
+
+    .achievement-card.legacy {
+        border-left: 4px solid #10b981;
+    }
+
+    .result-box {
+        background: #f0f9ff;
+        border-radius: 12px;
+        padding: 16px 20px;
+        border-left: 4px solid #2563eb;
+        margin: 16px 0 20px 0;
+    }
+
+    .result-box p {
+        margin: 0;
+        font-size: 15px;
+        color: #1e3a8a;
+    }
+
+    .result-box p strong {
+        color: #1e40af;
+    }
+
+    .stat-number {
+        color: #2563eb;
+        font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .tab-content-inner .intro {
+            padding: 14px 16px;
+            font-size: 15px;
+        }
+        .achievement-card {
+            padding: 16px 18px;
+        }
+        .tab-content-inner .quote {
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+        .result-box {
+            padding: 14px 16px;
+        }
+        .result-box p {
+            font-size: 14px;
+        }
+        .tab-content-inner h3 .badge {
+            font-size: 10px;
+            padding: 1px 8px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">🏛️</span> Л.М. Исаев — ученик и последователь К.И. Скрябина</h2>
+
+    <div class="intro">
+        <strong>Леонид Михайлович Исаев</strong> (в источниках встречаются разные даты его жизни: 1880–1962, 1880–1964 или 1886–1964 гг.) — выдающийся русский и советский врач, учёный-паразитолог и эпидемиолог. Его деятельность стала важнейшей страницей в истории отечественной медицины, так как он руководил масштабными и успешными кампаниями по ликвидации тяжелейших эпидемий в Средней Азии.
+    </div>
+
+    <p>
+        Его научный и практический вклад в развитие паразитологии и эпидемиологии можно разделить на два главных жизненных этапа:
+    </p>
+
+    <!-- ===== 1. УЧАСТИЕ В ОТКРЫТИИ ПРИРОДНОГО РЕЗЕРВУАРА ЧУМЫ ===== -->
+    <h3>
+        <span>🧪</span> 1. Участие в открытии природного резервуара чумы (1911 год)
+        <span class="badge badge-plague">Чума</span>
+    </h3>
+
+    <div class="achievement-card plague">
+        <div class="card-title"><span class="icon">🔬</span> Экспедиция в Маньчжурию</div>
+        <div class="card-body">
+            <p>Свой путь в эпидемиологии Л.М. Исаев начинал ещё студентом, отправившись добровольцем-медиком в очаг лёгочной чумы.</p>
+            <p>До начала XX века официальная наука считала, что единственным носителем чумы является человек, а новые вспышки объяснялись завозом инфекции извне. Однако учитель Исаева, профессор <strong>Даниил Кириллович Заболотный</strong>, выдвинул гипотезу, что первоисточником инфекции и её постоянным природным резервуаром служат дикие грызуны — <strong>тарбаганы, суслики и песчанки</strong>. Двенадцать лет эта гипотеза оставалась бездоказательной.</p>
+            <p>Разрешить эту проблему удалось в <strong>1911 году</strong> во время экспедиции в Маньчжурию (в районе Харбина).</p>
+        </div>
+    </div>
+
+    <div class="achievement-card plague">
+        <div class="card-title"><span class="icon">🐹</span> Находка больного тарбагана</div>
+        <div class="card-body">
+            <p>Находясь в степи у станции Шарасуп, именно <strong>Леонид Исаев заметил больного тарбагана</strong>, который вёл себя неестественно — шёл, спотыкаясь, словно пьяный. Исаев соскочил с коня, накрыл зверька своим брезентовым плащом и немедленно привёз его к Заболотному.</p>
+            <p>Из шейного бубона павшего животного Даниил Кириллович сделал бактериальный посев крови, в результате чего учёные <strong>впервые в мире выделили чистую культуру чумной палочки</strong> из тела дикого грызуна в природных условиях.</p>
+            <div class="quote">
+                Эта находка Исаева позволила превратить блестящую догадку Заболотного о природной очаговости чумы в <strong>неоспоримую научную истину</strong>.
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 2. ИСТОРИЧЕСКАЯ ПОБЕДА НАД ДРАКУНКУЛЕЗОМ ===== -->
+    <h3>
+        <span>💉</span> 2. Историческая победа над дракункулезом (риштой) и другими болезнями
+        <span class="badge badge-dracunculiasis">Дракункулёз</span>
+    </h3>
+
+    <div class="achievement-card dracunculiasis">
+        <div class="card-title"><span class="icon">🪱</span> Ликвидация очага ришты в Бухаре</div>
+        <div class="card-body">
+            <p>Главным жизненным подвигом Л.М. Исаева стала <strong>ликвидация паразитарных заболеваний</strong> на территории Узбекской ССР. До Великой Октябрьской революции территория Старой Бухары представляла собой страшный и постоянный очаг <strong>дракункулеза</strong> в Средней Азии.</p>
+            <p>Возбудителем болезни является <strong>ришта</strong> (<em>Dracunculus medinensis</em>) — один из самых длинных круглых червей-паразитов, а поражённость местного населения этим гельминтом доходила до <span class="stat-number">90%</span>.</p>
+        </div>
+    </div>
+
+    <div class="achievement-card dracunculiasis">
+        <div class="card-title"><span class="icon">⚡</span> Применение принципа парциальной девастации</div>
+        <div class="card-body">
+            <p>Руководствуясь принципом <strong>частичной (парциальной) девастации</strong>, который был сформулирован академиком <strong>К.И. Скрябиным</strong> (целенаправленное физическое уничтожение гельминта как зоологического вида на строго определённой территории), доктор Исаев организовал беспрецедентную по масштабам планомерную кампанию.</p>
+            <p>Комплекс мероприятий включал:</p>
+            <ul>
+                <li><strong>Оздоровление водоёмов</strong>;</li>
+                <li><strong>Уничтожение промежуточных хозяев</strong> паразита (рачков-циклопов);</li>
+                <li><strong>Широкую санитарно-просветительскую работу</strong> среди населения.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="achievement-card dracunculiasis">
+        <div class="card-title"><span class="icon">🏆</span> Результат: полная ликвидация</div>
+        <div class="card-body">
+            <p>В результате этих титанических усилий уже в <strong>1932 году</strong> очаг дракункулеза в Бухаре был <strong>полностью ликвидирован</strong>.</p>
+            <div class="quote">
+                Как отмечает писатель <strong>Марк Поповский</strong> в своей повести об учёном «Тот, кто спорил», это достижение стало подлинным научным фактом мирового масштаба: в середине просвещённого XX века, когда на планете дракункулезом были заражены не менее <span class="stat-number">45 миллионов человек</span>, в СССР не осталось ни одного больного. Этот факт внёс в мировую науку именно <strong>Леонид Михайлович Исаев</strong>.
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ДРУГИЕ ДОСТИЖЕНИЯ ===== -->
+    <h3>
+        <span>🌍</span> Другие достижения
+        <span class="badge" style="background:#10b981;">Наследие</span>
+    </h3>
+
+    <div class="achievement-card legacy">
+        <div class="card-title"><span class="icon">🦟</span> Борьба с малярией, лейшманиозом и тифом</div>
+        <div class="card-body">
+            <p>Помимо борьбы с риштой, Л.М. Исаев руководил в Средней Азии успешными программами по уничтожению очагов <strong>малярии</strong>, <strong>кожного лейшманиоза</strong> и <strong>клещевого возвратного тифа</strong>.</p>
+            <p>Его практическая деятельность стала <strong>эталонным примером</strong> того, как фундаментальные паразитологические знания (учение о девастации и природной очаговости) могут применяться для полного оздоровления огромных территорий и спасения миллионов жизней.</p>
+        </div>
+    </div>
+
+    <div class="result-box">
+        <p>
+            <strong>📌 Итог:</strong> Л.М. Исаев — яркий пример учёного-практика, который не только внёс фундаментальный вклад в науку (открытие природного резервуара чумы), но и реализовал теорию девастации на практике, ликвидировав дракункулез на территории СССР. Его опыт стал основой для глобальной программы ВОЗ по искоренению этого заболевания во всём мире.
+        </p>
+    </div>
+
+</div>

@@ -1,0 +1,541 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #e9edf3;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .taxonomy-card {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin: 12px 0 16px 0;
+        border-left: 4px solid #2563eb;
+    }
+
+    .tab-content-inner .taxonomy-card p {
+        margin: 0;
+        font-size: 15px;
+        color: #475569;
+    }
+
+    .tab-content-inner .taxonomy-card p strong {
+        color: #1e293b;
+    }
+
+    .tab-content-inner .note {
+        background: #fffbeb;
+        border-radius: 10px;
+        padding: 12px 16px;
+        font-size: 14px;
+        color: #92400e;
+        border-left: 4px solid #f59e0b;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner .note strong {
+        color: #78350f;
+    }
+
+    /* ===== ТАБЛИЦА ===== */
+    .table-wrapper {
+        overflow-x: auto;
+        margin: 16px 0 8px 0;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .table-wrapper:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        min-width: 650px;
+    }
+
+    .comparison-table thead {
+        background: #f1f5f9;
+        border-bottom: 2px solid #e9edf3;
+    }
+
+    .comparison-table thead th {
+        padding: 14px 18px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #1e3a8a;
+    }
+
+    .comparison-table thead th:first-child {
+        background: #f8fafc;
+        color: #1e293b;
+        font-weight: 700;
+        font-size: 15px;
+        text-transform: none;
+        letter-spacing: 0;
+    }
+
+    .comparison-table thead th:nth-child(2) {
+        background: #fef2f2;
+        color: #991b1b;
+    }
+
+    .comparison-table thead th:nth-child(3) {
+        background: #fffbeb;
+        color: #92400e;
+    }
+
+    .comparison-table td {
+        padding: 14px 18px;
+        border-bottom: 1px solid #f0f2f5;
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    .comparison-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .comparison-table tbody tr:hover {
+        background: #f8faff;
+    }
+
+    .comparison-table tbody tr:nth-child(even) {
+        background: #fafcff;
+    }
+
+    .comparison-table tbody tr:nth-child(even):hover {
+        background: #f4f8ff;
+    }
+
+    .comparison-table .col-feature {
+        width: 22%;
+        font-weight: 700;
+        color: #1e3a8a;
+        font-size: 15px;
+        background: #f8fafc;
+    }
+
+    .comparison-table .col-trematoda {
+        width: 39%;
+        color: #334155;
+    }
+
+    .comparison-table .col-cestoda {
+        width: 39%;
+        color: #334155;
+    }
+
+    .comparison-table .col-trematoda strong,
+    .comparison-table .col-cestoda strong {
+        color: #1e293b;
+    }
+
+    .comparison-table .col-trematoda .spec,
+    .comparison-table .col-cestoda .spec {
+        display: block;
+        font-size: 13px;
+        color: #2563eb;
+        font-weight: 500;
+        margin-top: 2px;
+    }
+
+    /* ===== КАРТИНКА ВО ВСЮ ШИРИНУ ===== */
+    .full-width-image {
+        display: flex;
+        justify-content: center;
+        margin: 6px 0;
+    }
+
+    .full-width-image img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        max-height: 500px;
+        object-fit: contain;
+        background: #fafcff;
+    }
+
+    .full-width-image .placeholder {
+        width: 100%;
+        max-width: 800px;
+        aspect-ratio: 16/10;
+        background: #f1f5f9;
+        border-radius: 12px;
+        border: 2px dashed #cbd5e1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: #94a3b8;
+        text-align: center;
+        padding: 20px;
+        gap: 6px;
+    }
+
+    .full-width-image .placeholder .icon {
+        font-size: 48px;
+    }
+
+    .full-width-image .placeholder .small {
+        font-size: 13px;
+        color: #b0bccd;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 768px) {
+        .comparison-table {
+            font-size: 13px;
+            min-width: 500px;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 10px 12px;
+        }
+        .comparison-table .col-feature {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .tab-content-inner .taxonomy-card {
+            padding: 14px 16px;
+        }
+        .comparison-table {
+            font-size: 12px;
+            min-width: 400px;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 8px 10px;
+        }
+        .comparison-table .col-feature {
+            font-size: 13px;
+        }
+        .full-width-image img {
+            max-height: 300px;
+        }
+        .full-width-image .placeholder .icon {
+            font-size: 32px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .full-width-image img {
+            max-height: 220px;
+        }
+        .comparison-table {
+            font-size: 11px;
+            min-width: 350px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">🧬</span> Тип Плоские черви (Plathelminthes)</h2>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukariota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)
+        </p>
+    </div>
+
+    <p>
+        В медицинской паразитологии изучаются паразиты человека, относящиеся к двум основным классам:
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0 16px 0;">
+        <div style="background:#fef2f2;border-radius:12px;padding:14px 18px;border-left:4px solid #ef4444;">
+            <div style="font-weight:700;font-size:16px;color:#991b1b;">🐚 Класс Сосальщики (Trematoda)</div>
+            <div style="font-size:14px;color:#475569;"><strong>Виды:</strong> печёночный сосальщик, кошачий сосальщик, ланцетовидный сосальщик, лёгочный сосальщик, шистосома.</div>
+        </div>
+        <div style="background:#fffbeb;border-radius:12px;padding:14px 18px;border-left:4px solid #f59e0b;">
+            <div style="font-weight:700;font-size:16px;color:#92400e;">🧬 Класс Ленточные черви (Cestoda)</div>
+            <div style="font-size:14px;color:#475569;"><strong>Виды:</strong> бычий цепень, свиной цепень, широкий лентец, карликовый цепень, эхинококк, альвеококк.</div>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>📌 Примечание:</strong> В типе выделяют также 3-й класс — <strong>Ресничные черви (Turbellaria)</strong>, но его представители являются свободноживущими и паразитами человека не выступают.
+    </div>
+
+    <h3>Характерные черты организации типа Плоские черви</h3>
+
+    <p>Для всех представителей типа характерен следующий общий план строения:</p>
+
+    <!-- ===== ТАБЛИЦА СРАВНЕНИЯ ===== -->
+    <div class="table-wrapper">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th class="col-feature">Признак</th>
+                    <th class="col-trematoda">Класс Сосальщики (Trematoda)</th>
+                    <th class="col-cestoda">Класс Ленточные черви (Cestoda)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Форма и размеры тела -->
+                <tr>
+                    <td class="col-feature">Форма и размеры тела</td>
+                    <td class="col-trematoda">Листовидное, цельное (несегментированное) тело.<br>
+                        <span class="spec">Размеры небольшие: в среднем от 1 до 5 см.</span>
+                    </td>
+                    <td class="col-cestoda">Лентовидное тело. Разделено на <strong>сколекс</strong> (головку), несегментированную <strong>шейку</strong> и <strong>стробилу</strong> из множества члеников (проглоттид).<br>
+                        <span class="spec">Размеры от нескольких миллиметров до 10–20 метров.</span>
+                    </td>
+                </tr>
+
+                <!-- Органы фиксации -->
+                <tr>
+                    <td class="col-feature">Органы фиксации</td>
+                    <td class="col-trematoda">Две мускулистые присоски: <strong>ротовая</strong> и <strong>брюшная</strong>.</td>
+                    <td class="col-cestoda">Специальные органы на <strong>сколексе</strong>: мышечные присоски, хоботок с крючьями или присасывательные щели (ботрии).</td>
+                </tr>
+
+                <!-- ФОТО 1 -->
+                <tr>
+                    <td colspan="3" style="padding:0;">
+                        <div class="full-width-image">
+                            <img src="images/helminths/flatworm_comparison_scheme.jpg"
+                                 alt="Сравнительная схема сосальщиков и ленточных червей"
+                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                            <div class="placeholder" style="display:none;">
+                                <span class="icon">📐</span>
+                                Сравнительная схема: листовидное тело сосальщика и лентовидное тело цестоды
+                                <span class="small">(flatworm_comparison_scheme.jpg)</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Полость тела -->
+                <tr>
+                    <td class="col-feature">Полость тела</td>
+                    <td class="col-trematoda" colspan="2"><strong>Полностью одинаково:</strong> Полость тела отсутствует. Пространство между внутренними органами заполнено рыхлой тканью мезодермального происхождения — <strong>паренхимой</strong>.</td>
+                </tr>
+
+                <!-- Покровы тела и мышечная система -->
+                <tr>
+                    <td class="col-feature">Покровы тела и мышечная система</td>
+                    <td class="col-trematoda"><strong>Общая база:</strong> Кожно-мускульный мешок, включающий неклеточный многоядерный тегумент и 3 слоя мускулатуры (кольцевые, продольные, дорсовентральные мышцы).<br>
+                        <span class="spec">Специфика: На поверхности тегумента имеются <strong>кутикулярные шипики</strong> для дополнительной фиксации на стенках органов.</span>
+                    </td>
+                    <td class="col-cestoda"><strong>Общая база:</strong> Кожно-мускульный мешок, включающий неклеточный многоядерный тегумент и 3 слоя мускулатуры (кольцевые, продольные, дорсовентральные мышцы).<br>
+                        <span class="spec">Специфика: На поверхности тегумента образуются <strong>микротрихии</strong> (ворсинки), которые колоссально увеличивают площадь всасывания пищи.</span>
+                    </td>
+                </tr>
+                <!-- ФОТО 2 -->
+                <tr>
+                    <td colspan="3" style="padding:0;">
+                        <div class="full-width-image">
+                            <img src="images/helminths/flatworm_integument_muscles.jpg"
+                                 alt="Покровы тела и мышечная система плоских червей"
+                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                            <div class="placeholder" style="display:none;">
+                                <span class="icon">🧫</span>
+                                Строение тегумента: шипики (трематоды) и микротрихии (цестоды), слои мускулатуры
+                                <span class="small">(flatworm_integument_muscles.jpg)</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Кровеносная и дыхательная системы -->
+                <tr>
+                    <td class="col-feature">Кровеносная и дыхательная системы</td>
+                    <td class="col-trematoda" colspan="2"><strong>Полностью одинаково:</strong> Системы отсутствуют. Газообмен и транспорт веществ осуществляются путём простой диффузии через покровы.</td>
+                </tr>
+
+                <!-- Выделительная система -->
+                <tr>
+                    <td class="col-feature">Выделительная система</td>
+                    <td class="col-trematoda"><strong>Общая база:</strong> Протонефридиального типа. Представлена терминальными звездчатыми клетками в паренхиме и отходящими канальцами.<br>
+                        <span class="spec">Специфика: Собирательные канальцы впадают в центральный выделительный канал, открывающийся выделительной порой.</span>
+                    </td>
+                    <td class="col-cestoda"><strong>Общая база:</strong> Протонефридиального типа. Представлена терминальными звездчатыми клетками в паренхиме и отходящими канальцами.<br>
+                        <span class="spec">Специфика: Канальцы впадают в крупные <strong>боковые продольные каналы</strong>, которые в каждом членике соединены поперечными анастомозами.</span>
+                    </td>
+                </tr>
+                <!-- ФОТО 3 -->
+                <tr>
+                    <td colspan="3" style="padding:0;">
+                        <div class="full-width-image">
+                            <img src="images/helminths/flatworm_excretory_system.jpg"
+                                 alt="Выделительная система плоских червей"
+                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                            <div class="placeholder" style="display:none;">
+                                <span class="icon">💧</span>
+                                Протонефридии: звёздчатые клетки, канальцы, выделительная пора
+                                <span class="small">(flatworm_excretory_system.jpg)</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Пищеварительная система -->
+                <tr>
+                    <td class="col-feature">Пищеварительная система</td>
+                    <td class="col-trematoda"><strong>Имеется.</strong> Представлена передним отделом (рот, мускулистая глотка, пищевод) и двумя ветвями средней кишки, которые заканчиваются слепо (анального отверстия нет).</td>
+                    <td class="col-cestoda"><strong>Полностью отсутствует.</strong> Питательные вещества всасываются осмотически всей поверхностью тела (через микротрихии тегумента) непосредственно из кишечника хозяина.</td>
+                </tr>
+                <!-- ФОТО 4 -->
+                <tr>
+                    <td colspan="3" style="padding:0;">
+                        <div class="full-width-image">
+                            <img src="images/helminths/flatworm_digestive_system.jpg"
+                                 alt="Пищеварительная система плоских червей"
+                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                            <div class="placeholder" style="display:none;">
+                                <span class="icon">🍽️</span>
+                                Пищеварительная система: рот, глотка, кишечные ветви (трематоды) и её отсутствие у цестод
+                                <span class="small">(flatworm_digestive_system.jpg)</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Нервная система: ОБЩАЯ БАЗА (на два столбца) -->
+                <tr>
+                    <td class="col-feature">Нервная система</td>
+                    <td class="col-trematoda" colspan="2">
+                        <strong>Общая база:</strong> Нервная система организована по типу <strong>ортогон</strong>.<br>
+                        <span style="font-size:13px;color:#475569;display:block;margin-top:4px;">
+                            Ортогон (нервная система стволового типа) — это форма организации нервной системы, характерная для типа Плоские черви. Своё название она получила из-за внешнего вида: пересекающиеся под прямым углом продольные нервные тяжи и поперечные перемычки образуют структуру, напоминающую правильную решётку или верёвочную лестницу.
+                        </span>
+                    </td>
+                </tr>
+                <!-- Нервная система: СПЕЦИФИКА (раздельно) -->
+                <tr>
+                    <td class="col-feature" style="background:#f8fafc;font-weight:600;color:#1e3a8a;">Специфика нервной системы</td>
+                    <td class="col-trematoda">
+                        Окологлоточное нервное кольцо и отходящие от него три пары нервных стволов, из которых наиболее развиты боковые. Органы чувств развиты слабо.
+                    </td>
+                    <td class="col-cestoda">
+                        Ганглии в сколексе и отходящие от них нервные стволы (от 6 до 12), соединённые комиссурами.
+                    </td>
+                </tr>
+                <!-- ФОТО 5 -->
+                <tr>
+                    <td colspan="3" style="padding:0;">
+                        <div class="full-width-image">
+                            <img src="images/helminths/flatworm_nervous_system.jpg"
+                                 alt="Нервная система плоских червей"
+                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                            <div class="placeholder" style="display:none;">
+                                <span class="icon">🧠</span>
+                                Ортогон: нервные стволы, комиссуры, окологлоточное кольцо
+                                <span class="small">(flatworm_nervous_system.jpg)</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Половая система -->
+                <tr>
+                    <td class="col-feature">Половая система</td>
+                    <td class="col-trematoda">
+                        <strong>Гермафродиты</strong> (исключение – кровяные сосальщики). Имеется один сложный комплекс половых органов на всю особь.<br><br>
+                        <strong>ЖПС:</strong> центральная камера — <strong>оотип</strong>, в которую впадают протоки яичника, желточников, семяприемника и железы — <strong>тельце Мелиса</strong>, трубчатая матка.<br><br>
+                        <strong>МПС:</strong> 2 семенника, семяпроводы, семяизвергательный канал, копулятивный орган — <strong>циррус</strong>.
+                    </td>
+                    <td class="col-cestoda">
+                        <strong>Строгие гермафродиты.</strong> Комплекс мужских и женских половых органов автономно повторяется в <strong>каждом гермафродитном членике</strong>.<br><br>
+                        <strong>ЖПС:</strong> центральная камера — <strong>оотип</strong>, в которую впадают протоки яичника, желточников, семяприемника и железы — <strong>тельце Мелиса</strong>, трубчатая матка.<br><br>
+                        <strong>МПС:</strong> 2 семенника, семяпроводы, семяизвергательный канал, копулятивный орган — <strong>циррус</strong>.
+                    </td>
+                </tr>
+
+                <!-- Дополнительная строка: пояснение терминов -->
+                <tr>
+                    <td class="col-feature" style="background:#f8fafc;font-weight:600;color:#1e3a8a;">Пояснение терминов</td>
+                    <td class="col-trematoda" colspan="2">
+                        <span style="display:block;margin-bottom:4px;"><strong>Оотип</strong> — центральная камера женской половой системы, в которую открываются протоки яичника, желточников и семяприемника; здесь происходит оплодотворение яйцеклеток и формирование яиц.</span>
+                        <span style="display:block;margin-bottom:4px;"><strong>Тельце Мелиса</strong> — железа, расположенная вокруг оотипа; выделяет секрет, участвующий в формировании оболочек яиц.</span>
+                        <span style="display:block;"><strong>Циррус</strong> — копулятивный (совокупительный) орган мужской половой системы у плоских червей; используется для переноса спермы во время копуляции.</span>
+                    </td>
+                </tr>
+
+                <!-- ФОТО 6 -->
+                <tr>
+                    <td colspan="3" style="padding:0;">
+                        <div class="full-width-image">
+                            <img src="images/helminths/flatworm_reproductive_system.jpg"
+                                 alt="Половая система плоских червей"
+                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                            <div class="placeholder" style="display:none;">
+                                <span class="icon">🧬</span>
+                                Половая система: единый комплекс у трематод и повторяющиеся органы в члениках цестод
+                                <span class="small">(flatworm_reproductive_system.jpg)</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

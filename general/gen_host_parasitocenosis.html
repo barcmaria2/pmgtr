@@ -1,0 +1,461 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 21px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 32px 0 8px 0;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 8px;
+        border-bottom: 3px solid #e9edf3;
+    }
+
+    .tab-content-inner h3 .badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 12px;
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 4px;
+        letter-spacing: 0.02em;
+    }
+
+    .badge-blue {
+        background: #2563eb;
+    }
+    .badge-green {
+        background: #10b981;
+    }
+    .badge-orange {
+        background: #f59e0b;
+    }
+    .badge-purple {
+        background: #8b5cf6;
+    }
+    .badge-red {
+        background: #ef4444;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner .highlight-gold {
+        color: #d4a843;
+        font-weight: 700;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Карточка определения ===== */
+    .definition-card {
+        border-radius: 14px;
+        padding: 22px 28px;
+        margin: 16px 0 24px 0;
+        border-left: 5px solid #2563eb;
+        background: linear-gradient(135deg, #eff6ff, #f8faff);
+        box-shadow: 0 2px 12px rgba(37, 99, 235, 0.06);
+    }
+
+    .definition-card p {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: #1e3a8a;
+        line-height: 1.6;
+    }
+
+    .definition-card p strong {
+        color: #1e40af;
+    }
+
+    .definition-card .author {
+        display: block;
+        margin-top: 8px;
+        font-size: 15px;
+        font-weight: 400;
+        color: #64748b;
+    }
+
+    .definition-card .author strong {
+        color: #1e293b;
+    }
+
+    /* ===== Карточки для примеров ===== */
+    .example-card {
+        border-radius: 14px;
+        padding: 20px 24px;
+        margin: 20px 0 24px 0;
+        border: 1px solid #e9edf3;
+        background: #ffffff;
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .example-card:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        transform: translateY(-2px);
+    }
+
+    .example-card .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .example-card .card-title .icon {
+        font-size: 22px;
+    }
+
+    .example-card .card-title .num {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 16px;
+        color: #fff;
+        background: #2563eb;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .example-card .card-desc {
+        color: #334155;
+        margin-bottom: 12px;
+    }
+
+    .example-card .card-desc strong {
+        color: #1e293b;
+    }
+
+    /* ===== Сетка паразитов ===== */
+    .parasite-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        margin: 10px 0 4px 0;
+    }
+
+    .parasite-item {
+        background: #f8fafc;
+        border-radius: 10px;
+        padding: 12px 16px;
+        border: 1px solid #f0f2f5;
+        transition: background 0.2s ease;
+    }
+
+    .parasite-item:hover {
+        background: #f1f5f9;
+    }
+
+    .parasite-item .name {
+        font-weight: 600;
+        color: #1e3a8a;
+        display: block;
+        font-size: 15px;
+    }
+
+    .parasite-item .name em {
+        font-style: italic;
+        color: #2563eb;
+    }
+
+    .parasite-item .desc {
+        font-size: 13px;
+        color: #64748b;
+        display: block;
+        margin-top: 2px;
+    }
+
+    .parasite-item .badge-type {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 1px 10px;
+        border-radius: 12px;
+        margin-top: 4px;
+        letter-spacing: 0.02em;
+    }
+
+    .badge-protozoa {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+    .badge-helminth {
+        background: #d1fae5;
+        color: #065f46;
+    }
+    .badge-arthropod {
+        background: #fef3c7;
+        color: #92400e;
+    }
+    .badge-intracellular {
+        background: #fce4ec;
+        color: #991b1b;
+    }
+
+    /* ===== Системный паразитоценоз ===== */
+    .system-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        margin: 12px 0 4px 0;
+    }
+
+    .system-item {
+        border-radius: 12px;
+        padding: 16px 18px;
+        border: 1px solid #e9edf3;
+        background: #fafcff;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-align: center;
+    }
+
+    .system-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .system-item .loc-icon {
+        font-size: 32px;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .system-item .loc-name {
+        font-weight: 700;
+        font-size: 15px;
+        color: #1e3a8a;
+        display: block;
+    }
+
+    .system-item .loc-parasite {
+        font-size: 14px;
+        color: #475569;
+        display: block;
+    }
+
+    .system-item .loc-parasite em {
+        font-style: italic;
+        color: #2563eb;
+    }
+
+    .system-item.blood {
+        border-color: #ef4444;
+        background: #fef2f2;
+    }
+    .system-item.liver {
+        border-color: #f59e0b;
+        background: #fffbeb;
+    }
+    .system-item.skin {
+        border-color: #8b5cf6;
+        background: #f5f3ff;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 768px) {
+        .parasite-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+        .system-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 24px;
+        }
+        .tab-content-inner h3 {
+            font-size: 19px;
+        }
+        .definition-card {
+            padding: 16px 18px;
+        }
+        .definition-card p {
+            font-size: 16px;
+        }
+        .example-card {
+            padding: 16px 18px;
+        }
+        .parasite-grid {
+            grid-template-columns: 1fr;
+        }
+        .system-grid {
+            grid-template-columns: 1fr;
+        }
+        .tab-content-inner h3 .badge {
+            font-size: 10px;
+            padding: 1px 8px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">🦠</span> Паразитоценоз</h2>
+
+    <div class="definition-card">
+        <p>
+            <strong>Паразитоценоз</strong> — это совокупность всех паразитов, одновременно обитающих в организме хозяина или в его отдельных органах.
+        </p>
+        <span class="author">📌 Данное фундаментальное понятие в экологической паразитологии было предложено выдающимся отечественным учёным <strong>Е.Н. Павловским</strong>.</span>
+    </div>
+
+    <p>
+        С экологической точки зрения, весь организм хозяина (например, человека) выступает для паразита в качестве своеобразной среды обитания — <strong>«среды первого порядка»</strong>, которая оказывает на него непосредственное биологическое воздействие.
+    </p>
+
+    <p>
+        В природе один хозяин очень редко бывает заражён лишь одним видом паразита. Чаще всего в организме одновременно сосуществуют <strong>несколько видов паразитических форм</strong>, которые могут локализоваться как в одном, так и в совершенно разных органах и тканях. Вся эта сложная многовидовая группа сожителей, находящихся внутри одного хозяина, и образует единый <strong>паразитоценоз</strong>.
+    </p>
+
+    <h3>
+        <span>📌 Классические примеры формирования паразитоценозов</span>
+        <span class="badge badge-blue">Примеры</span>
+    </h3>
+
+    <!-- ===== 1. ПАРАЗИТОЦЕНОЗ ОДНОГО ОРГАНА ===== -->
+    <div class="example-card">
+        <div class="card-title">
+            <span class="num">1</span>
+            <span class="icon">🧬</span> Паразитоценоз одного органа
+            <span style="font-size:13px;font-weight:400;color:#64748b;margin-left:auto;">на примере пищеварительного тракта</span>
+        </div>
+        <div class="card-desc">
+            Самым обширным местом обитания паразитов у человека является <strong>кишечник</strong>, где формируются богатые паразитоценозы. В толстой кишке человека могут одновременно обитать сразу несколько видов простейших. Например, в ней могут совместно присутствовать патогенная дизентерийная амёба (<em>Entamoeba histolytica</em>) и ещё 5 видов непатогенных амёб (например, кишечная амёба <em>Entamoeba coli</em>), выступающих в роли анаэробных комменсалов.
+        </div>
+        <div class="card-desc" style="margin-top:8px;">
+            В этом же биотопе (в просвете кишечника) могут одновременно паразитировать инфузория балантидий (<em>Balantidium coli</em>), а также различные кишечные гельминты: человеческая аскарида (<em>Ascaris lumbricoides</em>), власоглав (<em>Trichocephalus trichiurus</em>) или острица детская (<em>Enterobius vermicularis</em>).
+        </div>
+        <div style="margin-top:12px;padding-top:12px;border-top:2px dashed #e9edf3;">
+            <div style="font-weight:600;color:#1e3a8a;margin-bottom:8px;">🧫 Совокупность паразитов, формирующих кишечный паразитоценоз:</div>
+            <div class="parasite-grid">
+                <div class="parasite-item">
+                    <span class="name"><em>Entamoeba histolytica</em></span>
+                    <span class="desc">Патогенная дизентерийная амёба</span>
+                    <span class="badge-type badge-protozoa">Простейшее</span>
+                </div>
+                <div class="parasite-item">
+                    <span class="name"><em>Entamoeba coli</em></span>
+                    <span class="desc">Непатогенная кишечная амёба</span>
+                    <span class="badge-type badge-protozoa">Простейшее</span>
+                </div>
+                <div class="parasite-item">
+                    <span class="name"><em>Balantidium coli</em></span>
+                    <span class="desc">Инфузория — возбудитель балантидиаза</span>
+                    <span class="badge-type badge-protozoa">Простейшее</span>
+                </div>
+                <div class="parasite-item">
+                    <span class="name"><em>Ascaris lumbricoides</em></span>
+                    <span class="desc">Человеческая аскарида</span>
+                    <span class="badge-type badge-helminth">Гельминт</span>
+                </div>
+                <div class="parasite-item">
+                    <span class="name"><em>Trichocephalus trichiurus</em></span>
+                    <span class="desc">Власоглав</span>
+                    <span class="badge-type badge-helminth">Гельминт</span>
+                </div>
+                <div class="parasite-item">
+                    <span class="name"><em>Enterobius vermicularis</em></span>
+                    <span class="desc">Острица детская</span>
+                    <span class="badge-type badge-helminth">Гельминт</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 2. СИСТЕМНЫЙ ПАРАЗИТОЦЕНОЗ ===== -->
+    <div class="example-card">
+        <div class="card-title">
+            <span class="num">2</span>
+            <span class="icon">🌐</span> Системный паразитоценоз
+            <span style="font-size:13px;font-weight:400;color:#64748b;margin-left:auto;">локализация в разных тканях и органах</span>
+        </div>
+        <div class="card-desc">
+            Поскольку средой первого порядка является весь организм в целом, паразитоценоз включает в себя и тех паразитов, которые разнесены по разным системам.
+        </div>
+        <div class="card-desc" style="margin-top:8px;">
+            Например, у пациента с ослабленным иммунитетом или проживающего в тропическом регионе может наблюдаться следующая картина:
+        </div>
+
+        <div class="system-grid">
+            <div class="system-item blood">
+                <span class="loc-icon">🩸</span>
+                <span class="loc-name">Кровь</span>
+                <span class="loc-parasite">Внутриклеточные малярийные плазмодии<br><em>Plasmodium vivax</em></span>
+                <span class="badge-type badge-intracellular" style="margin-top:6px;">Внутриклеточный</span>
+            </div>
+            <div class="system-item liver">
+                <span class="loc-icon">🧫</span>
+                <span class="loc-name">Печень (желчные ходы)</span>
+                <span class="loc-parasite">Кошачий сосальщик<br><em>Opisthorchis felineus</em></span>
+                <span class="badge-type badge-helminth" style="margin-top:6px;">Гельминт</span>
+            </div>
+            <div class="system-item skin">
+                <span class="loc-icon">🧴</span>
+                <span class="loc-name">Кожные покровы</span>
+                <span class="loc-parasite">Чесоточный зудень<br><em>Sarcoptes scabiei</em></span>
+                <span class="badge-type badge-arthropod" style="margin-top:6px;">Членистоногое</span>
+            </div>
+        </div>
+
+        <div style="margin-top:14px;padding-top:12px;border-top:2px dashed #e9edf3;">
+            <div style="font-weight:600;color:#1e3a8a;margin-bottom:4px;">📌 Вывод:</div>
+            <div style="color:#475569;font-size:15px;">
+                Совокупность всех этих паразитов, локализованных в разных органах и тканях одного хозяина, образует <strong>единый системный паразитоценоз</strong>, отражающий сложность и многообразие паразитарных взаимоотношений в организме человека.
+            </div>
+        </div>
+    </div>
+
+</div>

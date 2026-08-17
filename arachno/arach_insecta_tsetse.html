@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Муха цеце (Glossina) — морфология, развитие, медицинское значение</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card p strong { color: #1e293b; }
+
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+        .epi-grid .item {
+            font-size: 14px;
+        }
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+        .epi-grid .item.full {
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+
+        .danger-note {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #7f1d1d;
+        }
+        .danger-note strong { color: #991b1b; }
+
+        .highlight-box {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #14532d;
+        }
+        .highlight-box strong { color: #166534; }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .epi-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">🦟</span> Муха цеце</h1>
+    <div class="subtitle">
+        <strong><em>Glossina</em></strong> (виды <em>G. palpalis</em>, <em>G. morsitans</em>) — специфический переносчик африканского трипаносомоза (сонной болезни)
+    </div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p><strong>Царство:</strong> Животные (Animalia)</p>
+        <p><strong>Подцарство:</strong> Многоклеточные (Metazoa)</p>
+        <p><strong>Тип:</strong> Членистоногие (Arthropoda)</p>
+        <p><strong>Класс:</strong> Насекомые (Insecta)</p>
+        <p><strong>Отряд:</strong> Двукрылые (Diptera)</p>
+        <p><strong>Семейство:</strong> Мухи цеце (Glossinidae)</p>
+        <p><strong>Род:</strong> <em>Glossina</em></p>
+        <p style="margin-top:8px;"><strong>Медицински значимые виды:</strong> <em>Glossina palpalis</em> (влажные лесные зоны, прибрежная форма), <em>Glossina morsitans</em> (засушливые зоны, саванная форма).</p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Тип развития:</strong> Полный метаморфоз (голометаболия).</div>
+        <div class="item"><strong>Размножение:</strong> Аденотрофное живорождение (ларвовождение).</div>
+        <div class="item full"><strong>Питание:</strong> Облигатные гематофаги — кровью питаются и самцы, и самки.</div>
+        <div class="item full"><strong>Характер трансмиссивности:</strong> Облигатно-трансмиссивная инвазия (без переносчика циркуляция трипаносом невозможна).</div>
+    </div>
+
+    <!-- ===== СТАДИИ РАЗВИТИЯ ===== -->
+    <h2><span class="emoji">🥚</span> Стадии жизненного цикла</h2>
+
+    <p>Развитие мухи цеце происходит с <strong>полным метаморфозом</strong> (голометаболия) и включает 4 последовательные стадии: <strong>яйцо → личинка → куколка → имаго</strong>. Однако биология размножения имеет уникальные черты.</p>
+
+    <h3>Аденотрофное живорождение (ларвовождение)</h3>
+    <ul>
+        <li>Самка мухи цеце <strong>живородящая</strong>. Яйцо не откладывается во внешнюю среду, а созревает и вылупляется непосредственно внутри половых путей (в матке) самки.</li>
+        <li>Личинка развивается внутриутробно, питаясь специальным жидким секретом внутриматочных («молочных») желез самки.</li>
+        <li>Самка откладывает (рождает) <strong>единственную крупную личинку III возраста</strong>, которая уже полностью готова к окукливанию. Личинка откладывается непосредственно на поверхность влажной почвы, под корни деревьев или в расщелины.</li>
+        <li>За всю свою жизнь (продолжительностью 3–6 месяцев) самка рождает всего <strong>от 6 до 12 личинок</strong>.</li>
+    </ul>
+
+    <h3>Окукливание</h3>
+    <ul>
+        <li>Рожденная личинка сразу же (в течение 5 часов) зарывается в почву, покрывается плотной темной оболочкой (пупарием) и превращается в неподвижную куколку.</li>
+        <li><strong>Критический признак полного метаморфоза</strong> — наличие покоящейся стадии куколки.</li>
+    </ul>
+
+    <h3>Вылет имаго</h3>
+    <ul>
+        <li>Стадия куколки длится от <strong>3 до 4 недель</strong> (в неблагоприятных температурных условиях — до 13 недель).</li>
+        <li>Из оболочки куколки выходит взрослое крылатое насекомое (<strong>имаго</strong>).</li>
+    </ul>
+
+    <!-- ===== МОРФОЛОГИЯ ИМАГО ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика имаго</h2>
+
+    <ul>
+        <li><strong>Размеры и окраска:</strong> Крупное летающее насекомое длиной от <strong>6,5 до 13–13,5 мм</strong>. Окраска темно-коричневая или бурая (у <em>G. palpalis</em>) или более светлая саванная (у <em>G. morsitans</em>).</li>
+        <li><strong>Уникальный хоботок:</strong> Имеет характерный сильно хитинизированный, жесткий игловидный хоботок, который в покое постоянно выступает (торчит) далеко вперед перед головой. Он приспособлен для легкого прокола кожи крупных диких млекопитающих.</li>
+        <li><strong>Крылья:</strong> В покое муха цеце складывает крылья плоско на спине, полностью налегая одно на другое (в виде закрытых ножниц).</li>
+        <li><strong>Пищеварительный тракт:</strong> Стенки средней кишки мухи обладают колоссальной растяжимостью, что позволяет ей за одно кровососание поглощать объем крови, превышающий массу голодного насекомого в десятки раз.</li>
+        <li><strong>Характер питания:</strong> Кровью питаются и самцы, и самки (являются <strong>облигатными круглосуточными гематофагами</strong>). Нападают преимущественно в светлое время суток.</li>
+    </ul>
+
+    <!-- ===== БОЛЬШАЯ КАРТИНКА ===== -->
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🪰</span>
+            Муха цеце (<em>Glossina</em>) — имаго
+            <span class="small">вид <em>G. palpalis</em> (слева) и <em>G. morsitans</em> (справа)</span>
+            <span class="filename">imagine/glossina_morphology.jpg</span>
+        </div>
+    </div>
+
+    <!-- ===== МЕДИЦИНСКОЕ ЗНАЧЕНИЕ ===== -->
+    <h2><span class="emoji">⚠️</span> Медицинское значение: специфический переносчик африканского трипаносомоза (сонной болезни)</h2>
+
+    <p>Мухи цеце являются <strong>специфическими (биологическими) переносчиками</strong> жгутиконосцев семейства Trypanosomatidae.</p>
+
+    <p><strong>Характер трансмиссивности заболевания:</strong> Облигатно-трансмиссивная инвазия. Трипаносома является простейшим (инвазия), а ее циркуляция в природе невозможна без участия специфического хозяина и переносчика.</p>
+
+    <ul>
+        <li><strong><em>Trypanosoma brucei gambiense</em></strong> вызывает <strong>гамбийский тип</strong> (преимущественно антропоноз, переносится <em>G. palpalis</em>).</li>
+        <li><strong><em>Trypanosoma brucei rhodesiense</em></strong> вызывает <strong>родезийский тип</strong> (природно-очаговый зооноз, переносится <em>G. morsitans</em>).</li>
+    </ul>
+
+    <p><strong>Основной механизм передачи:</strong> Трансмиссивный.</p>
+    <p><strong>Путь передачи:</strong> Специфическая инокуляция.</p>
+
+    <h3>Цикл развития трипаносомы в мухе цеце</h3>
+    <ul>
+        <li>При кровососании на зараженном хозяине муха поглощает трипомастиготные (кровяные) формы трипаносом.</li>
+        <li>В желудке и кишечнике мухи трипаносомы интенсивно размножаются продольным делением.</li>
+        <li>Через 15–20 дней они мигрируют в слюнные железы переносчика.</li>
+        <li>В слюнных железах они превращаются сначала в критидиальные (эпимастиготные), а затем в конечные инвазионные для человека — <strong>метациклические формы</strong>.</li>
+        <li>При повторном укусе человека муха вместе с секретом слюнных желез вводит метациклические формы непосредственно в ранку (инокуляция).</li>
+        <li>Муха цеце остается зараженной и способна передавать паразитов на протяжении всей своей жизни.</li>
+    </ul>
+
+    <!-- ===== МЕРЫ БОРЬБЫ ===== -->
+    <h2><span class="emoji">🛡️</span> Меры борьбы</h2>
+
+    <div class="note">
+        <p><strong>Важно:</strong> Из-за высокой устойчивости трипаносом к изменению антигенной структуры создание эффективных вакцин против сонной болезни невозможно. Основной упор делается на уничтожение переносчика.</p>
+    </div>
+
+    <ul>
+        <li><strong>Вырубка прибрежных кустарников</strong> вокруг селений, дорог и переправ для лишения <em>G. palpalis</em> мест обитания.</li>
+        <li><strong>Обработка мест дневок мух инсектицидами.</strong></li>
+        <li><strong>Метод стерильных самцов:</strong> Выращенных в лаборатории самцов мухи цеце стерилизуют радиацией и массово выпускают в природу. Они спариваются с дикими самками, которые после этого остаются бесплодными, что приводит к резкому падению численности популяции паразитов.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

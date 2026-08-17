@@ -1,0 +1,519 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 21px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 8px;
+        border-bottom: 3px solid #e9edf3;
+    }
+
+    .tab-content-inner h3 .badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 12px;
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 4px;
+        letter-spacing: 0.02em;
+    }
+
+    .badge-blue { background: #2563eb; }
+    .badge-green { background: #10b981; }
+    .badge-orange { background: #f59e0b; }
+    .badge-purple { background: #8b5cf6; }
+    .badge-red { background: #ef4444; }
+
+    .tab-content-inner h4 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin: 24px 0 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    .tab-content-inner .divider {
+        height: 3px;
+        background: linear-gradient(to right, #e9edf3, #2563eb, #e9edf3);
+        margin: 40px 0 30px 0;
+        border-radius: 2px;
+        opacity: 0.5;
+    }
+
+    /* ===== Карточка определения ===== */
+    .definition-card {
+        border-radius: 14px;
+        padding: 22px 28px;
+        margin: 16px 0 24px 0;
+        border-left: 5px solid #2563eb;
+        background: linear-gradient(135deg, #eff6ff, #f8faff);
+        box-shadow: 0 2px 12px rgba(37, 99, 235, 0.06);
+    }
+
+    .definition-card p {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 500;
+        color: #1e3a8a;
+        line-height: 1.6;
+    }
+
+    .definition-card p strong {
+        color: #1e40af;
+    }
+
+    .definition-card .source {
+        display: block;
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #64748b;
+    }
+
+    /* ===== Карточки для групп ===== */
+    .group-card {
+        border-radius: 14px;
+        padding: 20px 24px;
+        margin: 16px 0 20px 0;
+        border: 1px solid #e9edf3;
+        background: #ffffff;
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .group-card:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        transform: translateY(-2px);
+    }
+
+    .group-card .card-title {
+        font-weight: 700;
+        font-size: 18px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+    }
+
+    .group-card .card-title .icon {
+        font-size: 22px;
+    }
+
+    .group-card .card-desc {
+        color: #334155;
+    }
+
+    .group-card .card-examples {
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 10px 16px;
+        font-size: 14px;
+        color: #475569;
+        margin-top: 8px;
+    }
+
+    .group-card .card-examples .label {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .group-card .card-examples ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 4px 0 0 0;
+    }
+
+    .group-card .card-examples ul li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 2px;
+        line-height: 1.5;
+        font-size: 14px;
+    }
+
+    .group-card .card-examples ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -2px;
+    }
+
+    .group-card.transmissive {
+        border-left: 4px solid #ef4444;
+    }
+
+    .group-card.non-transmissive {
+        border-left: 4px solid #10b981;
+    }
+
+    .group-card.obligate {
+        border-left: 4px solid #8b5cf6;
+    }
+
+    .group-card.facultative {
+        border-left: 4px solid #f59e0b;
+    }
+
+    /* ===== Классификационные сетки ===== */
+    .class-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 16px 0 20px 0;
+    }
+
+    .class-item {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 16px 18px;
+        border: 1px solid #e9edf3;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .class-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .class-item .class-title {
+        font-weight: 700;
+        font-size: 16px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .class-item .class-title .icon {
+        font-size: 20px;
+    }
+
+    .class-item .class-desc {
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .class-item .class-desc strong {
+        color: #1e293b;
+    }
+
+    .class-item .class-examples {
+        font-size: 13px;
+        color: #2563eb;
+        font-weight: 500;
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px dashed #e9edf3;
+    }
+
+    .class-item .class-examples .label {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .class-item.type-zoonosis {
+        border-left: 4px solid #10b981;
+    }
+    .class-item.type-anthroponosis {
+        border-left: 4px solid #ef4444;
+    }
+
+    /* ===== Список значений ===== */
+    .value-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 8px 0 0 0;
+    }
+
+    .value-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 6px;
+        line-height: 1.5;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .value-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .value-list li strong {
+        color: #1e293b;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 24px;
+        }
+        .tab-content-inner h3 {
+            font-size: 19px;
+        }
+        .tab-content-inner h4 {
+            font-size: 16px;
+        }
+        .definition-card {
+            padding: 16px 18px;
+        }
+        .definition-card p {
+            font-size: 16px;
+        }
+        .group-card {
+            padding: 16px 18px;
+        }
+        .class-grid {
+            grid-template-columns: 1fr;
+        }
+        .class-item {
+            padding: 14px 16px;
+        }
+        .tab-content-inner h3 .badge {
+            font-size: 10px;
+            padding: 1px 8px;
+        }
+        .tab-content-inner .divider {
+            margin: 30px 0 20px 0;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">🌍</span> Учение Е.Н. Павловского о природной очаговости трансмиссивных болезней</h2>
+
+    <div class="definition-card">
+        <p>
+            <strong>Сущность учения академика Е.Н. Павловского</strong>, сформулированного в 1939 году, заключается в том, что возбудители ряда заболеваний, как и любые другие биологические виды, возникли в процессе эволюции и существуют в природе <strong>совершенно независимо от человека</strong>. Они циркулируют среди диких животных и являются естественными компонентами биогеоценозов.
+        </p>
+        <span class="source">📌 Явление природной очаговости состоит в том, что очаги инфекционных и инвазионных болезней существуют на территории определённых географических ландшафтов.</span>
+    </div>
+
+    <!-- ===== КЛАССИФИКАЦИЯ ===== -->
+    <h3>
+        <span>📋 Классификация заболеваний человека по Е.Н. Павловскому</span>
+        <span class="badge badge-blue">Основные группы</span>
+    </h3>
+
+    <p>Согласно учению Е.Н. Павловского, заболевания человека строго классифицируются на две основные группы:</p>
+
+    <div class="group-card transmissive">
+        <div class="card-title"><span class="icon">🦟</span> 1. Трансмиссивные заболевания</div>
+        <div class="card-desc">Болезни, при которых возбудители передаются от одного организма к другому через <strong>кровососущих переносчиков</strong> (клещей и кровососущих насекомых).</div>
+        <div class="card-examples">
+            <span class="label">📌 Типичные примеры:</span>
+            <ul>
+                <li>Малярия</li>
+                <li>Лейшманиоз</li>
+                <li>Таёжный энцефалит</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="group-card non-transmissive">
+        <div class="card-title"><span class="icon">🌿</span> 2. Природно-очаговые заболевания</div>
+        <div class="card-desc">Болезни, возбудители которых <strong>циркулируют в природных биоценозах независимо от человека</strong>.</div>
+        <div class="card-examples">
+            <span class="label">📌 Типичные примеры:</span>
+            <ul>
+                <li>Клещевой возвратный тиф</li>
+                <li>Чума</li>
+                <li>Описторхоз</li>
+            </ul>
+        </div>
+    </div>
+
+    <p>В рамках данной концепции сами природно-очаговые заболевания дополнительно делятся на две подгруппы в зависимости от <strong>механизма передачи</strong>:</p>
+
+    <div class="group-card" style="border-left: 4px solid #2563eb;">
+        <div class="card-title"><span class="icon">🔄</span> Трансмиссивные (с переносчиком)</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span>
+            <ul>
+                <li>Лейшманиозы (висцеральный, сельского типа)</li>
+                <li>Трипаносомозы</li>
+                <li>Весенне-летний клещевой энцефалит</li>
+                <li>Чума</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="group-card" style="border-left: 4px solid #10b981;">
+        <div class="card-title"><span class="icon">🚫</span> Нетрансмиссивные (без переносчика)</div>
+        <div class="card-desc">В структуре природного очага <strong>отсутствует вектор (переносчик)</strong>.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span>
+            <ul>
+                <li>Токсоплазмоз</li>
+                <li>Описторхоз</li>
+                <li>Парагонимоз</li>
+                <li>Дифиллоботриоз</li>
+                <li>Трихинеллёз</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ===== ОБЛИГАТНО- И ФАКУЛЬТАТИВНО-ТРАНСМИССИВНЫЕ ===== -->
+    <h3>
+        <span>⚡ Облигатно- и факультативно-трансмиссивные заболевания</span>
+        <span class="badge badge-purple">Классификация</span>
+    </h3>
+
+    <p>
+        Учение Е.Н. Павловского о природной очаговости тесно связана с классификацией трансмиссивных болезней по механизму передачи возбудителя. В зависимости от того, является ли переносчик <strong>единственным</strong> или лишь <strong>одним из возможных</strong> путей передачи, заболевания строго подразделяются на две категории.
+    </p>
+
+    <!-- Облигатно-трансмиссивные -->
+    <h4>🔒 1. Облигатно-трансмиссивные болезни</h4>
+
+    <div class="group-card obligate">
+        <div class="card-desc">
+            Это группа инфекционных и паразитарных заболеваний, при которых передача возбудителя от инфицированного хозяина к здоровому осуществляется <strong>исключительно через кровососущего специфического переносчика</strong> (членистоногого) при кровососании. Иные естественные механизмы передачи (алиментарный, контактный, аэрогенный) при данных заболеваниях <strong>невозможны</strong>.
+        </div>
+    </div>
+
+    <p><strong>Согласно кафедральной классификации, среди облигатно-трансмиссивных болезней выделяют:</strong></p>
+
+    <div class="class-grid">
+        <div class="class-item type-zoonosis">
+            <div class="class-title"><span class="icon">🐾</span> Зоонозы с природными очагами</div>
+            <div class="class-desc">Возбудитель циркулирует среди диких животных и передаётся человеку через переносчика.</div>
+            <div class="class-examples"><span class="label">Примеры:</span> лейшманиозы, африканский трипаносомоз (сонная болезнь), американский трипаносомоз (болезнь Шагаса)</div>
+        </div>
+        <div class="class-item type-anthroponosis">
+            <div class="class-title"><span class="icon">🧑</span> Антропонозы</div>
+            <div class="class-desc">Возбудитель передаётся от человека к человеку через переносчика, природного резервуара среди животных нет.</div>
+            <div class="class-examples"><span class="label">Примеры:</span> малярия, вшивый возвратный тиф, сыпной тиф, жёлтая лихорадка</div>
+        </div>
+    </div>
+
+    <!-- Факультативно-трансмиссивные -->
+    <h4 style="margin-top:28px;">🔓 2. Факультативно-трансмиссивные болезни</h4>
+
+    <div class="group-card facultative">
+        <div class="card-desc">
+            Это природно-очаговые заболевания, при которых участие кровососущего членистоногого (переносчика) в передаче возбудителя <strong>возможно, но не является обязательным и единственным</strong>. Наряду с трансмиссивным путём (инокуляцией или контаминацией через переносчика) существуют и активно реализуются другие пути заражения:
+        </div>
+        <ul class="value-list">
+            <li><strong>Алиментарный (пероральный)</strong> — употребление инфицированной воды или продуктов питания.</li>
+            <li><strong>Воздушно-капельный (аэрогенный)</strong> — при вдыхании пыли, содержащей возбудителя.</li>
+            <li><strong>Контактный</strong> — проникновение возбудителя через повреждённую кожу (например, при разделке туш инфицированных животных).</li>
+        </ul>
+        <div class="card-examples">
+            <span class="label">📌 К факультативно-трансмиссивным болезням относятся:</span>
+            <ul>
+                <li>Чума</li>
+                <li>Туляремия</li>
+                <li>Сибирская язва</li>
+                <li>Клещевой энцефалит</li>
+                <li>Бруцеллёз</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ===== ЗНАЧЕНИЕ УЧЕНИЯ ===== -->
+    <h3>
+        <span>📌 Значение учения Е.Н. Павловского</span>
+        <span class="badge badge-green">Теоретическое и прикладное</span>
+    </h3>
+
+    <p>
+        Учение о природной очаговости трансмиссивных болезней имеет <strong>фундаментальное теоретическое и прикладное значение</strong>:
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 20px 0;">
+        <div style="background:#ffffff;border-radius:14px;padding:18px 22px;border:1px solid #e9edf3;border-left:4px solid #2563eb;">
+            <div style="font-weight:700;font-size:16px;color:#1e3a8a;display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                <span style="font-size:20px;">🧬</span> Теоретическое
+            </div>
+            <div style="font-size:14px;color:#475569;">Обосновано существование возбудителей вне человеческого организма как естественных компонентов биогеоценозов, что изменило представление об эпидемическом процессе.</div>
+        </div>
+        <div style="background:#ffffff;border-radius:14px;padding:18px 22px;border:1px solid #e9edf3;border-left:4px solid #f59e0b;">
+            <div style="font-weight:700;font-size:16px;color:#1e3a8a;display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                <span style="font-size:20px;">🔮</span> Прогностическое
+            </div>
+            <div style="font-size:14px;color:#475569;">Знание ландшафтной приуроченности очагов позволяет <strong>прогнозировать</strong> возникновение вспышек при освоении новых территорий.</div>
+        </div>
+        <div style="background:#ffffff;border-radius:14px;padding:18px 22px;border:1px solid #e9edf3;border-left:4px solid #10b981;">
+            <div style="font-weight:700;font-size:16px;color:#1e3a8a;display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                <span style="font-size:20px;">🛡️</span> Практическое (эпидемиологическое)
+            </div>
+            <div style="font-size:14px;color:#475569;">Разработаны системы профилактических мероприятий: <strong>защита от переносчиков, вакцинация, санитарный надзор</strong> в эндемичных регионах.</div>
+        </div>
+        <div style="background:#ffffff;border-radius:14px;padding:18px 22px;border:1px solid #e9edf3;border-left:4px solid #8b5cf6;">
+            <div style="font-weight:700;font-size:16px;color:#1e3a8a;display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                <span style="font-size:20px;">📚</span> Методологическое
+            </div>
+            <div style="font-size:14px;color:#475569;">Введены понятия <strong>«ландшафтная паразитология»</strong>, <strong>«паразитоценоз»</strong> и <strong>«организм хозяина как среда обитания»</strong>, которые легли в основу современной экологической паразитологии.</div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,492 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 21px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 8px;
+        border-bottom: 3px solid #e9edf3;
+    }
+
+    .tab-content-inner h3 .badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 12px;
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 4px;
+        letter-spacing: 0.02em;
+    }
+
+    .badge-blue { background: #2563eb; }
+    .badge-green { background: #10b981; }
+    .badge-orange { background: #f59e0b; }
+    .badge-purple { background: #8b5cf6; }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Карточка определения ===== */
+    .definition-card {
+        border-radius: 14px;
+        padding: 22px 28px;
+        margin: 16px 0 24px 0;
+        border-left: 5px solid #2563eb;
+        background: linear-gradient(135deg, #eff6ff, #f8faff);
+        box-shadow: 0 2px 12px rgba(37, 99, 235, 0.06);
+    }
+
+    .definition-card p {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 500;
+        color: #1e3a8a;
+        line-height: 1.6;
+    }
+
+    .definition-card p strong {
+        color: #1e40af;
+    }
+
+    .definition-card .source {
+        display: block;
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #64748b;
+    }
+
+    /* ===== Карточки методов (сетка) ===== */
+    .method-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 16px 0 20px 0;
+    }
+
+    .method-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 22px;
+        border: 1px solid #e9edf3;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .method-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .method-card .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 6px;
+    }
+
+    .method-card .card-header .icon {
+        font-size: 28px;
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f1f5f9;
+        border-radius: 50%;
+    }
+
+    .method-card .card-header .num {
+        font-weight: 700;
+        font-size: 14px;
+        color: #2563eb;
+        background: #eff6ff;
+        padding: 2px 10px;
+        border-radius: 12px;
+        flex-shrink: 0;
+    }
+
+    .method-card .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        line-height: 1.2;
+    }
+
+    .method-card .card-body {
+        color: #334155;
+        font-size: 15px;
+        flex: 1;
+        margin-top: 4px;
+    }
+
+    .method-card .card-body .mechanism {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .method-card .card-body .mechanism::before {
+        content: "⚙️";
+        position: absolute;
+        left: -4px;
+        font-size: 14px;
+    }
+
+    .method-card .card-body .example {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #2563eb;
+        font-weight: 500;
+    }
+
+    .method-card .card-body .example::before {
+        content: "📌";
+        position: absolute;
+        left: -4px;
+        font-size: 14px;
+    }
+
+    .method-card .card-body .result {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #065f46;
+        font-weight: 500;
+        background: #ecfdf5;
+        border-radius: 8px;
+        padding: 8px 12px 8px 36px;
+    }
+
+    .method-card .card-body .result::before {
+        content: "✅";
+        position: absolute;
+        left: 10px;
+        font-size: 14px;
+    }
+
+    .method-card.predator {
+        border-left: 4px solid #10b981;
+    }
+    .method-card.predator .card-header .icon {
+        background: #ecfdf5;
+    }
+
+    .method-card.parasite {
+        border-left: 4px solid #8b5cf6;
+    }
+    .method-card.parasite .card-header .icon {
+        background: #f5f3ff;
+    }
+
+    /* ===== Карточка на всю ширину (генетический контроль) ===== */
+    .method-full {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 24px;
+        border: 1px solid #e9edf3;
+        border-left: 4px solid #f59e0b;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        margin: 0 0 20px 0;
+    }
+
+    .method-full:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .method-full .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 6px;
+    }
+
+    .method-full .card-header .icon {
+        font-size: 28px;
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fffbeb;
+        border-radius: 50%;
+    }
+
+    .method-full .card-header .num {
+        font-weight: 700;
+        font-size: 14px;
+        color: #2563eb;
+        background: #eff6ff;
+        padding: 2px 10px;
+        border-radius: 12px;
+        flex-shrink: 0;
+    }
+
+    .method-full .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        line-height: 1.2;
+    }
+
+    .method-full .card-body {
+        color: #334155;
+        font-size: 15px;
+        margin-top: 4px;
+    }
+
+    .method-full .card-body .mechanism {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .method-full .card-body .mechanism::before {
+        content: "⚙️";
+        position: absolute;
+        left: -4px;
+        font-size: 14px;
+    }
+
+    .method-full .card-body .result {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #065f46;
+        font-weight: 500;
+        background: #ecfdf5;
+        border-radius: 8px;
+        padding: 8px 12px 8px 36px;
+    }
+
+    .method-full .card-body .result::before {
+        content: "✅";
+        position: absolute;
+        left: 10px;
+        font-size: 14px;
+    }
+
+    .method-full .card-body .example {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #2563eb;
+        font-weight: 500;
+    }
+
+    .method-full .card-body .example::before {
+        content: "📌";
+        position: absolute;
+        left: -4px;
+        font-size: 14px;
+    }
+
+    /* ===== Финальный блок ===== */
+    .conclusion-box {
+        background: #f8fafc;
+        border-radius: 14px;
+        padding: 20px 24px;
+        margin: 20px 0 16px 0;
+        border-left: 4px solid #2563eb;
+        font-size: 15px;
+        color: #475569;
+    }
+
+    .conclusion-box strong {
+        color: #1e293b;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 768px) {
+        .method-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 24px;
+        }
+        .tab-content-inner h3 {
+            font-size: 19px;
+        }
+        .definition-card {
+            padding: 16px 18px;
+        }
+        .definition-card p {
+            font-size: 16px;
+        }
+        .method-card {
+            padding: 16px 18px;
+        }
+        .method-full {
+            padding: 16px 18px;
+        }
+        .method-card .card-header .icon {
+            width: 40px;
+            height: 40px;
+            font-size: 22px;
+        }
+        .method-full .card-header .icon {
+            width: 40px;
+            height: 40px;
+            font-size: 22px;
+        }
+        .tab-content-inner h3 .badge {
+            font-size: 10px;
+            padding: 1px 8px;
+        }
+        .conclusion-box {
+            padding: 16px 18px;
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">🛡️</span> Биологические принципы борьбы с трансмиссивными болезнями</h2>
+
+    <div class="definition-card">
+        <p>
+            Профилактика природно-очаговых трансмиссивных заболеваний исторически связана с рядом серьёзных экологических проблем. Поскольку в циркуляцию возбудителя в природных очагах включено большое количество хозяев (животных-резервуаров), а зачастую и специфических переносчиков, <strong>грубое вмешательство человека</strong> и полное разрушение целых биогеоценозов, возникших в процессе длительной коэволюции, экологически вредно и во многих случаях технически невозможно.
+        </p>
+        <span class="source">В связи с этим в системе современных противоэпидемических мероприятий важнейшее значение придаётся разработке <strong>биологических методов борьбы</strong>.</span>
+    </div>
+
+    <p>
+        <strong>Главный принцип биологической борьбы</strong> заключается в том, чтобы <strong>избирательно уничтожать</strong> определённый вид паразита или его специфического переносчика, <strong>не причиняя вреда биогеоценозу в целом</strong>.
+    </p>
+
+    <p>
+        Согласно классификации методов защиты, биологический способ борьбы представляет собой <strong>уничтожение вредных членистоногих-переносчиков</strong> с помощью их естественных врагов или внедрения генетических дефектов.
+    </p>
+
+    <h3>
+        <span>🧬 Три основных биологических принципа (метода) борьбы</span>
+        <span class="badge badge-blue">Методы</span>
+    </h3>
+
+    <!-- ===== 1 и 2 методы (сетка 1×1) ===== -->
+    <div class="method-grid">
+
+        <!-- 1. Использование естественных врагов -->
+        <div class="method-card predator">
+            <div class="card-header">
+                <span class="icon">🐟</span>
+                <span class="num">1</span>
+            </div>
+            <div class="card-title">Использование естественных врагов (хищников)</div>
+            <div class="card-body">
+                <div>Одним из наиболее эффективных и широко применяемых ларвицидных (направленных на личинок) биологических методов является <strong>гамбузирование водоёмов</strong>.</div>
+                <span class="mechanism"><strong>Механизм:</strong> Метод основан на разведении в чистых водоёмах, а также в водоёмах сельскохозяйственного назначения мелких рыб-гамбузий. Эти рыбы являются естественными хищниками и питаются преимущественно личинками и куколками кровососущих комаров (в том числе рода <em>Anopheles</em>).</span>
+                <span class="example"><strong>Пример успешного применения:</strong> Использование этого экологически перспективного метода в сочетании с гидромелиоративными работами позволило в исторически короткие сроки резко снизить численность комаров и заболеваемость населения малярией на территории Западного Закавказья.</span>
+            </div>
+        </div>
+
+        <!-- 2. Использование сверхпаразитизма -->
+        <div class="method-card parasite">
+            <div class="card-header">
+                <span class="icon">🕷️</span>
+                <span class="num">2</span>
+            </div>
+            <div class="card-title">Использование сверхпаразитизма</div>
+            <div class="card-body">
+                <div>Данный метод в настоящее время находится в состоянии активной научной разработки и направлен преимущественно на борьбу со специфическими переносчиками клещевого энцефалита, боррелиоза и тифов — <strong>иксодовыми и аргасовыми клещами</strong>.</div>
+                <span class="mechanism"><strong>Механизм:</strong> Метод основан на использовании животных и микроорганизмов, паразитирующих непосредственно на взрослых особях клещей, а также на их яйцах. Такое паразитирование приводит к достоверному снижению жизнеспособности и репродуктивного потенциала клещей-переносчиков в природных условиях.</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 3. Генетический контроль (на всю ширину) ===== -->
+    <div class="method-full">
+        <div class="card-header">
+            <span class="icon">🧬</span>
+            <span class="num">3</span>
+            <div class="card-title">Генетический контроль (метод стерилизации самцов)</div>
+        </div>
+        <div class="card-body">
+            <div>Это высокотехнологичное, экологически перспективное направление борьбы с переносчиками. Идея этого необычного биологического способа подавления численности вредных насекомых-переносчиков была впервые предложена выдающимся отечественным генетиком <strong>А.С. Серебровским</strong> (1892–1948 гг.).</div>
+            <span class="mechanism"><strong>Механизм:</strong> Суть метода заключается в массовом внедрении в природную популяцию переносчиков специально выращенных в лабораторных условиях <strong>бесплодных (стерилизованных) мужских особей</strong>. Выпущенные в окружающую среду стерильные самцы активно и эффективно конкурируют за самок с нормальными дикими самцами популяции.</span>
+            <span class="result"><strong>Результат:</strong> Самки, вступившие в половой контакт со стерилизованными самцами, навсегда остаются бесплодными и не дают потомства, что приводит к резкому сокращению численности популяции переносчика без использования токсичных ядохимикатов.</span>
+            <span class="example"><strong>Примеры применения:</strong> Этот метод доказал свою практическую значимость при борьбе с мясными мухами и комарами в США. В медицинской паразитологии он также рассматривается как высокоэффективная мера профилактики африканского трипаносомоза (сонной болезни) путём массового выпуска в природу стерилизованных самцов мухи цеце.</span>
+        </div>
+    </div>
+
+    <!-- ===== ЗАКЛЮЧЕНИЕ ===== -->
+    <div class="conclusion-box">
+        <strong>📌 Итог:</strong> Использование данных экологичных подходов позволяет значительно снизить популяцию кровососущих членистоногих и свести риск заражения человека в природных и антропургических очагах к минимуму (<strong>парциальная девастация</strong>), не применяя массированной обработки лесов и водоёмов инсектицидами, наносящими ущерб окружающей среде.
+    </div>
+
+</div>

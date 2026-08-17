@@ -1,0 +1,768 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 21px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 8px;
+        border-bottom: 3px solid #e9edf3;
+    }
+
+    .tab-content-inner h3 .badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 12px;
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 4px;
+        letter-spacing: 0.02em;
+    }
+
+    .badge-blue { background: #2563eb; }
+    .badge-green { background: #10b981; }
+    .badge-orange { background: #f59e0b; }
+    .badge-purple { background: #8b5cf6; }
+    .badge-red { background: #ef4444; }
+
+    .tab-content-inner h4 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin: 24px 0 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    .tab-content-inner .section-divider {
+        height: 3px;
+        background: linear-gradient(to right, #e9edf3, #2563eb, #e9edf3);
+        margin: 40px 0 30px 0;
+        border-radius: 2px;
+        opacity: 0.5;
+    }
+
+    /* ===== Карточка определения ===== */
+    .definition-card {
+        border-radius: 14px;
+        padding: 22px 28px;
+        margin: 16px 0 24px 0;
+        border-left: 5px solid #2563eb;
+        background: linear-gradient(135deg, #eff6ff, #f8faff);
+        box-shadow: 0 2px 12px rgba(37, 99, 235, 0.06);
+    }
+
+    .definition-card p {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 500;
+        color: #1e3a8a;
+        line-height: 1.6;
+    }
+
+    .definition-card p strong {
+        color: #1e40af;
+    }
+
+    /* ===== Карточки компонентов ===== */
+    .component-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 16px 0 24px 0;
+    }
+
+    .component-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 22px;
+        border: 1px solid #e9edf3;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .component-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .component-card .card-title {
+        font-weight: 700;
+        font-size: 18px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+    }
+
+    .component-card .card-title .icon {
+        font-size: 22px;
+    }
+
+    .component-card .card-desc {
+        color: #334155;
+        font-size: 15px;
+    }
+
+    .component-card .card-desc strong {
+        color: #1e293b;
+    }
+
+    .component-card.biotic {
+        border-left: 4px solid #10b981;
+    }
+
+    .component-card.abiotic {
+        border-left: 4px solid #f59e0b;
+    }
+
+    /* ===== Классификационные сетки ===== */
+    .class-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        margin: 16px 0 20px 0;
+    }
+
+    .class-item {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 16px 18px;
+        border: 1px solid #e9edf3;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .class-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .class-item .class-title {
+        font-weight: 700;
+        font-size: 16px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .class-item .class-title .icon {
+        font-size: 20px;
+    }
+
+    .class-item .class-desc {
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .class-item .class-desc strong {
+        color: #1e293b;
+    }
+
+    .class-item .class-examples {
+        font-size: 13px;
+        color: #2563eb;
+        font-weight: 500;
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px dashed #e9edf3;
+    }
+
+    .class-item .class-examples .label {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .class-item.type-natural {
+        border-left: 4px solid #10b981;
+    }
+    .class-item.type-anthropurgic {
+        border-left: 4px solid #f59e0b;
+    }
+    .class-item.type-sinanthropic {
+        border-left: 4px solid #ef4444;
+    }
+    .class-item.type-mono {
+        border-left: 4px solid #8b5cf6;
+    }
+    .class-item.type-poly {
+        border-left: 4px solid #3b82f6;
+    }
+    .class-item.type-monovector {
+        border-left: 4px solid #10b981;
+    }
+    .class-item.type-polyvector {
+        border-left: 4px solid #f59e0b;
+    }
+
+    /* ===== Таблицы примеров очагов ===== */
+    .table-wrapper {
+        overflow-x: auto;
+        margin: 16px 0 24px 0;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .table-wrapper:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .foci-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        min-width: 650px;
+    }
+
+    .foci-table thead {
+        border-bottom: 2px solid #e9edf3;
+    }
+
+    .foci-table thead th {
+        padding: 14px 18px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #1e3a8a;
+    }
+
+    .foci-table thead th:first-child {
+        border-radius: 14px 0 0 0;
+    }
+    .foci-table thead th:last-child {
+        border-radius: 0 14px 0 0;
+    }
+
+    .foci-table td {
+        padding: 14px 18px;
+        border-bottom: 1px solid #f0f2f5;
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    .foci-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .foci-table tbody tr {
+        transition: background 0.2s ease;
+    }
+
+    .foci-table tbody tr:hover {
+        background: #f8faff;
+    }
+
+    .foci-table tbody tr:nth-child(even) {
+        background: #fafcff;
+    }
+
+    .foci-table tbody tr:nth-child(even):hover {
+        background: #f4f8ff;
+    }
+
+    .foci-table .col-param {
+        width: 18%;
+        font-weight: 700;
+        color: #1e3a8a;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .foci-table .col-value {
+        width: 82%;
+        color: #334155;
+    }
+
+    .foci-table .col-value strong {
+        color: #1e293b;
+    }
+
+    .foci-table .col-value em {
+        font-style: italic;
+        color: #2563eb;
+    }
+
+    /* Цветовые темы для таблиц */
+    .foci-plague thead {
+        background: #fef2f2;
+    }
+    .foci-plague thead th {
+        color: #991b1b;
+    }
+
+    .foci-sleeping thead {
+        background: #f5f3ff;
+    }
+    .foci-sleeping thead th {
+        color: #5b21b6;
+    }
+
+    .foci-brugia thead {
+        background: #fef3c7;
+    }
+    .foci-brugia thead th {
+        color: #92400e;
+    }
+
+    .foci-encephalitis thead {
+        background: #ecfdf5;
+    }
+    .foci-encephalitis thead th {
+        color: #065f46;
+    }
+
+    .foci-typhus thead {
+        background: #e0f2fe;
+    }
+    .foci-typhus thead th {
+        color: #0369a1;
+    }
+
+    .foci-table .col-disease-name {
+        font-weight: 700;
+        font-size: 16px;
+        color: #1e3a8a;
+        padding: 12px 18px;
+        background: #f8fafc;
+        border-bottom: 2px solid #e9edf3;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 900px) {
+        .class-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .component-grid {
+            grid-template-columns: 1fr;
+        }
+        .foci-table {
+            font-size: 13px;
+            min-width: 480px;
+        }
+        .foci-table th,
+        .foci-table td {
+            padding: 10px 12px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 24px;
+        }
+        .tab-content-inner h3 {
+            font-size: 19px;
+        }
+        .tab-content-inner h4 {
+            font-size: 16px;
+        }
+        .definition-card {
+            padding: 16px 18px;
+        }
+        .definition-card p {
+            font-size: 16px;
+        }
+        .component-card {
+            padding: 16px 18px;
+        }
+        .class-grid {
+            grid-template-columns: 1fr;
+        }
+        .class-item {
+            padding: 14px 16px;
+        }
+        .foci-table {
+            font-size: 12px;
+            min-width: 400px;
+        }
+        .foci-table th,
+        .foci-table td {
+            padding: 8px 10px;
+        }
+        .foci-table .col-param {
+            font-size: 12px;
+        }
+        .foci-table .col-disease-name {
+            font-size: 14px;
+            padding: 10px 12px;
+        }
+        .tab-content-inner h3 .badge {
+            font-size: 10px;
+            padding: 1px 8px;
+        }
+        .tab-content-inner .section-divider {
+            margin: 30px 0 20px 0;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">🌿</span> Структура и классификация природных очагов</h2>
+
+    <!-- ============================================================ -->
+    <!--  ЧАСТЬ 1: КЛАССИФИКАЦИЯ ПРИРОДНЫХ ОЧАГОВ                    -->
+    <!-- ============================================================ -->
+    <h3>
+        <span>📋 Классификация природных очагов</span>
+        <span class="badge badge-blue">По критериям</span>
+    </h3>
+
+    <p>В рамках учения очаги классифицируются по нескольким экологическим критериям:</p>
+
+    <!-- 1. По характеру освоения ландшафта -->
+    <h4>🏞️ 1. По характеру освоения ландшафта (уровню антропопрессии)</h4>
+
+    <div class="class-grid">
+        <div class="class-item type-natural">
+            <div class="class-title"><span class="icon">🌲</span> Природные очаги</div>
+            <div class="class-desc">Циркуляция возбудителя идёт <strong>только среди диких животных</strong>.</div>
+        </div>
+        <div class="class-item type-anthropurgic">
+            <div class="class-title"><span class="icon">🏘️</span> Антропургические очаги</div>
+            <div class="class-desc">Возникают при освоении человеком территории природного очага; в циркуляцию возбудителей, помимо диких, вовлекаются <strong>домашние животные</strong>.</div>
+            <div class="class-examples"><span class="label">Примеры:</span> кожный лейшманиоз, клещевой возвратный тиф</div>
+        </div>
+        <div class="class-item type-sinanthropic">
+            <div class="class-title"><span class="icon">🏠</span> Синантропные очаги</div>
+            <div class="class-desc">Циркуляция возбудителей связана <strong>исключительно с синантропными и домашними животными</strong>.</div>
+            <div class="class-examples"><span class="label">Примеры:</span> токсоплазмоз, трихинеллёз</div>
+        </div>
+    </div>
+
+    <!-- 2. По количеству хозяев-резервуаров -->
+    <h4>🐾 2. По количеству хозяев-резервуаров</h4>
+
+    <div class="class-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="class-item type-mono">
+            <div class="class-title"><span class="icon">🐹</span> Моногостальные</div>
+            <div class="class-desc">Резервуаром является <strong>один вид животных</strong> (возбудитель узко адаптирован).</div>
+        </div>
+        <div class="class-item type-poly">
+            <div class="class-title"><span class="icon">🐾</span> Полигостальные</div>
+            <div class="class-desc">Резервуаром служат <strong>несколько видов животных</strong>.</div>
+            <div class="class-examples"><span class="label">Пример:</span> суслики, сурки и песчанки в очаге чумы</div>
+        </div>
+    </div>
+
+    <!-- 3. По количеству переносчиков -->
+    <h4>🦟 3. По количеству переносчиков</h4>
+
+    <div class="class-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="class-item type-monovector">
+            <div class="class-title"><span class="icon">🦟</span> Моновекторные</div>
+            <div class="class-desc">Возбудитель передаётся <strong>только одним видом или родом</strong> переносчиков.</div>
+            <div class="class-examples"><span class="label">Пример:</span> висцеральный лейшманиоз передаётся только москитами</div>
+        </div>
+        <div class="class-item type-polyvector">
+            <div class="class-title"><span class="icon">🔄</span> Поливекторные</div>
+            <div class="class-desc">Возбудитель передаётся <strong>различными видами</strong> переносчиков.</div>
+            <div class="class-examples"><span class="label">Пример:</span> очаги туляремии поддерживаются разными клещами, слепнями и комарами</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--  ЧАСТЬ 2: СТРУКТУРА ПРИРОДНОГО ОЧАГА                       -->
+    <!-- ============================================================ -->
+    <div class="section-divider"></div>
+
+    <h3>
+        <span>🔬 Структура природного очага</span>
+        <span class="badge badge-green">Компоненты</span>
+    </h3>
+
+    <div class="definition-card">
+        <p>
+            <strong>Природный очаг</strong> — это участок биогеоценоза (определённого ландшафта), на котором эволюционно сложились межвидовые отношения и происходит циркуляция возбудителя <strong>независимо от человека</strong>.
+        </p>
+    </div>
+
+    <p>
+        Для возникновения и устойчивого существования природного очага трансмиссивного заболевания необходимо наличие комплекса <strong>биотических</strong> и <strong>абиотических</strong> компонентов.
+    </p>
+
+    <!-- Биотические условия -->
+    <h4>🧬 1. Биотические условия (звенья паразитарной системы)</h4>
+
+    <div class="component-grid">
+        <div class="component-card biotic">
+            <div class="card-title"><span class="icon">🦠</span> Возбудитель заболевания</div>
+            <div class="card-desc">Патогенный микроорганизм, вирус, простейшее или гельминт, циркулирующий в биоценозе.</div>
+        </div>
+        <div class="component-card biotic">
+            <div class="card-title"><span class="icon">🐾</span> Донор (источник возбудителя) / Резервуар</div>
+            <div class="card-desc">Популяции восприимчивых диких позвоночных животных, обеспечивающих сохранение и размножение возбудителя в природе (<strong>грызуны, птицы, копытные</strong>).</div>
+        </div>
+        <div class="component-card biotic">
+            <div class="card-title"><span class="icon">🦟</span> Вектор (переносчик)</div>
+            <div class="card-desc">Популяции кровососущих членистоногих (<strong>клещи, насекомые</strong>), осуществляющие передачу патогена от донора к реципиенту.</div>
+        </div>
+        <div class="component-card biotic">
+            <div class="card-title"><span class="icon">🧑</span> Реципиент</div>
+            <div class="card-desc">
+                Восприимчивый здоровый организм. В истинном природном очаге — исключительно <strong>дикое позвоночное животное</strong>. Человек может выступать <strong>случайным реципиентом</strong> лишь при попадании на территорию природного очага, либо является закономерным реципиентом в <strong>антропургических</strong> и <strong>синантропных</strong> очагах.
+            </div>
+        </div>
+    </div>
+
+    <!-- Абиотические условия -->
+    <h4>🌍 2. Абиотические условия (биотоп)</h4>
+
+    <div class="component-grid">
+        <div class="component-card abiotic" style="grid-column: 1 / -1;">
+            <div class="card-title"><span class="icon">🌲</span> Климатогеографическая и природная зона</div>
+            <div class="card-desc">
+                Определённая природная зона (<strong>тайга, смешанные леса, степи, пустыни</strong>), обеспечивающая условия для существования компонентов биоценоза. Определяющее значение имеет <strong>температурный режим, влажность и ландшафт</strong>, от которых зависит возможность развития переносчика и возбудителя, что обусловливает <strong>строгую сезонность</strong> большинства трансмиссивных заболеваний.
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--  ЧАСТЬ 3: ПРИМЕРЫ ПРИРОДНЫХ ОЧАГОВ                          -->
+    <!-- ============================================================ -->
+    <div class="section-divider"></div>
+
+    <h3>
+        <span>📊 Примеры природных очагов</span>
+        <span class="badge badge-purple">Характеристика</span>
+    </h3>
+
+    <!-- ===== ЧУМА ===== -->
+    <div class="table-wrapper">
+        <table class="foci-table foci-plague">
+            <thead>
+                <tr>
+                    <th colspan="2" style="background:#fef2f2;color:#991b1b;font-size:18px;padding:12px 18px;border-radius:14px 14px 0 0;">
+                        🦠 Чума
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-param">Климатогеографическая зона</td>
+                    <td class="col-value">Степи, полупустыни и пустыни (в том числе пустыня Гоби).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Сезонность</td>
+                    <td class="col-value">Отсутствует, циркуляция непрерывно поддерживается популяциями грызунов и блох; блохи способны сохранять жизнеспособность микроба до <strong>1 года</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Возбудитель</td>
+                    <td class="col-value"><strong>Чумная палочка</strong> (<em>Yersinia pestis</em>), бактерия семейства <em>Enterobacteriaceae</em>.</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Переносчики</td>
+                    <td class="col-value">Блохи: человечья блоха (<em>Pulex irritans</em>), крысиная блоха (<em>Xenopsylla cheopis</em>), а также блохи сурков и сусликов (<em>Oropsylla silantiewi</em>, <em>Neopsylla setosa</em>).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Животные-резервуары</td>
+                    <td class="col-value">Дикие грызуны (суслики, сурки, тарбаганы, песчанки, крысы).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== АФРИКАНСКАЯ СОННАЯ БОЛЕЗНЬ ===== -->
+    <div class="table-wrapper">
+        <table class="foci-table foci-sleeping">
+            <thead>
+                <tr>
+                    <th colspan="2" style="background:#f5f3ff;color:#5b21b6;font-size:18px;padding:12px 18px;border-radius:14px 14px 0 0;">
+                        🦟 Африканский трипаносомоз / Сонная болезнь
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-param">Климатогеографическая зона</td>
+                    <td class="col-value">Тропическая и Экваториальная Африка (зоны саванн, саванновых лесов и территории вблизи долин рек).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Сезонность</td>
+                    <td class="col-value">Заболеваемость носит <strong>сезонный характер</strong>, пик заражения приходится на <strong>сухой сезон</strong> года, когда переносчики концентрируются у непересохших водоёмов.</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Возбудитель</td>
+                    <td class="col-value">Простейшие жгутиконосцы семейства <em>Trypanosomatidae</em>: <em>Trypanosoma brucei gambiense</em> и <em>Trypanosoma brucei rhodesiense</em>.</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Переносчики</td>
+                    <td class="col-value">Кровососущие <strong>мухи це-це</strong> (род <em>Glossina</em>): преимущественно <em>Glossina palpalis</em>, <em>G. tachinoides</em> и <em>G. morsitans</em>.</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Животные-резервуары</td>
+                    <td class="col-value">Дикие млекопитающие (различные виды антилоп, носороги), а также крупный и мелкий рогатый скот, свиньи.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== БРУГИОЗ ===== -->
+    <div class="table-wrapper">
+        <table class="foci-table foci-brugia">
+            <thead>
+                <tr>
+                    <th colspan="2" style="background:#fef3c7;color:#92400e;font-size:18px;padding:12px 18px;border-radius:14px 14px 0 0;">
+                        🐛 Бругиоз
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-param">Климатогеографическая зона</td>
+                    <td class="col-value">Страны с тропическим и субтропическим климатом, Южная и Юго-Восточная Азия (Индия, Китай, Корея, Вьетнам, Малайзия, Индонезия и др.).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Сезонность</td>
+                    <td class="col-value">Отсутствует, заболеваемость обусловлена постоянным наличием оптимальных условий (температуры и высокой влажности) для выплода комаров.</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Возбудитель</td>
+                    <td class="col-value">Нематоды (филярии): <em>Brugia malayi</em> и <em>Brugia timori</em>.</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Переносчики</td>
+                    <td class="col-value">Комары родов <em>Anopheles</em>, <em>Mansonia</em> и <em>Aedes</em>.</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Животные-резервуары</td>
+                    <td class="col-value">Дикие и домашние кошки, собаки, некоторые виды обезьян (макаки, лори).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== КЛЕЩЕВОЙ ЭНЦЕФАЛИТ ===== -->
+    <div class="table-wrapper">
+        <table class="foci-table foci-encephalitis">
+            <thead>
+                <tr>
+                    <th colspan="2" style="background:#ecfdf5;color:#065f46;font-size:18px;padding:12px 18px;border-radius:14px 14px 0 0;">
+                        🧬 Клещевой весенне-летний энцефалит
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-param">Климатогеографическая зона</td>
+                    <td class="col-value">Лесная и лесостепная зона Евразии (<strong>тайга</strong>, хвойно-лиственные леса).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Сезонность</td>
+                    <td class="col-value"><strong>Строго весенне-летняя</strong> (обусловлена периодом активности клещей).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Возбудитель</td>
+                    <td class="col-value"><strong>РНК-геномный вирус</strong> клещевого энцефалита (флавивирус / арбовирус).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Переносчики</td>
+                    <td class="col-value">Иксодовые клещи (преимущественно <strong>таёжный клещ</strong> <em>Ixodes persulcatus</em> и <strong>собачий клещ</strong> <em>Ixodes ricinus</em>).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Животные-резервуары</td>
+                    <td class="col-value">Мелкие млекопитающие (мыши, крысы, бурундуки, белки, зайцы), птицы, ежи, крупные копытные животные.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== КЛЕЩЕВОЙ ВОЗВРАТНЫЙ ТИФ ===== -->
+    <div class="table-wrapper">
+        <table class="foci-table foci-typhus">
+            <thead>
+                <tr>
+                    <th colspan="2" style="background:#e0f2fe;color:#0369a1;font-size:18px;padding:12px 18px;border-radius:14px 14px 0 0;">
+                        🩸 Клещевой возвратный тиф
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-param">Климатогеографическая зона</td>
+                    <td class="col-value">Степи, полупустыни, пустыни, предгорные и горные селения (Средняя Азия, Закавказье).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Сезонность</td>
+                    <td class="col-value"><strong>Весенне-летняя</strong> (в природных условиях) и <strong>круглогодичная</strong> (в антропургических очагах в отапливаемых помещениях).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Возбудитель</td>
+                    <td class="col-value">Спирохеты рода <em>Borrelia</em> (в частности, возбудители клещевого спирохетоза).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Переносчики</td>
+                    <td class="col-value">Аргасовые клещи (<strong>поселковый клещ</strong> <em>Ornithodorus papillipes</em> и виды рода <em>Argas</em>).</td>
+                </tr>
+                <tr>
+                    <td class="col-param">Животные-резервуары</td>
+                    <td class="col-value">Дикие грызуны, насекомоядные (ежи), птицы, в посёлках — домашние животные.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Иксодовые клещи (Ixodidae) — Ixodes persulcatus, Ixodes ricinus</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        .epi-grid .item.full {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 600px;
+        }
+
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .compare-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .compare-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .compare-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .compare-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .compare-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .compare-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .compare-table .col-feature {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        .compare-table .col-persulcatus {
+            width: 37%;
+        }
+
+        .compare-table .col-ricinus {
+            width: 38%;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        h5 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 14px 0 4px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul,
+        ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul,
+        ol ol,
+        ul ol,
+        ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .danger-note {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #7f1d1d;
+        }
+
+        .danger-note strong {
+            color: #991b1b;
+        }
+
+        .exam-note {
+            background: #eef2ff;
+            border-left: 4px solid #4f46e5;
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin: 16px 0 20px 0;
+            color: #1e1b4b;
+        }
+
+        .exam-note strong {
+            color: #312e81;
+        }
+
+        .highlight-box {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #14532d;
+        }
+
+        .highlight-box strong {
+            color: #166534;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .compare-table {
+                font-size: 13px;
+            }
+
+            .compare-table .col-feature,
+            .compare-table .col-persulcatus,
+            .compare-table .col-ricinus {
+                width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .compare-table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== ЗАГОЛОВОК ===== -->
+        <h1><span class="emoji">🕷️</span> Иксодовые клещи</h1>
+        <div class="subtitle">
+            <strong>Семейство Ixodidae</strong> — <em>Ixodes persulcatus</em> (Таёжный клещ) и <em>Ixodes ricinus</em> (Собачий / Лесной клещ)
+        </div>
+
+        <!-- ===== СИСТЕМАТИКА ===== -->
+        <div class="taxonomy-card">
+            <p>
+                <strong>Царство:</strong> Животные (Animalia)<br />
+                <strong>Тип:</strong> Членистоногие (Arthropoda)<br />
+                <strong>Подтип:</strong> Хелицеровые (Chelicerata)<br />
+                <strong>Класс:</strong> Паукообразные (Arachnida, или Arachnoidea)<br />
+                <strong>Отряд:</strong> Клещи (Acari)<br />
+                <strong>Семейство:</strong> Иксодовые клещи (Ixodidae)<br />
+                <strong>Род:</strong> <em>Ixodes</em><br />
+                <strong>Виды:</strong> <em>Ixodes persulcatus</em> (Таёжный), <em>Ixodes ricinus</em> (Собачий / Лесной)
+            </p>
+        </div>
+
+        <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+        <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+        <div class="epi-grid">
+            <div class="item"><strong>Специфические переносчики и резервуары для:</strong> вируса клещевого энцефалита, боррелий (болезнь Лайма), туляремии, лихорадки Ку, кемеровской лихорадки.</div>
+            <div class="item"><strong>Эпидемиологическая группа:</strong> Трансмиссивные природно-очаговые инфекции.</div>
+            <div class="item full">
+                <strong>Географическое распространение:</strong><br />
+                <em>I. persulcatus</em> — таёжная зона Сибири, Урала, Дальнего Востока, Монголия, Китай, страны Балтии.<br />
+                <em>I. ricinus</em> — европейская часть России, Кавказ, Западная и Восточная Европа, Великобритания, Северная Африка.
+            </div>
+            <div class="item full">
+                <strong>Биотопы:</strong><br />
+                <em>I. persulcatus</em> — темнохвойная и хвойная тайга, реже смешанные леса и лесостепь.<br />
+                <em>I. ricinus</em> — смешанные и лиственные леса, кустарниковые заросли, овраги, лесные поляны.
+            </div>
+        </div>
+
+        <!-- ===== МОРФОЛОГИЧЕСКИЕ ФОРМЫ ===== -->
+        <h2><span class="emoji">🔬</span> Морфологические формы и их подробная характеристика</h2>
+        <p>Развитие иксодовых клещей происходит по типу <strong>неполного метаморфоза</strong>. Жизненный цикл включает четыре последовательные морфологические формы (стадии).</p>
+
+        <!-- 1. Яйцо -->
+        <h3>1. Яйцо</h3>
+        <p>
+            <strong>Форма и размеры:</strong> Сферической или овальной формы, микроскопических размеров (около <strong>0,5 мм</strong>). Имеет плотную оболочку светло-жёлтого или буроватого цвета.
+        </p>
+        <p>
+            <strong>Место откладки:</strong> Самки откладывают яйца кучками во влажную лесную подстилку, трещины почвы или под кору гниющих деревьев, после чего погибают.
+        </p>
+
+        <!-- 2. Личинка -->
+        <h3>2. Личинка (<em>Larva</em>)</h3>
+        <ul>
+            <li><strong>Размеры:</strong> Мелкая, в голодном состоянии составляет всего <strong>0,5–0,8 мм</strong>.</li>
+            <li><strong>Конечности:</strong> Имеет <strong>3 пары ходильных ног (6 ног)</strong> — важнейший диагностический признак.</li>
+            <li><strong>Органы дыхания:</strong> Специализированные органы дыхания (стигмы, трахеи) полностью отсутствуют, газообмен осуществляется всей поверхностью тела (кожное дыхание).</li>
+            <li><strong>Половая система:</strong> Половой аппарат и половое отверстие отсутствуют.</li>
+            <li><strong>Покровы:</strong> На спинной стороне имеется небольшой твердый хитиновый щиток, прикрывающий переднюю часть тела. Остальная часть тела мягкая и кожистая, что позволяет личинке растягиваться при поглощении крови.</li>
+        </ul>
+
+        <!-- 3. Нимфа -->
+        <h3>3. Нимфа (<em>Nymph</em>)</h3>
+        <ul>
+            <li><strong>Размеры:</strong> Крупнее личинки, длина тела составляет около <strong>1,2–1,7 мм</strong>.</li>
+            <li><strong>Конечности:</strong> Имеет <strong>4 пары ходильных ног (8 ног)</strong>, как и взрослая особь.</li>
+            <li><strong>Органы дыхания:</strong> Появляются <strong>стигмы (дыхальца)</strong>, расположенные вентролатерально (на брюшной стороне по бокам тела, позади IV пары ног) на специальных округлых пластинках (перитремах). Начинает активно функционировать трахейная система.</li>
+            <li><strong>Половая система:</strong> Половое отверстие всё ещё отсутствует, половой аппарат недоразвит.</li>
+            <li><strong>Покровы:</strong> Спинной щиток также прикрывает только переднюю часть тела.</li>
+        </ul>
+
+        <!-- 4. Имаго -->
+        <h3>4. Взрослая особь (<em>Имаго</em>)</h3>
+        <p>Имаго имеет 4 пары ходильных ног, терминально расположенный хоботок (гнатосому), развитые стигмы позади IV пары ног и щелевидное половое отверстие на брюшной стороне. <strong>Глаза у клещей рода <em>Ixodes</em> полностью отсутствуют</strong> — главный родовой признак (отличает от рода <em>Dermacentor</em>).</p>
+
+        <h4>Половой диморфизм:</h4>
+
+        <h5>Самка (<em>Female</em>)</h5>
+        <ul>
+            <li><strong>Размеры:</strong> Крупнее самца, длина голодного тела составляет <strong>3,5–4,0 мм</strong>. После насасывания крови (3–9 дней) тело раздувается до <strong>10–12 мм</strong> (иногда до 15 мм), меняя окраску с коричневой на серую, свинцовую или жёлто-розовую.</li>
+            <li><strong>Покровы:</strong> Твердый спинной щиток покрывает только <strong>переднюю треть тела</strong>, остальная часть спины мягкая, складчатая и способна к колоссальному растяжению.</li>
+            <li><strong>Половое отверстие:</strong> Щелевидное, расположено на брюшной стороне на уровне III–IV пары ходильных ног.</li>
+        </ul>
+
+        <h5>Самец (<em>Male</em>)</h5>
+        <ul>
+            <li><strong>Размеры:</strong> Значительно меньше самки, длина тела около <strong>2,5 мм</strong>.</li>
+            <li><strong>Покровы:</strong> Твердый спинной хитиновый щиток <strong>полностью покрывает всю спинную сторону тела</strong>, поэтому тело самца не способно раздуваться.</li>
+            <li><strong>Питание:</strong> Присасываются к хозяину на очень короткое время (менее суток) только для утоления жажды и поддержания сил; главная биологическая роль — поиск и оплодотворение самок.</li>
+        </ul>
+
+        <!-- ===== БОЛЬШАЯ ФОТОГРАФИЯ МОРФОЛОГИЧЕСКИХ ФОРМ ===== -->
+        <div class="full-width-image">
+            <div class="placeholder">
+                <span class="icon">🕷️</span>
+                Морфологические формы иксодовых клещей
+                <span class="small">(яйцо, личинка, нимфа, имаго — самец и самка)</span>
+                <span class="filename">imagine/ixodes_morphology.jpg</span>
+            </div>
+        </div>
+
+        <!-- ===== БИОЛОГИЧЕСКИЕ ОСОБЕННОСТИ И ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+        <h2><span class="emoji">🔄</span> Биологические особенности и жизненный цикл</h2>
+
+        <p>
+            <em>Ixodes persulcatus</em> и <em>Ixodes ricinus</em> являются строгими <strong>трёххозяинными клещами</strong>. Это означает, что для завершения полного метаморфоза клещ должен трижды сменить хозяина-прокормителя. Каждая активная стадия (личинка, нимфа, имаго) питается кровью <strong>один раз в жизни</strong>, после чего отпадает во внешнюю среду (в лесную подстилку) для линьки в следующую фазу.
+        </p>
+
+        <h4>Смена хозяев в цикле развития:</h4>
+        <ul>
+            <li><strong>Личинки</strong> питаются кровью мелких лесных грызунов (мышей, полевок), ежей, землероек и птиц.</li>
+            <li><strong>Нимфы</strong> нападают на прокормителей среднего размера — бурундуков, белок, зайцев.</li>
+            <li><strong>Имаго (взрослые самки)</strong> выбирают крупных лесных млекопитающих (лосей, оленей, кабанов), крупный рогатый скот и человека.</li>
+        </ul>
+
+        <p>
+            <strong>Продолжительность цикла:</strong> В связи с необходимостью поиска нового хозяина на каждой стадии и зависимостью от температурных условий, цикл развития таёжного клеща длится в среднем от <strong>3 до 5 лет</strong>. Все стадии развития обладают колоссальной устойчивостью к внешним факторам и способны голодать по <strong>1–2 года</strong> в ожидании прокормителя.
+        </p>
+
+        <!-- ===== СРАВНИТЕЛЬНАЯ ТАБЛИЦА ВИДОВ ===== -->
+        <h2><span class="emoji">📊</span> Сравнительная характеристика видов</h2>
+
+        <div class="table-wrapper">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="col-feature">Признак сравнения</th>
+                        <th class="col-persulcatus"><strong><em>Ixodes persulcatus</em></strong><br><span style="font-weight:400;font-size:13px;color:#475569;">Таёжный клещ</span></th>
+                        <th class="col-ricinus"><strong><em>Ixodes ricinus</em></strong><br><span style="font-weight:400;font-size:13px;color:#475569;">Собачий / Лесной клещ</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-feature"><strong>Географическое распространение</strong></td>
+                        <td>Азиатско-таёжный вид. Широко распространён по всей таёжной полосе Сибири, Урала, Дальнего Востока, Сахалина, Курильских островов. За пределами РФ — в странах Балтии, Монголии, Китае.</td>
+                        <td>Европейско-лесной вид. Распространён в европейской части России, на Кавказе, в Западной и Восточной Европе, Великобритании, Северной Африке.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-feature"><strong>Экологическая ниша (Биотоп)</strong></td>
+                        <td>Обитатель темнохвойной и хвойной тайги, реже встречается в смешанных лесах и лесостепи. Поселяется в глубокой лесной подстилке.</td>
+                        <td>Обитатель смешанных и лиственных лесов, густых кустарниковых зарослей, оврагов, лесных полян.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-feature"><strong>Сезонная активность</strong></td>
+                        <td>Выраженная весенне-летняя сезонность. Пик активности имаго и личинок регистрируется очень рано — с апреля по май–июнь.</td>
+                        <td>Имеет два выраженных пика активности: весенний (май–июнь) и осенний (август–сентябрь).</td>
+                    </tr>
+                    <tr>
+                        <td class="col-feature"><strong>Главное медицинское значение</strong></td>
+                        <td>Основной специфический переносчик и природный резервуар тяжёлого вируса весенне-летнего (таёжного) клещевого энцефалита, бактерий — возбудителей клещевого системного боррелиоза (болезни Лайма), а также кемеровской лихорадки и туляремии.</td>
+                        <td>Специфический переносчик энцефалита западных районов (с более лёгким течением), шотландского энцефалита, бактерий-боррелий (болезни Лайма), лихорадки Ку и туляремии.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== ЭПИДЕМИОЛОГИЧЕСКОЕ ЗНАЧЕНИЕ ===== -->
+        <h2><span class="emoji">🩺</span> Эпидемиологическое значение: трансовариальная и трансфазовая передача</h2>
+
+        <div class="danger-note">
+            <strong>⚠️ Опасность иксодовых клещей:</strong><br />
+            Иксодовые клещи рода <em>Ixodes</em> представляют колоссальную опасность для человека не только как временные эктопаразиты, но и как надёжные природные резервуары инфекций. Благодаря двум биологическим механизмам возбудители болезней могут сохраняться в популяциях клещей неограниченно долго.
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>1. Трансфазовая передача</strong></p>
+            <p>Возбудитель (например, вирус клещевого энцефалита), попавший в организм личинки при питании на больном грызуне, сохраняется в её теле при линьке в нимфу, а затем и в имаго.</p>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>2. Трансовариальная передача</strong></p>
+            <p>Инфицированная взрослая самка способна передавать вирус через яйцеклетки своему потомству (яйцам и выходящим из них личинкам). Это означает, что личинка, которая ещё ни разу в жизни никого не кусала, уже рождается инфекционно опасной для своего первого прокормителя.</p>
+        </div>
+
+        <div class="note">
+            <strong>📌 Важно:</strong> Благодаря этим механизмам иксодовые клещи являются <strong>основными природными резервуарами</strong> вируса клещевого энцефалита, боррелий и других патогенов, обеспечивая непрерывную циркуляцию возбудителей в природных очагах.
+        </div>
+
+        <!-- ===== БЛОК ДЛЯ ЭКЗАМЕНА ===== -->
+        <div class="exam-note">
+            <strong>📚 БЛОК ДЛЯ ЭКЗАМЕНА:</strong><br />
+            • <strong>Родовой признак <em>Ixodes</em>:</strong> отсутствие глаз (отличает от <em>Dermacentor</em>, у которого глаза есть).<br />
+            • <strong>Трёххозяинный тип развития:</strong> личинка → нимфа → имаго (каждая стадия питается один раз и линяет во внешней среде).<br />
+            • <strong>Половой диморфизм:</strong> у самки щиток прикрывает только переднюю треть, у самца — всю спину.<br />
+            • <strong>Трансовариальная передача</strong> — ключевой механизм поддержания природных очагов.<br />
+            • <strong>Различия <em>I. persulcatus</em> и <em>I. ricinus</em>:</strong> ареал, биотоп, сезонность, тяжесть энцефалита (таёжный — более тяжёлый).
+        </div>
+
+    </div>
+
+</body>
+</html>

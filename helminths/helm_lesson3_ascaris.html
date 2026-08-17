@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Аскарида человеческая (Ascaris lumbricoides) — урок 3</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ТАБЛИЦЫ ОБЩИЕ ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-table,
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .focus-table thead,
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .focus-table thead th,
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .focus-table td,
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .focus-table tbody tr:last-child td,
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .focus-table tbody tr:hover,
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .focus-table tbody tr:nth-child(even),
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .focus-table tbody tr:nth-child(even):hover,
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .focus-table .col-type {
+            width: 20%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul,
+        ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul,
+        ol ol,
+        ul ol,
+        ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 60%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image {
+            margin-top: 12px;
+            flex: 1 1 auto;
+            display: flex;
+            align-items: stretch;
+            min-height: 280px;
+        }
+
+        .stage-row .left-col .additional-image img,
+        .stage-row .left-col .additional-image .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .left-col .additional-image .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .stage-row .left-col .additional-image {
+                flex: 0 0 auto;
+                margin-top: 12px;
+                min-height: 200px;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .focus-table,
+            .pathogenic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+
+            .stage-row .left-col .additional-image {
+                min-height: 160px;
+            }
+
+            .focus-table,
+            .pathogenic-table {
+                font-size: 12px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== ЗАГОЛОВОК ===== -->
+        <h1><span class="emoji">🧬</span> Аскарида человеческая</h1>
+        <div class="subtitle"><strong>Ascaris lumbricoides</strong> — возбудитель <strong>аскаридоза</strong></div>
+
+        <!-- ===== СИСТЕМАТИКА ===== -->
+        <div class="taxonomy-card">
+            <p>
+                <strong>Домен:</strong> Эукариоты (Eukaryota)<br />
+                <strong>Царство:</strong> Животные (Animalia)<br />
+                <strong>Тип:</strong> Круглые черви (Nemathelminthes)<br />
+                <strong>Класс:</strong> Собственно круглые черви, или Нематоды (Nematoda)<br />
+                <strong>Вид:</strong> Аскарида человеческая (<em>Ascaris lumbricoides</em>)
+            </p>
+        </div>
+
+        <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+        <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+        <div class="epi-grid">
+            <div class="item"><strong>Вызываемое заболевание:</strong> Аскаридоз.</div>
+            <div class="item"><strong>Эпидемиологическая группа:</strong> Геогельминт (развитие без промежуточного хозяина, яйца дозревают в почве), Антропоноз (паразитирует только у человека).</div>
+            <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Повсеместно.</div>
+        </div>
+
+        <!-- ===== УЧЕНИЕ ОБ ОЧАГАХ ГЕОГЕЛЬМИНТОВ ===== -->
+        <h3>Учение об очагах геогельминтов</h3>
+        <p>
+            <strong>Очаг геогельминта</strong> — это населённый пункт, на территории которого возможна циркуляция геогельминта (например, аскариды) от одного человека к другому.
+        </p>
+
+        <h4>Условия возникновения истинного очага геогельминта:</h4>
+        <p>
+            Для того чтобы сформировался и поддерживался очаг геогельминтоза, необходимо одновременное совпадение <strong>трёх факторов</strong>:
+        </p>
+        <ol>
+            <li><strong>Наличие источника инвазии:</strong> люди, инвазированные гельминтом, которые загрязняют внешнюю среду фекалиями, содержащими яйца паразита.</li>
+            <li><strong>Абиотические (климатические) условия:</strong> условия среды, обеспечивающие развитие инвазионной личинки внутри яйца (для аскариды — температура около 25°C в течение 21–24 суток, достаточная влажность и доступ кислорода).</li>
+            <li><strong>Социально-бытовые условия:</strong> особенности быта и хозяйственной деятельности, способствующие новым заражениям (например, использование необезвреженных человеческих фекалий в качестве удобрения почвы на огородах).</li>
+        </ol>
+
+        <h4>Типы очагов геогельминтов (на примере аскаридоза):</h4>
+
+        <div class="table-wrapper">
+            <table class="focus-table">
+                <thead>
+                    <tr>
+                        <th class="col-type">Тип очага</th>
+                        <th>Характеристика</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-type">Макроочаг</td>
+                        <td>Обширная территория с населением в сельской местности (деревня, посёлок), где поддерживается циркуляция возбудителя.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-type">Микроочаг</td>
+                        <td>Локальный очаг — одна семья, проживающая в сельской местности.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-type">Псевдоочаг (ложный очаг)</td>
+                        <td>Возникает в условиях благоустроенного города. Люди могут болеть аскаридозом (например, заразившись на даче или через привозные овощи), но их фекалии попадают в закрытую систему канализации, а не в открытую почву. Из-за этого яйца лишаются условий для созревания (кислорода и нужной температуры), погибают, и цепочка передачи возбудителя внутри города обрывается.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+        <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+        <!-- 3.1. Взрослая особь -->
+        <h3>3.1. Взрослая особь</h3>
+
+        <div class="stage-row">
+            <div class="text-col">
+                <p>
+                    <strong>Форма и размеры:</strong> Тело веретенообразное, цилиндрическое, несегментированное, в живом состоянии розовато-жёлтого или бело-розового цвета. Самки очень крупные — достигают <strong>20–40 см</strong> в длину, самцы мельче — <strong>15–25 см</strong>.
+                </p>
+
+                <p>
+                    <strong>Органы фиксации:</strong> Специальных органов прикрепления (присосок или крючьев) нет. На переднем конце тела ротовое отверстие окружено <strong>тремя кутикулярными губами</strong> (одной дорсальной и двумя вентральными). Аскарида удерживается в тонкой кишке, постоянно двигаясь навстречу току пищевых масс.
+                </p>
+
+                <h4>Половой диморфизм:</h4>
+                <ul>
+                    <li><strong>Самец:</strong> Хвостовой конец загнут в виде крючка на брюшную сторону и снабжён кутикулярными <strong>спикулами</strong>.</li>
+                    <li><strong>Самка:</strong> Задний конец прямой, а в передней трети тела имеется <strong>кольцевидная перетяжка</strong> (место опоры для самца при копуляции).</li>
+                </ul>
+            </div>
+
+            <div class="image-col">
+                <img src="images/helminths/ascaris_marita_scheme.jpg"
+                alt="Взрослая особь аскариды — схема"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🪱</span>
+                    Взрослая особь <em>Ascaris lumbricoides</em>
+                    <span class="small">(ascaris_marita_scheme.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">самка (прямой хвост) и самец (загнутый хвост)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3.2. Яйцо -->
+        <h3>3.2. Яйцо</h3>
+
+        <div class="stage-row">
+            <div class="left-col">
+                <div class="text">
+                    <p>
+                        <strong>Размеры:</strong> 60 × 45 мкм.<br />
+                        <strong>Форма и цвет:</strong> Овальная или округлая форма. <strong>Оплодотворённое яйцо</strong> покрыто толстой, <strong>фестончатой (бугристой)</strong> наружной белковой оболочкой, которая прокрашивается пигментами желчи (фекалий) в золотисто-коричневый или темно-жёлтый цвет. Внутри по центру располагается тёмная зародышевая масса, оставляя свободными полюса яйца.<br />
+                        <strong>Неоплодотворённые яйца:</strong> Выделяются, если в кишечнике только самки — они более крупные, вытянутые, неправильной формы и заполнены неорганизованной массой гранул.
+                    </p>
+                </div>
+                <div class="additional-image">
+                    <img src="images/helminths/ascaris_egg_microscope.jpg"
+                    alt="Микроскопическое фото яйца аскариды"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                    <div class="placeholder" style="display:none;">
+                        <span class="icon">🔬</span>
+                        Микроскопическое фото яйца <em>Ascaris lumbricoides</em>
+                        <span class="small">(ascaris_egg_microscope.jpg)</span>
+                        <span style="font-size:12px;color:#94a3b8;">фестончатая оболочка, золотисто-коричневый цвет</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <img src="images/helminths/ascaris_egg_scheme.jpg"
+                alt="Схема яйца аскариды"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🥚</span>
+                    Схема яйца <em>Ascaris lumbricoides</em>
+                    <span class="small">(ascaris_egg_scheme.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">овальная форма, бугристая оболочка, зародышевая масса</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3.3. Личинка -->
+        <h3>3.3. Личинка</h3>
+        <div class="stage-row">
+            <div class="text-col">
+                <p>
+                    <strong>Созревание в почве:</strong> Свежевыделенное с фекалиями яйцо <strong>абсолютно безопасно</strong>! Чтобы внутри него сформировалась инвазионная личинка, яйцо должно пролежать в почве около <strong>2–3 недель</strong> (21–24 суток).<br />
+                    <strong>Три обязательных условия для созревания:</strong> <span class="spec">Температура 20–25°С</span>, <span class="spec">достаточная влажность</span> и <span class="spec">обязательный доступ кислорода</span>. Личинка дважды линяет внутри яйца, но не покидает его оболочек до попадания в организм хозяина.
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+        <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+        <p>
+            <strong>Тип цикла:</strong> Прямой (без промежуточного хозяина), геогельминт.<br />
+            <strong>Окончательный (и единственный) хозяин:</strong> Человек.<br />
+            <strong>Промежуточный хозяин:</strong> Отсутствует.<br />
+            <strong>Инвазионная стадия для человека:</strong> Яйцо с развившейся личинкой.<br />
+            <strong>Патогенная стадия:</strong> Взрослая особь (и мигрирующие личинки).<br />
+            <strong>Локализация в организме человека:</strong> Тонкий кишечник (взрослые особи).
+        </p>
+
+        <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+        <div class="full-width-image">
+            <img src="images/helminths/ascaris_life_cycle.jpg"
+            alt="Жизненный цикл аскариды"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🔄</span>
+                Жизненный цикл <em>Ascaris lumbricoides</em>
+                <span class="small">(ascaris_life_cycle.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">яйцо в почве → личинка → миграция (кишечник → печень → лёгкие → кишечник) → взрослая особь</span>
+            </div>
+        </div>
+
+        <!-- Этапы жизненного цикла -->
+        <h4>Этапы жизненного цикла:</h4>
+        <ol>
+            <li><strong>Выделение яиц во внешнюю среду:</strong> Взрослые особи в тонком кишечнике продуцируют яйца, которые выделяются с фекалиями.</li>
+            <li><strong>Созревание яиц в почве:</strong> Свежевыделенное с фекалиями яйцо <strong>абсолютно безопасно</strong>! Чтобы внутри него сформировалась инвазионная личинка, яйцо должно пролежать в почве около <strong>2–3 недель</strong> (21–24 суток). Три обязательных условия для созревания: <span class="spec">температура 20–25°С</span>, <span class="spec">достаточная влажность</span> и <span class="spec">обязательный доступ кислорода</span>. Личинка дважды линяет внутри яйца, но не покидает его оболочек до попадания в организм хозяина.</li>
+            <li><strong>Заражение человека:</strong>
+                <ul>
+                    <li><strong>Механизм заражения:</strong> Фекально-оральный.</li>
+                    <li><strong>Пути передачи:</strong>
+                        <ul>
+                            <li><strong>Контактно-бытовой</strong> — через:
+                                <ul>
+                                    <li>грязные руки после контакта с почвой (земляные работы, игры в песочнице);</li>
+                                    <li>грязные предметы обихода;</li>
+                                    <li>немытые овощи, фрукты, огородную зелень, ягоды (особенно клубнику с полей орошения).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Водный</strong> — питьё сырой воды из открытых водоёмов или колодцев.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p style="margin-top:8px;"><strong>Дополнительно:</strong> механическими переносчиками яиц аскарид могут выступать синантропные насекомые — <strong>мухи и тараканы</strong>, которые на лапках заносят яйца из туалетов на продукты питания.</p>
+            </li>
+            <li>
+                <strong>Миграция личинок (каверзный вопрос!):</strong>
+                <div class="note" style="margin-top: 8px;">
+                    <strong>💡 Возможный доп. вопрос преподавателя:</strong> «Зачем личинке, которая и так попала в кишечник, совершать такое сложное путешествие по крови через печень и лёгкие, чтобы потом снова вернуться в кишечник?»<br />
+                    <strong>Идеальный ответ:</strong> «Потому что для дальнейшего роста, развития и линек личинке <strong>жизненно необходим кислород</strong>, который в избытке присутствует только в <strong>лёгочных альвеолах</strong>!»
+                </div>
+                <p><strong>Путь миграции:</strong></p>
+                <ol style="margin-top: 4px;">
+                    <li>Проглоченное инвазионное яйцо попадает в тонкую кишку → оболочка растворяется, личинка выходит и <strong>пробуравливает стенку кишки</strong>.</li>
+                    <li>Проникает в вены кишечника → <strong>воротная вена</strong> → <strong>печень</strong> → нижняя полая вена → правое предсердие и правый желудочек сердца → <strong>лёгочная артерия</strong> → <strong>капилляры лёгочных альвеол</strong>.</li>
+                    <li>Там личинки активно пробуравливают стенки капилляров, выходят в полость альвеол (где много кислорода), линяют, растут, поднимаются по бронхиолам, бронхам и трахее в глотку.</li>
+                    <li>Со слюной или мокротой при откашливании они <strong>вторично заглатываются</strong> и возвращаются в тонкий кишечник.</li>
+                </ol>
+            </li>
+            <li><strong>Развитие взрослой особи:</strong> В тонком кишечнике личинки превращаются во взрослых червей. Вся миграция занимает около <strong>2 недель</strong>. Через <strong>2,5–3 месяца</strong> личинки превращаются во взрослых червей.</li>
+            <li><strong>Продолжительность жизни:</strong> Взрослая особь живёт около <strong>1 года</strong>.</li>
+        </ol>
+
+        <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ (ТАБЛИЦА) ===== -->
+        <h2><span class="emoji">⚡</span> Патогенное действие</h2>
+
+        <p>Патогенез чётко делится на <strong>две фазы</strong> и может осложняться хирургическими состояниями:</p>
+
+        <div class="table-wrapper">
+            <table class="pathogenic-table">
+                <thead>
+                    <tr>
+                        <th style="width:20%;">Фаза</th>
+                        <th style="width:35%;">Механизм действия</th>
+                        <th style="width:45%;">Клинические проявления</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ранняя (миграционная)<br />лёгочная фаза</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Токсико-аллергическое действие</li>
+                                <li>Механическое повреждение капилляров и альвеол (кровоизлияния)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Кашель, боль в груди, лихорадка</li>
+                                <li>Аллергическая сыпь (крапивница)</li>
+                                <li>«Летучие эозинофильные инфильтраты» (синдром Лёффлера) на рентгене</li>
+                                <li>Высочайшая эозинофилия в крови</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Поздняя (кишечная) фаза</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Интоксикация продуктами обмена червя</li>
+                                <li>Поглощение витаминов и питательных веществ</li>
+                                <li>Механическое раздражение слизистой кишечника</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Утомляемость, слабость</li>
+                                <li>Тошнота, схваткообразные боли в животе</li>
+                                <li>Дисбактериоз, нарушения стула</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Хирургические осложнения</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Закупорка просвета кишки клубком червей</li>
+                                <li>Прободение стенки кишки</li>
+                                <li>Заползание в желчные протоки, протоки поджелудочной железы, аппендикс, дыхательные пути</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Спастическая или механическая непроходимость кишечника</li>
+                                <li>Перитонит</li>
+                                <li>Механическая желтуха, абсцессы печени, панкреатит, аппендицит</li>
+                                <li>Асфиксия (при заползании в дыхательные пути)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА (ТАБЛИЦА) ===== -->
+        <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+        <div class="table-wrapper">
+            <table class="pathogenic-table">
+                <thead>
+                    <tr>
+                        <th style="width:25%;">Стадия</th>
+                        <th style="width:30%;">Материал для исследования</th>
+                        <th style="width:45%;">Методы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Миграционная (лёгочная)</strong></td>
+                        <td>Мокрота, кровь</td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Микроскопия мокроты (лярвоскопия) — редко, личинки обнаруживаются не всегда</li>
+                                <li>Серологические реакции: ИФА, РНГА (поиск антител)</li>
+                                <li>Общий анализ крови: эозинофилия</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Кишечная (основная)</strong></td>
+                        <td>Фекалии</td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li><strong>Макроскопия:</strong> обнаружение взрослых особей в кале (редко)</li>
+                                <li><strong>Овоскопия:</strong> обнаружение яиц под микроскопом</li>
+                                <li>Методы обогащения: <strong>Фюллеборн</strong>, <strong>Калантарян</strong>, мазок по <strong>Като</strong></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note">
+            <strong>⚠️ Важное примечание:</strong><br />
+            Помним про <strong>ловушку</strong>: если в кишечнике живут только самки, яиц в кале не будет!
+        </div>
+
+        <!-- ===== ПРОФИЛАКТИКА ===== -->
+        <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+        <h4>Личная профилактика:</h4>
+        <ul>
+            <li>Тщательное мытьё рук перед едой и после контакта с почвой.</li>
+            <li>Мытьё овощей, фруктов, ягод (особенно клубники) и огородной зелени под проточной водой с последующим ошпариванием кипятком (кипяток убивает личинки мгновенно, а вода 70°С — за несколько секунд).</li>
+            <li>Защита продуктов питания от механических переносчиков — мух и тараканов.</li>
+        </ul>
+
+        <h4>Общественная профилактика:</h4>
+        <ul>
+            <li>Санитарное благоустройство территорий (канализация, бетонированные выгребные ямы).</li>
+            <li>Категорический запрет на использование необеззараженных человеческих фекалий в качестве удобрений на огородах.</li>
+            <li>Санитарно-просветительная работа и выявление/лечение больных (дегельминтизация).</li>
+        </ul>
+
+    </div>
+
+</body>
+</html>

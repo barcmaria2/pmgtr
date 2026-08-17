@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Специфические переносчики трансмиссивных заболеваний</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card p strong { color: #1e293b; }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+
+        .info-box {
+            background: #f0f4ff;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin: 20px 0 10px 0;
+        }
+        .info-box h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 6px;
+        }
+        .info-box p {
+            margin: 4px 0;
+            font-size: 14px;
+            color: #334155;
+        }
+        .info-box strong {
+            color: #1e3a8a;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 900px;
+        }
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .compare-table thead th {
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+            letter-spacing: 0.02em;
+        }
+        .compare-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table tbody tr:hover { background: #f8faff; }
+        .compare-table tbody tr:nth-child(even) { background: #fafcff; }
+        .compare-table tbody tr:nth-child(even):hover { background: #f4f8ff; }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .compare-table { font-size: 12px; min-width: 700px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .compare-table { font-size: 11px; min-width: 600px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">📊</span> Специфические переносчики трансмиссивных заболеваний</h1>
+    <div class="subtitle">
+        Определение, способы передачи, экологические категории и сводная сравнительная таблица
+    </div>
+
+    <!-- ===== ОПРЕДЕЛЕНИЕ ===== -->
+    <h2><span class="emoji">📖</span> Определение</h2>
+
+    <p><strong>Специфический (или биологический) переносчик</strong> — это кровососущее членистоногое, в организме которого возбудитель заболевания проходит определенные стадии своего жизненного цикла (развивается, претерпевает метаморфоз) и/или активно размножается. Присутствие специфического переносчика является ключевым звеном для циркуляции возбудителей в природных очагах трансмиссивных заболеваний.</p>
+
+    <!-- ===== СПОСОБЫ ПЕРЕДАЧИ ===== -->
+    <h2><span class="emoji">🔄</span> Способы передачи возбудителя</h2>
+
+    <p>Передача возбудителя специфическим переносчиком человеку осуществляется в рамках трансмиссивного механизма заражения и подразделяется на два ключевых способа передачи:</p>
+
+    <ul>
+        <li><strong>Специфическая инокуляция:</strong> Способ, при котором возбудитель, прошедший цикл развития или размножения в организме переносчика, активно вводится в кровеносное русло хозяина со слюной через ротовой аппарат во время укуса.</li>
+        <li><strong>Специфическая контаминация:</strong> Способ, при котором переносчик во время пребывания на теле хозяина загрязняет его кожные покровы или слизистые оболочки своими инфицированными экскрементами либо гемолимфой (при случайном раздавливании насекомого человеком). Возбудитель проникает в организм хозяина пассивно — через микротравмы, ранку от укуса или расчесы при зуде.</li>
+    </ul>
+
+    <!-- ===== ЭКОЛОГИЧЕСКИЕ КАТЕГОРИИ ===== -->
+    <h2><span class="emoji">🌍</span> Экологические категории трансмиссивных заболеваний</h2>
+
+    <p>Все трансмиссивные заболевания делятся на две экологические категории:</p>
+
+    <ul>
+        <li><strong>Облигатно-трансмиссивные:</strong> Заболевания, возбудители которых передаются от хозяина к хозяину исключительно при участии переносчика (например, малярия, лейшманиозы, трипаносомозы, сыпной тиф).</li>
+        <li><strong>Факультативно-трансмиссивные:</strong> Заболевания, которые, помимо трансмиссивного пути через переносчика, могут передаваться иными механизмами — контактным, фекально-оральным (алиментарным) или аэрогенным (например, чума, туляремия, клещевой энцефалит).</li>
+    </ul>
+
+    <!-- ===== СВОДНАЯ ТАБЛИЦА ===== -->
+    <h2><span class="emoji">📊</span> Сводная сравнительная таблица специфических переносчиков</h2>
+
+    <div class="table-wrapper">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Название специфического переносчика</th>
+                    <th>Переносимое заболевание</th>
+                    <th>Систематика возбудителя</th>
+                    <th>Путь заражения человека</th>
+                    <th>Способ (механизм) передачи возбудителя</th>
+                    <th>Инвазия или инфекция</th>
+                    <th>Облигатно или факультативно-трансмиссивное</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Комар рода <em>Anopheles</em></td>
+                    <td>Малярия</td>
+                    <td>Простейшие (<em>Plasmodium</em>)</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая инокуляция</td>
+                    <td>Инвазия</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td>Комар рода <em>Culex</em></td>
+                    <td>Японский энцефалит</td>
+                    <td>Вирус</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая инокуляция</td>
+                    <td>Инфекция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td>Комар рода <em>Aedes</em></td>
+                    <td>Желтая лихорадка</td>
+                    <td>Вирус</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая инокуляция</td>
+                    <td>Инфекция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td>Москиты (<em>Phlebotomus</em>)</td>
+                    <td>Лейшманиоз (кожный и висцеральный)</td>
+                    <td>Простейшие (<em>Leishmania</em>)</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая инокуляция</td>
+                    <td>Инвазия</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td>Муха це-це (<em>Glossina</em>)</td>
+                    <td>Африканский трипаносомоз</td>
+                    <td>Простейшие (<em>Trypanosoma</em>)</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая инокуляция</td>
+                    <td>Инвазия</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td>Поцелуйный клоп (<em>Triatoma</em>)</td>
+                    <td>Болезнь Шагаса</td>
+                    <td>Простейшие (<em>Trypanosoma</em>)</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая контаминация</td>
+                    <td>Инвазия</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td>Вши рода <em>Pediculus</em></td>
+                    <td>Сыпной тиф / Возвратный тиф</td>
+                    <td>Бактерии (Риккетсии / Боррелии)</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая контаминация</td>
+                    <td>Инфекция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Человеческая блоха (<em>Pulex</em>)</td>
+                    <td>Чума</td>
+                    <td>Бактерия (<em>Yersinia pestis</em>)</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая инокуляция / контаминация</td>
+                    <td>Инфекция</td>
+                    <td>Факультативно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td>Туляремия</td>
+                    <td>Бактерия (<em>Francisella tularensis</em>)</td>
+                    <td>Трансмиссивный</td>
+                    <td>Механическая инокуляция / механическая контаминация</td>
+                    <td>Инфекция</td>
+                    <td>Факультативно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td>Иксодовые клещи</td>
+                    <td>Клещевой энцефалит</td>
+                    <td>Вирус</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая инокуляция</td>
+                    <td>Инфекция</td>
+                    <td>Факультативно-трансмиссивное</td>
+                </tr>
+                <tr>
+                    <td>Аргазовые клещи</td>
+                    <td>Клещевой возвратный тиф</td>
+                    <td>Бактерия (<em>Borrelia</em>)</td>
+                    <td>Трансмиссивный</td>
+                    <td>Специфическая инокуляция / контаминация</td>
+                    <td>Инфекция</td>
+                    <td>Облигатно-трансмиссивное</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ДЛЯ СПРАВКИ ===== -->
+    <div class="info-box">
+        <h4>📌 Для справки:</h4>
+        <p><strong>Инфекция</strong> — заболевание, вызываемое вирусами или безъядерными микроорганизмами (бактериями, риккетсиями, спирохетами).</p>
+        <p><strong>Инвазия</strong> — паразитарное заболевание, возбудителями которого являются одноклеточные животные (простейшие) или многоклеточные черви (гельминты).</p>
+        <p><strong>Инфестация</strong> — паразитарное заболевание, непосредственным возбудителем которого являются представители типа Членистоногие (<em>Arthropoda</em>) — паразитические клещи или насекомые.</p>
+    </div>
+
+</div>
+
+</body>
+</html>

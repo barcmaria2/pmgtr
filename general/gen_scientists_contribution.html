@@ -1,0 +1,607 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner .intro {
+        font-size: 17px;
+        color: #475569;
+        margin-bottom: 24px;
+        padding: 16px 22px;
+        background: #f8fafc;
+        border-radius: 12px;
+        border-left: 4px solid #2563eb;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 21px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 32px 0 16px 0;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 8px;
+        border-bottom: 3px solid #e9edf3;
+    }
+
+    .tab-content-inner h3 .badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 12px;
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 4px;
+        letter-spacing: 0.02em;
+    }
+
+    .badge-proto { background: #8b5cf6; }
+    .badge-malaria { background: #ef4444; }
+    .badge-focality { background: #f59e0b; }
+    .badge-virus { background: #10b981; }
+    .badge-helminth { background: #2563eb; }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    .tab-content-inner .note {
+        background: #fef3c7;
+        border-radius: 10px;
+        padding: 12px 18px;
+        font-size: 14px;
+        color: #92400e;
+        border-left: 4px solid #f59e0b;
+        margin: 12px 0 16px 0;
+    }
+
+    /* ===== Карточки учёных (сетка 2×2) ===== */
+    .scientist-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 16px 0 24px 0;
+    }
+
+    .scientist-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 22px;
+        border: 1px solid #e9edf3;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .scientist-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .scientist-card .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+    }
+
+    .scientist-card .card-header .icon {
+        font-size: 28px;
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f1f5f9;
+        border-radius: 50%;
+    }
+
+    .scientist-card .card-header .name-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .scientist-card .card-header .name {
+        font-weight: 700;
+        font-size: 18px;
+        color: #1e3a8a;
+        line-height: 1.2;
+    }
+
+    .scientist-card .card-header .years {
+        font-size: 14px;
+        font-weight: 400;
+        color: #64748b;
+    }
+
+    .scientist-card .card-body {
+        color: #334155;
+        font-size: 15px;
+        flex: 1;
+    }
+
+    .scientist-card .card-body .achievement {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .scientist-card .card-body .achievement::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .scientist-card .card-body .achievement strong {
+        color: #1e293b;
+    }
+
+    .scientist-card .card-body .quote {
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 10px 14px;
+        margin-top: 8px;
+        font-style: italic;
+        font-size: 14px;
+        color: #475569;
+        border-left: 3px solid #2563eb;
+    }
+
+    .scientist-card .card-body .quote strong {
+        font-style: normal;
+        color: #1e3a8a;
+    }
+
+    .scientist-card.proto { border-left: 4px solid #8b5cf6; }
+    .scientist-card.proto .card-header .icon { background: #f5f3ff; }
+    .scientist-card.malaria { border-left: 4px solid #ef4444; }
+    .scientist-card.malaria .card-header .icon { background: #fef2f2; }
+    .scientist-card.focality { border-left: 4px solid #f59e0b; }
+    .scientist-card.focality .card-header .icon { background: #fffbeb; }
+
+    /* ===== Карточки на всю ширину ===== */
+    .scientist-full {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 22px;
+        border: 1px solid #e9edf3;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        margin: 16px 0 24px 0;
+    }
+
+    .scientist-full:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .scientist-full .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+    }
+
+    .scientist-full .card-header .icon {
+        font-size: 28px;
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f1f5f9;
+        border-radius: 50%;
+    }
+
+    .scientist-full .card-header .name-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .scientist-full .card-header .name {
+        font-weight: 700;
+        font-size: 18px;
+        color: #1e3a8a;
+        line-height: 1.2;
+    }
+
+    .scientist-full .card-header .years {
+        font-size: 14px;
+        font-weight: 400;
+        color: #64748b;
+    }
+
+    .scientist-full .card-body {
+        color: #334155;
+        font-size: 15px;
+    }
+
+    .scientist-full .card-body .achievement {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .scientist-full .card-body .achievement::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .scientist-full .card-body .achievement strong {
+        color: #1e293b;
+    }
+
+    .scientist-full .card-body .quote {
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 10px 14px;
+        margin-top: 8px;
+        font-style: italic;
+        font-size: 14px;
+        color: #475569;
+        border-left: 3px solid #2563eb;
+    }
+
+    .scientist-full .card-body .quote strong {
+        font-style: normal;
+        color: #1e3a8a;
+    }
+
+    .scientist-full.helminth {
+        border-left: 4px solid #2563eb;
+    }
+    .scientist-full.helminth .card-header .icon {
+        background: #eff6ff;
+    }
+
+    .scientist-full.virus {
+        border-left: 4px solid #10b981;
+    }
+    .scientist-full.virus .card-header .icon {
+        background: #ecfdf5;
+    }
+
+    .scientist-full.proto {
+        border-left: 4px solid #8b5cf6;
+    }
+    .scientist-full.proto .card-header .icon {
+        background: #f5f3ff;
+    }
+
+    /* ===== Концепции Скрябина ===== */
+    .concept-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        margin: 12px 0 4px 0;
+    }
+
+    .concept-item {
+        background: #f8fafc;
+        border-radius: 10px;
+        padding: 12px 16px;
+        border: 1px solid #f0f2f5;
+        text-align: center;
+    }
+
+    .concept-item .term {
+        font-weight: 700;
+        color: #1e3a8a;
+        display: block;
+        font-size: 15px;
+    }
+
+    .concept-item .def {
+        font-size: 13px;
+        color: #64748b;
+        display: block;
+        margin-top: 2px;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 768px) {
+        .scientist-grid {
+            grid-template-columns: 1fr;
+        }
+        .concept-list {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 24px;
+        }
+        .tab-content-inner h3 {
+            font-size: 19px;
+        }
+        .scientist-card {
+            padding: 16px 18px;
+        }
+        .scientist-full {
+            padding: 16px 18px;
+        }
+        .scientist-card .card-header .name {
+            font-size: 17px;
+        }
+        .scientist-full .card-header .name {
+            font-size: 17px;
+        }
+        .scientist-card .card-header .icon {
+            width: 40px;
+            height: 40px;
+            font-size: 22px;
+        }
+        .scientist-full .card-header .icon {
+            width: 40px;
+            height: 40px;
+            font-size: 22px;
+        }
+        .concept-list {
+            grid-template-columns: 1fr;
+        }
+        .tab-content-inner .intro {
+            padding: 14px 16px;
+            font-size: 15px;
+        }
+        .tab-content-inner h3 .badge {
+            font-size: 10px;
+            padding: 1px 8px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">🏛️</span> Роль отечественных учёных в развитии паразитологии</h2>
+
+    <div class="intro">
+        Отечественная паразитологическая школа внесла основополагающий вклад в мировую науку, сформировав не только классические систематические описания паразитов, но и фундаментальные теоретические концепции — от учения о природной очаговости до теории паразитоценозов и девастации.
+        <br><br>
+        Ниже представлены ключевые фигуры, чьи работы охватывают все основные разделы медицинской паразитологии: протозоологию, гельминтологию, арахноэнтомологию, эпидемиологию и вирусологию.
+    </div>
+
+    <!-- ===== 1. Протозоология ===== -->
+    <h3>
+        <span>🧬 Основоположники протозоологии и изучения кровепаразитов</span>
+        <span class="badge badge-proto">Протозоология</span>
+    </h3>
+
+    <!-- Романовский – на всю ширину (фундаментальный вклад) -->
+    <div class="scientist-full proto">
+        <div class="card-header">
+            <span class="icon">🎨</span>
+            <div class="name-block">
+                <span class="name">Д.Л. Романовский</span>
+                <span class="years">1861–1921</span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div>Врач-терапевт, гематолог, микробиолог и инфекционист. Вёл курс «Практические занятия по клинической микроскопии и паразитологии». Впервые дал точное описание тонкого строения малярийного плазмодия, открытого в 1880 году Ш.Л.А. Лавераном.</div>
+            <span class="achievement"><strong>Ключевой вклад:</strong> В 1890 году разработал и опубликовал универсальный метод <strong>дифференцированной окраски</strong> мазков крови и клеточных структур. С работы Д.Л. Романовского началась новая, наиболее плодотворная эра гематологии: благодаря предложенной им дифференцированной окраске была решена основная проблема гематологии — установлена единая система кроветворения, без которой понимание сложного морфогенеза крови и заболеваний кроветворных органов было бы невозможно. Этот метод оказался непревзойдённым по простоте и эффективности. В 1907 году немецкий химик Гимза предложил стойкий состав красителя и наладил его промышленный выпуск — <strong>«краситель по Романовскому–Гимзе»</strong>.</span>
+            <div class="quote">«С работы Д.Л. Романовского началась новая, наиболее плодотворная эра гематологии».</div>
+        </div>
+    </div>
+
+    <div class="scientist-grid">
+        <!-- В.А. Догель -->
+        <div class="scientist-card proto">
+            <div class="card-header">
+                <span class="icon">🔬</span>
+                <div class="name-block">
+                    <span class="name">В.А. Догель</span>
+                    <span class="years">1882–1955</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>Зоолог, член-корреспондент АН СССР, основатель экологического направления в паразитологии. Изучал зависимость паразитофауны от условий среды обитания и физиологического состояния хозяина. Создал крупнейшую отечественную паразитологическую школу.</div>
+                <span class="achievement"><strong>Ключевой вклад:</strong> Предложил экологическую классификацию паразитических простейших, разделив их на две группы: <strong>биопротисты</strong> (цикл развития происходит с обязательной сменой хозяев) и <strong>геопротисты</strong> (развитие происходит без смены хозяев). Является автором фундаментального руководства <strong>«Зоология беспозвоночных»</strong>.</span>
+            </div>
+        </div>
+
+        <!-- В.Я. Данилевский -->
+        <div class="scientist-card proto">
+            <div class="card-header">
+                <span class="icon">🧫</span>
+                <div class="name-block">
+                    <span class="name">В.Я. Данилевский</span>
+                    <span class="years">1852–1939</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>Физиолог, протистолог, академик АН УССР. Внёс значительный вклад в изучение кровепаразитов человека и животных.</div>
+                <span class="achievement"><strong>Ключевой вклад:</strong> В 1884 году открыл плазмодиев — возбудителей малярии птиц, создав необходимую лабораторную модель для изучения этих простейших, что в дальнейшем способствовало обнаружению возбудителей малярии человека. В 1880–1890 годах экспериментально показал <strong>множественность видов</strong> малярийных плазмодиев.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 2. Борьба с малярией ===== -->
+    <h3>
+        <span>🦟 Организаторы системы борьбы с малярией и тропическими болезнями</span>
+        <span class="badge badge-malaria">Маляриология</span>
+    </h3>
+
+    <div class="scientist-grid">
+        <!-- Е.И. Марциновский -->
+        <div class="scientist-card malaria">
+            <div class="card-header">
+                <span class="icon">⚕️</span>
+                <div class="name-block">
+                    <span class="name">Е.И. Марциновский</span>
+                    <span class="years">1874–1934</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>Крупнейший эпидемиолог, паразитолог, выдающийся деятель и организатор системы борьбы с малярией в СССР.</div>
+                <span class="achievement"><strong>Ключевой вклад:</strong> В 1912 году создал <strong>Кавказский малярийный комитет</strong> для непосредственной борьбы с заболеванием в местах его наибольшего распространения. В 1920 году организовал и возглавил <strong>Тропический институт</strong> (позднее — Институт малярии, паразитологии и гельминтологии). В 1924 году основал первую самостоятельную кафедру инфекционных болезней. Внёс существенный вклад в изучение кожного лейшманиоза, в том числе проводя эксперименты по самозаражению. Предложил метод профилактики заболевания — <strong>лейшманизацию</strong> (искусственное заражение вирулентным штаммом <em>Leishmania major</em>).</span>
+            </div>
+        </div>
+
+        <!-- В.Н. Беклемишев -->
+        <div class="scientist-card malaria">
+            <div class="card-header">
+                <span class="icon">🕷️</span>
+                <div class="name-block">
+                    <span class="name">В.Н. Беклемишев</span>
+                    <span class="years">1890–1962</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>Биолог, заложивший основы экологической паразитологии и медицинской энтомологии. Выполнил классические исследования биологии малярийного комара и других кровососущих членистоногих.</div>
+                <span class="achievement"><strong>Ключевой вклад:</strong> Под его руководством была разработана комплексная система мер, широкое внедрение которых обеспечило <strong>резкое снижение и практическую ликвидацию</strong> заболеваемости малярией в СССР. Является автором монографии <strong>«Основы сравнительной анатомии беспозвоночных»</strong> (1944), удостоенной Сталинской премии.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3. Природная очаговость ===== -->
+    <h3>
+        <span>🌍 Создатели учения о природной очаговости трансмиссивных болезней</span>
+        <span class="badge badge-focality">Очаговость</span>
+    </h3>
+
+    <div class="scientist-grid">
+        <!-- Д.К. Заболотный -->
+        <div class="scientist-card focality">
+            <div class="card-header">
+                <span class="icon">🧪</span>
+                <div class="name-block">
+                    <span class="name">Д.К. Заболотный</span>
+                    <span class="years">1866–1929</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>Бактериолог, президент Всеукраинской академии наук (1928–1929), академик АН СССР. Организатор первой в России кафедры бактериологии (1898) и первой в мире кафедры эпидемиологии (Одесса, 1920).</div>
+                <span class="achievement"><strong>Ключевой вклад:</strong> Создатель учения о <strong>природной очаговости чумы</strong> (1922). Установил, что первоисточником инфекции и её постоянным резервуаром служат не люди, а дикие грызуны (тарбаганы, суслики, песчанки). В 1911 году в Маньчжурии (совместно с Л.М. Исаевым) впервые <strong>выделил чистую культуру чумной палочки</strong> из тела больного тарбагана в природных условиях, доказав свою гипотезу экспериментально.</span>
+                <div class="quote">Учение Заболотного о природной очаговости чумы (1922) предвосхитило и во многом подготовило более широкую концепцию <strong>Е.Н. Павловского</strong> (1939).</div>
+            </div>
+        </div>
+
+        <!-- Е.Н. Павловский -->
+        <div class="scientist-card focality">
+            <div class="card-header">
+                <span class="icon">📚</span>
+                <div class="name-block">
+                    <span class="name">Е.Н. Павловский</span>
+                    <span class="years">1884–1965</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>Зоолог, паразитолог, академик АН и АМН СССР, генерал-лейтенант медицинской службы. В течение 35 лет возглавлял кафедру Военно-медицинской академии.</div>
+                <span class="achievement"><strong>Ключевой вклад:</strong> В 1939 году создал учение о <strong>природной очаговости трансмиссивных болезней</strong> — фундаментальную концепцию, согласно которой возбудители ряда заболеваний циркулируют в природных биогеоценозах среди диких животных совершенно независимо от человека. Предложил понятие <strong>«ландшафтная паразитология»</strong>, отражающее территориальную приуроченность природных очагов к определённым географическим ландшафтам. Сформулировал теорию <strong>паразитоценозов</strong> (совокупность всех паразитов, одновременно обитающих в организме хозяина) и концепцию об организме хозяина как среде обитания паразитов.</span>
+                <div class="quote"><strong>Важно:</strong> учение Заболотного о природной очаговости чумы (1922) предвосхитило и во многом подготовило более широкую концепцию Павловского (1939), распространившего этот принцип на все трансмиссивные болезни.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4. Вирусология – Зильбер на всю ширину ===== -->
+    <h3>
+        <span>🧪 Основатель медицинской вирусологии</span>
+        <span class="badge badge-virus">Вирусология</span>
+    </h3>
+
+    <div class="scientist-full virus">
+        <div class="card-header">
+            <span class="icon">🦠</span>
+            <div class="name-block">
+                <span class="name">Л.А. Зильбер</span>
+                <span class="years">1894–1966</span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div>Создатель отечественной школы медицинских вирусологов.</div>
+            <span class="achievement"><strong>Ключевой вклад:</strong> В 1937 году в ходе экспедиции на Дальний Восток <strong>впервые выделил вирус весенне-летнего клещевого энцефалита</strong> из мозга умерших людей, крови и спинномозговой жидкости больных, а также от иксодовых клещей и диких позвоночных животных. Его работа заложила основы учения о <strong>трансмиссивных вирусных инфекциях</strong> с природной очаговостью.</span>
+        </div>
+    </div>
+
+    <!-- ===== 5. Гельминтология – Скрябин на всю ширину ===== -->
+    <h3>
+        <span>📖 Основоположник отечественной гельминтологии</span>
+        <span class="badge badge-helminth">Гельминтология</span>
+    </h3>
+
+    <div class="scientist-full helminth">
+        <div class="card-header">
+            <span class="icon">📖</span>
+            <div class="name-block">
+                <span class="name">К.И. Скрябин</span>
+                <span class="years">1878–1972</span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div>Основоположник отечественной медицинской гельминтологии. Открыл и описал свыше <strong>200 новых видов</strong> и дал научное обоснование <strong>120 новым родам</strong> гельминтов. Сформулировал основные принципы борьбы с гельминтозами, установив, что эффективные результаты могут быть получены только при систематическом проведении комплекса профилактических и лечебных мероприятий с массовым охватом населения.</div>
+            <span class="achievement"><strong>Ключевой вклад:</strong> В 1944 году ввёл в науку следующие фундаментальные термины и концепции:</span>
+            <div class="concept-list">
+                <div class="concept-item">
+                    <span class="term">Дегельминтизация</span>
+                    <span class="def">Комплекс мероприятий, направленных на излечение больного от гельминтоза и на предохранение внешней среды от загрязнения инвазионным материалом</span>
+                </div>
+                <div class="concept-item">
+                    <span class="term">Преимагинальная дегельминтизация</span>
+                    <span class="def">Уничтожение гельминтов до достижения ими половой зрелости</span>
+                </div>
+                <div class="concept-item">
+                    <span class="term">Девастация</span>
+                    <span class="def">Комплекс активных методов борьбы с заразными болезнями, направленных на уничтожение паразита как биологического (зоологического) вида. Девастация подразделяется на полную (тотальную) — уничтожение гельминта как вида на всём земном шаре, и частичную (парциальную) — уничтожение возбудителя на определённой территории</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,190 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.01em;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    /* Карточка для вводного абзаца */
+    .definition-card {
+        background: #f0f9ff;
+        border-left: 4px solid #2563eb;
+        border-radius: 0 12px 12px 0;
+        padding: 20px 24px;
+        margin: 20px 0 24px 0;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+    }
+
+    .definition-card p {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 500;
+        color: #1e3a8a;
+    }
+
+    .definition-card p strong {
+        color: #1e40af;
+    }
+
+    /* Списки */
+    .tab-content-inner ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ul li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 8px;
+        line-height: 1.6;
+    }
+
+    .tab-content-inner ul li::before {
+        content: "✓";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+
+    .tab-content-inner ul ul {
+        margin: 6px 0 6px 20px;
+    }
+
+    .tab-content-inner ul ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-size: 22px;
+        top: -2px;
+    }
+
+    .tab-content-inner ol {
+        padding-left: 24px;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ol li {
+        margin-bottom: 10px;
+        line-height: 1.7;
+    }
+
+    .tab-content-inner ol li strong {
+        color: #1e3a8a;
+    }
+
+    /* Компактный подзаголовок */
+    .tab-content-inner .sub-label {
+        margin: 8px 0 4px 0;
+        font-weight: 600;
+        color: #1e3a8a;
+    }
+
+    /* Адаптация */
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .definition-card {
+            padding: 16px 18px;
+        }
+        .definition-card p {
+            font-size: 16px;
+        }
+        .tab-content-inner ul li {
+            padding-left: 24px;
+        }
+        .tab-content-inner ul ul {
+            margin-left: 12px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h3>Разделы медицинской паразитологии и изучаемые ими систематические группы паразитов</h3>
+
+    <div class="definition-card">
+        <p>В зависимости от строгого систематического положения изучаемого паразита, медицинская паразитология подразделяется на три основных раздела:</p>
+    </div>
+
+    <ol>
+        <li>
+            <strong>Медицинская протозоология</strong> — раздел, изучающий паразитических простейших (домен Eukariota, царство Protista, подцарство Protozoa).
+            <br>К объектам протозоологии относятся представители следующих таксонов:
+            <ul>
+                <li>
+                    <strong>Тип Sarcomastigophora (Саркомастигофоры).</strong>
+                    <br>Включает два подтипа:
+                    <ul>
+                        <li><strong>Подтип Sarcodina (Саркодовые):</strong> насчитывает около 10 тыс. видов; органоидами передвижения служат псевдоподии (ложноножки).</li>
+                        <li><strong>Подтип Mastigophora (Жгутиковые):</strong> насчитывает 6–8 тыс. видов; органоидами передвижения служат жгутики.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Тип Sporozoa (Споровики).</strong>
+                    <br>Все представители являются паразитами или комменсалами животных и человека. Органеллы движения у них полностью отсутствуют, а питание осуществляется за счет поглощения пищи всей поверхностью тела.
+                </li>
+                <li>
+                    <strong>Тип Ciliophora (Инфузории).</strong>
+                    <br>Органоидами передвижения служат реснички; среди представителей есть как свободноживущие, так и паразитические формы (например, <em>Balantidium coli</em>).
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Медицинская гельминтология</strong> — раздел, изучающий паразитических червей, вызывающих заболевания у человека.
+            <br>Объектами являются представители двух таксонов:
+            <ul>
+                <li><strong>Тип Plathelminthes (Плоские черви),</strong> включающий классы Сосальщики (Trematoda) и Ленточные черви (Cestoda).</li>
+                <li><strong>Тип Nemathelminthes (Круглые черви),</strong> включающий класс Собственно круглые черви (Nematoda).</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Медицинская арахноэнтомология</strong> — раздел, изучающий представителей типа Членистоногие (Arthropoda), имеющих медицинское значение.
+            <br>Эти организмы могут выступать в трёх ролях:
+            <ul>
+                <li><strong>Эктопаразиты</strong> — постоянно или временно обитают на поверхности тела человека (например, вши, чесоточный клещ).</li>
+                <li><strong>Эндопаразиты</strong> — обитают внутри организма (например, личинки некоторых мух).</li>
+                <li><strong>Переносчики возбудителей</strong> — механические (переносят возбудителя на поверхности тела) или специфические (в организме переносчика возбудитель проходит определённый этап развития).</li>
+            </ul>
+            <div class="sub-label">Систематика включает:</div>
+            <ul>
+                <li><strong>Царство Животные (Animalia), Тип Членистоногие (Arthropoda).</strong></li>
+                <li><strong>Подтип Хелицеровые (Chelicerata) → Класс Паукообразные (Arachnoidea)</strong> — клещи, скорпионы, пауки (медицинское значение имеют главным образом клещи — переносчики энцефалита, боррелиоза и др.).</li>
+                <li><strong>Подтип Трахейнодышащие (Tracheata) → Класс Насекомые (Insecta)</strong> — вши, блохи, комары, москиты, мухи (переносчики малярии, чумы, сыпного тифа и др.).</li>
+                <li><strong>Подтип Жабернодышащие (Branchiata) → Класс Ракообразные (Crustacea)</strong> — некоторые ракообразные могут служить промежуточными хозяевами гельминтов (например, цикл развития широкого лентеца связан с рачками-циклопами).</li>
+            </ul>
+        </li>
+    </ol>
+
+</div>

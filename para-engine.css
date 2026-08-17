@@ -1,0 +1,220 @@
+/* =====================================================================
+   Pomogator.med · Паразитология — стили для поиска, прогресса,
+   рекомендаций и пометок "в разработке". Использует переменные,
+   уже заданные в :root основного index.html.
+   ===================================================================== */
+
+/* ---------- поиск в сайдбаре ---------- */
+.search-box{ position:relative; margin-bottom:14px; }
+.search-box input{
+  width:100%; padding:11px 14px; border-radius:var(--radius); border:2px solid #e9edf3;
+  font-size:14px; font-family:inherit; color:var(--text-primary); background:#f8fafc;
+  transition:var(--transition);
+}
+.search-box input:focus{ outline:none; border-color:var(--blue-med); background:#fff; }
+.search-results{
+  position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:50;
+  background:#fff; border-radius:var(--radius); box-shadow:var(--shadow-hover);
+  border:1px solid #e9edf3; max-height:340px; overflow-y:auto; display:none;
+}
+.search-results.show{ display:block; }
+.search-results .sr-empty{ padding:16px; text-align:center; color:var(--text-secondary); font-size:13.5px; }
+.search-result-item{
+  display:block; width:100%; text-align:left; padding:11px 14px; border:none; background:none;
+  cursor:pointer; border-bottom:1px solid #f1f5f9; font-family:inherit;
+}
+.search-result-item:last-child{ border-bottom:none; }
+.search-result-item:hover{ background:var(--bg-page); }
+.search-result-item .sr-path{ font-size:11px; font-weight:700; color:var(--blue-med); text-transform:uppercase; letter-spacing:0.03em; margin-bottom:3px; }
+.search-result-item .sr-tab{ font-size:12.5px; color:var(--text-secondary); font-weight:600; margin-bottom:4px; }
+.search-result-item .sr-snippet{ font-size:13px; color:var(--text-primary); line-height:1.45; }
+.search-result-item .sr-snippet mark{ background:#fef3c7; color:#92400e; border-radius:3px; padding:0 2px; }
+
+/* ---------- кнопка "мой прогресс" ---------- */
+.progress-nav-btn{
+  display:flex; align-items:center; justify-content:space-between; width:100%;
+  padding:11px 14px; margin-bottom:14px; background:linear-gradient(135deg,var(--blue-med),var(--blue-dark));
+  color:#fff; border:none; border-radius:var(--radius); font-weight:700; font-size:14px;
+  cursor:pointer; font-family:inherit; transition:var(--transition); box-shadow:0 6px 14px rgba(37,99,235,0.25);
+}
+.progress-nav-btn:hover{ transform:translateY(-1px); box-shadow:0 10px 20px rgba(37,99,235,0.32); }
+.progress-nav-btn .pnb-pct{ background:rgba(255,255,255,0.22); padding:3px 9px; border-radius:100px; font-size:12px; }
+
+/* ---------- бейджи прогресса в сайдбаре ---------- */
+.menu-item{ display:flex !important; align-items:center; justify-content:space-between; gap:8px; }
+.menu-item .mi-dot{
+  width:8px; height:8px; border-radius:50%; background:#cbd5e1; flex-shrink:0;
+}
+.menu-item .mi-dot.started{ background:var(--gold); }
+.menu-item .mi-dot.done{ background:#10b981; }
+.menu-item.not-ready{ opacity:0.55; }
+.menu-item .mi-soon{ font-size:10.5px; font-weight:700; color:var(--text-secondary); background:#f1f5f9; padding:2px 6px; border-radius:100px; flex-shrink:0; }
+
+.accordion-header .sec-pct{
+  font-size:11px; font-weight:700; color:var(--text-secondary); margin-left:6px; margin-right:auto;
+}
+
+/* ---------- вкладки, которые ещё не готовы ---------- */
+.tab-btn.not-ready{ opacity:0.5; }
+.tab-btn.not-ready::after{ content:' 🚧'; }
+
+/* ---------- карточка "в разработке" внутри контента ---------- */
+.wip-card{
+  text-align:center; padding:48px 24px; color:var(--text-secondary);
+}
+.wip-card .wip-emoji{ font-size:40px; margin-bottom:14px; }
+.wip-card .wip-title{ font-size:17px; font-weight:700; color:var(--text-primary); margin-bottom:8px; }
+
+/* ---------- дашборд прогресса ---------- */
+.progress-dash{ animation: fadeIn 0.3s ease; }
+.pd-summary{
+  display:flex; align-items:center; gap:20px; background:linear-gradient(135deg,var(--blue-med),var(--blue-dark));
+  color:#fff; border-radius:var(--radius-lg); padding:24px 26px; margin-bottom:22px;
+}
+.pd-ring{
+  width:72px; height:72px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:18px; background:conic-gradient(#fff var(--pct,0%), rgba(255,255,255,0.25) 0);
+  position:relative;
+}
+.pd-ring::before{ content:''; position:absolute; inset:6px; border-radius:50%; background:var(--blue-dark); }
+.pd-ring span{ position:relative; z-index:1; }
+.pd-summary h2{ font-size:19px; font-weight:800; margin-bottom:4px; }
+.pd-summary p{ font-size:13.5px; color:#dbe6fb; }
+
+.pd-section{ margin-bottom:22px; }
+.pd-section h3{ font-size:14px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.03em; margin-bottom:12px; }
+
+.pd-bar-row{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.pd-bar-row .pd-label{ flex:0 0 180px; font-size:13.5px; font-weight:600; color:var(--text-primary); }
+.pd-bar-track{ flex:1; height:8px; background:#e9edf3; border-radius:100px; overflow:hidden; }
+.pd-bar-fill{ height:100%; background:linear-gradient(90deg,var(--blue-med),#10b981); border-radius:100px; }
+.pd-bar-row .pd-pct{ flex:0 0 40px; text-align:right; font-size:12.5px; font-weight:700; color:var(--text-secondary); }
+
+.pd-reco-item{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:#fff; border:1px solid #f0f3f8; border-radius:var(--radius); padding:12px 16px; margin-bottom:8px;
+  cursor:pointer; transition:var(--transition);
+}
+.pd-reco-item:hover{ border-color:var(--blue-med); box-shadow:var(--shadow-soft); }
+.pd-reco-item .pri-title{ font-weight:700; font-size:14px; color:var(--text-primary); }
+.pd-reco-item .pri-sub{ font-size:12px; color:var(--text-secondary); margin-top:2px; }
+.pd-reco-item .pri-badge{ font-size:11.5px; font-weight:700; padding:4px 9px; border-radius:100px; flex-shrink:0; }
+.pd-reco-item .pri-badge.weak{ background:#fef2f2; color:#b91c1c; }
+.pd-reco-item .pri-badge.new{ background:#fffbeb; color:#a97e1f; }
+.pd-empty-good{ text-align:center; padding:20px; color:var(--text-secondary); font-size:14px; }
+
+.pd-reset-btn{
+  width:100%; padding:13px; background:#fef2f2; color:#b91c1c; border:2px solid #fecaca; border-radius:var(--radius);
+  font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; transition:var(--transition); margin-top:6px;
+}
+.pd-reset-btn:hover{ background:#fee2e2; border-color:#fca5a5; }
+
+@media (max-width: 900px){
+  .pd-bar-row .pd-label{ flex-basis:120px; font-size:12.5px; }
+}
+
+
+/* ---------- защита вкладок от горизонтального разъезда ---------- */
+.main, .tabs-container, .tab-content, .tab-pane {
+  min-width: 0;
+  max-width: 100%;
+}
+.tab-pane > *, .tab-content-inner, .interactive-wrapper {
+  max-width: 100%;
+  min-width: 0;
+}
+.tab-content img,
+.tab-content video,
+.tab-content canvas,
+.tab-content svg,
+.pm-responsive-media {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  object-fit: contain;
+}
+.tab-content pre,
+.tab-content code {
+  max-width: 100%;
+}
+.tab-content pre { overflow-x: auto; }
+
+/* Универсальный контейнер длинной таблицы. Полоса прокрутки всегда
+   остаётся внутри вкладки, а не расширяет body. */
+.pm-table-scroll,
+.table-wrapper {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: scroll !important;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+  padding-bottom: 4px;
+}
+.pm-table-scroll > table,
+.table-wrapper > table {
+  max-width: none;
+}
+.pm-table-scroll::-webkit-scrollbar,
+.table-wrapper::-webkit-scrollbar { height: 10px; }
+.pm-table-scroll::-webkit-scrollbar-track,
+.table-wrapper::-webkit-scrollbar-track {
+  background: #e9edf3;
+  border-radius: 999px;
+}
+.pm-table-scroll::-webkit-scrollbar-thumb,
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 999px;
+  border: 2px solid #e9edf3;
+}
+.pm-table-scroll,
+.table-wrapper { scrollbar-width: thin; scrollbar-color: #94a3b8 #e9edf3; }
+
+/* ---------- единая страховка изображений/медиа во всех материалах ---------- */
+.tab-content,
+.tab-pane {
+  overflow-x: clip;
+}
+.pm-media-broken { display:none !important; }
+.pm-media-placeholder {
+  width:100%;
+  min-height:180px;
+  max-width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:22px;
+  margin:10px 0 16px;
+  text-align:center;
+  color:#64748b;
+  background:#f8fafc;
+  border:1px dashed #cbd5e1;
+  border-radius:12px;
+  overflow:hidden;
+}
+.pm-media-placeholder strong {
+  color:#334155;
+  font-size:14px;
+  overflow-wrap:anywhere;
+}
+.pm-media-placeholder small {
+  color:#94a3b8;
+  font-size:12px;
+  overflow-wrap:anywhere;
+}
+.pm-media-placeholder-icon { font-size:34px; line-height:1; }
+
+/* Даже если внутри старого HTML задана фиксированная ширина контейнера,
+   медиа не сможет растянуть вкладку или body. */
+.tab-content figure,
+.tab-content .image-col,
+.tab-content .full-width-image,
+.tab-content [class*="image"],
+.tab-content [class*="figure"] {
+  min-width:0;
+  max-width:100%;
+}

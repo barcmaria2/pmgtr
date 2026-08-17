@@ -1,0 +1,273 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+    }
+
+    .tab-content-inner h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 22px 0 8px 0;
+        padding-bottom: 4px;
+        border-bottom: 2px solid #e9edf3;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    /* Нумерованный список для разделов */
+    .tab-content-inner ol {
+        padding-left: 24px;
+        margin: 12px 0 20px 0;
+    }
+
+    .tab-content-inner ol li {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        font-weight: 500;
+    }
+
+    .tab-content-inner ol li strong {
+        color: #1e3a8a;
+    }
+
+    .tab-content-inner ol li .sub-desc {
+        font-weight: 400;
+        color: #475569;
+    }
+
+    /* Списки */
+    .tab-content-inner ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 10px 0 14px 0;
+    }
+
+    .tab-content-inner ul li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 8px;
+        line-height: 1.6;
+    }
+
+    .tab-content-inner ul li::before {
+        content: "✓";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+
+    .tab-content-inner ul ul {
+        margin: 4px 0 4px 20px;
+    }
+
+    .tab-content-inner ul ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-size: 22px;
+        top: -2px;
+    }
+
+    .tab-content-inner ul ul ul li::before {
+        content: "◦";
+        color: #2563eb;
+        font-size: 20px;
+        top: -2px;
+    }
+
+    /* Карточка для групп классификации */
+    .class-card {
+        background: #ffffff;
+        border: 1px solid #e9edf3;
+        border-radius: 12px;
+        padding: 18px 22px;
+        margin: 12px 0 18px 0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .class-card .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .class-card .card-title .icon {
+        font-size: 20px;
+    }
+
+    .class-card .card-desc {
+        margin: 4px 0 8px 0;
+        color: #334155;
+    }
+
+    .class-card .card-examples {
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 10px 16px;
+        font-size: 14px;
+        color: #475569;
+        margin-top: 6px;
+    }
+
+    .class-card .card-examples .label {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .tab-content-inner h4 {
+            font-size: 16px;
+        }
+        .tab-content-inner ul li {
+            padding-left: 24px;
+        }
+        .tab-content-inner ul ul {
+            margin-left: 12px;
+        }
+        .class-card {
+            padding: 14px 16px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2>Классификация паразитических форм животных</h2>
+
+    <p>В зависимости от систематического положения изучаемых паразитов, медицинская паразитология строго разделяется на три области:</p>
+
+    <ol>
+        <li><strong>Медицинская протозоология</strong> <span class="sub-desc">— изучает паразитических простейших (тип <em>Protozoa</em>).</span></li>
+        <li><strong>Медицинская гельминтология</strong> <span class="sub-desc">— изучает паразитических червей (типы <em>Plathelminthes</em> и <em>Nemathelminthes</em>).</span></li>
+        <li><strong>Медицинская арахноэнтомология</strong> <span class="sub-desc">— изучает паразитических членистоногих (тип <em>Arthropoda</em>).</span></li>
+    </ol>
+
+    <h3>Классификация паразитических форм животных</h3>
+
+    <!-- ===== 1. В ЗАВИСИМОСТИ ОТ ВРЕМЕНИ ===== -->
+    <h4>🕒 1. В зависимости от времени, проводимом на хозяине</h4>
+
+    <div class="class-card">
+        <div class="card-title"><span class="icon">🔒</span> Постоянные (истинные) паразиты</div>
+        <div class="card-desc">Значительная часть жизненного цикла или вся жизнь которых тесно связана с организмом хозяина (хозяин является и источником пищи, и местом обитания). Они подразделяются на <strong>стационарных</strong> (проводят на хозяине всю жизнь) и <strong>периодических</strong>.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span> вши (головная, платяная), чесоточный клещ, трихинелла спиральная, малярийные плазмодии.
+        </div>
+    </div>
+
+    <div class="class-card">
+        <div class="card-title"><span class="icon">⏳</span> Временные паразиты</div>
+        <div class="card-desc">Посещают хозяина лишь на определённое время, исключительно для питания (большую часть жизни проводят в свободном состоянии).</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span> кровососущие насекомые (комары, москиты, клопы) и иксодовые клещи.
+        </div>
+    </div>
+
+    <div class="class-card">
+        <div class="card-title"><span class="icon">⚠️</span> Ложные паразиты (псевдопаразиты)</div>
+        <div class="card-desc">Свободноживущие организмы, которые при случайном попадании в организм другого вида способны некоторое время существовать в нём, нередко причиняя тяжёлый вред, но обычным для них является независимый образ жизни.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span> случайное попадание свободноживущих пиявок в носоглотку человека при купании (что может привести к удушью); развитие личинок комнатной мухи в кишечнике человека с развитием миазов.
+        </div>
+    </div>
+
+    <!-- ===== 2. ПО СТЕПЕНИ АДАПТАЦИИ ===== -->
+    <h4>🔬 2. По степени адаптации (в рамках группы постоянных паразитов)</h4>
+
+    <div class="class-card">
+        <div class="card-title"><span class="icon">🔒</span> Облигатные паразиты</div>
+        <div class="card-desc">Организмы, для которых паразитический образ жизни является эволюционно закреплённой, обязательной и видоспецифичной формой сосуществования.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span> дизентерийная амёба, кошачий сосальщик, человеческая аскарида, власоглав, острица, блохи.
+        </div>
+    </div>
+
+    <div class="class-card">
+        <div class="card-title"><span class="icon">🔓</span> Факультативные паразиты</div>
+        <div class="card-desc">Организмы, способные жить и размножаться свободно во внешней среде, но, попадая в организм восприимчивого хозяина, могут переходить к паразитизму.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span> угрица кишечная, почвенные круглые черви, свободноживущие акантамёбы, хищные пиявки.
+        </div>
+    </div>
+
+    <!-- ===== 3. ПО МЕСТУ ОБИТАНИЯ ===== -->
+    <h4>📍 3. По месту обитания (локализации) на теле хозяина</h4>
+
+    <div class="class-card">
+        <div class="card-title"><span class="icon">🧥</span> Эктопаразиты</div>
+        <div class="card-desc">Локализуются на наружных покровах тела хозяина.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span> кровососущие насекомые, блохи, вши, клещи.
+        </div>
+    </div>
+
+    <div class="class-card">
+        <div class="card-title"><span class="icon">🏥</span> Эндопаразиты</div>
+        <div class="card-desc">Обитают во внутренних органах, полостях или тканях организма хозяина. Для точного ответа на экзамене эндопаразитов следует разделить на 3 подгруппы:</div>
+        <ul>
+            <li>
+                <strong>Полостные</strong> (связаны с внешней средой): лямблии, урогенитальные трихомонады, взрослые кишечные гельминты (аскарида).
+            </li>
+            <li>
+                <strong>Тканевые</strong> (в закрытых тканях и полостях): ришта, трипаносомы, финны эхинококка и альвеококка.
+            </li>
+            <li>
+                <strong>Внутриклеточные</strong> (паразитируют внутри отдельных клеток): малярийный плазмодий (в эритроцитах), лейшмании и токсоплазма (в макрофагах).
+            </li>
+        </ul>
+    </div>
+
+</div>

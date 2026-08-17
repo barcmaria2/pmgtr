@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Общая характеристика вшей (Anoplura)</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card p strong { color: #1e293b; }
+
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+        .epi-grid .item {
+            font-size: 14px;
+        }
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+        .epi-grid .item.full {
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+
+        .danger-note {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #7f1d1d;
+        }
+        .danger-note strong { color: #991b1b; }
+
+        .highlight-box {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #14532d;
+        }
+        .highlight-box strong { color: #166534; }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            margin: 16px 0 8px 0;
+            min-width: 700px;
+        }
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .compare-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+            letter-spacing: 0.02em;
+        }
+        .compare-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table tbody tr:hover { background: #f8faff; }
+        .compare-table tbody tr:nth-child(even) { background: #fafcff; }
+        .compare-table tbody tr:nth-child(even):hover { background: #f4f8ff; }
+        .compare-table .col-feature {
+            font-weight: 700;
+            color: #1e3a8a;
+            background: #f8fafc;
+            width: 22%;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .epi-grid { grid-template-columns: 1fr; }
+            .compare-table { font-size: 12px; min-width: 500px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .compare-table { font-size: 11px; min-width: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">🩸</span> Отряд Вши (Anoplura)</h1>
+    <div class="subtitle">Общая характеристика, морфофизиология, биология и <strong>медицинское значение</strong></div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Царство:</strong> Животные (Animalia)<br />
+            <strong>Тип:</strong> Членистоногие (Arthropoda)<br />
+            <strong>Подтип:</strong> Трахейнодышащие (Tracheata)<br />
+            <strong>Класс:</strong> Насекомые (Insecta)<br />
+            <strong>Отряд:</strong> Вши (Anoplura, или Siphunculata)<br />
+            <strong>Медицински значимые представители:</strong>
+        </p>
+        <ul style="margin-top:6px; list-style-type: none; padding-left:0;">
+            <li><strong>Род <em>Pediculus</em></strong> — вид <strong>Человеческая вошь (<em>Pediculus humanus</em>)</strong>, подвиды:
+                <ul>
+                    <li><strong>Головная вошь</strong> (<em>Pediculus humanus capitis</em>).</li>
+                    <li><strong>Платяная вошь</strong> (<em>Pediculus humanus humanus</em>, син. <em>P. humanus corporis</em>).</li>
+                    <li><em>Примечание:</em> подвиды свободно скрещиваются, но имеют морфологические и биологические отличия.</li>
+                </ul>
+            </li>
+            <li><strong>Род <em>Phthirus</em></strong> — вид <strong>Лобковая вошь (<em>Phthirus pubis</em>)</strong> (площица).</li>
+        </ul>
+    </div>
+
+    <!-- ===== ОБЩАЯ МОРФОЛОГИЯ ===== -->
+    <h2><span class="emoji">🔬</span> Общая морфологическая характеристика отряда</h2>
+    <p>Вши — это специализированная группа мелких кровососущих насекомых, морфология которых полностью подчинена их образу жизни как <strong>постоянных наружных паразитов (эктопаразитов) млекопитающих и человека</strong>.</p>
+
+    <h3>1. Внешнее строение и отделы тела</h3>
+    <p>Тело вшей сильно уплощено в дорсовентральном (спинно-брюшном) направлении. Оно четко разделено на три отдела: <strong>голову, грудь и брюшко</strong>.</p>
+    <ul>
+        <li><strong>Голова (Caput):</strong> Относительно небольшая, суженная кпереди. Несет пару простых пигментированных глаз (у некоторых видов глаза полностью редуцированы) и пару <strong>коротких 5-члениковых усиков (сяжек)</strong>, выполняющих функцию органов обоняния и осязания.</li>
+        <li><strong>Грудь (Thorax):</strong> Маленькая, все три ее сегмента (передне-, средне- и заднегрудь) полностью <strong>слиты в единое целое</strong>, что повышает прочность тела. Крылья у вшей <strong>полностью отсутствуют</strong>. Это пример <strong>вторичной бескрылости</strong> (редукции органов полета в связи с переходом к паразитическому образу жизни).</li>
+        <li><strong>Брюшко (Abdomen):</strong> Является самым крупным отделом тела, состоит из 9 сегментов. По бокам сегментов брюшка часто видны более плотные хитинизированные участки (плевральные пластинки) и симметричные дыхальца (стигмы). Задний конец брюшка у самцов <strong>закруглен</strong> (на вентральной стороне расположен копулятивный орган), а у самок — <strong>раздвоен</strong> (имеет вырезку для удержания волоса при откладке яиц).</li>
+    </ul>
+
+    <h3>2. Строение конечностей (Органы фиксации)</h3>
+    <p>Вши имеют строго <strong>3 пары ходильных ног (6 ног)</strong>, расположенных на грудном отделе. Ноги короткие, очень мощные и претерпели глубокую эволюционную специализацию для удержания на теле хозяина:</p>
+    <ul>
+        <li>Голень (tibia) на внутреннем конце несет характерный подвижный <strong>пальцевидный отросток</strong>.</li>
+        <li>Одночлениковая лапка (tarsus) заканчивается <strong>одним крупным, сильно изогнутым серповидным коготком</strong>.</li>
+        <li><strong>Механизм фиксации:</strong> При движении и закреплении на волосе или нити одежды коготок лапки складывается и прижимается к пальцевидному отростку голени, работая по принципу мощных тисков или клешни. Этот механизм обеспечивает чрезвычайно прочную фиксацию паразита — оторвать вошь от волоса без повреждения самого волоса практически невозможно.</li>
+    </ul>
+
+    <h3>3. Строение ротового аппарата</h3>
+    <p>Ротовой аппарат вшей относится к <strong>колюще-сосущему типу</strong>.</p>
+    <ul>
+        <li>Он устроен очень своеобразно: в состоянии покоя ротовые органы полностью втянуты внутрь головы и лежат в специальном <strong>влагалище (футляре)</strong> под глоткой.</li>
+        <li>При питании ротовое отверстие выворачивается наружу, прижимаясь к коже хозяина венчиком крючков. Внутрь кожи вонзаются три тончайшие колющие иглы (стилеты), образованные видоизмененными челюстями и гипофаринксом. Слюнные железы выделяют в ранку секрет, содержащий сильные антикоагулянты (препятствующие свертыванию крови) и ферменты, вызывающие у человека зуд и местное воспаление. Кровь нагнетается в пищевод с помощью мощного мускульного глоточного насоса.</li>
+    </ul>
+
+    <!-- ===== АНАТОМО-ФИЗИОЛОГИЧЕСКИЕ ОСОБЕННОСТИ ===== -->
+    <h2><span class="emoji">🧬</span> Анатомо-физиологические особенности систем органов</h2>
+    <ul>
+        <li><strong>Пищеварительная система:</strong> Представлена ртом, глоткой, тонким пищеводом, объемистым желудком и кишечником. Пищевод имеет специальное расширение, выполняющее роль сосательного аппарата. Из-за исключительного питания кровью (гематофагии) средняя кишка способна сильно растягиваться. При питании кровь засасывается непосредственно в желудок, где происходит ее постепенное переваривание.</li>
+        <li><strong>Дыхательная система:</strong> Представлена хорошо развитой сетью воздухоносных трубочек — <strong>трахей</strong>, которые открываются наружу парными дыхательными отверстиями — <strong>стигмами</strong> на груди и по бокам сегментов брюшка.</li>
+        <li><strong>Выделительная система:</strong> Представлена мальпигиевыми сосудами (обычно 4 штуки), открывающимися на границе средней и задней кишки.</li>
+        <li><strong>Нервная система:</strong> Концентрированного типа. Ганглии брюшной цепочки частично слиты, образуя мощный грудной узел.</li>
+    </ul>
+
+    <!-- ===== БИОЛОГИЧЕСКИЕ ОСОБЕННОСТИ ===== -->
+    <h2><span class="emoji">🔄</span> Биологические особенности и жизненный цикл</h2>
+    <p>Все вши — это <strong>раздельнополые организмы</strong> с выраженным половым диморфизмом (самки крупнее самцов). Они являются <strong>облигатными круглосуточными паразитами</strong> человека.</p>
+
+    <h3>1. Характер развития</h3>
+    <p>Развитие вшей происходит по типу <strong>неполного метаморфоза</strong> (непрямого развития без стадии покоящейся куколки). Жизненный цикл включает следующие последовательные стадии:</p>
+    <div style="background:#f1f5f9; padding:14px 18px; border-radius:12px; text-align:center; font-weight:700; font-size:18px; color:#1e3a8a; margin:12px 0 16px 0; letter-spacing:0.02em;">
+        Яйцо (Гнида) ⟶ Нимфа I возраста ⟶ Нимфа II возраста ⟶ Нимфа III возраста ⟶ Имаго
+    </div>
+    <ul>
+        <li><strong>Яйцо (Гнида):</strong> Имеет характерную продолговато-овальную форму, длину около 0,8–1,0 мм, бледно-желтого или белого цвета. Сверху яйцо закрыто плоской <strong>выпуклой крышечкой</strong>, которая откидывается при вылуплении личинки.
+            <ul>
+                <li><strong>Механизм приклеивания:</strong> При откладке яйца самка выделяет из придаточных половых желез каплю <strong>липкого цементирующего секрета</strong>, который мгновенно застывает на воздухе, прочно приклеивая гниду к стержню волоса (у головной и лобковой вшей) или к ворсинкам ткани нательного белья (у платяной вши). Кокон настолько прочен, что гнида не смывается водой, мылом и не удаляется обычным гребнем.</li>
+            </ul>
+        </li>
+        <li><strong>Стадия нимфы (личинки):</strong> Вышедшая из яйца нимфа I возраста внешне полностью похожа на взрослую вошь (имеет 3 пары ног с коготками, такую же форму тела), но отличается меньшими размерами и полным отсутствием половой системы. Нимфа питается кровью, растет и последовательно линяет три раза (проходя стадии нимфы I, II и III возраста).</li>
+        <li><strong>Продолжительность цикла:</strong> Весь цикл развития от откладки яйца до формирования половозрелого имаго в оптимальных условиях (температура человеческого тела около 30–32 °C) занимает всего <strong>2–3 недели</strong>.</li>
+    </ul>
+
+    <h3>2. Питание и экологические ограничения</h3>
+    <ul>
+        <li>Вши — крайне специализированные и нежные паразиты. Они <strong>питаются кровью часто (от 2 до 4 раз в сутки)</strong>.</li>
+        <li>Они абсолютно <strong>неспособны к длительному голоданию</strong> (в отличие от клещей или клопов). При комнатной температуре взрослая вошь погибает от голода и обезвоживания всего за <strong>2–3 дня</strong> (редко выдерживает до 5–7 дней у платяной вши).</li>
+        <li>Они чрезвычайно чувствительны к температуре окружающей среды. Оптимальной для них является температура человеческого тела. При понижении температуры до 15 °C развитие яиц останавливается, а при температуре выше 44 °C вши и их гниды быстро погибают. Именно поэтому при повышении температуры тела больного (при лихорадке во время сыпного тифа) или после его смерти вши <strong>массово покидают хозяина</strong> и активно переползают на окружающих здоровых людей, что имеет колоссальное эпидемиологическое значение.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+{
+  "totalReferences": 106,
+  "existingReferences": 40,
+  "missingReferences": 66,
+  "missing": [
+    {
+      "html": "helminths/helm_lesson2_taenia_saginatus.html",
+      "src": "images/helminths/taenia_egg_microscope.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_taenia_saginatus.html",
+      "src": "images/helminths/taenia_egg_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_taenia_saginatus.html",
+      "src": "images/helminths/taenia_saginatus_finna_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_alveococcus.html",
+      "src": "images/helminths/alveococcus_marita_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_alveococcus.html",
+      "src": "images/helminths/alveococcus_egg_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_alveococcus.html",
+      "src": "images/helminths/alveococcus_finna_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_alveococcus.html",
+      "src": "images/helminths/alveococcus_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_ascaris.html",
+      "src": "images/helminths/ascaris_marita_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_ascaris.html",
+      "src": "images/helminths/ascaris_egg_microscope.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_ascaris.html",
+      "src": "images/helminths/ascaris_egg_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_ascaris.html",
+      "src": "images/helminths/ascaris_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_roundworms_classification.html",
+      "src": "images/helminths/nematode_general_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_dracunculus.html",
+      "src": "images/helminths/dracunculus_adult_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_dracunculus.html",
+      "src": "images/helminths/dracunculus_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_strongyloides.html",
+      "src": "images/helminths/strongyloides_adult_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_strongyloides.html",
+      "src": "images/helminths/strongyloides_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_enterobius.html",
+      "src": "images/helminths/enterobius_marita_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_enterobius.html",
+      "src": "images/helminths/enterobius_egg_microscope.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_enterobius.html",
+      "src": "images/helminths/enterobius_egg_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_enterobius.html",
+      "src": "images/helminths/enterobius_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_final_table_nematodes.html",
+      "src": "images/helminths/nematode_general_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson1_scheme.html",
+      "src": "images/helminths/fluke_comparison_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_hymenolepis.html",
+      "src": "images/helminths/hymenolepis_marita_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_hymenolepis.html",
+      "src": "images/helminths/hymenolepis_egg_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_hymenolepis.html",
+      "src": "images/helminths/hymenolepis_cysticercoid_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_hymenolepis.html",
+      "src": "images/helminths/hymenolepis_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_taenia_solium.html",
+      "src": "images/helminths/taenia_solium_marita_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_taenia_solium.html",
+      "src": "images/helminths/taenia_egg_microscope.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_taenia_solium.html",
+      "src": "images/helminths/taenia_egg_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_taenia_solium.html",
+      "src": "images/helminths/taenia_solium_finna_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_taenia_solium.html",
+      "src": "images/helminths/taenia_solium_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_trichuris.html",
+      "src": "images/helminths/trichuris_adult_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_trichuris.html",
+      "src": "images/helminths/trichuris_egg_microscope.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_trichuris.html",
+      "src": "images/helminths/trichuris_egg_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_trichuris.html",
+      "src": "images/helminths/trichuris_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_filariae.html",
+      "src": "images/helminths/filariae_adult_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_filariae.html",
+      "src": "images/helminths/filariae_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_trichinella.html",
+      "src": "images/helminths/trichinella_adult_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_trichinella.html",
+      "src": "images/helminths/trichinella_capsule_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_trichinella.html",
+      "src": "images/helminths/trichinella_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_diphyllobothrium.html",
+      "src": "images/helminths/diphyllobothrium_marita_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_diphyllobothrium.html",
+      "src": "images/helminths/diphyllobothrium_egg_microscope.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_diphyllobothrium.html",
+      "src": "images/helminths/diphyllobothrium_egg_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_diphyllobothrium.html",
+      "src": "images/helminths/diphyllobothrium_larvae_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_diphyllobothrium.html",
+      "src": "images/helminths/diphyllobothrium_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_ancylostoma_necator.html",
+      "src": "images/helminths/ancylostoma_adult_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_ancylostoma_necator.html",
+      "src": "images/helminths/ancylostoma_egg_microscope.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson3_ancylostoma_necator.html",
+      "src": "images/helminths/ancylostoma_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_final_table_cestodes.html",
+      "src": "images/helminths/cestodes_comparison_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_echinococcus.html",
+      "src": "images/helminths/echinococcus_marita_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_echinococcus.html",
+      "src": "images/helminths/echinococcus_egg_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_echinococcus.html",
+      "src": "images/helminths/echinococcus_finna_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "helminths/helm_lesson2_echinococcus.html",
+      "src": "images/helminths/echinococcus_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_geo_amoeba.html",
+      "src": "images/protists/entamoeba_trophozoite_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_geo_amoeba.html",
+      "src": "images/protists/entamoeba_cyst_scheme.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_contagious_trichomonas.html",
+      "src": "images/protists/trichomonas_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_geo_balantidium.html",
+      "src": "images/protists/balantidium_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_bio_toxoplasma.html",
+      "src": "images/protists/toxoplasma_tachyzoite.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_bio_toxoplasma.html",
+      "src": "images/protists/toxoplasma_tissue_cyst.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_bio_toxoplasma.html",
+      "src": "images/protists/toxoplasma_pseudocyst.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_bio_toxoplasma.html",
+      "src": "images/protists/toxoplasma_oocyst.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_bio_toxoplasma.html",
+      "src": "images/protists/toxoplasma_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_geo_giardia.html",
+      "src": "images/protists/giardia_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_bio_plasmodium.html",
+      "src": "images/protists/plasmodium_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_bio_trypanosoma_cruzi.html",
+      "src": "images/protists/trypanosoma_cruzi_life_cycle.jpg",
+      "exists": false
+    },
+    {
+      "html": "protists/prot_bio_trypanosoma_brucei.html",
+      "src": "images/protists/trypanosoma_life_cycle.jpg",
+      "exists": false
+    }
+  ]
+}

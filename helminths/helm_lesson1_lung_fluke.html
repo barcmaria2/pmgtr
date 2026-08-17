@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лёгочный сосальщик (Paragonimus westermani) — урок 1</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА (полная ширина) ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ (полная ширина) ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== ТАБЛИЦА ПАТОГЕННОГО ДЕЙСТВИЯ ===== */
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 16px 0;
+            font-size: 14px;
+            background: #fafcff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .pathogenic-table th {
+            background: #f1f5f9;
+            color: #1e3a8a;
+            font-weight: 700;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .pathogenic-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+        }
+
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pathogenic-table tbody tr:hover {
+            background: #f4f8ff;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ (жизненный цикл) ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .pathogenic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🫁</span> Лёгочный сосальщик</h1>
+    <div class="subtitle"><strong>Paragonimus westermani</strong> — возбудитель <strong>парагонимоза</strong></div>
+
+    <!-- ===== БЛОК 1. СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)<br>
+            <strong>Класс:</strong> Сосальщики (Трематоды) — Trematoda<br>
+            <strong>Вид:</strong> Лёгочный сосальщик (<em>Paragonimus westermani</em>)
+        </p>
+    </div>
+
+    <!-- ===== БЛОК 2. ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Парагонимоз.</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозоонозное, природно-очаговое заболевание.</div>
+        <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Основной очаг находится в странах Юго-Восточной Азии (Китай, Корея, Япония). Также встречается на Дальнем Востоке России и в некоторых районах Индии.</div>
+    </div>
+
+    <!-- ===== БЛОК 3. МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 3.1. Марита -->
+    <h3>3.1. Марита (половозрелая стадия / гермафродит)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма и размеры:</strong> Тело толстое, слегка сплющенное в дорсовентральном направлении, яйцевидной формы, внешне напоминает <strong>кофейное зерно</strong>. Окраска тела — красновато-коричневая. Размеры: длина — <strong>7,5–12 мм</strong> (иногда до 16 мм), ширина — <strong>4–6 мм</strong>, толщина — <strong>3,5–5 мм</strong>.
+            </p>
+
+            <h4>Органы фиксации:</h4>
+            <ul>
+                <li><strong>Ротовая присоска</strong> — расположена на самом переднем (терминальном) конце.</li>
+                <li><strong>Брюшная присоска</strong> — расположена примерно на середине тела.</li>
+                <li>Обе присоски <strong>почти одинакового размера</strong>.</li>
+            </ul>
+
+            <h4>Покровы и подвижность (тегумент):</h4>
+            <p>Тело покрыто кожно-мускульным мешком (тегументом). На поверхности тегумента имеются многочисленные шипики, обеспечивающие дополнительную фиксацию и подвижность в тканях.</p>
+
+            <h4>Пищеварительная система:</h4>
+            <p>Рот → хорошо развитая глотка → очень короткий пищевод. От пищевода отходят два <strong>неразветвленных</strong>, но <strong>сильно извитых</strong> слепых ствола кишечника, тянущихся до заднего конца тела.</p>
+
+            <h4>Выделительная система (экскреторная система):</h4>
+            <p>Представлена <strong>протонефридиями</strong> — выделительными клетками с мерцательным пламенем. По бокам тела проходят экскреторные каналы, которые соединяются в <strong>непарный экскреторный (мочевой) пузырь</strong>, расположенный в задней части тела и открывающийся наружу <strong>экскреторной порой</strong> на заднем конце.</p>
+
+            <h4>Половая система (гермафродит):</h4>
+            <ul>
+                <li><strong>Мужская:</strong> В задней трети тела расположены два крупных <strong>дольчатых семенника</strong>.</li>
+                <li><strong>Женская:</strong> В средней трети тела (впереди семенников) располагается <strong>дольчатый яичник</strong> и небольшая по размерам, петлистая <strong>матка</strong>, имеющая вид клубка. По бокам всего тела от уровня глотки до заднего конца сильно развиты <strong>желточники</strong>.</li>
+            </ul>
+        </div>
+
+        <!-- Изображение мариты -->
+        <div class="image-col">
+            <img src="images/helminths/lung_fluke_marita_scheme.jpg"
+                 alt="Марита лёгочного сосальщика — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Марита <em>Paragonimus westermani</em>
+                <span class="small">(lung_fluke_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">яйцевидное тело, присоски, семенники, яичник, матка</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3.2. Яйцо (БЕЗ ИЗОБРАЖЕНИЙ — только текст) -->
+    <h3>3.2. Яйцо</h3>
+
+    <p>
+        <strong>Размеры:</strong> Крупные — <strong>до 100 мкм</strong>.<br>
+        <strong>Форма и цвет:</strong> Овальной формы, <strong>золотисто-коричневые</strong> (желтоватые).<br>
+        <strong>Характерные структуры:</strong> На одном полюсе имеется <strong>крышечка</strong>; на противоположном полюсе — небольшое <strong>утолщение оболочки</strong>.<br>
+        <strong>Диагностическое значение:</strong> Яйца часто видны в мокроте невооруженным глазом как <strong>мелкие ржавые комочки</strong>.
+    </p>
+
+    <!-- ===== БЛОК 4. ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Биогельминт (со сменой двух промежуточных хозяев).<br>
+        <strong>Обязательное условие:</strong> Все личиночные стадии развиваются в <strong>пресноводной среде</strong>.
+    </p>
+
+    <p>
+        <strong>Окончательный (дефинитивный) хозяин:</strong> Человек, а также дикие и домашние плотоядные животные (кошки, собаки, свиньи, тигры, леопарды и др.).<br>
+        <strong>Первый промежуточный хозяин:</strong> Пресноводные брюхоногие моллюски родов <em>Melania</em> или <em>Semisulcospira</em>.<br>
+        <strong>Второй промежуточный хозяин:</strong> Пресноводные <strong>раки и крабы</strong> (в мышцах и жабрах которых инцистируются церкарии).<br>
+        <strong>Инвазионная стадия:</strong> <span class="spec">Метацеркарий</span> (в мышцах раков и крабов).<br>
+        <strong>Патогенная стадия:</strong> <span class="spec">Марита</span> (половозрелая особь) и мигрирующие личинки.<br>
+        <strong>Локализация в организме человека:</strong> <strong>Лёгкие</strong> (вблизи корней и по периферии). Возможна атипичная локализация в головном мозге, печени, селезенке.
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/lung_fluke_life_cycle.jpg"
+             alt="Жизненный цикл лёгочного сосальщика"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🌊</span>
+            Жизненный цикл <em>Paragonimus westermani</em>
+            <span class="small">(lung_fluke_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">яйцо → мирацидий → спороциста → материнская редия → дочерняя редия → церкарий → метацеркарий → марита</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла -->
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Выделение яиц во внешнюю среду:</strong> Марита, паразитирующая в лёгких окончательного хозяина, продуцирует яйца. Яйца выделяются во внешнюю среду с откашливаемой <strong>мокротой</strong>, либо проглатываются со слюной и тогда выходят наружу вместе с <strong>фекалиями</strong>. Для дальнейшего развития яйца обязательно должны попасть в <strong>пресный водоем</strong>.</li>
+        <li><strong>Выход мирацидия:</strong> В воде из яйца выходит свободноплавающая ресничная личинка — <strong>мирацидий</strong>. Она активно плавает и внедряется в тело первого промежуточного хозяина.</li>
+        <li><strong>Развитие в первом промежуточном хозяине (партеногенез):</strong> Внутри моллюска происходит бесполое (партеногенетическое) размножение. Строгая последовательность стадий: <strong>Мирацидий → Спороциста → Материнская редия → Дочерняя редия → Церкарий</strong>. <span class="spec">(Особенность: у лёгочного сосальщика <strong>две генерации редий</strong> — материнская и дочерняя!)</span></li>
+        <li><strong>Выход церкария из моллюска:</strong> Из моллюска в воду выходит подвижная хвостатая личинка — <strong>церкарий</strong>.</li>
+        <li><strong>Заражение второго промежуточного хозяина (раков и крабов):</strong> Церкарии активно внедряются в мышцы и жабры пресноводных раков и крабов, где инцистируются (покрываются оболочкой), превращаясь в <strong>метацеркариев</strong> — это <strong>инвазионная стадия</strong> для окончательного хозяина.</li>
+    </ol>
+
+    <!-- ===== ЗАРАЖЕНИЕ ОКОНЧАТЕЛЬНОГО ХОЗЯИНА ===== -->
+    <h3>Заражение окончательного хозяина (человека/животных)</h3>
+
+    <p>
+        <strong>Механизм заражения:</strong> Фекально-оральный.<br>
+        <strong>Путь передачи:</strong> <span class="spec">Алиментарный</span>.<br>
+        <strong>Факторы передачи:</strong> Употребление в пищу сырых, недостаточно термически обработанных (непроваренных, непрожаренных) пресноводных раков и крабов, содержащих метацеркариев.
+    </p>
+
+    <div class="note">
+        <strong>⚠️ Важное примечание для экзамена:</strong><br>
+        Это <strong>строго алиментарный путь</strong>, так как инвазионные метацеркарии находятся непосредственно внутри мышечной ткани животного (рака/краба), а заражение происходит при поедании этого мяса.<br>
+        Заражение также возможно при питье сырой воды, содержащей живых метацеркариев, если рак или краб были раздавлены в воде.
+    </div>
+
+    <h4>Миграция в организме человека:</h4>
+    <ol>
+        <li>В желудочно-кишечном тракте оболочка метацеркария растворяется.</li>
+        <li>Освободившаяся личинка активно проникает через стенку тонкой кишки в <strong>брюшную полость</strong>.</li>
+        <li>Затем личинка пробуравливает <strong>диафрагму</strong>, оба листка плевры и внедряется в паренхиму лёгких. <span class="spec">(Это специфическая особенность миграции лёгочного сосальщика — путь через диафрагму в лёгкие!)</span></li>
+        <li>В лёгких личинки формируют <strong>фиброзные кисты (узлы)</strong> размером с лесной орех, внутри которых обычно живут <strong>две мариты</strong>.</li>
+        <li>Через <strong>5–6 недель</strong> личинки достигают половой зрелости (становятся маритами).</li>
+        <li><strong>Продолжительность жизни в организме человека:</strong> Марита может паразитировать до <strong>5–6 лет</strong> (иногда до 20 лет).</li>
+    </ol>
+
+    <!-- ===== БЛОК 5. ПАТОГЕННОЕ ДЕЙСТВИЕ ===== -->
+    <h2><span class="emoji">⚡</span> Патогенное действие</h2>
+
+    <table class="pathogenic-table">
+        <thead>
+            <tr>
+                <th class="col-mechanism">Механизм действия</th>
+                <th>Характеристика</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-mechanism">Механическое повреждение</td>
+                <td>В лёгких вокруг паразитов формируются <strong>фиброзные кисты (узлы)</strong> размером с лесной орех, которые сообщаются с бронхами. Внутри кисты обычно живут две мариты. Полость заполнена воспалительным гнойно-кровянистым экссудатом, слизью и распадающейся тканью лёгкого.</td>
+            </tr>
+            <tr>
+                <td class="col-mechanism">Токсико-аллергическое действие</td>
+                <td>Продукты жизнедеятельности паразита вызывают аллергические реакции, лихорадку, эозинофилию.</td>
+            </tr>
+            <tr>
+                <td class="col-mechanism">Симптоматика</td>
+                <td>Парагонимоз может <strong>симулировать туберкулёз</strong>. Характерны: лихорадка, одышка, боли в груди, сильный упорный кашель с выделением <strong>гнойной, ржаво-коричневой мокроты</strong> (цвет обусловлен примесью крови и скоплением огромного количества золотисто-коричневых яиц паразита).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ===== БЛОК 6. ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <h4>1. Овоскопия (микроскопия)</h4>
+    <p>
+        <strong>Материал для исследования:</strong> <span class="spec">Мокрота</span> (основной материал) или фекалии.<br>
+        <strong>Метод:</strong> Микроскопия нативных мазков для обнаружения яиц паразита.
+    </p>
+
+    <h4>Диагностические критерии:</h4>
+    <ul>
+        <li>В исследуемом материале находят <strong>крупные (до 100 мкм)</strong> яйца золотисто-коричневого цвета, овальной формы, с <strong>крышечкой</strong> на одном полюсе и небольшим <strong>утолщением оболочки</strong> на противоположном.</li>
+        <li><strong>Макроскопический признак:</strong> Скопления яиц в мокроте часто видны даже невооруженным глазом как <strong>мелкие ржавые комочки</strong>.</li>
+    </ul>
+
+    <h4>2. Инструментальная диагностика</h4>
+    <p><strong>Рентгенография, УЗИ, КТ:</strong> Позволяют обнаружить очаговые кистозные изменения, инфильтраты и очаги кальцификации в лёгких.</p>
+
+    <h4>3. Серологические методы</h4>
+    <p><strong>ИФА, РСК, РНГА, кожно-аллергические пробы</strong> — используются на ранних стадиях болезни, когда яйца ещё не выделяются.</p>
+
+    <div class="note">
+        <strong>⚠️ Важное примечание:</strong><br>
+        В отличие от фасциолеза и дикроцелиоза, для парагонимоза <strong>не характерен</strong> феномен транзитных яиц, так как яйца паразита выделяются преимущественно с <strong>мокротой</strong>, а не с фекалиями. Однако при заглатывании мокроты яйца могут попадать в фекалии.
+    </div>
+
+    <!-- ===== БЛОК 7. ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Строго исключить из пищевого рациона сырых или недостаточно термически обработанных (непроваренных, непрожаренных) пресноводных раков и крабов.</li>
+        <li>Не пить сырую воду в эндемичных очагах парагонимоза.</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Выявление и лечение больных парагонимозом людей и животных.</li>
+        <li>Охрана водоемов от фекального загрязнения.</li>
+        <li>Санитарно-просветительская работа среди населения в эндемичных регионах.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

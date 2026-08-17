@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Власоглав человеческий (Trichocephalus trichiurus) — урок 3</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ТАБЛИЦЫ ОБЩИЕ ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-table,
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .focus-table thead,
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .focus-table thead th,
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .focus-table td,
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .focus-table tbody tr:last-child td,
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .focus-table tbody tr:hover,
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .focus-table tbody tr:nth-child(even),
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .focus-table tbody tr:nth-child(even):hover,
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .focus-table .col-type {
+            width: 20%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul,
+        ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul,
+        ol ol,
+        ul ol,
+        ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .danger-note {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #7f1d1d;
+        }
+
+        .danger-note strong {
+            color: #991b1b;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 60%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image {
+            margin-top: 12px;
+            flex: 1 1 auto;
+            display: flex;
+            align-items: stretch;
+            min-height: 280px;
+        }
+
+        .stage-row .left-col .additional-image img,
+        .stage-row .left-col .additional-image .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .left-col .additional-image .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .stage-row .left-col .additional-image {
+                flex: 0 0 auto;
+                margin-top: 12px;
+                min-height: 200px;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .focus-table,
+            .pathogenic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+
+            .stage-row .left-col .additional-image {
+                min-height: 160px;
+            }
+
+            .focus-table,
+            .pathogenic-table {
+                font-size: 12px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== ЗАГОЛОВОК ===== -->
+        <h1><span class="emoji">🧬</span> Власоглав человеческий</h1>
+        <div class="subtitle"><strong>Trichocephalus trichiurus</strong> — возбудитель <strong>трихоцефалёза</strong></div>
+
+        <!-- ===== СИСТЕМАТИКА ===== -->
+        <div class="taxonomy-card">
+            <p>
+                <strong>Домен:</strong> Эукариоты (Eukaryota)<br />
+                <strong>Царство:</strong> Животные (Animalia)<br />
+                <strong>Тип:</strong> Круглые черви (Nemathelminthes)<br />
+                <strong>Класс:</strong> Собственно круглые черви, или Нематоды (Nematoda)<br />
+                <strong>Вид:</strong> Власоглав человеческий (<em>Trichocephalus trichiurus</em>)
+            </p>
+        </div>
+
+        <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+        <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+        <div class="epi-grid">
+            <div class="item"><strong>Вызываемое заболевание:</strong> Трихоцефалёз </div>
+            <div class="item"><strong>Эпидемиологическая группа:</strong> Геогельминт, антропоноз (человек — единственный хозяин).</div>
+            <div class="item" style="grid-column: 1 / -1;">
+             <strong>Географическое распространение:</strong> Распространен повсеместно, но наибольшая пораженность населения регистрируются в странах с теплым и влажным климатом — во влажных тропиках, субтропиках и аналогичных зонах умеренного климата.
+        </div>
+     </div>
+
+        <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+        <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+        <!-- 1. Взрослая особь -->
+        <h3>1. Взрослая (половозрелая) особь</h3>
+
+        <div class="stage-row">
+            <div class="text-col">
+                <p>
+                    <strong>Размеры и окраска:</strong> Мелкие нематоды серовато-розового или сероватого цвета. Длина тела самки — <strong>30–55 мм</strong> (3,5–5,5 см), самцы мельче — <strong>30–45 мм</strong> (3–5 см).
+                </p>
+                <p>
+                    <strong>Уникальное строение тела:</strong> Тело чётко разделено на два резко отличающихся отдела. Передний отдел — тонкий, волосовидный (составляет около 3/5 всей длины; отношение тонкой части к широкой у самок 2:1, у самцов 3:2). В нём проходит только длинный нитевидный пищевод, лишённый мышечного слоя и выстланный крупными одноклеточными железами — <strong>ститхоцитами</strong>. Задний отдел — широкий и толстый, в нём располагаются кишечник и репродуктивные органы.
+                </p>
+                <p>
+                    <strong>Органы фиксации:</strong> Специальных присосок, крючьев или губ ротовое отверстие не имеет. Власоглав фиксируется, <strong>«прошивая»</strong> слизистую оболочку слепой кишки своим тонким передним концом подобно стежку нити.
+                </p>
+                <p>
+                    <strong>Половой диморфизм:</strong> У самки задний конец прямой или слегка изогнут, матка нитевидная с огромным количеством яиц; вульва расположена вентрально на границе отделов. У самца задний конец тела спирально закручен на брюшную сторону; имеется одна спикула.
+                </p>
+            </div>
+
+            <div class="image-col">
+                <img src="images/helminths/trichuris_adult_scheme.jpg"
+                     alt="Взрослая особь власоглава — схема"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🪱</span>
+                    Взрослая особь <em>Trichocephalus trichiurus</em>
+                    <span class="small">(trichuris_adult_scheme.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">самка (прямой хвост) и самец (загнутый хвост), передний отдел тонкий, задний широкий</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Яйцо -->
+        <h3>2. Яйцо</h3>
+
+        <div class="stage-row">
+            <div class="left-col">
+                <div class="text">
+                    <p>
+                        <strong>Форма:</strong> Характерная форма <strong>лимона или бочонка</strong> — легко узнаваема под микроскопом.<br />
+                        <strong>Размеры:</strong> Примерно 50 × 22 мкм.<br />
+                        <strong>Оболочка:</strong> Толстая, гладкая, многослойная, золотисто-коричневого или желтовато-коричневого цвета (окрашивается пигментами фекалий).<br />
+                        <strong>Главный диагностический признак:</strong> На обоих противоположных полюсах имеются бесцветные прозрачные выступы — <strong>«пробочки»</strong>. Внутри свежевыделенного яйца находится несегментированная зародышевая масса (один или два бластомера).
+                    </p>
+                </div>
+                <!-- Микроскопическое фото яйца -->
+                <div class="additional-image">
+                    <img src="images/helminths/trichuris_egg_microscope.jpg"
+                         alt="Микроскопическое фото яйца власоглава"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                    <div class="placeholder" style="display:none;">
+                        <span class="icon">🔬</span>
+                        Яйцо <em>Trichocephalus trichiurus</em> (микроскопия)
+                        <span class="small">(trichuris_egg_microscope.jpg)</span>
+                        <span style="font-size:12px;color:#94a3b8;">форма бочонка, пробочки на полюсах</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая колонка: схема яйца -->
+            <div class="right-col">
+                <img src="images/helminths/trichuris_egg_scheme.jpg"
+                     alt="Схема яйца власоглава"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🥚</span>
+                    Схема яйца <em>Trichocephalus trichiurus</em>
+                    <span class="small">(trichuris_egg_scheme.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">лимоновидная форма, пробочки, зародышевая масса</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Личинка -->
+        <h3>3. Личинка</h3>
+
+        <div class="stage-row">
+            <div class="left-col">
+                <div class="text" style="flex:1;">
+                    <p>
+                        <strong>Развитие во внешней среде:</strong> Свежевыделенные яйца неинвазионны. Для созревания личинки внутри яйца требуются: <span class="spec">кислород</span>, <span class="spec">высокая влажность (не ниже 85%)</span> и <span class="spec">оптимальная температура почвы +26…+30 °С</span>. В таких условиях инвазионная личинка формируется за <strong>3–4 недели</strong>. В умеренном климате развитие замедляется в 2–3 раза.
+                    </p>
+                    <p>
+                        <strong>Отличие от аскариды:</strong> Личинка власоглава <strong>не выходит из яйца во внешней среде</strong> – выход происходит только внутри тонкого кишечника человека после проглатывания инвазионного яйца.
+                    </p>
+                    <p>
+                        <strong>Дальнейшее развитие:</strong> Личинка выходит, внедряется в ворсинки слизистой тонкой кишки, где развивается около 2 недель. Затем она перемещается в слепую кишку, прочно фиксируется передним концом и через 1–1,5 месяца достигает половой зрелости.
+                    </p>
+                    <div class="danger-note">
+                        <strong>⚠️ Критическое отличие от аскариды:</strong> Личинки власоглава <strong>не совершают миграции</strong> по кровеносной системе через печень и лёгкие!
+                    </div>
+                </div>
+            </div>
+            <!-- Изображения у личинки удалены полностью -->
+        </div>
+
+        <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+        <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+        <p>
+            <strong>Окончательный (и единственный) хозяин:</strong> Человек.<br />
+            <strong>Промежуточный хозяин:</strong> Отсутствует.<br />
+            <strong>Патогенная стадия для человека:</strong> Половозрелая особь (и личинки в период внедрения).<br />
+            <strong>Локализация в организме человека:</strong> Преимущественно слепая кишка, аппендикс и начальный отдел толстой кишки; при тяжёлой инвазии – подвздошная и прямая кишка.<br />
+            <strong>Инвазионная стадия для человека:</strong> Яйцо с развившейся личинкой.<br />
+            <strong>Механизм заражения:</strong> Фекально-оральный.<br />
+            <strong>Пути передачи:</strong>
+        </p>
+        <ul>
+            <li><strong>Контактно-бытовой</strong> – заглатывание яиц с грязных рук (после почвы, огородных работ, игр в песочнице), через загрязнённые предметы обихода, овощи, фрукты, зелень.</li>
+            <li><strong>Водный</strong> – употребление сырой воды из открытых источников.</li>
+        </ul>
+        <p><strong>Механические переносчики:</strong> Мухи и синантропные тараканы могут переносить яйца из выгребных ям на продукты питания.</p>
+
+        <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+        <div class="full-width-image">
+            <img src="images/helminths/trichuris_life_cycle.jpg"
+                 alt="Жизненный цикл власоглава"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🔄</span>
+                Жизненный цикл <em>Trichocephalus trichiurus</em>
+                <span class="small">(trichuris_life_cycle.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">яйцо в почве → инвазионное яйцо → заглатывание → выход личинки в кишечнике → внедрение в слизистую → взрослая особь в слепой кишке → яйца с фекалиями</span>
+            </div>
+        </div>
+
+        <h4>Этапы жизненного цикла:</h4>
+        <ol>
+            <li><strong>Выделение яиц во внешнюю среду:</strong> Взрослые самки в толстой кишке откладывают яйца, которые выделяются с фекалиями.</li>
+            <li><strong>Созревание яиц в почве:</strong> При наличии кислорода, высокой влажности (≥85%) и температуре +26…+30 °С внутри яйца за 3–4 недели формируется инвазионная личинка. В умеренном климате сроки увеличиваются.</li>
+            <li><strong>Заражение человека:</strong> Проглатывание инвазионных яиц с пищей, водой или через грязные руки.</li>
+            <li><strong>Выход личинки в тонком кишечнике:</strong> Под действием пищеварительных ферментов оболочка яйца растворяется, личинка выходит и внедряется в ворсинки слизистой тонкой кишки.</li>
+            <li><strong>Развитие в слепой кишке:</strong> Через ~2 недели личинка перемещается в слепую кишку, прочно фиксируется передним волосовидным концом, растёт и через 1–1,5 месяца превращается в половозрелую особь.</li>
+            <li><strong>Цикл замыкается</strong> при выделении новых яиц с фекалиями.</li>
+        </ol>
+
+        <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ (ТАБЛИЦА) ===== -->
+        <h2><span class="emoji">⚡</span> Патогенное действие и клиника</h2>
+
+        <p>
+            Власоглавы по типу питания являются <strong>гематофагами</strong> – активно питаются клетками кишечного эпителия и кровью хозяина.
+        </p>
+
+        <div class="table-wrapper">
+            <table class="pathogenic-table">
+                <thead>
+                    <tr>
+                        <th style="width:20%;">Фаза / Синдром</th>
+                        <th style="width:35%;">Механизм действия</th>
+                        <th style="width:45%;">Клинические проявления</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Механическое повреждение</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Внедрение волосовидного конца глубоко под слизистую</li>
+                                <li>Местная воспалительная реакция, гиперемия, отёк</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Боли в правой подвздошной области (симулируют аппендицит)</li>
+                                <li>Тошнота, метеоризм, неустойчивый стул</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Токсико-аллергическое действие</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Всасывание метаболитов паразита в кровь</li>
+                                <li>Общая интоксикация и аллергизация</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Головные боли, головокружение, утомляемость</li>
+                                <li>При тяжёлой инвазии – эпилептиформные припадки (у детей)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Кровопотеря и анемия</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Постоянное сосание крови и микрокровотечения</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Железодефицитная (гипохромная) анемия</li>
+                                <li>У детей – задержка роста, деформация пальцев («барабанные палочки»)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Осложнения</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Проникновение в аппендикс</li>
+                                <li>Тяжёлый колит с тенезмами</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Острый аппендицит</li>
+                                <li>Дисбактериоз, кахексия</li>
+                                <li>Выпадение прямой кишки (при сильных позывах)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА (ТАБЛИЦА) ===== -->
+        <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+        <div class="table-wrapper">
+            <table class="pathogenic-table">
+                <thead>
+                    <tr>
+                        <th style="width:25%;">Метод</th>
+                        <th style="width:30%;">Материал / суть</th>
+                        <th style="width:45%;">Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Копроовоскопия (основной)</strong></td>
+                        <td>Фекалии пациента</td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Обнаружение яиц власоглава (форма бочонка с пробочками)</li>
+                                <li>Используют методы обогащения: <strong>Калантарян</strong> (нитрат натрия), <strong>Фюллеборн</strong> (хлорид натрия), <strong>Като</strong> (толстый мазок под целлофаном).</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Инструментальные</strong></td>
+                        <td>Колоноскопия</td>
+                        <td>Визуальное обнаружение взрослых особей, прикреплённых к слизистой толстой кишки.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Анализ крови</strong></td>
+                        <td>Кровь</td>
+                        <td>Эозинофилия (особенно в ранний период), снижение гемоглобина (анемия).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Серологические методы</strong></td>
+                        <td>Кровь</td>
+                        <td>ИФА для выявления антител к трихоцефалёзу.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== ПРОФИЛАКТИКА ===== -->
+        <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+        <h4>Личная профилактика:</h4>
+        <ul>
+            <li>Тщательное мытьё рук с мылом перед едой, после работы с землёй и посещения туалета.</li>
+            <li>Качественное мытьё овощей, фруктов, ягод и зелени под проточной водой с последующим ошпариванием кипятком.</li>
+            <li>Употребление только кипячёной, фильтрованной или бутилированной воды.</li>
+        </ul>
+
+        <h4>Общественная профилактика:</h4>
+        <ul>
+            <li>Санитарное благоустройство территорий (канализация, герметичные выгребные ямы).</li>
+            <li><strong>Строжайший запрет</strong> на использование необеззараженных человеческих фекалий в качестве удобрений.</li>
+            <li>Плановое выявление и лечение (дегельминтизация) больных трихоцефалёзом.</li>
+            <li>Дезинсекция для уничтожения мух и тараканов – механических переносчиков яиц.</li>
+            <li>Санитарно-просветительная работа среди населения.</li>
+        </ul>
+
+    </div>
+
+</body>
+</html>

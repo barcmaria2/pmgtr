@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тип Членистоногие (Arthropoda) — систематика и медицинское значение</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .species-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #e9edf3;
+            margin: 10px 0 16px 0;
+        }
+
+        .species-list .item {
+            font-size: 14px;
+        }
+
+        .species-list .item em {
+            font-style: italic;
+            color: #1e293b;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul, ol ol, ul ol, ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 700px;
+        }
+
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .compare-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .compare-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .compare-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .compare-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .compare-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .compare-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .compare-table .col-feature {
+            font-weight: 700;
+            color: #1e3a8a;
+            background: #f8fafc;
+            width: 15%;            /* узкий столбец признаков */
+        }
+
+        .compare-table .col-crustacea,
+        .compare-table .col-arachnida,
+        .compare-table .col-insecta {
+            width: 28.33%;         /* три остальных расширены */
+        }
+
+        .compare-table ul {
+            margin: 4px 0 4px 18px;
+            padding: 0;
+            font-size: 13px;
+        }
+
+        .compare-table li {
+            margin-bottom: 2px;
+        }
+
+        /* отдельная таблица для медицинского значения */
+        .med-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .med-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .med-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .med-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .med-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .med-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .med-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .med-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .med-table ul {
+            margin: 4px 0 4px 18px;
+            padding: 0;
+            font-size: 13px;
+        }
+
+        .med-table li {
+            margin-bottom: 2px;
+        }
+
+        .med-table .col-class {
+            font-weight: 700;
+            color: #1e3a8a;
+            background: #f8fafc;
+            width: 15%;
+        }
+
+        .med-table .col-role {
+            width: 85%;
+        }
+
+        .med-table .role-category {
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-top: 6px;
+        }
+        .med-table .role-category:first-of-type {
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+            .compare-table,
+            .med-table {
+                font-size: 13px;
+                min-width: 500px;
+            }
+            .compare-table .col-feature {
+                width: auto;
+            }
+            .compare-table .col-crustacea,
+            .compare-table .col-arachnida,
+            .compare-table .col-insecta {
+                width: auto;
+            }
+            .med-table .col-class {
+                width: auto;
+            }
+            .med-table .col-role {
+                width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+            .compare-table,
+            .med-table {
+                font-size: 12px;
+                min-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🦂</span> Тип Членистоногие (Arthropoda)</h1>
+    <div class="subtitle">Систематика, сравнительная характеристика подтипов и <strong>медицинское значение</strong></div>
+
+    <!-- ===== СИСТЕМАТИЧЕСКОЕ ПОЛОЖЕНИЕ ===== -->
+    <div class="taxonomy-card">
+        <p><strong>Домен:</strong> Эукариоты (Eukaryota)</p>
+        <p><strong>Царство:</strong> Животные (Animalia)</p>
+        <p><strong>Тип:</strong> Членистоногие (Arthropoda)</p>
+        <p><strong>Подтипы (изучаемые):</strong></p>
+        <div class="species-list">
+            <span class="item"><strong>Жабродышащие (Branchiata)</strong> — Класс Ракообразные (Crustacea)</span>
+            <span class="item"><strong>Хелицеровые (Chelicerata)</strong> — Класс Паукообразные (Arachnida)</span>
+            <span class="item"><strong>Трахейнодышащие (Tracheata)</strong> — Класс Насекомые (Insecta)</span>
+        </div>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика типа</h2>
+    <ul>
+        <li><strong>Двусторонняя симметрия</strong> тела, сегментированное (метамерное) строение.</li>
+        <li>Наличие <strong>хитинового наружного скелета</strong> (кутикулы), который периодически сбрасывается в процессе <strong>линьки</strong>.</li>
+        <li><strong>Членистые конечности</strong> (отсюда название) — выполняют функции передвижения, захвата пищи, дыхания, осязания.</li>
+        <li><strong>Смешанная полость тела</strong> (миксоцель) — первичная полость сливается с остатками вторичной.</li>
+        <li>Кровеносная система <strong>незамкнутая</strong>, сердце на спинной стороне, гемолимфа циркулирует по сосудам и синусам.</li>
+        <li>Органы дыхания разнообразны: <strong>жабры, трахеи, лёгкие</strong> (легочные мешки) — в зависимости от среды обитания.</li>
+        <li>Нервная система — <strong>брюшная нервная цепочка</strong> с окологлоточным кольцом, головной мозг развит.</li>
+        <li>Органы выделения — <strong>метанефридии</strong> (у ракообразных) или <strong>мальпигиевы сосуды</strong> (у наземных форм).</li>
+        <li>Развитие — <strong>прямое</strong> или с <strong>метаморфозом</strong> (полным или неполным).</li>
+        <li>Тип включает более 1,5 миллиона описанных видов, что делает его самым многочисленным среди животных.</li>
+    </ul>
+
+    <!-- ===== СРАВНИТЕЛЬНАЯ ТАБЛИЦА (без медицинского значения) ===== -->
+    <h2><span class="emoji">📊</span> Сравнительная таблица подтипов</h2>
+    <div class="table-wrapper">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th class="col-feature">Признак</th>
+                    <th class="col-crustacea">Жабродышащие (Branchiata)<br>Класс: Ракообразные (Crustacea)</th>
+                    <th class="col-arachnida">Хелицеровые (Chelicerata)<br>Класс: Паукообразные (Arachnida)</th>
+                    <th class="col-insecta">Трахейнодышащие (Tracheata)<br>Класс: Насекомые (Insecta)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-feature">Отделы тела</td>
+                    <td>Тело четко подразделено на два отдела — <strong>головогрудь</strong> и <strong>брюшко</strong> (сегменты головогруди обычно слиты, брюшко расчленено).</td>
+                    <td>У пауков и скорпионов тело делится на головогрудь и брюшко.<br>У представителей отряда <strong>Клещей (Acari)</strong> тело претерпело тотальную олигомеризацию и является цельным, несегментированным (слитным).</td>
+                    <td>Тело четко подразделено на три отдела — <strong>голову, грудь и брюшко</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Усики</td>
+                    <td>Присутствуют <strong>две пары</strong> усиков — короткие антеннулы (1-я пара) и длинные антенны (2-я пара).</td>
+                    <td><strong>Полностью отсутствуют</strong> (это важнейший диагностический признак подтипа).</td>
+                    <td>Присутствует <strong>одна пара</strong> усиков (сяжков), несущих органы обоняния и осязания.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Ходильные ноги</td>
+                    <td><strong>5 пар</strong> ходильных ног (всего 10 конечностей), причем у высших раков первая пара часто видоизменена в мощные клешни.</td>
+                    <td><strong>4 пары</strong> ходильных ног (всего 8 ног).</td>
+                    <td><strong>3 пары</strong> ходильных ног (всего 6 ног), прикрепленных к сегментам груди.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Ротовой аппарат<br><span style="font-weight:400;font-size:12px;">(видоизмененные конечности)</span></td>
+                    <td>Головные конечности видоизменены в <strong>мандибулы</strong> (верхние челюсти — 1 пара) и <strong>максиллы</strong> (нижние челюсти — 2 пары) для захвата и измельчения пищи. Также имеются 3 пары ногочелюстей.</td>
+                    <td>Первая пара головных конечностей видоизменена в <strong>хелицеры</strong> (для захвата, прокалывания или умерщвления добычи), вторая пара — в <strong>педипальпы</strong> (ногощупальца, выполняющие осязательную и захватывающую функцию).</td>
+                    <td>Состоит из верхней челюсти (<strong>мандибулы</strong> — 1 пара), нижней челюсти (<strong>максиллы</strong> — 1 пара) и нижней губы (слившейся второй пары максилл).<br>В зависимости от характера питания ротовой аппарат видоизменяется в различные типы: грызущий, лижущий, сосущий, колюще-сосущий и др.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Органы дыхания</td>
+                    <td>Представлены <strong>жабрами</strong> (кожными выростами, расположенными у основания ног или на брюшных конечностях).</td>
+                    <td>Представлены <strong>легочными мешками</strong> (листовидными легкими) и/или системой <strong>трахей</strong>.<br>Мелкие клещи могут дышать всей поверхностью тела.</td>
+                    <td>Исключительно <strong>трахеи</strong> — густая сеть воздухоносных трубочек, пронизывающая все тело и открывающаяся дыхальцами (стигмами) на сегментах груди и брюшка.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Органы выделения</td>
+                    <td>Видоизмененные метанефридии — <strong>антеннальные</strong> (зеленые) или <strong>максиллярные</strong> железы, открывающиеся у основания усиков.</td>
+                    <td>Представлены <strong>мальпигиевыми сосудами</strong> (слепо заканчивающимися выделительными трубочками, открывающимися на границе средней и задней кишки) и/или видоизмененными метанефридиями — <strong>коксальными железами</strong>.</td>
+                    <td>Представлены <strong>мальпигиевыми сосудами</strong> и <strong>жировым телом</strong> (выполняющим роль «почки накопления»).</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Нервная система</td>
+                    <td>Представлена окологлоточным кольцом (надглоточный и подглоточный ганглии) и брюшной нервной цепочкой.<br>Глаза обычно <strong>сложные (фасеточные)</strong>, у многих видов расположены на подвижных стебельках.</td>
+                    <td><strong>Концентрированная</strong> (ганглии головогруди сливаются в единую массу вокруг пищевода).<br>Глаза только <strong>простые</strong> (фасеточных глаз нет).</td>
+                    <td>Сложно дифференцирована. Головной мозг имеет три отдела, среди которых особенно развиты <strong>грибовидные тела</strong> (центры сложного инстинктивного поведения).<br>Имеются <strong>сложные фасеточные глаза</strong> и простые глазки.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Развитие</td>
+                    <td><strong>Прямое</strong> (у высших раков) или с <strong>метаморфозом</strong> (у низших раков — с личиночной стадией науплиус).</td>
+                    <td><strong>Прямое</strong> (у пауков и скорпионов).<br>У клещей — с <strong>метаморфозом</strong> (яйцо → 6-ногая личинка → 8-ногая нимфа без полового отверстия → имаго).</td>
+                    <td>Всегда с <strong>метаморфозом</strong>: полным (яйцо → личинка → куколка → имаго) или неполным (яйцо → личинка → имаго).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ОТДЕЛЬНАЯ ТАБЛИЦА МЕДИЦИНСКОГО ЗНАЧЕНИЯ ===== -->
+    <h2><span class="emoji">🩺</span> Медицинское значение членистоногих</h2>
+    <div class="table-wrapper">
+        <table class="med-table">
+            <thead>
+                <tr>
+                    <th class="col-class">Класс</th>
+                    <th class="col-role">Роль в патологии человека (примеры)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Ракообразные -->
+                <tr>
+                    <td class="col-class"><strong>Ракообразные</strong><br>(Crustacea)</td>
+                    <td>
+                        <div class="role-category">Промежуточные хозяева гельминтов:</div>
+                        <ul>
+                            <li><strong>Веслоногие рачки</strong> (циклопы, диаптомусы) — первые промежуточные хозяева для <em>Diphyllobothrium latum</em> (лентец широкий, дифиллоботриоз) и <em>Dracunculus medinensis</em> (ришта, дракункулез).</li>
+                            <li><strong>Пресноводные раки и крабы</strong> — вторые промежуточные хозяева для <em>Paragonimus westermani</em> (легочный сосальщик, парагонимоз).</li>
+                        </ul>
+                        <div class="role-category" style="margin-top:6px;">Самостоятельного паразитирования на человеке не вызывают.</div>
+                    </td>
+                </tr>
+                <!-- Паукообразные -->
+                <tr>
+                    <td class="col-class"><strong>Паукообразные</strong><br>(Arachnida)</td>
+                    <td>
+                        <div class="role-category">Переносчики возбудителей инфекций:</div>
+                        <ul>
+                            <li><strong>Таёжный клещ</strong> (<em>Ixodes persulcatus</em>) и <strong>собачий клещ</strong> (<em>I. ricinus</em>) — переносят вирус клещевого энцефалита и бактерий болезни Лайма (боррелиоз).</li>
+                            <li><strong>Поселковый клещ</strong> (<em>Ornithodoros papillipes</em>) — переносчик спирохет — возбудителей клещевого возвратного тифа.</li>
+                        </ul>
+                        <div class="role-category">Возбудители инфестаций (паразитарных болезней):</div>
+                        <ul>
+                            <li><strong>Чесоточный зудень</strong> (<em>Sarcoptes scabiei</em>) — внутрикожный паразит, возбудитель чесотки (скабиоза).</li>
+                            <li><strong>Железница угревая</strong> (<em>Demodex folliculorum</em>) — обитает в волосяных фолликулах и сальных железах, вызывает демодекоз.</li>
+                        </ul>
+                        <div class="role-category">Ядовитые виды:</div>
+                        <ul>
+                            <li><strong>Каракурт</strong> (<em>Latrodectus tredecimguttatus</em>) — укус самки смертельно опасен.</li>
+                            <li><strong>Тарантул</strong> (<em>Lycosa singoriensis</em>) и тропические скорпионы (Scorpiones) — болезненные укусы с тяжёлой интоксикацией.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <!-- Насекомые -->
+                <tr>
+                    <td class="col-class"><strong>Насекомые</strong><br>(Insecta)</td>
+                    <td>
+                        <div class="role-category">Переносчики возбудителей инфекций и инвазий:</div>
+                        <ul>
+                            <li><strong>Комары рода <em>Anopheles</em></strong> — специфические переносчики малярийных плазмодиев и филярий (вухерерии, бругии).</li>
+                            <li><strong>Комары <em>Culex, Aedes</em></strong> — переносят вирусы японского энцефалита, жёлтой лихорадки, лихорадки Денге.</li>
+                            <li><strong>Москиты (<em>Phlebotomus</em>)</strong> — переносчики лейшманий (кожный и висцеральный лейшманиоз).</li>
+                            <li><strong>Вши</strong> (головная и платяная) — переносят риккетсий сыпного тифа и спирохет возвратного тифа.</li>
+                            <li><strong>Блохи</strong> (человеческая, крысиная) — переносят чумную палочку и возбудителей туляремии.</li>
+                            <li><strong>Муха це-це</strong> (<em>Glossina</em>) — переносчик трипаносом (африканский трипаносомоз, сонная болезнь).</li>
+                            <li><strong>Слепни</strong> — переносят личинок <em>Loa loa</em> и механически — возбудителей сибирской язвы, туляремии.</li>
+                            <li><strong>Комнатная муха</strong> и <strong>тараканы</strong> — механические переносчики цист простейших, яиц гельминтов, возбудителей холеры, дизентерии, туберкулёза.</li>
+                        </ul>
+                        <div class="role-category">Возбудители инфестаций и миазов:</div>
+                        <ul>
+                            <li><strong>Вши</strong> (Anoplura) — вызывают педикулёз и фтириаз.</li>
+                            <li><strong>Вольфартова муха</strong> (<em>Wohlfahrtia magnifica</em>) — личинки паразитируют в ранах, глазах и ушах, вызывая тканевые миазы.</li>
+                        </ul>
+                        <div class="role-category">Ядовитые и аллергенные:</div>
+                        <ul>
+                            <li><strong>Осы, пчёлы, шершни</strong> — укусы вызывают общую интоксикацию и анафилактический шок (вплоть до летального).</li>
+                        </ul>
+                        <div class="role-category">Промежуточные хозяева гельминтов:</div>
+                        <ul>
+                            <li><strong>Муравьи</strong> (Formicidae) — вторые промежуточные хозяева ланцетовидного сосальщика (<em>Dicrocoelium dendriticum</em>).</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ПРИМЕЧАНИЕ ===== -->
+    <div class="note">
+        <strong>📌 Важно для экзамена:</strong> Членистоногие — самая многочисленная группа животных, имеющая колоссальное эпидемиологическое и эпизоотологическое значение. Знание циклов развития переносчиков и возбудителей — основа профилактики трансмиссивных заболеваний.
+    </div>
+
+</div>
+</body>
+</html>

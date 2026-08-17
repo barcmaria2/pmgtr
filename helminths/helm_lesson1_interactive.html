@@ -1,0 +1,419 @@
+<div class="interactive-wrapper" data-interactive="fluke-test">
+    <style>
+        .interactive-wrapper {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+        .interactive-wrapper h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .interactive-wrapper .sub {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .interactive-wrapper .sub strong { color: #2563eb; }
+        .interactive-wrapper .progress-bar {
+            background: #e9edf3;
+            border-radius: 30px;
+            height: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .interactive-wrapper .progress-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: #2563eb;
+            border-radius: 30px;
+            transition: width 0.4s ease;
+        }
+        .interactive-wrapper .stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        .interactive-wrapper .stats .answered { font-weight: 600; color: #1e293b; }
+        .interactive-wrapper .question-card {
+            background: #fafcff;
+            border-radius: 16px;
+            padding: 24px 26px;
+            margin-bottom: 20px;
+            border: 1px solid #eef2f6;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .interactive-wrapper .question-card.correct {
+            border-left: 6px solid #22c55e;
+            background: #f0fdf4;
+        }
+        .interactive-wrapper .question-card.wrong {
+            border-left: 6px solid #ef4444;
+            background: #fef2f2;
+        }
+        .interactive-wrapper .question-number {
+            display: inline-block;
+            background: #e9edf3;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 2px 12px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+        }
+        .interactive-wrapper .question-number .tag {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e3a8a;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+        .interactive-wrapper .question-text {
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 18px;
+            color: #0f172a;
+        }
+        .interactive-wrapper .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .interactive-wrapper .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .interactive-wrapper .option-label:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+        .interactive-wrapper .option-label input[type="radio"] {
+            accent-color: #2563eb;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .interactive-wrapper .option-label.correct-answer {
+            background: #dcfce7;
+            border-color: #22c55e;
+        }
+        .interactive-wrapper .option-label.wrong-answer {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+        .interactive-wrapper .option-label.disabled {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        .interactive-wrapper .feedback {
+            margin-top: 14px;
+            font-size: 15px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            display: none;
+        }
+        .interactive-wrapper .feedback.show { display: block; }
+        .interactive-wrapper .feedback.correct {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .interactive-wrapper .feedback.wrong {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .interactive-wrapper .feedback .hint {
+            font-size: 14px;
+            color: #475569;
+            margin-top: 6px;
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 6px;
+        }
+        .interactive-wrapper .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .interactive-wrapper .btn {
+            background: #e9edf3;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .interactive-wrapper .btn:hover { background: #d1d9e6; }
+        .interactive-wrapper .btn-primary {
+            background: #2563eb;
+            color: #ffffff;
+        }
+        .interactive-wrapper .btn-primary:hover { background: #1d4ed8; }
+        .interactive-wrapper .btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .interactive-wrapper .result-box {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-top: 24px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            display: none;
+        }
+        .interactive-wrapper .result-box.show { display: block; }
+        .interactive-wrapper .result-box .score {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        .interactive-wrapper .result-box .detail {
+            font-size: 16px;
+            color: #475569;
+            margin-top: 6px;
+        }
+        @media (max-width: 600px) {
+            .interactive-wrapper .question-text { font-size: 15px; }
+            .interactive-wrapper .option-label { font-size: 14px; padding: 8px 12px; }
+            .interactive-wrapper .question-card { padding: 16px 18px; }
+            .interactive-wrapper .actions { flex-direction: column; align-items: stretch; }
+            .interactive-wrapper .btn { text-align: center; }
+        }
+    </style>
+
+    <h2><span>🪱</span> Тест: Сосальщики и Шистосомы</h2>
+    <div class="sub">
+        Вопросы по трематодам: <strong>Fasciola hepatica</strong>, <strong>Opisthorchis felineus</strong>,
+        <strong>Dicrocoelium lanceatum</strong>, <strong>Paragonimus westermani</strong>,
+        <strong>Schistosoma</strong> (S. haematobium, S. mansoni, S. japonicum)
+    </div>
+
+    <div class="progress-bar"><div class="fill" id="flukeTestProgressFill"></div></div>
+    <div class="stats">
+        <span>Всего вопросов: <strong id="flukeTestTotalCount">0</strong></span>
+        <span class="answered">Отвечено: <strong id="flukeTestAnsweredCount">0</strong></span>
+    </div>
+
+    <div id="flukeTestQuestionsContainer"></div>
+
+    <div class="actions">
+        <button class="btn btn-primary" id="flukeTestCheckBtn">✅ Проверить ответы</button>
+        <button class="btn" id="flukeTestResetBtn">🔄 Сбросить</button>
+    </div>
+
+    <div class="result-box" id="flukeTestResultBox">
+        <div class="score" id="flukeTestScoreDisplay">0 / 0</div>
+        <div class="detail" id="flukeTestResultDetail"></div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const questions = [
+            { topic: 'Печёночный сосальщик', text: 'Какой гельминтоз вызывает Fasciola hepatica?', options: ['Описторхоз', 'Фасциолез', 'Дикроцелиоз', 'Парагонимоз'], correct: 1, hint: 'Fasciola hepatica — возбудитель фасциолеза.' },
+            { topic: 'Печёночный сосальщик', text: 'Инвазионной стадией для человека при фасциолёзе является:', options: ['Яйцо', 'Мирацидий', 'Адолескарий', 'Церкарий'], correct: 2, hint: 'Адолескарий — циста на водных растениях или в воде.' },
+            { topic: 'Печёночный сосальщик', text: 'Каким путём человек заражается фасциолёзом?', options: ['Употребление в пищу речной рыбы', 'Употребление загрязнённой воды с адолескариями или немытых водных растений', 'Употребление сырого мяса', 'Трансмиссивно (при укусе комара)'], correct: 1, hint: 'Адолескарии фиксированы на водных растениях или плавают в воде.' },
+            { topic: 'Печёночный сосальщик', text: 'Промежуточным хозяином Fasciola hepatica является:', options: ['Моллюски рода Lymnaea', 'Моллюски рода Bithynia', 'Моллюски рода Zebrina', 'Пресноводные раки'], correct: 0, hint: 'Первый промежуточный хозяин — малый прудовик (Lymnaea truncatula).' },
+            { topic: 'Печёночный сосальщик', text: 'Лабораторная диагностика фасциолёза основана на:', options: ['Обнаружении яиц в фекалиях', 'Обнаружении микрофилярий в крови', 'Обнаружении яиц в мокроте', 'Кожной аллергической пробе'], correct: 0, hint: 'Обнаружение яиц Fasciola hepatica в фекалиях или дуоденальном содержимом.' },
+            { topic: 'Кошачий сосальщик', text: 'Какой гельминтоз вызывает Opisthorchis felineus?', options: ['Фасциолез', 'Описторхоз', 'Дикроцелиоз', 'Шистосомоз'], correct: 1, hint: 'Opisthorchis felineus — возбудитель описторхоза.' },
+            { topic: 'Кошачий сосальщик', text: 'Инвазионной стадией для человека при описторхозе является:', options: ['Яйцо', 'Мирацидий', 'Метацеркарий', 'Церкарий'], correct: 2, hint: 'Метацеркарий находится в мышцах карповых рыб.' },
+            { topic: 'Кошачий сосальщик', text: 'Вторым промежуточным хозяином Opisthorchis felineus являются:', options: ['Пресноводные моллюски', 'Пресноводные рыбы семейства Карповые', 'Наземные моллюски', 'Пресноводные раки'], correct: 1, hint: 'Карповые рыбы (язь, плотва, лещ, сазан, линь).' },
+            { topic: 'Кошачий сосальщик', text: 'Первым промежуточным хозяином Opisthorchis felineus являются:', options: ['Моллюски рода Lymnaea', 'Моллюски рода Bithynia', 'Моллюски рода Zebrina', 'Пресноводные рачки'], correct: 1, hint: 'Моллюски рода Bithynia.' },
+            { topic: 'Кошачий сосальщик', text: 'Локализация Opisthorchis felineus в организме человека:', options: ['Лёгкие', 'Внутрипечёночные желчные протоки', 'Толстый кишечник', 'Кровеносные сосуды'], correct: 1, hint: 'Паразитирует в желчных протоках печени и поджелудочной железы.' },
+            { topic: 'Ланцетовидный сосальщик', text: 'Какой гельминтоз вызывает Dicrocoelium lanceatum?', options: ['Фасциолез', 'Описторхоз', 'Дикроцелиоз', 'Парагонимоз'], correct: 2, hint: 'Dicrocoelium lanceatum — возбудитель дикроцелиоза.' },
+            { topic: 'Ланцетовидный сосальщик', text: 'Вторым промежуточным хозяином Dicrocoelium lanceatum является:', options: ['Наземный моллюск', 'Муравей рода Formica', 'Пресноводная рыба', 'Пресноводный рак'], correct: 1, hint: 'Муравьи рода Formica.' },
+            { topic: 'Ланцетовидный сосальщик', text: 'Главная отличительная особенность Dicrocoelium lanceatum:', options: ['Раздельнополость', 'Обратное расположение половых желез', 'Наличие гинекофорного канала', 'Две генерации редий'], correct: 1, hint: 'Семенники расположены в передней трети тела (обратное расположение).' },
+            { topic: 'Ланцетовидный сосальщик', text: 'Жизненный цикл Dicrocoelium lanceatum происходит:', options: ['В пресноводной среде', 'Полностью на суше', 'В морской воде', 'В организме одного хозяина'], correct: 1, hint: 'Цикл полностью оторван от водоемов (сухопутный).' },
+            { topic: 'Ланцетовидный сосальщик', text: 'В цикле развития Dicrocoelium lanceatum отсутствует стадия:', options: ['Мирацидий', 'Спороциста', 'Редия', 'Церкарий'], correct: 2, hint: 'Выпадает стадия редии: мирацидий → спороциста I → спороциста II → церкарий.' },
+            { topic: 'Лёгочный сосальщик', text: 'Какой гельминтоз вызывает Paragonimus westermani?', options: ['Фасциолез', 'Описторхоз', 'Парагонимоз', 'Шистосомоз'], correct: 2, hint: 'Paragonimus westermani — возбудитель парагонимоза.' },
+            { topic: 'Лёгочный сосальщик', text: 'Локализация Paragonimus westermani в организме человека:', options: ['Печень', 'Лёгкие', 'Толстый кишечник', 'Мочевой пузырь'], correct: 1, hint: 'Паразитирует в лёгких, формируя фиброзные кисты.' },
+            { topic: 'Лёгочный сосальщик', text: 'Вторым промежуточным хозяином Paragonimus westermani являются:', options: ['Пресноводные моллюски', 'Пресноводные рыбы', 'Пресноводные раки и крабы', 'Наземные моллюски'], correct: 2, hint: 'Церкарии инцистируются в мышцах и жабрах пресноводных раков и крабов.' },
+            { topic: 'Лёгочный сосальщик', text: 'Особенность миграции личинок Paragonimus westermani в организме человека:', options: ['Через диафрагму в лёгкие', 'Через воротную вену в печень', 'Через лимфоузлы', 'Через кровь в головной мозг'], correct: 0, hint: 'Личинка пробуравливает диафрагму и оба листка плевры.' },
+            { topic: 'Лёгочный сосальщик', text: 'Материал для диагностики парагонимоза:', options: ['Фекалии', 'Мокрота (основной материал)', 'Кровь', 'Моча'], correct: 1, hint: 'Яйца Paragonimus выделяются преимущественно с мокротой.' },
+            { topic: 'Шистосомы', text: 'Какой вид шистосом вызывает урогенитальный шистосомоз?', options: ['Schistosoma mansoni', 'Schistosoma haematobium', 'Schistosoma japonicum', 'Schistosoma intercalatum'], correct: 1, hint: 'S. haematobium поражает вены мочевого пузыря и матки.' },
+            { topic: 'Шистосомы', text: 'Главное отличие шистосом от всех остальных трематод:', options: ['Гермафродитизм', 'Раздельнополость', 'Наличие двух присосок', 'Отсутствие пищеварительной системы'], correct: 1, hint: 'Шистосомы — раздельнополые (выражен половой диморфизм).' },
+            { topic: 'Шистосомы', text: 'Инвазионной стадией для человека при шистосомозах является:', options: ['Яйцо', 'Мирацидий', 'Церкарий', 'Метацеркарий'], correct: 2, hint: 'Церкарии активно проникают через неповрежденную кожу.' },
+            { topic: 'Шистосомы', text: 'Механизм заражения человека шистосомозами:', options: ['Алиментарный', 'Перкутантный (через кожу)', 'Трансмиссивный', 'Контактно-бытовой'], correct: 1, hint: 'Церкарии активно пробуравливают эпидермис (контактный перкутантный путь).' },
+            { topic: 'Шистосомы', text: 'У какого вида шистосом яйцо имеет терминальный шип?', options: ['Schistosoma mansoni', 'Schistosoma haematobium', 'Schistosoma japonicum', 'Schistosoma intercalatum'], correct: 1, hint: 'У S. haematobium шип на конце (терминальный), крупный.' },
+            { topic: 'Шистосомы', text: 'У какого вида шистосом яйцо имеет боковой (латеральный) шип?', options: ['Schistosoma mansoni', 'Schistosoma haematobium', 'Schistosoma japonicum', 'Schistosoma intercalatum'], correct: 0, hint: 'У S. mansoni шип боковой, крупный.' },
+            { topic: 'Шистосомы', text: 'У какого вида шистосом яйцо наиболее мелкое (70–100 мкм) и имеет маленький, часто плохо заметный шип?', options: ['Schistosoma mansoni', 'Schistosoma haematobium', 'Schistosoma japonicum', 'Schistosoma intercalatum'], correct: 2, hint: 'S. japonicum — яйца мелкие (70–100 мкм), шип боковой, маленький, тупой.' },
+            { topic: 'Шистосомы', text: 'Локализация Schistosoma mansoni в организме человека:', options: ['Вены мочевого пузыря', 'Брыжеечные вены (толстый кишечник)', 'Воротная вена (тонкий кишечник)', 'Лёгкие'], correct: 1, hint: 'S. mansoni поражает брыжеечные вены толстого кишечника.' },
+            { topic: 'Шистосомы', text: 'Промежуточным хозяином шистосом являются:', options: ['Пресноводные рачки', 'Пресноводные брюхоногие моллюски', 'Пресноводные рыбы', 'Наземные моллюски'], correct: 1, hint: 'В теле моллюсков происходит развитие без стадии редии.' },
+            { topic: 'Шистосомы', text: 'В цикле развития шистосом отсутствует стадия:', options: ['Мирацидий', 'Спороциста', 'Редия', 'Церкарий'], correct: 2, hint: 'У шистосом в цикле выпадает стадия редии (только спороцисты).' },
+            { topic: 'Общие вопросы', text: 'Какой из перечисленных видов относится к классу Trematoda?', options: ['Taeniarhynchus saginatus', 'Dicrocoelium lanceatum', 'Taenia solium', 'Diphyllobothrium latum'], correct: 1, hint: 'Dicrocoelium lanceatum — ланцетовидный сосальщик (класс Trematoda).' },
+            { topic: 'Общие вопросы', text: 'Тело сосальщиков:', options: ['Не имеет характерных признаков', 'Круглое в поперечном сечении', 'Сплюснуто в дорзовентральном направлении', 'Сплюснуто в латеральном направлении'], correct: 2, hint: 'Трематоды имеют сплющенное в дорзовентральном направлении тело.' },
+            { topic: 'Общие вопросы', text: 'Как называются гельминтозы, вызываемые сосальщиками?', options: ['Цестодозы', 'Трематодозы', 'Нематодозы', 'Филяриозы'], correct: 1, hint: 'Трематодозы — заболевания, вызываемые трематодами (сосальщиками).' },
+            { topic: 'Общие вопросы', text: 'Какой из перечисленных видов относится к кровяным сосальщикам?', options: ['Fasciola hepatica', 'Opisthorchis felineus', 'Schistosoma mansoni', 'Paragonimus westermani'], correct: 2, hint: 'Шистосомы — кровяные сосальщики (S. mansoni, S. haematobium, S. japonicum).' },
+            { topic: 'Общие вопросы', text: 'Для яиц всех шистосом характерно:', options: ['Наличие крышечки', 'Отсутствие крышечки', 'Наличие двух крышечек', 'Бугорок на полюсе'], correct: 1, hint: 'Яйца шистосом не имеют крышечки (важное отличие от других трематод).' }
+        ];
+
+        let userAnswers = new Array(questions.length).fill(null);
+        let checked = false;
+
+        const container = document.getElementById('flukeTestQuestionsContainer');
+        const progressFill = document.getElementById('flukeTestProgressFill');
+        const totalCount = document.getElementById('flukeTestTotalCount');
+        const answeredCount = document.getElementById('flukeTestAnsweredCount');
+        const checkBtn = document.getElementById('flukeTestCheckBtn');
+        const resetBtn = document.getElementById('flukeTestResetBtn');
+        const resultBox = document.getElementById('flukeTestResultBox');
+        const scoreDisplay = document.getElementById('flukeTestScoreDisplay');
+        const resultDetail = document.getElementById('flukeTestResultDetail');
+
+        function renderQuestions() {
+            container.innerHTML = '';
+            totalCount.textContent = questions.length;
+            questions.forEach((q, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `flukeTest-q-${index}`;
+                const numSpan = document.createElement('div');
+                numSpan.className = 'question-number';
+                numSpan.innerHTML = `<span class="tag">${q.topic}</span> Вопрос ${index + 1} / ${questions.length}`;
+                card.appendChild(numSpan);
+                const textP = document.createElement('div');
+                textP.className = 'question-text';
+                textP.textContent = q.text;
+                card.appendChild(textP);
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'options';
+                q.options.forEach((opt, optIndex) => {
+                    const label = document.createElement('label');
+                    label.className = 'option-label';
+                    const radio = document.createElement('input');
+                    radio.type = 'radio';
+                    radio.name = `flukeTest-q${index}`;
+                    radio.value = optIndex;
+                    radio.addEventListener('change', function() {
+                        if (!checked) {
+                            userAnswers[index] = parseInt(this.value);
+                            updateStats();
+                            updateProgress();
+                        } else {
+                            this.checked = false;
+                        }
+                    });
+                    label.appendChild(radio);
+                    label.appendChild(document.createTextNode(opt));
+                    optionsDiv.appendChild(label);
+                });
+                card.appendChild(optionsDiv);
+                const feedback = document.createElement('div');
+                feedback.className = 'feedback';
+                feedback.id = `flukeTest-feedback-${index}`;
+                card.appendChild(feedback);
+                container.appendChild(card);
+            });
+            updateStats();
+            updateProgress();
+        }
+
+        function updateStats() {
+            const answered = userAnswers.filter(a => a !== null).length;
+            answeredCount.textContent = answered;
+        }
+
+        function updateProgress() {
+            const answered = userAnswers.filter(a => a !== null).length;
+            const percent = (answered / questions.length) * 100;
+            progressFill.style.width = percent + '%';
+        }
+
+        function checkAnswers() {
+            if (checked) return;
+            let correctCount = 0;
+            const cards = document.querySelectorAll('#flukeTestQuestionsContainer .question-card');
+            cards.forEach((card, index) => {
+                const q = questions[index];
+                const userAns = userAnswers[index];
+                const feedback = document.getElementById(`flukeTest-feedback-${index}`);
+                const options = card.querySelectorAll('.option-label');
+                options.forEach(opt => opt.classList.remove('correct-answer', 'wrong-answer', 'disabled'));
+                if (userAns === null) {
+                    feedback.className = 'feedback show wrong';
+                    feedback.innerHTML = '❌ Вы не выбрали ответ.';
+                    card.classList.add('wrong');
+                    return;
+                }
+                const isCorrect = (userAns === q.correct);
+                if (isCorrect) correctCount++;
+                card.classList.add(isCorrect ? 'correct' : 'wrong');
+                options.forEach((opt, optIndex) => {
+                    if (optIndex === q.correct) opt.classList.add('correct-answer');
+                    if (optIndex === userAns && !isCorrect) opt.classList.add('wrong-answer');
+                    const radio = opt.querySelector('input[type="radio"]');
+                    if (radio) radio.disabled = true;
+                    opt.classList.add('disabled');
+                });
+                feedback.className = 'feedback show ' + (isCorrect ? 'correct' : 'wrong');
+                let hintHtml = q.hint ? `<div class="hint">💡 ${q.hint}</div>` : '';
+                feedback.innerHTML = (isCorrect ? '✅ Правильно!' : `❌ Неправильно. Правильный ответ: ${q.options[q.correct]}`) + hintHtml;
+            });
+            checked = true;
+            checkBtn.disabled = true;
+            checkBtn.textContent = '✅ Проверено';
+            resultBox.classList.add('show');
+            scoreDisplay.textContent = `${correctCount} / ${questions.length}`;
+            const percent = Math.round((correctCount / questions.length) * 100);
+            let grade = percent >= 90 ? 'Отлично! 🎉' : percent >= 75 ? 'Хорошо! 👍' : percent >= 50 ? 'Удовлетворительно. 📖' : 'Нужно повторить материал. 💪';
+            resultDetail.textContent = `Правильных ответов: ${correctCount} из ${questions.length} (${percent}%). ${grade}`;
+        }
+
+        function resetTest() {
+            checked = false;
+            userAnswers.fill(null);
+            checkBtn.disabled = false;
+            checkBtn.textContent = '✅ Проверить ответы';
+            resultBox.classList.remove('show');
+            const cards = document.querySelectorAll('#flukeTestQuestionsContainer .question-card');
+            cards.forEach((card, index) => {
+                card.classList.remove('correct', 'wrong');
+                const options = card.querySelectorAll('.option-label');
+                options.forEach(opt => {
+                    opt.classList.remove('correct-answer', 'wrong-answer', 'disabled');
+                    const radio = opt.querySelector('input[type="radio"]');
+                    if (radio) { radio.disabled = false; radio.checked = false; }
+                });
+                const feedback = document.getElementById(`flukeTest-feedback-${index}`);
+                feedback.className = 'feedback';
+                feedback.innerHTML = '';
+            });
+            updateStats();
+            updateProgress();
+        }
+
+        setTimeout(function() {
+            renderQuestions();
+            checkBtn.addEventListener('click', checkAnswers);
+            resetBtn.addEventListener('click', resetTest);
+        }, 50);
+    })();
+</script>

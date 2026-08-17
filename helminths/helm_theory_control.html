@@ -1,0 +1,322 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+    }
+
+    .tab-content-inner .intro {
+        font-size: 17px;
+        color: #475569;
+        margin-bottom: 20px;
+        padding: 16px 22px;
+        background: #f8fafc;
+        border-radius: 12px;
+        border-left: 4px solid #2563eb;
+    }
+
+    .tab-content-inner .intro strong {
+        color: #1e293b;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #e9edf3;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .tab-content-inner h4 {
+        font-size: 17px;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin: 18px 0 8px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Карточки ===== */
+    .control-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 22px;
+        border: 1px solid #e9edf3;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        margin: 16px 0 20px 0;
+    }
+
+    .control-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .control-card .card-title {
+        font-weight: 700;
+        font-size: 18px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .control-card .card-title .icon {
+        font-size: 24px;
+    }
+
+    .control-card .card-desc {
+        color: #334155;
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+
+    .control-card .card-desc strong {
+        color: #1e293b;
+    }
+
+    .control-card .measures {
+        display: block;
+        margin-top: 6px;
+        padding-left: 4px;
+    }
+
+    .control-card .measures .measure-group {
+        display: block;
+        margin-top: 8px;
+        padding: 10px 16px;
+        background: #f8fafc;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .control-card .measures .measure-group .label {
+        font-weight: 600;
+        color: #1e293b;
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    .control-card .measures .measure-group ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 4px 0 0 0;
+    }
+
+    .control-card .measures .measure-group ul li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 3px;
+        line-height: 1.5;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .control-card .measures .measure-group ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -2px;
+    }
+
+    .control-card .measures .measure-group ul li strong {
+        color: #1e293b;
+    }
+
+    .control-card.geo {
+        border-left: 4px solid #10b981;
+    }
+
+    .control-card.bio {
+        border-left: 4px solid #ef4444;
+    }
+
+    .control-card.bio .card-title {
+        color: #991b1b;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .tab-content-inner .intro {
+            padding: 14px 16px;
+            font-size: 15px;
+        }
+        .control-card {
+            padding: 16px 18px;
+        }
+        .tab-content-inner h4 {
+            font-size: 16px;
+        }
+        .control-card .measures .measure-group {
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+        .control-card .measures .measure-group ul li {
+            font-size: 13px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2>Организация борьбы с био- и геогельминтами</h2>
+
+    <div class="intro">
+        Комплекс мероприятий по борьбе с гельминтозами строится на трёх базовых принципах:
+        <br><br>
+        1️⃣ <strong>Выявление и оздоровление источников инвазии</strong>;<br>
+        2️⃣ <strong>Охрана объектов окружающей среды</strong> от загрязнения яйцами и личинками;<br>
+        3️⃣ <strong>Санитарно-просветительная работа</strong>.
+        <br><br>
+        Однако тактика борьбы <strong>строго зависит</strong> от эпидемиологической группы возбудителя.
+    </div>
+
+    <!-- ===== ГЕОГЕЛЬМИНТЫ ===== -->
+    <h3>🌍 Организация борьбы с <span style="color:#10b981;">геогельминтами</span></h3>
+
+    <p style="font-size:15px;color:#475569;margin-bottom:12px;">
+        <strong>Аскарида, власоглав, анкилостомиды.</strong> Поскольку развитие инвазионной стадии геогельминтов происходит <strong>в почве</strong>, основные меры направлены на разрыв механизма фекально-орального или контактного заражения из внешней среды.
+    </p>
+
+    <div class="control-card geo">
+        <div class="card-title"><span class="icon">🏛️</span> Общественная профилактика</div>
+        <div class="card-desc">Мероприятия, проводимые на уровне государства и медицинских организаций:</div>
+        <div class="measures">
+            <div class="measure-group">
+                <ul>
+                    <li><strong>Массовые обследования</strong> и плановая дегельминтизация населения;</li>
+                    <li><strong>Запрет на использование необезвреженных человеческих нечистот</strong> в качестве удобрений (обязательное компостирование фекалий);</li>
+                    <li><strong>Санитарное благоустройство</strong> населённых пунктов (строительство водопроводов, канализации);</li>
+                    <li><strong>Обработка почвы</strong> в очагах хлоридом калия для уничтожения личинок (при анкилостомидозах).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-card geo">
+        <div class="card-title"><span class="icon">🧼</span> Личная профилактика</div>
+        <div class="card-desc">Индивидуальные меры защиты каждого человека:</div>
+        <div class="measures">
+            <div class="measure-group">
+                <ul>
+                    <li><strong>Строгое соблюдение правил личной гигиены</strong>; мытьё рук;</li>
+                    <li><strong>Тщательное мытьё и ошпаривание кипятком</strong> овощей, фруктов и зелени;</li>
+                    <li><strong>Защита продуктов</strong> от механических переносчиков — мух и тараканов;</li>
+                    <li><strong>Ношение обуви</strong> при ходьбе по земле (для профилактики стронгилоидоза и анкилостомоза).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== БИОГЕЛЬМИНТЫ ===== -->
+    <h3>🔄 Организация борьбы с <span style="color:#ef4444;">биогельминтами</span></h3>
+
+    <p style="font-size:15px;color:#475569;margin-bottom:12px;">
+        <strong>Сосальщики, цепни, лентецы, филярии.</strong> Борьба с биогельминтозами сложнее, так как их жизненный цикл требует обязательной смены хозяев (промежуточных и окончательных) и участия факторов передачи (мясо, рыба, переносчики).
+    </p>
+
+    <div class="control-card bio">
+        <div class="card-title"><span class="icon">🏥</span> Медицинские мероприятия</div>
+        <div class="measures">
+            <div class="measure-group">
+                <ul>
+                    <li><strong>Выявление и лечение</strong> больных;</li>
+                    <li><strong>Санитарно-просветительная работа</strong> среди населения.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-card bio">
+        <div class="card-title"><span class="icon">🐄</span> Ветеринарные мероприятия</div>
+        <div class="measures">
+            <div class="measure-group">
+                <ul>
+                    <li><strong>Профилактическая дегельминтизация</strong> сельскохозяйственных и служебных животных (собак);</li>
+                    <li><strong>Строгий санитарно-ветеринарный контроль мяса</strong> на скотобойнях (браковка туш с финнами цепней) и <strong>контроль рыбы</strong> на рыбозаводах;</li>
+                    <li><strong>Запрет на скармливание</strong> собакам и кошкам поражённых органов животных (при эхинококкозе, альвеококкозе) и сырой рыбы;</li>
+                    <li><strong>Смена пастбищ</strong> для скота.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-card bio">
+        <div class="card-title"><span class="icon">🌿</span> Санитарно-экологические мероприятия</div>
+        <div class="card-desc">Борьба с промежуточными хозяевами:</div>
+        <div class="measures">
+            <div class="measure-group">
+                <ul>
+                    <li><strong>Охрана водоёмов</strong> от загрязнения фекалиями человека и животных;</li>
+                    <li><strong>Уничтожение пресноводных моллюсков</strong> (молюскоциды, мелиорация, заселение водоёмов естественными врагами);</li>
+                    <li><strong>Борьба со специфическими переносчиками</strong> — комарами, слепнями, мошками (инсектициды, нефтевание водоёмов, биологические методы — рыбки гамбузии).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-card bio">
+        <div class="card-title"><span class="icon">🛡️</span> Личная профилактика</div>
+        <div class="measures">
+            <div class="measure-group">
+                <ul>
+                    <li><strong>Исключение из рациона</strong> сырого, полусырого или плохо термически обработанного <strong>мяса, рыбы и икры</strong>;</li>
+                    <li><strong>Ошпаривание кипятком</strong> луговой растительности и <strong>отказ от питья сырой воды</strong> из открытых водоёмов (профилактика фасциолёза);</li>
+                    <li><strong>Индивидуальная защита</strong> от укусов кровососущих насекомых-переносчиков (<strong>репелленты, плотная одежда, сетки</strong>).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

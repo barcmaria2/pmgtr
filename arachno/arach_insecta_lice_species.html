@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вши человека — сравнительная морфология, биология и медицинское значение</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 20px;
+        }
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card p strong { color: #1e293b; }
+
+        .taxonomy-card ul {
+            margin: 6px 0 0 20px;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card ul li { margin-bottom: 2px; }
+        .taxonomy-card ul ul { margin-left: 20px; }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+
+        .danger-note {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #7f1d1d;
+        }
+        .danger-note strong { color: #991b1b; }
+
+        .highlight-box {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #14532d;
+        }
+        .highlight-box strong { color: #166534; }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 800px;
+        }
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .compare-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+            letter-spacing: 0.02em;
+        }
+        .compare-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table tbody tr:hover { background: #f8faff; }
+        .compare-table tbody tr:nth-child(even) { background: #fafcff; }
+        .compare-table tbody tr:nth-child(even):hover { background: #f4f8ff; }
+        .compare-table .col-feature {
+            font-weight: 700;
+            color: #1e3a8a;
+            background: #f8fafc;
+            width: 18%;
+        }
+
+        .infection-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 900px;
+        }
+        .infection-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .infection-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+            letter-spacing: 0.02em;
+        }
+        .infection-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .infection-table tbody tr:last-child td { border-bottom: none; }
+        .infection-table tbody tr:hover { background: #f8faff; }
+        .infection-table tbody tr:nth-child(even) { background: #fafcff; }
+        .infection-table tbody tr:nth-child(even):hover { background: #f4f8ff; }
+        .infection-table .col-disease {
+            font-weight: 700;
+            color: #1e3a8a;
+            background: #f8fafc;
+            width: 14%;
+        }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .compare-table { font-size: 12px; min-width: 600px; }
+            .infection-table { font-size: 12px; min-width: 700px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .compare-table { font-size: 11px; min-width: 480px; }
+            .infection-table { font-size: 11px; min-width: 550px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">🦟</span> Вши человека</h1>
+    <div class="subtitle">Сравнительная морфология, биология и <strong>медицинское значение</strong> трёх видов</div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p><strong>Царство:</strong> Животные (Animalia)</p>
+        <p><strong>Тип:</strong> Членистоногие (Arthropoda)</p>
+        <p><strong>Подтип:</strong> Трахейнодышащие (Tracheata)</p>
+        <p><strong>Класс:</strong> Насекомые (Insecta)</p>
+        <p><strong>Отряд:</strong> Вши (Anoplura, или Siphunculata)</p>
+        <p><strong>Медицински значимые представители:</strong></p>
+        <ul>
+            <li><strong>Род <em>Pediculus</em></strong> — вид <strong>Человеческая вошь (<em>Pediculus humanus</em>)</strong>, подвиды:
+                <ul>
+                    <li><strong>Головная вошь</strong> (<em>Pediculus humanus capitis</em>).</li>
+                    <li><strong>Платяная вошь</strong> (<em>Pediculus humanus humanus</em>, син. <em>P. humanus corporis</em>).</li>
+                </ul>
+            </li>
+            <li><strong>Род <em>Phthirus</em></strong> — вид <strong>Лобковая вошь (<em>Phthirus pubis</em>)</strong> (площица).</li>
+        </ul>
+    </div>
+
+    <!-- ===== СРАВНИТЕЛЬНАЯ ТАБЛИЦА ===== -->
+    <h2><span class="emoji">📊</span> Сравнительная морфология и биология трёх представителей</h2>
+    <p>Вши человека — это мелкие бескрылые насекомые с уплощенным в дорсовентральном направлении телом. Ротовой аппарат колюще-сосущего типа. Они являются постоянными облигатными эктопаразитами и развиваются с неполным метаморфозом (без стадии куколки).</p>
+
+    <div class="table-wrapper">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th class="col-feature">Параметр сравнения</th>
+                    <th><strong>Головная вошь</strong><br><em>Pediculus humanus capitis</em></th>
+                    <th><strong>Платяная вошь</strong><br><em>Pediculus humanus humanus</em></th>
+                    <th><strong>Лобковая вошь</strong><br><em>Phthirus pubis</em></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-feature"><strong>Размеры тела</strong></td>
+                    <td>Самец: 2–3,5 мм<br>Самка: 3–4,5 мм</td>
+                    <td>Самая крупная: 2,1–4,7 мм</td>
+                    <td>Самая мелкая: до 1,5–2,0 мм</td>
+                </tr>
+                <tr>
+                    <td class="col-feature"><strong>Форма и окраска тела</strong></td>
+                    <td>Продолговато-овальная, серовато-пепельная. По бокам брюшка глубокие вырезки и тёмные пигментные пятна.</td>
+                    <td>Продолговатая, светлая (беловато-серая). Пигментные пятна практически отсутствуют, боковые вырезки брюшка слабо выражены.</td>
+                    <td>Короткая, широкая, <strong>трапециевидная/крабовидная</strong> (грудь шире брюшка).</td>
+                </tr>
+                <tr>
+                    <td class="col-feature"><strong>Локализация у человека</strong></td>
+                    <td>Волосистая часть головы (затылок, виски).</td>
+                    <td>Складки и швы нательного и постельного белья, одежды. На кожу выходит только для питания.</td>
+                    <td>Лобок, промежность, подмышки, реже — брови, ресницы, борода.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature"><strong>Крепление гнид</strong></td>
+                    <td>Приклеиваются к <strong>стержню волоса</strong> у самого корня.</td>
+                    <td>Приклеиваются к <strong>ворсинкам ткани</strong> одежды или к пушковым волосам на теле.</td>
+                    <td>Приклеиваются к жестким лобковым волосам или ресницам <strong>вплотную к коже</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature"><strong>Продолжительность жизни имаго</strong></td>
+                    <td>До 38 дней</td>
+                    <td>До 48 дней</td>
+                    <td>Самки: до 17 дней<br>Самцы: до 22 дней</td>
+                </tr>
+                <tr>
+                    <td class="col-feature"><strong>Плодовитость (яиц за жизнь)</strong></td>
+                    <td>Около 300 яиц</td>
+                    <td>До 4 000 потомков (с учётом дочерних генераций) за счёт длительной жизни</td>
+                    <td>До 50 яиц</td>
+                </tr>
+                <tr>
+                    <td class="col-feature"><strong>Сроки развития (яйцо → имаго)</strong></td>
+                    <td>2–3 недели</td>
+                    <td>Не менее 16 дней</td>
+                    <td>22–27 дней (самый затяжной цикл)</td>
+                </tr>
+                <tr>
+                    <td class="col-feature"><strong>Переносчик инфекций</strong></td>
+                    <td>Может переносить сыпной и возвратный тиф (роль меньше платяной).</td>
+                    <td><strong>Главный специфический переносчик</strong> сыпного тифа, возвратного тифа и волынской лихорадки.</td>
+                    <td><strong>Инфекции не переносит</strong> (является только возбудителем фтириоза).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== БОЛЬШАЯ КАРТИНКА ===== -->
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🪲</span>
+            Сравнение трёх видов вшей: головная, платяная, лобковая
+            <span class="small">(схема строения, гниды, места локализации)</span>
+            <span class="filename">imagine/lice_comparison.jpg</span>
+        </div>
+    </div>
+
+    <!-- ===== МЕДИЦИНСКОЕ ЗНАЧЕНИЕ ===== -->
+    <h2><span class="emoji">🩺</span> Медицинское значение вшей</h2>
+    <p>Медицинское значение вшей разделяется на два ключевых аспекта: непосредственное патогенное действие (вызываемые ими инфестации) и перенос тяжёлых трансмиссивных заболеваний.</p>
+
+    <h3>1. Непосредственное патогенное действие (Инфестации)</h3>
+
+    <h4>Педикулез (головной и платяной)</h4>
+    <p>Вызывается вшами рода <em>Pediculus</em>. Токсичная слюна паразитов вызывает сильный зуд. Постоянные расчёсы (экскориации) приводят к внедрению вторичной бактериальной инфекции (пиодермии). При запущенном головном педикулезе волосы склеиваются гнойным экссудатом в плотный клубок — <strong>колтун</strong>. При многолетнем платяном педикулезе кожа утолщается, грубеет и темнеет («<strong>кожа бродяг</strong>»).</p>
+
+    <h4>Фтириоз (лобковый педикулез)</h4>
+    <p>Вызывается <em>Phthirus pubis</em>. Проявляется сильным зудом лобка. Под действием ферментов слюны площиц в местах укусов происходит распад гемоглобина с образованием характерных голубоватых/синюшных пятен (<strong>maculae coeruleae</strong>) диаметром 2–3 мм.</p>
+
+    <div class="note">
+        <strong>📌 Важно:</strong> Лобковая вошь (<em>Phthirus pubis</em>) инфекционные болезни <strong>НЕ переносит</strong>! Специфическими переносчиками выступают только вши рода <em>Pediculus</em> (в основном платяная, реже головная).
+    </div>
+
+    <h3>2. Специфический перенос возбудителей инфекционных болезней</h3>
+
+    <div class="table-wrapper">
+        <table class="infection-table">
+            <thead>
+                <tr>
+                    <th class="col-disease">Инфекция</th>
+                    <th><strong>Возбудитель</strong></th>
+                    <th><strong>Роль вши в цикле развития возбудителя</strong></th>
+                    <th><strong>Механизм и способ заражения человека</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-disease"><strong>Эпидемический сыпной тиф</strong></td>
+                    <td><em>Rickettsia prowazekii</em> (риккетсия Провачека)</td>
+                    <td>Риккетсии внедряются в клетки эпителия средней кишки вши, размножаются, клетки лопаются. Риккетсии выходят в просвет кишки и выделяются с фекалиями. В слюнные железы не проникают. Вошь погибает через 7–10 дней.</td>
+                    <td><strong>Контаминация:</strong> вошь испражняется во время укуса. Человек расчёсывает зудящее место и механически втирает фекалии вши с риккетсиями в ранку от укуса или в ссадины. Возможен аспирационный путь (вдыхание сухих фекалий с белья).</td>
+                </tr>
+                <tr>
+                    <td class="col-disease"><strong>Эпидемический возвратный тиф</strong></td>
+                    <td><em>Borrelia recurrentis</em> (спирохета Обермейера)</td>
+                    <td>Спирохеты проникают через стенку кишечника вши в гемолимфу, где размножаются (максимум на 9–12-й день). В кишечник, слюнные железы и фекалии не проникают. Вошь не страдает, заражена пожизненно.</td>
+                    <td><strong>Контаминация гемолимфой раздавленного переносчика:</strong> спирохеты не выделяются со слюной или испражнениями. Заражение происходит только при раздавливании вши на теле и втирании гемолимфы в ранку от укуса или расчёсы.</td>
+                </tr>
+                <tr>
+                    <td class="col-disease"><strong>Волынская (траншейная) лихорадка</strong></td>
+                    <td><em>Bartonella quintana</em> (риккетсия Квинтана)</td>
+                    <td>Бактерии размножаются внеклеточно на поверхности эпителия средней кишки вши, не повреждая клетки. Выделяются с фекалиями. Вошь не погибает, остаётся переносчиком пожизненно.</td>
+                    <td><strong>Контаминация:</strong> втирание фекалий вши в микротрещины и расчёсы кожи. Возбудитель в высушенных испражнениях на одежде сохраняет жизнеспособность до <strong>4 лет</strong>.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="danger-note">
+        <strong>⚠️ Критический теоретический нюанс:</strong> У вшей полностью отсутствует <strong>трансовариальная передача</strong> возбудителей! Самка не передаёт риккетсии или спирохеты через яйца своему потомству. Все новые личинки рождаются незаражёнными и могут стать переносчиками только после питания на больном человеке.
+    </div>
+
+    <!-- ===== МЕТОДЫ ДИАГНОСТИКИ И БОРЬБЫ ===== -->
+    <h2><span class="emoji">🧪</span> Методы лабораторной диагностики и борьбы</h2>
+
+    <h3>Лабораторная диагностика</h3>
+    <ul>
+        <li><strong>Визуальное обнаружение:</strong> Осмотр волосистой части головы (при головном педикулезе), швов и складок одежды (при платяном), лобка и ресниц (при фтириозе).</li>
+        <li><strong>Микроскопия:</strong> Сбор вшей и гнид для изучения под малым увеличением микроскопа с целью точного определения вида. Живую гниду от погибшей или пустой отличают по упругости и наличию плотного зародыша с крышечкой на вершине.</li>
+    </ul>
+
+    <h3>Профилактика и методы борьбы</h3>
+    <ul>
+        <li><strong>Личная гигиена:</strong> Регулярное мытьё тела горячей водой с мылом, частая смена и стирка постельного/нательного белья, использование индивидуальных расчёсок и головных уборов.</li>
+        <li><strong>Химический метод борьбы:</strong> Обработка инсектицидами — педикулицидами на основе перметрина, бензилбензоата. Использование средств на основе диметикона (силикона): они механически покрывают тело вши непроницаемой плёнкой, забивая дыхальца (стигмы), что приводит к удушению паразитов без развития у них устойчивости к препарату.</li>
+        <li><strong>Физический метод:</strong> Термическая обработка одежды (кипячение, глажка швов утюгом, обработка белья в дезинфекционных камерах).</li>
+        <li><strong>Эпидемиологический метод:</strong> В очагах сыпного тифа применяется пероральный приём препарата <strong>бутадион</strong>. Кровь принявшего его человека на 1–2 недели становится смертельно ядовитой для вшей, что приводит к полной ликвидации популяции паразитов на больном.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

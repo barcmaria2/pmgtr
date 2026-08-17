@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Широкий лентец (Diphyllobothrium latum) — урок 2</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, p, li, td, th, .taxonomy-card, .epi-grid, .note, .spec {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА (полная ширина) ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ (полная ширина) ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== ТАБЛИЦА ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+            table-layout: fixed;
+        }
+
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 55%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image {
+            margin-top: 12px;
+            flex: 1 1 auto; /* теперь фото будет растягиваться */
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .left-col .additional-image img,
+        .stage-row .left-col .additional-image .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .left-col .additional-image .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+            min-height: 420px; /* увеличиваем высоту, чтобы дать больше места левой колонке */
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ДЛЯ БЛОКА МАРИТА ===== */
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ (жизненный цикл) ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .stage-row .left-col .additional-image {
+                flex: 0 0 auto;
+                margin-top: 12px;
+                min-height: 150px;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .pathogenic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+
+            .pathogenic-table {
+                font-size: 12px;
+            }
+
+            .stage-row .left-col .additional-image {
+                min-height: 120px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🐟</span> Лентец широкий</h1>
+    <div class="subtitle"><strong>Diphyllobothrium latum</strong> — возбудитель <strong>дифиллоботриоза</strong></div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)<br>
+            <strong>Класс:</strong> Ленточные черви (Cestoda)<br>
+            <strong>Отряд:</strong> Лентецы (Pseudophyllidea)<br>
+            <strong>Вид:</strong> Лентец широкий (<em>Diphyllobothrium latum</em>)
+        </p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Дифиллоботриоз.</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозооноз, природно-очаговое заболевание.</div>
+        <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Повсеместно, в регионах с употреблением сырой/слабосоленой рыбы.</div>
+    </div>
+
+    <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 1. Половозрелая особь -->
+    <h3>1. Половозрелая особь</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма и размеры:</strong> Это <strong>самый крупный гельминт человека</strong> – длина <strong>10–20 метров</strong>. Стробила состоит из 3000–4000 члеников. Тело лентовидное, сплющенное в дорзовентральном направлении.
+            </p>
+
+            <p>
+                <strong>Сколекс (головка):</strong> Имеет две глубокие продольные присасывательные щели – <strong>ботрии</strong> (на спинной и брюшной сторонах). Нет ни присосок, ни крючьев.
+            </p>
+
+            <p>
+                <strong>Отсутствующие системы органов:</strong> Полностью отсутствуют пищеварительная, кровеносная и дыхательная системы. Питание осмотически всей поверхностью тела.
+            </p>
+
+            <h4>Половая система (гермафродит):</h4>
+            <ul>
+                <li><span class="spec">Главное отличие от цепней:</span> Матка <strong>открытого типа</strong> (имеет собственное выводное отверстие). Яйца выделяются из неё непрерывно.</li>
+                <li><strong>Гермафродитный членик:</strong> Матка расположена в центре членика, имеет вид розетки (петлеобразного клубка). Желточники – по бокам членика (множество фолликулов). Семенники – также в боковых частях (вентрально от желточников). Яичник – в нижней (задней) части членика под маткой, состоит из двух долей.</li>
+                <li><strong>Ширина зрелого членика в несколько раз больше его длины.</strong></li>
+            </ul>
+        </div>
+
+        <!-- Изображение мариты -->
+        <div class="image-col">
+            <img src="images/helminths/diphyllobothrium_marita_scheme.jpg"
+                 alt="Марита широкого лентеца — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Марита <em>Diphyllobothrium latum</em>
+                <span class="small">(diphyllobothrium_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">сколекс с ботриями, стробила, членики</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Яйцо -->
+    <h3>2. Яйцо</h3>
+
+    <div class="stage-row">
+        <!-- Левая колонка: текст + второе фото под ним -->
+        <div class="left-col">
+            <div class="text">
+                <p>
+                    <strong>Размеры:</strong> <strong>70×45 мкм</strong> (крупные).<br>
+                    <strong>Форма и цвет:</strong> Овальные, желтовато-серого цвета.<br>
+                    <strong>Характерные структуры:</strong> На одном полюсе – <strong>крышечка</strong> (через которую выходит корацидий); на противоположном – небольшое <strong>утолщение (бугорок)</strong>.<br>
+                    <strong>Важное примечание:</strong> Яйца выделяются незрелыми и дозревают только в воде.
+                </p>
+            </div>
+            <!-- Второе фото (микроскопическое) сразу под текстом, растягивается -->
+            <div class="additional-image">
+                <img src="images/helminths/diphyllobothrium_egg_microscope.jpg"
+                     alt="Микроскопическое фото яйца широкого лентеца"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🔬</span>
+                    Микроскопическое фото яйца <em>Diphyllobothrium latum</em>
+                    <span class="small">(diphyllobothrium_egg_microscope.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">овальное, с крышечкой и бугорком</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: схема яйца -->
+        <div class="right-col">
+            <img src="images/helminths/diphyllobothrium_egg_scheme.jpg"
+                 alt="Схема яйца широкого лентеца"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🥚</span>
+                Схема яйца <em>Diphyllobothrium latum</em>
+                <span class="small">(diphyllobothrium_egg_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">крышечка, бугорок, овальная форма</span>
+            </div>
+        </div>
+    </div>
+    <h3>3. Финны (личиночные стадии)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <span class="spec">Особенность:</span> У широкого лентеца в цикле развития <strong>два промежуточных хозяина</strong> (рачок и рыба), и в каждом из них формируется своя личиночная стадия – <strong>процеркоид</strong> и <strong>плероцеркоид</strong>. Обе эти стадии по классификации являются финнами.
+            </p>
+
+            <h4>3.1. Процеркоид (первая личиночная стадия)</h4>
+            <p>
+                <strong>Место формирования:</strong> В теле первого промежуточного хозяина – веслоногого рачка (циклопа, диаптомуса).<br>
+                <strong>Внешний вид:</strong> Финна червеобразной формы. На заднем конце расположен округлый диск с крючьями.<br>
+                <strong>Дальнейшее развитие:</strong> При поедании рачка рыбой процеркоид попадает в мышцы рыбы и превращается в следующую стадию – <strong>плероцеркоид</strong>.
+            </p>
+
+            <h4>3.2. Плероцеркоид (вторая личиночная стадия, инвазионная для человека)</h4>
+            <p>
+                <strong>Место формирования:</strong> В теле второго (дополнительного) промежуточного хозяина – пресноводной хищной рыбы (щука, налим, окунь, лососевые).<br>
+                <strong>Внешний вид:</strong> Финна червеобразной формы (белая, длиной 1–2 см). На переднем конце находятся две присасывательные щели – <strong>ботрии</strong> (соответствует строению сколекса взрослой особи).<br>
+                <strong>Инвазионная стадия:</strong> Именно плероцеркоид является <span class="spec">инвазионной стадией для человека</span> (при употреблении сырой или недостаточно обработанной рыбы).
+            </p>
+        </div>
+
+        <!-- Общая схема: процеркоид + плероцеркоид -->
+        <div class="image-col">
+            <img src="images/helminths/diphyllobothrium_larvae_scheme.jpg"
+                 alt="Личиночные стадии широкого лентеца — процеркоид и плероцеркоид"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Личиночные стадии <em>Diphyllobothrium latum</em>
+                <span class="small">(diphyllobothrium_larvae_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">процеркоид (с крючьями) и плероцеркоид (с ботриями)</span>
+            </div>
+        </div>
+    </div>
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Биогельминт (со сменой трёх хозяев).<br>
+        <strong>Обязательное условие:</strong> Развитие только в пресноводной среде.<br>
+        <strong>Окончательный (дефинитивный) хозяин:</strong> Человек и рыбоядные млекопитающие (кошки, собаки, медведи, лисицы, песцы).<br>
+        <strong>Первый промежуточный хозяин:</strong> Мелкие пресноводные веслоногие рачки (циклопы и диаптомусы).<br>
+        <strong>Второй (дополнительный) промежуточный хозяин:</strong> Пресноводные хищные рыбы (щука, налим, окунь, ёрш, лососевые).<br>
+        <strong>Инвазионная стадия для человека:</strong> <span class="spec">Плероцеркоид</span> – белая червеобразная личинка длиной 1–2 см в мышцах, икре и внутренних органах рыбы.<br>
+        <strong>Патогенная стадия:</strong> <span class="spec">Марита</span> (половозрелая особь).<br>
+        <strong>Локализация в организме человека:</strong> Тонкий кишечник.
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/diphyllobothrium_life_cycle.jpg"
+             alt="Жизненный цикл широкого лентеца"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Жизненный цикл <em>Diphyllobothrium latum</em>
+            <span class="small">(diphyllobothrium_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">яйцо → корацидий → процеркоид → плероцеркоид → марита</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла -->
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Выделение во внешнюю среду:</strong> Так как матка открытая, яйца свободно и в огромных количествах (до 1 млн в сутки) выходят в просвет кишечника и выделяются с фекалиями незрелыми. Для дальнейшего развития они должны попасть в воду.</li>
+        <li><strong>Развитие в воде:</strong> В воде внутри яйца созревает и выходит наружу шаровидная ресничная личинка с 6 крючьями – <strong>корацидий</strong>.</li>
+        <li><strong>Заражение первого промежуточного хозяина (рачка):</strong> Рачки заглатывают корацидия. В теле рачка корацидий сбрасывает реснички и превращается в <strong>процеркоид</strong>.</li>
+        <li><strong>Заражение второго промежуточного хозяина (рыбы):</strong> Рыба съедает заражённого рачка. В мышцах, икре и внутренних органах рыбы процеркоид превращается в <strong>плероцеркоид</strong> – инвазионную стадию для человека.</li>
+        <li><strong>Заражение окончательного хозяина (человека):</strong>
+            <ul>
+                <li><strong>Механизм:</strong> Фекально-оральный.</li>
+                <li><strong>Путь передачи:</strong> Алиментарный (употребление в пищу сырой, недостаточно термически обработанной, слабосоленой рыбы или свежей щучьей/налимьей икры, содержащей плероцеркоиды).</li>
+            </ul>
+        </li>
+        <li><strong>Развитие в организме человека:</strong> В тонком кишечнике из плероцеркоида выворачивается сколекс, прикрепляется ботриями к слизистой и начинает расти ленточная стадия. Через <strong>2–3 недели</strong> достигает половой зрелости.</li>
+        <li><strong>Продолжительность жизни в организме человека:</strong> До <strong>10–20 лет</strong>.</li>
+    </ol>
+
+    <!-- ===== ЗАРАЖЕНИЕ ОКОНЧАТЕЛЬНОГО ХОЗЯИНА ===== -->
+    <h3>Заражение окончательного хозяина (человека)</h3>
+
+    <p>
+        <strong>Механизм заражения:</strong> Фекально-оральный.<br>
+        <strong>Путь передачи:</strong> Алиментарный (употребление в пищу заражённой рыбы).<br>
+        <strong>Факторы передачи:</strong> Употребление в пищу сырой, вяленой, слабосоленой или недостаточно термически обработанной (непроваренной, непрожаренной) рыбы, а также свежей щучьей/налимьей икры, содержащей плероцеркоиды.
+    </p>
+
+    <h4>Развитие в организме человека:</h4>
+    <ol>
+        <li>В тонком кишечнике из плероцеркоида выворачивается сколекс.</li>
+        <li>Сколекс прикрепляется ботриями к слизистой оболочке тонкого кишечника.</li>
+        <li>От шейки начинают расти новые членики.</li>
+        <li>Через <strong>2–3 недели</strong> лентец достигает половой зрелости.</li>
+        <li><strong>Продолжительность жизни в организме человека:</strong> До <strong>10–20 лет</strong>.</li>
+    </ol>
+
+    <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ ===== -->
+    <h2><span class="emoji">⚡</span> Патогенное действие</h2>
+
+    <div class="table-wrapper">
+        <table class="pathogenic-table">
+            <thead>
+                <tr>
+                    <th class="col-mechanism">Механизм действия</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-mechanism">Механическое повреждение</td>
+                    <td>Ботрии травмируют слизистую кишечника, вызывая воспаление, диспепсию.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Токсико-аллергическое действие</td>
+                    <td>Продукты жизнедеятельности паразита вызывают аллергические реакции, интоксикацию.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism"><strong>B12-дефицитная анемия</strong></td>
+                    <td>Паразит активно всасывает витамин B12 из пищи хозяина. Развивается мегалобластная анемия, поражаются канатики спинного мозга (фуникулярный миелоз), возникает глоссит Гунтера («лакированный» язык).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <p>
+        <strong>Материал для исследования:</strong> Фекалии.<br>
+        <strong>Основной метод:</strong> Копроовоскопия (микроскопическое исследование) для обнаружения яиц.
+    </p>
+
+    <h4>Диагностические критерии:</h4>
+    <ul>
+        <li><strong>Обнаружение яиц:</strong> В исследуемом материале находят крупные (<strong>70×45 мкм</strong>) овальные яйца желтовато-серого цвета с <strong>крышечкой</strong> на одном полюсе и <strong>бугорком</strong> на противоположном.</li>
+    </ul>
+
+    <div class="note">
+        <strong>⚠️ Почему при дифиллоботриозе ищут яйца, а не членики?</strong><br>
+        У широкого лентеца матка <strong>открытого типа</strong> (имеет выводное отверстие). Яйца из неё непрерывно поступают в просвет кишечника и выделяются с фекалиями в огромных количествах. В отличие от цепней, у которых матка закрытая и яйца выходят только при разрушении членика.
+    </div>
+
+    <p>
+        <strong>Обнаружение члеников:</strong> Макроскопическое исследование фекалий может выявить фрагменты стробилы.
+    </p>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Строгая кулинарная обработка рыбы (тщательное проваривание или прожаривание).</li>
+        <li>Длительное вымораживание рыбы (при -20°С не менее 7 дней).</li>
+        <li>Интенсивный посол рыбы.</li>
+        <li>Полный отказ от употребления сырой рыбы, строганины, суши и свежей икры сомнительного качества.</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Защита водоёмов от загрязнения фекальными стоками.</li>
+        <li>Санитарный контроль за выловом и продажей рыбы.</li>
+        <li>Выявление и лечение больных дифиллоботриозом.</li>
+        <li>Санитарно-просветительская работа в эндемичных регионах.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

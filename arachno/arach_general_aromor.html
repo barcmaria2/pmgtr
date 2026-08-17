@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Происхождение членистоногих и эволюция насекомых</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h1 .emoji {
+            font-size: 36px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .toc {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border-left: 4px solid #2563eb;
+        }
+        .toc p {
+            margin: 0;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .toc ul {
+            margin: 6px 0 0 20px;
+            list-style: none;
+        }
+        .toc ul li::before {
+            content: "• ";
+            color: #2563eb;
+            font-weight: 700;
+        }
+        .toc a {
+            color: #1e293b;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbd5e1;
+        }
+        .toc a:hover {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+
+        h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 8px;
+            border-top: 2px solid #e9edf3;
+        }
+        h2:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+
+        h2 .emoji {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul, ol ol, ul ol, ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .feature-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .feature-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .feature-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .feature-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .feature-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .feature-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .feature-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .feature-table .col-feature {
+            font-weight: 700;
+            color: #1e3a8a;
+            background: #f8fafc;
+            width: 25%;
+        }
+
+        .feature-table ul {
+            margin: 4px 0 4px 18px;
+            padding: 0;
+            font-size: 13px;
+        }
+
+        .feature-table li {
+            margin-bottom: 2px;
+        }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eef2f6;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+            .feature-table {
+                font-size: 13px;
+                min-width: 400px;
+            }
+            .feature-table .col-feature {
+                width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+            .feature-table {
+                font-size: 12px;
+                min-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🧬</span> Происхождение членистоногих и эволюция насекомых</h1>
+    <div class="subtitle">Филогенетические корни, ключевые ароморфозы и адаптивная радиация класса <strong>Insecta</strong></div>
+
+    <!-- ===== ОГЛАВЛЕНИЕ ===== -->
+    <div class="toc">
+        <p>📑 Содержание</p>
+        <ul>
+            <li><a href="#sec1">I. Происхождение членистоногих от кольчатых червей</a>
+                <ul>
+                    <li><a href="#sec1.1">1. Доказательства родства</a></li>
+                    <li><a href="#sec1.2">2. Ключевые ароморфозы перехода</a></li>
+                    <li><a href="#sec1.3">3. Сравнительная таблица Annelida и Arthropoda</a></li>
+                </ul>
+            </li>
+            <li><a href="#sec2">II. Ароморфозы и идиоадаптации насекомых (Insecta)</a>
+                <ul>
+                    <li><a href="#sec2.1">1. Ключевые ароморфозы класса</a></li>
+                    <li><a href="#sec2.2">2. Важнейшие идиоадаптации</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ===== РАЗДЕЛ I ===== -->
+    <h2 id="sec1"><span class="emoji">🔬</span> I. Происхождение членистоногих от кольчатых червей</h2>
+
+    <p><strong>Филогенетическое родство</strong> между типом Членистоногие (<em>Arthropoda</em>) и типом Кольчатые черви (<em>Annelida</em>) является одним из фундаментальных положений сравнительной анатомии беспозвоночных. Членистоногие — наиболее высокоорганизованные беспозвоночные, произошедшие от древних кольчецов и во многом сохранившие сходство плана строения.</p>
+
+    <h3 id="sec1.1">1. Доказательства родства: общие черты организации</h3>
+    <p>Общие диагностические признаки, сближающие эти типы:</p>
+    <ul>
+        <li><strong>Трёхслойность</strong> — развитие из трёх зародышевых листков (эктодермы, энтодермы и мезодермы);</li>
+        <li><strong>Билатеральная (двусторонняя) симметрия</strong>;</li>
+        <li><strong>Метамерия (сегментированность) тела</strong>;</li>
+        <li><strong>Единый план строения нервной и пищеварительной систем</strong>;</li>
+        <li><strong>Наличие кровеносной системы</strong>;</li>
+        <li><strong>Наличие вторичной полости тела (целома)</strong> в эмбриогенезе (у членистоногих впоследствии редуцируется).</li>
+    </ul>
+    <p>Эволюционно происхождение членистоногих связывают с древними <strong>многощетинковыми червями (<em>Polychaeta</em>)</strong>, хотя современные данные указывают на то, что предки были близки к полихетам, но не обязательно идентичны современным формам.</p>
+
+    <h3 id="sec1.2">2. Ключевые ароморфозы при переходе к членистоногим</h3>
+    <p>Переход от многощетинковых червей к членистоногим сопровождался крупными морфофизиологическими преобразованиями:</p>
+    <ol>
+        <li><strong>Появление твёрдого наружного скелета (хитинизированной кутикулы)</strong> — защита и опора для мышц, необходимость периодических линек.</li>
+        <li><strong>Возникновение членистых конечностей</strong> — параподии полихет превратились в многочленные рычажные конечности с суставами.</li>
+        <li><strong>Гетерономная сегментация и образование тагм</strong> — дифференцировка отделов тела (голова, грудь, брюшко или головогрудь).</li>
+        <li><strong>Распад кожно-мускульного мешка на отдельные пучки мышц</strong> — появление поперечно-полосатой мускулатуры.</li>
+        <li><strong>Появление сердца и незамкнутой кровеносной системы</strong> — гемолимфа изливается в полость тела (гемоцель).</li>
+        <li><strong>Возникновение специализированных органов дыхания</strong> — лёгких и трахей для наземного образа жизни.</li>
+        <li><strong>Прогрессивное развитие нервной системы и органов чувств</strong> — увеличение надглоточного ганглия, формирование головного мозга.</li>
+    </ol>
+
+    <h3 id="sec1.3">3. Сравнительный анализ строения типов Annelida и Arthropoda</h3>
+    <div class="table-wrapper">
+        <table class="feature-table">
+            <thead>
+                <tr>
+                    <th class="col-feature">Морфологический признак</th>
+                    <th>Кольчатые черви (<em>Annelida</em>)</th>
+                    <th>Членистоногие (<em>Arthropoda</em>)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-feature">Покровы тела</td>
+                    <td>Кутикула тонкая, кожно-мускульный мешок (эпителий + кольцевые и продольные гладкие мышцы).</td>
+                    <td>Жёсткий хитиновый панцирь, мышцы — отдельные пучки поперечно-полосатых волокон.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Сегментация тела</td>
+                    <td>Гомономная (сегменты одинаковы, кроме головной и анальной лопастей).</td>
+                    <td>Гетерономная, сегменты объединены в тагмы (отделы).</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Органы движения</td>
+                    <td>Параподии (у полихет) или щетинки; у малощетинковых отсутствуют.</td>
+                    <td>Сложные многочленные суставные конечности рычажного типа.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Полость тела</td>
+                    <td>Вторичная — <strong>целом</strong>.</td>
+                    <td><strong>Гемоцель</strong> (смешанная полость, целом редуцирован до полостей гонад и выделительных органов). В старой литературе — «миксоцель».</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Пищеварительная система</td>
+                    <td>Сквозная трубка (передняя, средняя, задняя кишка).</td>
+                    <td>Те же отделы, появляется пищеварительная железа — <strong>печень</strong> (гепатопанкреас).</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Дыхательная система</td>
+                    <td>Кожное дыхание; у полихет — жабры на параподиях.</td>
+                    <td>Жабры, лёгочные мешки, трахеи.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Выделительная система</td>
+                    <td>Метанефридии (посегментно).</td>
+                    <td>Видоизменённые метанефридии (коксальные железы) или мальпигиевы сосуды.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Кровеносная система</td>
+                    <td><strong>Замкнутая</strong>, сердца нет, кровь движется пульсацией сосудов.</td>
+                    <td><strong>Незамкнутая</strong>, есть пульсирующее <strong>сердце</strong> на спинной стороне.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Нервная система</td>
+                    <td>Окологлоточное кольцо + брюшная нервная цепочка.</td>
+                    <td>Окологлоточное кольцо + брюшная цепочка с трёхраздельным головным мозгом.</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Размножение</td>
+                    <td>Среди представителей есть гермафродиты и раздельнополые (полихеты). Возможно бесполое размножение.</td>
+                    <td>Исключительно раздельнополые, выражен половой диморфизм, только половое размножение.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>Первые членистоногие обособились в <strong>протерозойскую эру</strong> в виде двух древних водных подтипов: <strong>Трилобитообразных (<em>Trilobitomorpha</em>)</strong> и <strong>Жабернодышащих (<em>Branchiata</em>)</strong>. В палеозое трилобитообразные дали начало хелицеровым, а от жабернодышащих произошли трахейнодышащие, к которым относится класс Насекомые.</p>
+
+    <!-- ===== РАЗДЕЛ II ===== -->
+    <h2 id="sec2"><span class="emoji">🐞</span> II. Ароморфозы и идиоадаптации у насекомых</h2>
+
+    <p>Согласно эволюционной концепции А.Н. Северцова, биологический прогресс достигается двумя путями: <strong>арогенезом</strong> (ароморфозы) и <strong>аллогенезом</strong> (идиоадаптации).</p>
+    <ul>
+        <li><strong>Ароморфоз</strong> — крупное приспособление общего значения, повышающее уровень организации и открывающее новые адаптивные зоны (приводит к формированию типов и классов).</li>
+        <li><strong>Идиоадаптация</strong> — частное приспособление к конкретным условиям, обеспечивающее дивергенцию внутри одного уровня организации (формирование отрядов, семейств, родов).</li>
+    </ul>
+    <p>Класс <strong>Насекомые</strong> — самый многочисленный (более 1 млн видов, ~70% всего животного разнообразия). Его успех обусловлен сочетанием мощных ароморфозов и тонких идиоадаптаций.</p>
+
+    <h3 id="sec2.1">1. Ключевые ароморфозы класса насекомых</h3>
+    <div class="table-wrapper">
+        <table class="feature-table">
+            <thead>
+                <tr>
+                    <th class="col-feature">Ароморфоз</th>
+                    <th>Значение и характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-feature">Гетерономная сегментация и разделение тела на три отдела (тагмы)</td>
+                    <td>
+                        <strong>Голова</strong> — сенсорный и пищевой центр;<br>
+                        <strong>Грудь</strong> — локомоторный (ноги + крылья);<br>
+                        <strong>Брюшко</strong> — вегетативно-репродуктивный.<br>
+                        <em>Повысило эффективность выполнения жизненных функций.</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Появление крыльев и активный полёт</td>
+                    <td>
+                        Крылья — производные кутикулы (предположительно из боковых выростов тергитов). Обеспечили быстрое расселение, уход от хищников, поиск пищи на больших расстояниях.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Трахейная система дыхания</td>
+                    <td>
+                        Сеть воздухоносных трубочек доставляет кислород напрямую к клеткам. Освобождает кровеносную систему от газообмена, обеспечивает высокий метаболизм, необходимый для полёта.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Сухопутный (водосберегающий) тип выделения</td>
+                    <td>
+                        <strong>Мальпигиевы сосуды</strong> — слепые выросты кишечника, выводят мочевую кислоту в виде кристаллов. <strong>Жировое тело</strong> — «почка накопления», изолирует продукты обмена и служит источником метаболической воды.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Прогрессивное развитие нервной системы и органов чувств</td>
+                    <td>
+                        Увеличение головного мозга, особенно <strong>грибовидных тел</strong> (центры сложного поведения). <strong>Фасеточные глаза</strong> — мозаичное и цветное зрение. Усики — органы обоняния и осязания.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Плотный трёхслойный хитиновый покров с воскоподобным слоем</td>
+                    <td>
+                        Наружный скелет и защита от испарения. Восковая эпикутикула предотвращает потерю воды, что критично для наземного образа жизни.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Изображение – общая схема ароморфозов -->
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🪲</span>
+            Ключевые ароморфозы насекомых
+            <span class="small">(схема: трахеи, крылья, отделы тела, мальпигиевы сосуды)</span>
+            <span class="filename">imagine/aromorfozy_insecta.jpg</span>
+        </div>
+    </div>
+
+    <h3 id="sec2.2">2. Важнейшие идиоадаптации насекомых</h3>
+
+    <h4>2.1. Специализация ротовых аппаратов</h4>
+    <p>На основе исходного грызуще-жующего типа (тараканы) развились:</p>
+    <ul>
+        <li><strong>Грызуще-жующий</strong> — твёрдая пища (жуки, тараканы).</li>
+        <li><strong>Колюще-сосущий</strong> — прокалывание покровов и высасывание жидкостей (комары, клопы, вши).</li>
+        <li><strong>Лижущий (лижуще-сосущий)</strong> — мухи, соскабливают и всасывают полужидкую пищу.</li>
+        <li><strong>Сосущий</strong> — бабочки, длинный хоботок для нектара.</li>
+    </ul>
+
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🦟</span>
+            Типы ротовых аппаратов насекомых
+            <span class="small">(грызущий, колюще-сосущий, лижущий, сосущий)</span>
+            <span class="filename">imagine/rotovye_apparaty.jpg</span>
+        </div>
+    </div>
+
+    <h4>2.2. Специализация ходильных конечностей</h4>
+    <p>Конечности грудного отдела (тазик, вертлуг, бедро, голень, лапка) адаптированы к разным способам передвижения:</p>
+    <ul>
+        <li><strong>Бегательные</strong> — длинные, тонкие (тараканы).</li>
+        <li><strong>Прыгательные</strong> — мощные бёдра (кузнечики, блохи).</li>
+        <li><strong>Копательные</strong> — расширенные, лопатообразные (медведка).</li>
+        <li><strong>Плавательные</strong> — веслообразные, с щетинками (жуки-плавунцы).</li>
+        <li><strong>Хватательные</strong> — с коготком для фиксации на волосах хозяина (вши).</li>
+    </ul>
+
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🦗</span>
+            Типы конечностей насекомых
+            <span class="small">(бегательная, прыгательная, копательная, плавательная, хватательная)</span>
+            <span class="filename">imagine/tipy_konechnostey.jpg</span>
+        </div>
+    </div>
+
+    <h4>2.3. Развитие с метаморфозом</h4>
+    <ul>
+        <li><strong>Неполный метаморфоз</strong> (яйцо → личинка → имаго) — личинка похожа на взрослую, обитает в той же среде (тараканы, клопы).</li>
+        <li><strong>Полный метаморфоз</strong> (яйцо → личинка → куколка → имаго) — личинка червеобразная, резко отличается от имаго (жуки, бабочки, мухи). На стадии куколки происходит перестройка.</li>
+        <li><strong>Биологическое значение</strong> — снижение внутривидовой конкуренции за счёт разделения сред обитания и питания между личинкой и взрослой особью (например, личинка комара — водный фильтратор, имаго — воздушный кровосос).</li>
+    </ul>
+
+    <h4>2.4. Регрессивные адаптации эктопаразитов</h4>
+    <ul>
+        <li><strong>Вторичная бескрылость</strong> (вши, блохи, постельные клопы) — утрата крыльев, мешающих передвижению в шерсти.</li>
+        <li><strong>Сплющенность тела</strong> — дорсо-вентрально (вши, клопы) или с боков (блохи) для лёгкого перемещения в волосяном покрове.</li>
+    </ul>
+
+    <h4>2.5. Покровительственная окраска и защита</h4>
+    <ul>
+        <li><strong>Индустриальный меланизм</strong> — у березовой пяденицы (<em>Biston betularia</em>) в загрязнённых районах темные формы становятся преобладающими из-за маскировки на закопчённых стволах.</li>
+        <li><strong>Пахучие железы</strong> (клопы) — выделяют отпугивающий секрет.</li>
+    </ul>
+
+    <!-- ===== РЕЗЮМЕ ===== -->
+    <div class="note" style="margin-top:28px;">
+        <strong>📌 Резюме для экзамена:</strong><br>
+        <strong>Ароморфозы</strong> (трахеи, мальпигиевы сосуды, крылья, разделение тела на отделы, фасеточные глаза, восковая кутикула) — обеспечили выход на сушу, полёт и высокий уровень метаболизма.<br>
+        <strong>Идиоадаптации</strong> (разнообразие ротовых аппаратов, конечностей, метаморфоз, паразитические редукции, окраска) — позволили занять все экологические ниши и дали колоссальное видовое разнообразие.
+    </div>
+
+</div>
+</body>
+</html>

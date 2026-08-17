@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Альвеококк (Alveococcus multilocularis) — урок 2</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul, ol ol, ul ol, ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .danger {
+            background: #fef2f2;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #991b1b;
+            border-left: 4px solid #ef4444;
+            margin: 12px 0 16px 0;
+        }
+
+        .danger strong {
+            color: #7f1d1d;
+        }
+
+        /* ===== ТАБЛИЦА ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* Диагностическая таблица */
+        .diagnostic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 400px;
+        }
+
+        .diagnostic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .diagnostic-table thead th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .diagnostic-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .diagnostic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .diagnostic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .diagnostic-table .col-method {
+            width: 30%;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ДЛЯ ЯЙЦА (ОДНО ФОТО) ===== */
+        .stage-row .left-col {
+            flex: 1 1 55%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col,
+            .stage-row .right-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .pathogenic-table,
+            .diagnostic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .image-col,
+            .stage-row .right-col {
+                min-height: 150px;
+            }
+
+            .pathogenic-table,
+            .diagnostic-table {
+                font-size: 12px;
+            }
+
+            ul, ol {
+                margin-left: 16px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК (ИСПРАВЛЕНА ИКОНКА) ===== -->
+    <h1><span class="emoji">🧬</span> Альвеококк</h1>
+    <div class="subtitle"><strong>Alveococcus multilocularis</strong> — возбудитель <strong>альвеококкоза</strong></div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)<br>
+            <strong>Класс:</strong> Ленточные черви (Cestoda)<br>
+            <strong>Отряд:</strong> Цепни (Cyclophyllidea)<br>
+            <strong>Вид:</strong> Альвеококк (<em>Alveococcus multilocularis</em>)
+        </p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Альвеококкоз (многокамерный альвеококкоз).</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозоонозное, природно-очаговое заболевание.</div>
+        <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Имеет ярко выраженные природные очаги. В России – Сибирь, Якутия, Камчатка, Дальний Восток.</div>
+    </div>
+
+    <div class="note">
+        <strong>⚠️ Важное примечание:</strong> Возбудитель циркулирует в дикой природе (от лисы к полевке и обратно) <strong>без участия человека</strong>. Человек для альвеококка – <strong>биологический тупик</strong> (после смерти человека паразит дальше не передаётся).
+    </div>
+
+    <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 1. Половозрелая особь  -->
+    <h3>1. Половозрелая особь</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма и размеры:</strong> Очень мелкая ленточная форма. Длина – <strong>1,2–4,5 мм</strong>. Стробила состоит всего из <strong>3–4 члеников</strong> (молодые, гермафродитный и один зрелый).
+            </p>
+
+            <p>
+                <strong>Сколекс (головка):</strong> Имеет 4 присоски и втягивающийся хоботок с <strong>двумя венчиками крючьев</strong> (как у эхинококка).
+            </p>
+
+            <p>
+                <strong>Отсутствующие системы органов:</strong> Полностью отсутствуют пищеварительная, кровеносная и дыхательная системы. Питание осмотически всей поверхностью тела.
+            </p>
+
+            <h4>Половая система (гермафродит) – важнейшие отличия от эхинококка:</h4>
+            <ul>
+                <li><strong>Матка в зрелом членике:</strong> У альвеококка матка имеет <strong>шарообразную (округлую) форму</strong> без боковых выпячиваний. (У эхинококка – мешковидная с боковыми ответвлениями).</li>
+                <li><strong>Зрелый членик:</strong> Занимает заднюю часть стробилы, матка заполнена яйцами.</li>
+            </ul>
+        </div>
+
+        <!-- Изображение мариты -->
+        <div class="image-col">
+            <img src="images/helminths/alveococcus_marita_scheme.jpg"
+                 alt="Марита альвеококка — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Марита <em>Alveococcus multilocularis</em>
+                <span class="small">(alveococcus_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">мелкий цепень, 3–4 членика, округлая матка</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Яйцо (одно фото) -->
+    <h3>2. Яйцо (онкосфера)</h3>
+
+    <div class="stage-row">
+        <div class="left-col">
+            <div class="text">
+                <p>
+                    <strong>Размеры:</strong> Мелкие, 30–40 мкм.<br>
+                    <strong>Форма и цвет:</strong> Овальные, коричневатые, с толстой радиально исчерченной оболочкой.<br>
+                    <strong>Содержимое:</strong> Внутри – <strong>онкосфера</strong> с шестью крючьями.<br>
+                    <strong>Устойчивость:</strong> Яйца альвеококка <strong>крайне устойчивы</strong> к холоду (выживают даже при морозах).
+                </p>
+            </div>
+        </div>
+
+        <div class="right-col">
+            <img src="images/helminths/alveococcus_egg_scheme.jpg"
+                 alt="Схема яйца альвеококка"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🥚</span>
+                Схема яйца <em>Alveococcus multilocularis</em>
+                <span class="small">(alveococcus_egg_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">радиально исчерченная оболочка, онкосфера</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Финна -->
+    <h3>3. Финна (личиночная стадия) – критическое отличие от эхинококка</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Название:</strong> <span class="spec">Альвеококковый (многокамерный) пузырь</span>.<br>
+                <strong>Внешний вид:</strong> Не один большой пузырь, а <strong>плотный конгломерат (узел)</strong> из множества мелких пузырьков, заполненных густой желеобразной массой.<br>
+                <strong>Способ роста:</strong> Растёт <strong>экзогенно</strong> (почкованием наружу). Пузырьки не имеют плотной капсулы, они <strong>инфильтрируют</strong> (прорастают) в здоровые ткани, разрушая их подобно злокачественной опухоли.<br>
+                <strong>Метастазирование:</strong> Мелкие пузырьки с протосколексами могут разноситься с током крови и лимфы, образуя вторичные очаги (метастазы) в лёгких, головном мозге и других органах.<br>
+                <strong>Локализация в человеке:</strong> Первично всегда <strong>печень</strong> (чаще правая доля), затем – метастазы.
+            </p>
+        </div>
+
+        <div class="image-col">
+            <img src="images/helminths/alveococcus_finna_scheme.jpg"
+                 alt="Альвеококковый пузырь — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🫧</span>
+                Альвеококковый пузырь
+                <span class="small">(alveococcus_finna_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">многокамерный, инфильтративный рост</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Биогельминт (со сменой хозяев).<br>
+        <strong>Окончательный (дефинитивный) хозяин:</strong> Дикие хищники (лисы, песцы, волки), реже – домашние собаки и кошки. В их тонком кишечнике обитает половозрелая ленточная стадия.<br>
+        <strong>Промежуточный хозяин:</strong> В природе – мышевидные грызуны (полевки, лемминги, ондатры). <span class="spec">Случайный промежуточный хозяин – человек.</span><br>
+        <strong>Инвазионная стадия для человека:</strong> Яйцо с онкосферой.<br>
+        <strong>Патогенная стадия:</strong> Финна (альвеококковый пузырь) в печени и других органах.<br>
+        <strong>Локализация в организме человека:</strong> Первично – <strong>печень</strong> (чаще правая доля). Метастазы – лёгкие, головной мозг, другие органы.
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/alveococcus_life_cycle.jpg"
+             alt="Жизненный цикл альвеококка"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Жизненный цикл <em>Alveococcus multilocularis</em>
+            <span class="small">(alveococcus_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">хищник → яйцо → грызун (финна) → хищник; человек – тупик</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла -->
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Выделение во внешнюю среду:</strong> Зрелые членики отрываются и с фекалиями хищника попадают в почву, на траву или шерсть животного. Яйца (онкосферы) альвеококка <strong>крайне устойчивы к холоду</strong>.</li>
+        <li><strong>Заражение промежуточного хозяина (грызуна):</strong> Грызуны заглатывают яйца с травой. В кишечнике из яйца выходит онкосфера, которая проникает через стенку кишки в кровоток и оседает в печени, где превращается в альвеококковый пузырь.</li>
+        <li><strong>Заражение окончательного хозяина (хищника):</strong> Хищник съедает заражённого грызуна. В кишечнике хищника из финны выворачивается сколекс, прикрепляется к слизистой и вырастает половозрелая особь.</li>
+        <li><strong>Заражение человека (случайного промежуточного хозяина):</strong>
+            <ul>
+                <li><strong>Механизм:</strong> Фекально-оральный.</li>
+                <li><strong>Путь передачи:</strong> Контактно-бытовой (основной), реже – пищевой или водный.</li>
+                <li><strong>Факторы передачи:</strong> Грязные руки при выделке шкур убитых лисиц и песцов; тесный контакт с ездовыми или охотничьими собаками; употребление немытых лесных ягод (брусника, клюква) и трав, на которые попали фекалии хищников.</li>
+            </ul>
+        </li>
+        <li><strong>Развитие в организме человека:</strong> Проглоченное яйцо попадает в кишечник → из него выходит онкосфера → пробуравливает стенку кишки → проникает в кровоток (воротную вену) → оседает в печени → начинает расти альвеококковый пузырь.</li>
+    </ol>
+
+    <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ ===== -->
+    <h2><span class="emoji">⚡</span> Патогенное действие</h2>
+
+    <div class="table-wrapper">
+        <table class="pathogenic-table">
+            <thead>
+                <tr>
+                    <th class="col-mechanism">Механизм действия</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-mechanism">Инфильтративный рост</td>
+                    <td>Альвеококковый пузырь прорастает в ткани печени, разрушая их подобно злокачественной опухоли (может маскироваться под цирроз или рак печени).</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Механическое сдавление</td>
+                    <td>Узел сдавливает желчные протоки (желтуха), сосуды (нарушение кровотока), воротную вену (асцит).</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Токсико-аллергическое действие</td>
+                    <td>Продукты жизнедеятельности и распада паразита вызывают аллергические реакции, интоксикацию.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Метастазирование</td>
+                    <td>Отрыв мелких пузырьков → занос в лёгкие, головной мозг, другие органы.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Клинические проявления</td>
+                    <td>Желтуха, гепатомегалия (печень становится огромной и «каменной»), асцит, боли в правом подреберье.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <div class="danger">
+        <strong>⚠️ Главное правило (ловушка на логику!):</strong><br>
+        Так как человек – <strong>промежуточный</strong> хозяин, в организме человека живёт только личиночная стадия (финна). Поэтому <strong>яйца и членики альвеококка НИКОГДА не обнаруживаются в кале пациента!</strong> В кале человека альвеококк не выделяется.
+    </div>
+
+    <div class="table-wrapper">
+        <table class="diagnostic-table">
+            <thead>
+                <tr>
+                    <th class="col-method">Метод</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-method">Инструментальные методы (визуализация)</td>
+                    <td>УЗИ, МРТ, КТ, рентгенография печени. На рентгене – участки обызвествления в виде «известковых брызг» или «кружев».</td>
+                </tr>
+                <tr>
+                    <td class="col-method">Серологические методы (основной лабораторный метод)</td>
+                    <td>ИФА, РНГА, реакция латекс-агглютинации – обнаружение специфических антител в сыворотке крови.</td>
+                </tr>
+                <tr>
+                    <td class="col-method">Общий анализ крови</td>
+                    <td>Эозинофилия, повышение СОЭ.</td>
+                </tr>
+                <tr>
+                    <td class="col-method">Биопсия</td>
+                    <td>Пункционная биопсия печени с гистологическим исследованием.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Тщательно мыть лесные ягоды и травы перед употреблением.</li>
+        <li>Тщательно мыть руки после общения с собаками (особенно охотничьими и ездовыми).</li>
+        <li>Тщательно мыть руки после охоты, снятия шкур пушных зверей (лисиц, песцов).</li>
+        <li>Не кормить собак сырым мясом и субпродуктами диких животных.</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Плановая дегельминтизация охотничьих и служебных собак.</li>
+        <li>Уничтожение поражённых органов животных при промысле (туши, внутренности).</li>
+        <li>Оборудование специальных санитарных зон для выделки пушнины.</li>
+        <li>Санитарно-просветительская работа с охотниками, фермерами, населением в эндемичных регионах.</li>
+        <li>Дератизация – контроль численности грызунов в природных очагах.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

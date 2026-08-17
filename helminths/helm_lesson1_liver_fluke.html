@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Печеночный сосальщик (Fasciola hepatica) — урок 1</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА (полная ширина) ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ (полная ширина) ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 55%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image {
+            margin-top: 12px; /* отступ сверху, чтобы не прилипало к тексту */
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image img,
+        .stage-row .left-col .additional-image .placeholder {
+            max-width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ДЛЯ БЛОКА МАРИТА (чтобы не ломалось) ===== */
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ (жизненный цикл) ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== СТАДИИ (сетка) — для остальных стадий ===== */
+        .stages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+            margin: 10px 0 14px 0;
+        }
+
+        .stage-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 3px solid #2563eb;
+        }
+
+        .stage-card .name {
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        .stage-card .desc {
+            font-size: 14px;
+            color: #475569;
+            margin-top: 2px;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1; /* чтобы изображение было сверху на мобильных */
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stages-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🐚</span> Печеночный сосальщик</h1>
+    <div class="subtitle"><strong>Fasciola hepatica</strong> — возбудитель <strong>фасциолеза</strong></div>
+
+    <!-- ===== СИСТЕМАТИКА (на всю ширину) ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)<br>
+            <strong>Класс:</strong> Сосальщики (Трематоды) — Trematoda<br>
+            <strong>Вид:</strong> Печеночный сосальщик (<em>Fasciola hepatica</em>)<br>
+            <strong>Вызываемое заболевание:</strong> <span class="highlight">Фасциолез</span>
+        </p>
+    </div>
+
+    <!-- ===== ЭПИДЕМИОЛОГИЯ (на всю ширину) ===== -->
+    <div class="epi-grid">
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозоонозное, природно-очаговое заболевание.</div>
+        <div class="item"><strong>Географическое распространение:</strong> Повсеместно.</div>
+    </div>
+
+    <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+    <p>Жизненный цикл печеночного сосальщика включает несколько стадий, которые морфологически и физиологически отличаются друг от друга.</p>
+
+    <!-- ===== БЛОК 1. МАРИТА (с изображением справа) ===== -->
+    <h3>1. Марита (половозрелая стадия / гермафродит)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                Имеет листовидную форму, длина тела в среднем 2–3 см (до 5 см). Передний конец тела клювовидно вытянут.<br>
+                Тело покрыто кожно-мускульным мешком (тегументом).<br>
+                <strong>Важный диагностический признак:</strong> На поверхности тегумента расположены многочисленные кутикулярные шипики, обеспечивающие дополнительную фиксацию и подвижность паразита в тканях.
+            </p>
+
+            <h4>Органы фиксации:</h4>
+            <ul>
+                <li><strong>Ротовая присоска</strong> — расположена терминально (на переднем конце), окружает ротовое отверстие.</li>
+                <li><strong>Брюшная присоска</strong> — расположена на вентральной стороне, значительно ниже ротовой, служит исключительно для прикрепления.</li>
+            </ul>
+
+            <h4>Пищеварительная система:</h4>
+            <p>Рот → глотка → короткий пищевод. Кишечник раздваивается на две боковые ветви, которые имеют множественные слепые боковые ответвления по всему телу (видоспецифичный признак).</p>
+
+            <h4>Половая система (гермафродит):</h4>
+            <ul>
+                <li><strong>Мужская:</strong> Два сильно разветвленных семенника, расположены в средней части тела друг за другом. От них отходят семяпроводы, которые сливаются в семяизвергательный канал, заканчивающийся копулятивным органом — <strong>циррусом</strong>.</li>
+                <li><strong>Женская:</strong> Непарный ветвистый яичник расположен впереди семенников, позади брюшной присоски. Яйцевод впадает в центральную камеру — <strong>оотип</strong>, куда также открываются протоки <strong>желточников</strong> (вырабатывают желточные клетки) и <strong>семяприемника</strong>. Вокруг оотипа расположены железы — <strong>тельце Мелиса</strong>, секрет которых участвует в формировании оболочек яиц. От оотипа отходит извитая трубчатая <strong>матка</strong>, которая заполнена яйцами и открывается наружу половым отверстием.</li>
+            </ul>
+        </div>
+
+        <!-- Изображение мариты -->
+        <div class="image-col">
+            <img src="images/helminths/liver_fluke_marita_scheme.jpg"
+                 alt="Марита печеночного сосальщика — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Марита <em>Fasciola hepatica</em>
+                <span class="small">(liver_fluke_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">листовидное тело, присоски, кишечник, яичник</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== БЛОК 2. ЯЙЦО (с двумя фото: схема справа, микроскопическое слева под текстом) ===== -->
+    <h3>2. Яйцо</h3>
+
+    <div class="stage-row">
+        <!-- Левая колонка: текст + второе фото под ним -->
+        <div class="left-col">
+            <div class="text">
+                <p>
+                    Крупное, овальной формы, золотисто-желтого цвета.<br>
+                    На одном из полюсов имеется <strong>крышечка</strong> (характерный диагностический признак).
+                </p>
+            </div>
+            <!-- Второе фото (микроскопическое) сразу под текстом -->
+            <div class="additional-image">
+                <img src="images/helminths/liver_fluke_egg_microscope.jpg"
+                     alt="Микроскопическое фото яйца печеночного сосальщика"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🔬</span>
+                    Микроскопическое фото яйца <em>Fasciola hepatica</em>
+                    <span class="small">(liver_fluke_egg_microscope.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">реальное изображение яйца в нативном мазке</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: первое фото (схема яйца) -->
+        <div class="right-col">
+            <img src="images/helminths/liver_fluke_egg.jpg"
+                 alt="Яйцо печеночного сосальщика — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🥚</span>
+                Яйцо <em>Fasciola hepatica</em>
+                <span class="small">(liver_fluke_egg.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">овальное, золотисто-жёлтое, с крышечкой на полюсе</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ОСТАЛЬНЫЕ СТАДИИ (сетка) ===== -->
+    <h3>Остальные стадии развития</h3>
+    <div class="stages-grid">
+        <div class="stage-card">
+            <div class="name">3. Мирацидий</div>
+            <div class="desc">Свободноплавающая, ресничная личинка овальной формы. Не питается, живет за счет запасов яйца, активно ищет промежуточного хозяина.</div>
+        </div>
+        <div class="stage-card">
+            <div class="name">4. Спороциста</div>
+            <div class="desc">Мешковидная стадия, развивается в теле моллюска. Не имеет кишечника, размножается партеногенетически, образуя редии.</div>
+        </div>
+        <div class="stage-card">
+            <div class="name">5. Редия</div>
+            <div class="desc">Имеет глотку и зачаток кишечника. Внутри редий развиваются церкарии.</div>
+        </div>
+        <div class="stage-card">
+            <div class="name">6. Церкарий</div>
+            <div class="desc">Хвостатая личинка, выходит из моллюска в воду. Активно плавает с помощью хвоста.</div>
+        </div>
+        <div class="stage-card">
+            <div class="name">7. Адолескарий</div>
+            <div class="desc"><strong>Инвазионная стадия.</strong> Церкарий отбрасывает хвост, прикрепляется к водным растениям и покрывается плотной оболочкой. Размеры: 0,2–0,3 мм. Сохраняет жизнеспособность во влажной среде до 2–3 лет.</div>
+        </div>
+    </div>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p><strong>Тип цикла:</strong> Биогельминт (со сменой хозяев).<br>
+    <strong>Обязательное условие:</strong> Наличие пресноводной среды.<br>
+    <strong>Механизм заражения:</strong> Фекально-оральный.<br>
+    <strong>Инвазионная стадия:</strong> Адолескарий.<br>
+    <strong>Патогенная стадия:</strong> Марита (половозрелая особь).</p>
+
+    <!-- Хозяева -->
+    <p>
+        <strong>Окончательный хозяин:</strong> Травоядные животные (крупный и мелкий рогатый скот, свиньи, лошади) и человек.<br>
+        <strong>Локализация в организме человека:</strong> Внутрипеченочные желчные ходы, реже — желчный пузырь и протоки поджелудочной железы.<br>
+        <strong>Промежуточный хозяин:</strong> Пресноводный моллюск — Малый прудовик (<em>Limnea truncatula</em>).
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/liver_fluke_life_cycle.jpg"
+             alt="Жизненный цикл печеночного сосальщика"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🌊</span>
+            Жизненный цикл <em>Fasciola hepatica</em>
+            <span class="small">(liver_fluke_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">яйцо → мирацидий → спороциста → редия → церкарий → адолескарий → марита</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла -->
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Выделение яиц во внешнюю среду:</strong> Марита продуцирует яйца, которые с током желчи попадают в кишечник и выделяются с фекалиями. <span class="spec">Критическое условие:</span> яйцо должно попасть строго в пресную воду (в почве или на сухой траве развитие прекращается).</li>
+        <li><strong>Выход мирацидия:</strong> В воде под действием света из яйца выходит свободноплавающая ресничная личинка — мирацидий. Она внедряется в тело промежуточного хозяина.</li>
+        <li><strong>Развитие в промежуточном хозяине (партеногенез):</strong> Внутри малого прудовика происходит бесполое размножение. Строгая последовательность: <strong>Мирацидий → Спороциста → Редия → Церкарий</strong>.</li>
+        <li><strong>Выход церкария в воду:</strong> Церкарии покидают тело моллюска, активно плавают в воде с помощью хвоста.</li>
+        <li><strong>Формирование адолескария:</strong> Церкарий прикрепляется к водным растениям, отбрасывает хвост и покрывается плотной оболочкой. Это <strong>единственная инвазионная стадия</strong> для человека и животных.</li>
+    </ol>
+
+    <!-- ЗАРАЖЕНИЕ ЧЕЛОВЕКА -->
+    <h3>Заражение человека</h3>
+    <p>Заражение происходит по <strong>фекально-оральному механизму</strong>, двумя путями:</p>
+    <ul>
+        <li><strong>Водный путь:</strong> При питье сырой нефильтрованной воды из открытых стоячих водоемов, содержащей адолескариев.</li>
+        <li><strong>Контактно-бытовой путь:</strong> При употреблении в пищу немытых овощей, зелени (водяной кресс, щавель, салат) и фруктов, политых водой из зараженных водоемов (адолескарии фиксированы на поверхности растений).</li>
+    </ul>
+    <div class="note">
+        <strong>⚠️ Важно:</strong> В случае фасциолеза заражение не происходит через мясо или мышечную ткань животных. Паразит локализуется только в печени, поэтому фекально-оральный механизм реализуется исключительно через воду и растительность.
+    </div>
+
+    <h4>Миграция в организме человека:</h4>
+    <ol>
+        <li>В тонком кишечнике оболочка адолескария разрушается пищеварительными ферментами.</li>
+        <li>Освободившаяся личинка пробуравливает стенку тонкой кишки.</li>
+        <li><strong>Два пути миграции к печени:</strong>
+            <ul>
+                <li><strong>Перфоративный:</strong> Выход в брюшную полость → активная перфорация капсулы печени → внедрение в паренхиму → проникновение в желчные ходы.</li>
+                <li><strong>Гематогенный:</strong> Проникновение в систему воротной вены → пассивный занос с током крови в печень.</li>
+            </ul>
+        </li>
+        <li>В желчных ходах личинка достигает половой зрелости (становится маритой) через <strong>3–4 месяца</strong>.</li>
+        <li><strong>Продолжительность жизни в организме человека:</strong> Марита может паразитировать от <strong>5 до 13 лет</strong>.</li>
+    </ol>
+
+    <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+    <p><strong>Материал для исследования:</strong> Фекалии, дуоденальное содержимое (полученное при зондировании).<br>
+    <strong>Основной метод:</strong> Микроскопический анализ нативных мазков (или мазков по Като) для обнаружения яиц паразита.</p>
+
+    <h4>Диагностические критерии:</h4>
+    <ul>
+        <li><strong>Обнаружение яиц:</strong> В исследуемом материале находят крупные яйца овальной формы, золотисто-желтого цвета, с крышечкой на одном из полюсов.</li>
+        <li><strong>Постановка диагноза:</strong> Окончательный диагноз «фасциолез» ставится при обнаружении яиц в фекалиях или дуоденальном содержимом.</li>
+    </ul>
+
+    <div class="note">
+        <strong>⚠️ Важное примечание (транзитные яйца):</strong><br>
+        Однократное обнаружение яиц печеночного сосальщика в фекалиях <strong>не является 100% подтверждением</strong> фасциолеза.<br>
+        <strong>Причина:</strong> Человек мог незадолго до анализа съесть зараженную печень животного. В этом случае яйца проходят через ЖКТ <strong>транзитом</strong> и выделяются с калом, хотя сам человек не болен.<br>
+        <strong>Действие врача:</strong>
+        <ol style="margin-top:4px;">
+            <li>Исключить из рациона пациента печень животных на 1–2 недели.</li>
+            <li>Провести повторный анализ кала через 1–2 недели.</li>
+            <li>Диагноз подтверждается только при <strong>повторном обнаружении</strong> яиц на фоне исключенной печени в рационе.</li>
+        </ol>
+    </div>
+
+    <p><strong>Дополнительные методы:</strong> Серологические реакции (ИФА, РНГА) для выявления специфических антител к антигенам <em>Fasciola hepatica</em> в сыворотке крови.</p>
+
+    <!-- ===== МЕТОДЫ ПРОФИЛАКТИКИ ===== -->
+    <h2><span class="emoji">🛡️</span> Методы профилактики</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Использовать для питья только кипяченую или фильтрованную воду.</li>
+        <li>Не заглатывать воду при купании в открытых стоячих водоемах.</li>
+        <li>Тщательно мыть и обдавать кипятком огородную зелень, овощи и фрукты перед употреблением.</li>
+        <li>Исключить из рациона термически необработанную печень животных (особенно при проведении диагностики).</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Регулярная дегельминтизация крупного и мелкого рогатого скота.</li>
+        <li>Смена пастбищ (не использовать заболоченные пастбища для выпаса).</li>
+        <li>Осушение и санитарная очистка водоемов.</li>
+        <li>Уничтожение промежуточного хозяина — малого прудовика (<em>Limnea truncatula</em>).</li>
+        <li>Охрана водоемов от загрязнения фекалиями животных и человека.</li>
+        <li>Санитарно-просветительская работа среди населения в эндемичных очагах.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

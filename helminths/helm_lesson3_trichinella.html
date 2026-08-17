@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Трихинелла (Trichinella spiralis) — урок 3</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ТАБЛИЦЫ ОБЩИЕ ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-table,
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .focus-table thead,
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .focus-table thead th,
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .focus-table td,
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .focus-table tbody tr:last-child td,
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .focus-table tbody tr:hover,
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .focus-table tbody tr:nth-child(even),
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .focus-table tbody tr:nth-child(even):hover,
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .focus-table .col-type {
+            width: 20%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul,
+        ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul,
+        ol ol,
+        ul ol,
+        ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .danger-note {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 12px 0 16px 0;
+            color: #7f1d1d;
+        }
+
+        .danger-note strong {
+            color: #991b1b;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 60%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .focus-table,
+            .pathogenic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+
+            .focus-table,
+            .pathogenic-table {
+                font-size: 12px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== ЗАГОЛОВОК ===== -->
+        <h1><span class="emoji">🧬</span> Трихинелла спиральная</h1>
+        <div class="subtitle"><strong>Trichinella spiralis</strong> — возбудитель <strong>трихинеллёза</strong></div>
+
+        <!-- ===== СИСТЕМАТИКА ===== -->
+        <div class="taxonomy-card">
+            <p>
+                <strong>Домен:</strong> Эукариоты (Eukaryota)<br />
+                <strong>Царство:</strong> Животные (Animalia)<br />
+                <strong>Тип:</strong> Круглые черви (Nemathelminthes)<br />
+                <strong>Класс:</strong> Собственно круглые черви, или Нематоды (Nematoda)<br />
+                <strong>Вид:</strong> Трихинелла (<em>Trichinella spiralis</em>)
+            </p>
+        </div>
+
+        <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+        <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+<div class="epi-grid">
+    <div class="item"><strong>Вызываемое заболевание:</strong> Трихинеллёз.</div>
+    <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозооноз (поражает человека и многих животных).</div>
+    <div class="item" style="grid-column: 1 / -1;">
+        <strong>Географическое распространение:</strong> Повсеместно на всех континентах (от полярных областей до экватора), за исключением Австралии, где случаи инвазии регистрируются крайне редко.
+    </div>
+    <div class="item" style="grid-column: 1 / -1;">
+        <strong>Природно-очаговое заболевание:</strong> Имеет ярко выраженные природные очаги (циркуляция среди диких кабанов, медведей, лисиц, грызунов через хищничество) и синантропные очаги (циркуляция между домашними свиньями, крысами, собаками).
+    </div>
+    <div class="item" style="grid-column: 1 / -1;">
+        <strong>Биологический тупик для человека:</strong> Человек для трихинеллы является биологическим тупиком. После смерти хозяина паразиты погибают, так как для продолжения цикла заражённое мясо должно быть съедено другим плотоядным животным – в современных условиях это практически исключено.
+    </div>
+</div>
+
+        <!-- ===== ЭПИДЕМИОЛОГИЧЕСКИЕ ОСОБЕННОСТИ ===== -->
+        <h3>Эпидемиологические особенности</h3>
+
+        <div class="table-wrapper">
+            <table class="focus-table">
+                <thead>
+                    <tr>
+                        <th class="col-type">Тип очага</th>
+                        <th>Характеристика</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-type">Природный очаг</td>
+                        <td>Циркуляция возбудителя среди диких животных (кабаны, медведи, лисицы, волки, грызуны) через хищничество и поедание падали. Человек заражается при употреблении мяса этих животных.</td>
+                    </tr>
+                    <tr>
+                        <td class="col-type">Синантропный очаг</td>
+                        <td>Циркуляция между домашними свиньями, крысами, собаками. Заражение свиней происходит при поедании крыс или мясных отходов. Человек заражается через непроверенную свинину.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+        <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+        <p>
+            <strong>Особенность:</strong> У трихинеллы мы <em>не выделяем</em> стадию яйца во внешней среде. Трихинелла — живородящая нематода, она рождает сразу живых личинок.
+        </p>
+
+        <!-- 1. Взрослая особь -->
+        <h3>1. Взрослая (половозрелая) особь</h3>
+
+        <div class="stage-row">
+            <div class="text-col">
+                <p>
+                    <strong>Размеры:</strong> Микроскопические: самки длиной <strong>3–4 мм</strong>, самцы — <strong>1,4–1,6 мм</strong>.
+                </p>
+                <p>
+                    <strong>Строение:</strong> Передняя часть тела сужена, ротовая капсула снабжена <strong>стилетом</strong> (для пробивания тканей). Половая система у самки непарная, у самцов отсутствуют спикулы (органы для спаривания), но на заднем конце тела есть две конические лопасти (сосочки) для фиксации самки.
+                </p>
+            </div>
+
+            <div class="image-col">
+                <img src="images/helminths/trichinella_adult_scheme.jpg"
+                     alt="Взрослая особь трихинеллы — схема"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🪱</span>
+                    Взрослая особь <em>Trichinella spiralis</em>
+                    <span class="small">(trichinella_adult_scheme.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">самка (крупнее) и самец (мельче, с лопастями на хвосте)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Яйцо -->
+        <h3>2. Яйцо</h3>
+        <p>
+            <strong>Во внешнюю среду не выделяется.</strong> Яйца развиваются прямо в матке самки, и наружу (в ткани хозяина) выходят уже сформированные живые личинки. Фото не требуется.
+        </p>
+
+        <!-- 3. Личинка (тканевая форма) -->
+        <h3>3. Личинка (тканевая форма)</h3>
+
+        <div class="stage-row">
+            <div class="left-col">
+                <div class="text">
+                    <p>
+                        <strong>Размеры:</strong> Только что отрождённые личинки — около <strong>0,1 мм</strong>. Проникнув в поперечнополосатые мышцы, они вырастают до <strong>0,8–1 мм</strong>, сворачиваются в спираль, и вокруг них формируется плотная соединительнотканная капсула (циста) лимоновидной или овальной формы (размером 0,4 × 0,25 мм).
+                    </p>
+                    <p>
+                        <strong>Долговечность:</strong> Примерно через год капсула обызвествляется (пропитывается солями кальция), но личинка внутри неё остаётся живой и инвазионной до <strong>20–25 лет</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Правая колонка: схема капсулы -->
+            <div class="right-col">
+                <img src="images/helminths/trichinella_capsule_scheme.jpg"
+                     alt="Схема капсулы трихинеллы"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🧫</span>
+                    Схема капсулы <em>Trichinella spiralis</em>
+                    <span class="small">(trichinella_capsule_scheme.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">лимоновидная форма, личинка внутри</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+        <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+        <div class="danger-note">
+            <strong>⚠️ Главный парадокс:</strong> Один и тот же организм (например, человек, кабан или свинья) является для трихинеллы сначала <strong>окончательным хозяином</strong> (взрослые особи живут в его кишечнике), а затем сразу же <strong>промежуточным хозяином</strong> (личинки тех же червей мигрируют и оседают в его мышцах). Для развития нового поколения обязательна <strong>смена хозяина</strong> (поедание мяса).
+        </div>
+
+        <p>
+            <strong>Окончательный хозяин:</strong> Человек, свинья, кабан, медведь, собака, кошка и другие плотоядные и всеядные млекопитающие (в кишечнике которых паразитируют взрослые особи).<br />
+            <strong>Промежуточный хозяин:</strong> Тот же самый организм — в его мышцах развиваются личинки.<br />
+            <strong>Патогенная стадия для человека:</strong> Взрослая особь (в кишечнике) и личинка (в мышцах).<br />
+            <strong>Локализация в организме человека:</strong> Тонкий кишечник (взрослые черви), поперечнополосатые мышцы (личинки в капсулах).<br />
+            <strong>Инвазионная стадия для человека:</strong> Инкапсулированная жизнеспособная личинка в мышечной ткани животного.<br />
+            <strong>Путь заражения:</strong> Строго алиментарный — употребление в пищу сырого или недостаточно термически обработанного мяса (свинины, дикого кабана, медведя, барсука), заражённого личинками трихинелл.
+        </p>
+
+        <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+        <div class="full-width-image">
+            <img src="images/helminths/trichinella_life_cycle.jpg"
+                 alt="Жизненный цикл трихинеллы"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🔄</span>
+                Жизненный цикл <em>Trichinella spiralis</em>
+                <span class="small">(trichinella_life_cycle.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">личинка в мясе → тонкий кишечник (взрослые) → рождение личинок → миграция в мышцы → капсула → новый хозяин</span>
+            </div>
+        </div>
+
+        <h4>Этапы жизненного цикла:</h4>
+        <ol>
+            <li><strong>Заражение хозяина:</strong> Поедание мяса, содержащего инкапсулированные личинки.</li>
+            <li><strong>Высвобождение личинок:</strong> В желудке желудочный сок за 1 час растворяет капсулы, личинки высвобождаются и внедряются в слизистую оболочку тонкой кишки.</li>
+            <li><strong>Развитие взрослых особей:</strong> За 2–3 суток личинки растут, линяют и превращаются во взрослых самцов и самок (хозяин становится окончательным хозяином).</li>
+            <li><strong>Спаривание и рождение личинок:</strong> После спаривания самцы погибают. Самки внедряются глубоко в слизистую и на 5-е сутки начинают отрождать в лимфатические и кровеносные сосуды тысячи живых личинок.</li>
+            <li><strong>Миграция и инкапсуляция:</strong> С током крови личинки разносятся по телу, но выживают и оседают строго в хорошо кровоснабжаемых поперечнополосатых мышцах (хозяин становится промежуточным хозяином). Любимые места локализации: ножки диафрагмы, жевательные, межреберные, глазодвигательные, дельтовидные и икроножные мышцы. Там они сворачиваются в спираль и формируют капсулу.</li>
+            <li><strong>Цикл замыкается</strong> при поедании мяса этого хозяина другим плотоядным животным.</li>
+        </ol>
+
+        <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ (ТАБЛИЦА) ===== -->
+        <h2><span class="emoji">⚡</span> Патогенное действие и клиника</h2>
+
+        <p>
+            <strong>Инкубационный период:</strong> от 5 до 40 дней. Болезнь начинается внезапно, характерна строгая клиническая картина — так называемая <strong>«одутловатка»</strong>.
+        </p>
+
+        <div class="table-wrapper">
+            <table class="pathogenic-table">
+                <thead>
+                    <tr>
+                        <th style="width:20%;">Фаза / Синдром</th>
+                        <th style="width:35%;">Механизм действия</th>
+                        <th style="width:45%;">Клинические проявления</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Токсико-аллергическая реакция</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Продукты распада гельминтов и метаболиты личинок</li>
+                                <li>Мощнейшая аллергическая реакция</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Резкий подъём температуры до 38–40 °С</li>
+                                <li>Выраженный отёк лица и век (иногда шеи) + конъюнктивит</li>
+                                <li>Сильнейшие боли в мышцах (икроножных, жевательных, глазных)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Поражение внутренних органов</strong></td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Проникновение личинок в миокард и головной мозг (капсул не образуют, но вызывают разрушения)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul style="margin:0 0 0 16px;">
+                                <li>Тяжёлый аллергический миокардит</li>
+                                <li>Менингоэнцефалит</li>
+                                <li>При высокой интенсивности инвазии — летальный исход</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА (ТАБЛИЦА) ===== -->
+        <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+        <div class="note">
+            <strong>⚠️ Важно:</strong> обычный анализ кала на яйца или личинки здесь абсолютно бесполезен. Яиц нет в природе, взрослые особи живут в кишечнике недолго, а личинки сидят в мышцах.
+        </div>
+
+        <div class="table-wrapper">
+            <table class="pathogenic-table">
+                <thead>
+                    <tr>
+                        <th style="width:25%;">Метод</th>
+                        <th style="width:30%;">Материал / суть</th>
+                        <th style="width:45%;">Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Опрос (анамнез)</strong></td>
+                        <td>Сбор эпидемиологических данных</td>
+                        <td>Употребление мяса диких животных или непроверенной домашней свинины (охота, деревня).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Биопсия мышц<br />(Золотой стандарт)</strong></td>
+                        <td>Кусочек икроножной или дельтовидной мышцы</td>
+                        <td>Трихинеллоскопия: сдавливание среза между стёклами и поиск под микроскопом спиралевидных личинок в капсулах.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Серологические методы</strong></td>
+                        <td>Кровь пациента</td>
+                        <td>Обнаружение антител (ИФА, РСК, РНГА).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Общий анализ крови</strong></td>
+                        <td>Кровь</td>
+                        <td>Мощнейшая эозинофилия (всегда).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== ПРОФИЛАКТИКА ===== -->
+        <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+        <h4>Общественная (ветеринарно-санитарная):</h4>
+        <ul>
+            <li><strong>Основа борьбы с трихинеллёзом!</strong> Обязательное исследование туш свиней, кабанов, медведей на бойнях и рынках. У каждой туши срезают кусочки ножек диафрагмы и проводят микроскопию.</li>
+            <li>Если находят хотя бы <strong>одну</strong> личинку — всю тушу безоговорочно <strong>сжигают</strong> (уничтожают).</li>
+        </ul>
+
+        <h4>Личная профилактика:</h4>
+        <ul>
+            <li>Никогда не покупать мясо «с рук» без печати ветеринарного контроля.</li>
+            <li>
+                <strong>ВАЖНО:</strong> Обычная термическая обработка (варка, жарка, копчение, соление) или бытовое замораживание мяса <strong>НЕ УБИВАЮТ</strong> личинок трихинелл, так как они надёжно защищены плотными известковыми капсулами, проникающими глубоко в ткани. Проварить толстый кусок заражённого мяса до их гибели в домашних условиях практически невозможно.
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+</html>
+
+</body>
+</html>

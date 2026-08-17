@@ -1,0 +1,281 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Карточки для хозяев ===== */
+    .host-card {
+        background: #ffffff;
+        border: 1px solid #e9edf3;
+        border-radius: 12px;
+        padding: 18px 22px;
+        margin: 16px 0 20px 0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        border-left: 4px solid #2563eb;
+    }
+
+    .host-card .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .host-card .card-title .icon {
+        font-size: 20px;
+    }
+
+    .host-card .card-desc {
+        color: #334155;
+        margin-bottom: 6px;
+    }
+
+    .host-card .card-examples {
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 10px 16px;
+        font-size: 14px;
+        color: #475569;
+        margin-top: 6px;
+    }
+
+    .host-card .card-examples .label {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .host-card .card-examples ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 4px 0 0 0;
+    }
+
+    .host-card .card-examples ul li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 4px;
+        line-height: 1.5;
+        font-size: 14px;
+    }
+
+    .host-card .card-examples ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -2px;
+    }
+
+    .host-card.main {
+        border-left-color: #2563eb;
+        background: #f0f9ff;
+    }
+
+    .host-card.intermediate {
+        border-left-color: #f59e0b;
+        background: #fffbeb;
+    }
+
+    .host-card.intermediate .card-title {
+        color: #92400e;
+    }
+
+    .host-card.additional {
+        border-left-color: #10b981;
+        background: #ecfdf5;
+    }
+
+    .host-card.additional .card-title {
+        color: #065f46;
+    }
+
+    .host-card.reservoir {
+        border-left-color: #8b5cf6;
+        background: #f5f3ff;
+    }
+
+    .host-card.reservoir .card-title {
+        color: #5b21b6;
+    }
+
+    /* ===== Списки ===== */
+    .tab-content-inner ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ul li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .tab-content-inner ul li::before {
+        content: "✓";
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+
+    .tab-content-inner ul ul {
+        margin: 6px 0 6px 20px;
+    }
+
+    .tab-content-inner ul ul li::before {
+        content: "•";
+        color: #2563eb;
+        font-size: 22px;
+        top: -2px;
+    }
+
+    .tab-content-inner ol {
+        padding-left: 24px;
+        margin: 12px 0 16px 0;
+    }
+
+    .tab-content-inner ol li {
+        margin-bottom: 10px;
+        line-height: 1.7;
+    }
+
+    .tab-content-inner ol li strong {
+        color: #1e3a8a;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .tab-content-inner ul li {
+            padding-left: 24px;
+        }
+        .tab-content-inner ul ul {
+            margin-left: 12px;
+        }
+        .host-card {
+            padding: 14px 16px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2>Классификация видов хозяев</h2>
+
+    <p>В зависимости от того, какая именно стадия паразита обитает в организме, хозяева строго классифицируются на следующие типы:</p>
+
+    <!-- ===== 1. ОСНОВНОЙ ХОЗЯИН ===== -->
+    <div class="host-card main">
+        <div class="card-title"><span class="icon">🏠</span> 1. Основной (окончательный, дефинитивный) хозяин</div>
+        <div class="card-desc">Это организм, в котором паразит находится в <strong>половозрелой стадии</strong> и (или) размножается <strong>половым путём</strong>.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span>
+            <ul>
+                <li><strong>Человек</strong> — является окончательным хозяином для вооружённого (свиного) цепня (только при тениозе; при цистицеркозе человек будет промежуточным хозяином), бычьего цепня и аскариды.</li>
+                <li><strong>Самка малярийного комара рода <em>Anopheles</em></strong> — окончательный хозяин для малярийного плазмодия, так как в её организме происходит половой процесс (копуляция гамет) и спорогония.</li>
+                <li><strong>Животные семейства Псовые</strong> (собаки, волки) — окончательные хозяева для эхинококка, в их кишечнике обитает половозрелая ленточная стадия.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ===== 2. ПРОМЕЖУТОЧНЫЙ ХОЗЯИН ===== -->
+    <div class="host-card intermediate">
+        <div class="card-title"><span class="icon">🔄</span> 2. Промежуточный хозяин (первый промежуточный)</div>
+        <div class="card-desc">Это организм, в котором паразит проходит <strong>личиночные стадии</strong> развития и (или) размножается <strong>бесполым путём</strong>.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span>
+            <ul>
+                <li><strong>Человек</strong> — является промежуточным хозяином для малярийного плазмодия (в организме идёт бесполое размножение — шизогония), а также для эхинококка (в органах развивается финна — эхинококковый пузырь).</li>
+                <li><strong>Домашняя свинья</strong> — промежуточный хозяин для свиного цепня, в её мышцах развивается личинка (цистицерк).</li>
+                <li><strong>Пресноводный моллюск малый прудовик</strong> — промежуточный хозяин для печёночного сосальщика.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ===== 3. ДОПОЛНИТЕЛЬНЫЙ ХОЗЯИН ===== -->
+    <div class="host-card additional">
+        <div class="card-title"><span class="icon">🔗</span> 3. Дополнительный (второй промежуточный) хозяин</div>
+        <div class="card-desc">Это обязательное второе звено в сложных жизненных циклах некоторых паразитов, к которому личиночная стадия переходит от первого промежуточного хозяина. В его теле возбудитель проходит дальнейшие личиночные стадии развития до формирования <strong>инвазионной стадии</strong> (чаще всего метацеркария или плероцеркоида).</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span>
+            <ul>
+                <li><strong>Рыбы семейства Карповые</strong> (язь, плотва) — для кошачьего сосальщика.</li>
+                <li><strong>Пресноводные крабы и раки</strong> — для лёгочного сосальщика.</li>
+                <li><strong>Муравьи рода <em>Formica</em></strong> — для ланцетовидного сосальщика.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ===== 4. РЕЗЕРВУАРНЫЙ ХОЗЯИН ===== -->
+    <div class="host-card reservoir">
+        <div class="card-title"><span class="icon">📦</span> 4. Резервуарный хозяин</div>
+        <div class="card-desc">Это <strong>необязательное</strong> звено в жизненном цикле паразита. Это организм, в теле которого идёт <strong>накопление инвазионных стадий</strong> без его развития. С его помощью паразит может длительно сохраняться, размножаться и расселяться по территории.</div>
+        <div class="card-examples">
+            <span class="label">📌 Примеры:</span>
+            <ul>
+                <li><strong>Грызуны</strong> (песчанки, суслики) — для возбудителей лейшманиозов (сохраняют возбудителя в природных очагах).</li>
+                <li><strong>Хищные рыбы</strong> (щука, налим, судак) — для лентеца широкого. Они поедают более мелких рыб (вторых промежуточных хозяев), и инвазионные личинки (плероцеркоиды) просто накапливаются в их тканях.</li>
+                <li><strong>Дикие млекопитающие</strong> (броненосцы, опоссумы, грызуны) — природные резервуары для возбудителя американского трипаносомоза (болезни Шагаса).</li>
+            </ul>
+        </div>
+    </div>
+
+</div>

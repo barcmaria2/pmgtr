@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Острица детская (Enterobius vermicularis) — урок 3</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul, ol ol, ul ol, ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== ТАБЛИЦА ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 60%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image {
+            margin-top: 12px;
+            flex: 1 1 auto;
+            display: flex;
+            align-items: stretch;
+            min-height: 280px; /* увеличиваем высоту для микроскопического фото */
+        }
+
+        .stage-row .left-col .additional-image img,
+        .stage-row .left-col .additional-image .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .left-col .additional-image .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ДЛЯ БЛОКА ВЗРОСЛОЙ ОСОБИ ===== */
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .stage-row .left-col .additional-image {
+                flex: 0 0 auto;
+                margin-top: 12px;
+                min-height: 200px;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .pathogenic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+
+            .stage-row .left-col .additional-image {
+                min-height: 160px;
+            }
+
+            .pathogenic-table {
+                font-size: 12px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК (иконка исправлена на универсальную) ===== -->
+    <h1><span class="emoji">👶</span> Острица детская</h1>
+    <div class="subtitle"><strong>Enterobius vermicularis</strong> — возбудитель <strong>энтеробиоза</strong></div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Круглые черви (Nemathelminthes)<br>
+            <strong>Класс:</strong> Нематоды (Nematoda)<br>
+            <strong>Вид:</strong> Острица детская (<em>Enterobius vermicularis</em>)
+        </p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Энтеробиоз.</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Антропоноз (паразитирует только у человека), Геогельминт (по жизненному циклу: яйца дозревают не в почве, а на коже хозяина, но формально – геогельминт, так как развитие яйца происходит во внешней среде, а не в организме промежуточного хозяина).</div>
+        <div class="item"><strong>Контагиозный гельминт:</strong> Передаётся напрямую от человека к человеку при бытовом контакте.</div>
+        <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Повсеместно, наиболее часто у детей (до 90% случаев).</div>
+    </div>
+
+    <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 1. Взрослая особь -->
+    <h3>1. Взрослая особь</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма и размеры:</strong> Мелкие черви белого цвета. Самцы – <strong>2–3 мм</strong>; самки – <strong>8–13 мм</strong>.
+            </p>
+
+            <p>
+                <strong>Везикула:</strong> На переднем (головном) конце кутикула расширяется, образуя вздутие – <span class="spec">везикулу</span>, которая служит для фиксации к стенке кишки.
+            </p>
+
+            <p>
+                <strong>Бульбус</strong> (мышечное расширение пищевода): На заднем конце пищевода имеется шаровидное расширение – <span class="spec">бульбус</span>.
+            </p>
+
+            <h4>Половой диморфизм:</h4>
+            <ul>
+                <li><strong>Самка:</strong> Задний конец тела сильно заострён (отсюда название «острица»). Сквозь кутикулу просвечивает огромная матка, заполненная яйцами.</li>
+                <li><strong>Самец:</strong> Задний конец тупой и <strong>спирально закручен на брюшную сторону</strong>.</li>
+            </ul>
+
+            <p>
+                <strong>Отсутствующие системы органов:</strong> Как у всех нематод, отсутствуют кровеносная и дыхательная системы. Питание осуществляется через пищеварительную систему (рот → пищевод → кишечник → анальное отверстие).
+            </p>
+        </div>
+
+        <!-- Изображение взрослой особи -->
+        <div class="image-col">
+            <img src="images/helminths/enterobius_marita_scheme.jpg"
+                 alt="Взрослая особь острицы — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Взрослая особь <em>Enterobius vermicularis</em>
+                <span class="small">(enterobius_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">самка (заострённый хвост) и самец (закрученный хвост)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Яйцо -->
+    <h3>2. Яйцо</h3>
+
+    <div class="stage-row">
+        <!-- Левая колонка: текст + микроскопическое фото (увеличено) -->
+        <div class="left-col">
+            <div class="text">
+                <p>
+                    <strong>Размеры:</strong> 55 × 25 мкм (мелкие).<br>
+                    <strong>Форма и цвет:</strong> Бесцветные, прозрачные. Форма <strong>овально-асимметричная</strong>: одна сторона ровная (уплощённая), противоположная – выпуклая.<br>
+                    <strong>Оболочка:</strong> Гладкая, многослойная.<br>
+                    <strong>Содержимое:</strong> В момент откладки внутри яйца находится <strong>незрелая личинка</strong> (зародыш), которая дозревает на коже.
+                </p>
+            </div>
+            <!-- Второе фото (микроскопическое) под текстом — увеличено за счёт flex:1 1 auto и min-height -->
+            <div class="additional-image">
+                <img src="images/helminths/enterobius_egg_microscope.jpg"
+                     alt="Микроскопическое фото яйца острицы"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🔬</span>
+                    Микроскопическое фото яйца <em>Enterobius vermicularis</em>
+                    <span class="small">(enterobius_egg_microscope.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">асимметричное, с одной плоской стороной</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: схема яйца -->
+        <div class="right-col">
+            <img src="images/helminths/enterobius_egg_scheme.jpg"
+                 alt="Схема яйца острицы"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🥚</span>
+                Схема яйца <em>Enterobius vermicularis</em>
+                <span class="small">(enterobius_egg_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">овально-асимметричная форма, гладкая оболочка</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Личинка -->
+    <h3>3. Личинка</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Место развития:</strong> Внутри яйца, отложенного на коже, в оптимальных условиях (температура тела + кислород). Через <strong>4–6 часов</strong> внутри яйца формируется <strong>инвазионная личинка</strong>.<br>
+                <strong>Особенность:</strong> В отличие от аскариды, личинке острицы <strong>не нужно мигрировать</strong> по организму. При проглатывании яйца с инвазионной личинкой она высвобождается в кишечнике, растёт, линяет и превращается во взрослую особь <strong>без миграции</strong>.
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Прямой (без промежуточных хозяев), <span class="spec">контагиозный</span>.<br>
+        <strong>Окончательный (и единственный) хозяин:</strong> Человек.<br>
+        <strong>Промежуточный хозяин:</strong> Отсутствует.<br>
+        <strong>Инвазионная стадия:</strong> Яйцо с инвазионной личинкой (созревает на коже).<br>
+        <strong>Патогенная стадия:</strong> Взрослая особь.<br>
+        <strong>Локализация в организме человека:</strong> Нижний отдел тонкой кишки и начальный (верхний) отдел толстой кишки.
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/enterobius_life_cycle.jpg"
+             alt="Жизненный цикл острицы"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Жизненный цикл <em>Enterobius vermicularis</em>
+            <span class="small">(enterobius_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">яйцо → личинка → взрослая особь → яйца на коже → аутоинвазия</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла (полная информация) -->
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Оплодотворение и накопление яиц:</strong> Оплодотворённая самка накапливает в матке до <strong>20 тысяч</strong> яиц. Раздутая матка сдавливает бульбус, из-за чего самка теряет способность удерживаться на слизистой и под действием перистальтики спускается в прямую кишку.</li>
+        <li><strong>Выползание самки и откладка яиц:</strong> Ночью, когда анальный сфинктер человека расслабляется, самка выползает наружу и откладывает яйца прямо на <strong>перианальных складках</strong> кожи, приклеивая их секретом. После этого самка погибает.</li>
+        <li><strong>Дозревание яиц:</strong> В течение <strong>4–6 часов</strong> внутри яиц созревают инвазионные личинки (при температуре тела и доступе кислорода).</li>
+        <li><strong>Заражение человека:</strong>
+            <ul>
+                <li><strong>Механизм:</strong> Фекально-оральный.</li>
+                <li><strong>Пути передачи:</strong> Контактно-бытовой (через грязные руки, игрушки, постельное бельё, пыль).</li>
+                <li><strong>Аутоинвазия (самозаражение):</strong> Секрет, которым самка приклеивает яйца, вызывает <strong>нестерпимый зуд</strong>. Человек расчёсывает кожу, яйца забиваются под ногти. Утром немытыми руками он берёт еду – происходит постоянное самозаражение, поэтому энтеробиоз может длиться годами.</li>
+            </ul>
+        </li>
+        <li><strong>Развитие в организме человека:</strong> Проглоченные инвазионные яйца попадают в тонкую кишку. Личинки выходят из яиц, растут, линяют (4 линьки) и через <strong>2–4 недели</strong> достигают половой зрелости. Весь цикл от заглатывания до откладки яиц занимает около <strong>1 месяца</strong>.</li>
+    </ol>
+
+    <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ ===== -->
+    <h2><span class="emoji">⚡</span> Патогенное действие</h2>
+
+    <div class="table-wrapper">
+        <table class="pathogenic-table">
+            <thead>
+                <tr>
+                    <th class="col-mechanism">Механизм действия</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-mechanism">Механическое повреждение</td>
+                    <td>Везикула и бульбус травмируют слизистую кишечника, вызывая воспаление, боли в животе, нарушение всасывания.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Токсико-аллергическое действие</td>
+                    <td>Продукты жизнедеятельности вызывают аллергические реакции, эозинофилию.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Зуд и расчёсы</td>
+                    <td>Самки вызывают сильный перианальный зуд, ведущий к расчёсам, экземам, вторичной бактериальной инфекции.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Нарушение сна</td>
+                    <td>Ночной зуд приводит к бессоннице, раздражительности у детей.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Осложнения</td>
+                    <td>У девочек – <strong>вульвовагинит</strong> (при заползании самок в половые органы). Возможен <strong>аппендицит</strong> (при попадании остриц в червеобразный отросток).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <div class="note">
+        <strong>⚠️ Классический вопрос преподавателя:</strong><br>
+        <strong>«Почему при подозрении на энтеробиоз сдавать обычный анализ кала на яйца глист бесполезно?»</strong><br>
+        <strong>Идеальный ответ:</strong> «Потому что самка острицы <strong>не откладывает яйца в просвете кишечника</strong>. Она выползает наружу и откладывает их на коже вокруг ануса. Поэтому в кале яиц остриц практически не бывает».
+    </div>
+
+    <p>
+        <strong>Материал для исследования:</strong> <span class="spec">Соскоб (или отпечаток) с перианальных складок кожи</span>.<br>
+        <strong>Метод:</strong> Соскоб берут утром <strong>до подмывания</strong>, сразу после сна, с помощью:
+    </p>
+    <ul>
+        <li>ватной палочки, смоченной в глицерине;</li>
+        <li>липкой ленты (скотч-препарат);</li>
+        <li>шпателя по методу Рабиновича.</li>
+    </ul>
+    <p>
+        <strong>Микроскопия:</strong> Находят характерные яйца – 55 × 25 мкм, овальные, <strong>асимметричные</strong>, с одной плоской стороной.<br>
+        <strong>Дополнительно:</strong> В общем анализе крови – <strong>эозинофилия</strong> (умеренная).
+    </p>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Строгая гигиена рук: мытьё рук с мылом после туалета, перед едой, после сна.</li>
+        <li>Коротко стричь ногти (чтобы яйца не скапливались под ними).</li>
+        <li>Ежедневная смена нательного и постельного белья (с обязательным проглаживанием горячим утюгом).</li>
+        <li>Влажная уборка помещения (для удаления яиц из пыли).</li>
+        <li>Лечение всех членов семьи одновременно (чтобы избежать повторного заражения).</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Регулярное профилактическое обследование детей в организованных коллективах (детские сады, школы) на энтеробиоз методом соскоба.</li>
+        <li>Выявление и лечение больных детей и персонала.</li>
+        <li>Строгий санитарный режим в детских учреждениях (ежедневная уборка, обработка игрушек, горшков).</li>
+        <li>Санитарно-просветительская работа с родителями и детьми.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактив: Цестоды (ленточные черви) — урок 2</title>
+    <style>
+        /* ===== Базовые стили ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== Прогресс-бар ===== */
+        .progress-bar {
+            background: #e9edf3;
+            border-radius: 30px;
+            height: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: #2563eb;
+            border-radius: 30px;
+            transition: width 0.4s ease;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .stats .answered {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* ===== Карточка вопроса ===== */
+        .question-card {
+            background: #fafcff;
+            border-radius: 16px;
+            padding: 24px 26px;
+            margin-bottom: 20px;
+            border: 1px solid #eef2f6;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .question-card.correct {
+            border-left: 6px solid #22c55e;
+            background: #f0fdf4;
+        }
+
+        .question-card.wrong {
+            border-left: 6px solid #ef4444;
+            background: #fef2f2;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #e9edf3;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 2px 12px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+            letter-spacing: 0.02em;
+        }
+
+        .question-number .tag {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e3a8a;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
+        .question-text {
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 18px;
+            color: #0f172a;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-label:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        .option-label input[type="radio"] {
+            accent-color: #2563eb;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .option-label.correct-answer {
+            background: #dcfce7;
+            border-color: #22c55e;
+        }
+
+        .option-label.wrong-answer {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+
+        .option-label.disabled {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        /* ===== Фидбек ===== */
+        .feedback {
+            margin-top: 14px;
+            font-size: 15px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .feedback.wrong {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .feedback .hint {
+            font-size: 14px;
+            color: #475569;
+            margin-top: 6px;
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 6px;
+        }
+
+        /* ===== Кнопки ===== */
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            background: #e9edf3;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: #d1d9e6;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* ===== Результат ===== */
+        .result-box {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-top: 24px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        .result-box .score {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        .result-box .detail {
+            font-size: 16px;
+            color: #475569;
+            margin-top: 6px;
+        }
+
+        /* ===== Адаптация ===== */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 16px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .question-text {
+                font-size: 15px;
+            }
+            .option-label {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+            .question-card {
+                padding: 16px 18px;
+            }
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px 12px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .question-text {
+                font-size: 14px;
+            }
+            .option-label {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+            .feedback {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+            .stats {
+                font-size: 12px;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🧬</span> Тест: Цестоды (ленточные черви)</h1>
+    <div class="subtitle">
+        Вопросы по цестодам: <strong>Taeniarhynchus saginatus</strong>, <strong>Taenia solium</strong>,
+        <strong>Diphyllobothrium latum</strong>, <strong>Hymenolepis nana</strong>,
+        <strong>Alveococcus multilocularis</strong>, <strong>Echinococcus granulosus</strong>
+    </div>
+
+    <!-- ===== ПРОГРЕСС ===== -->
+    <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
+    <div class="stats">
+        <span>Всего вопросов: <strong id="totalCount">0</strong></span>
+        <span class="answered">Отвечено: <strong id="answeredCount">0</strong></span>
+    </div>
+
+    <!-- ===== КОНТЕЙНЕР ВОПРОСОВ ===== -->
+    <div id="questionsContainer"></div>
+
+    <!-- ===== КНОПКИ ===== -->
+    <div class="actions">
+        <button class="btn btn-primary" id="checkBtn">✅ Проверить ответы</button>
+        <button class="btn" id="resetBtn">🔄 Сбросить</button>
+    </div>
+
+    <!-- ===== РЕЗУЛЬТАТ ===== -->
+    <div class="result-box" id="resultBox">
+        <div class="score" id="scoreDisplay">0 / 0</div>
+        <div class="detail" id="resultDetail"></div>
+    </div>
+
+</div>
+
+<script>
+    // ===== ВОПРОСЫ ПО ЦЕСТОДАМ (из ваших файлов) =====
+    const questions = [
+        // ===== Бычий цепень =====
+        {
+            topic: 'Бычий цепень',
+            text: 'Какой гельминтоз вызывает Taeniarhynchus saginatus?',
+            options: ['Тениоз', 'Тениаринхоз', 'Цистицеркоз', 'Гименолепидоз'],
+            correct: 1,
+            hint: 'Taeniarhynchus saginatus — возбудитель тениаринхоза.'
+        },
+        {
+            topic: 'Бычий цепень',
+            text: 'Инвазионной стадией для человека при тениаринхозе является:',
+            options: ['Цистицерк в мышцах КРС', 'Плероцеркоид в рыбе', 'Цистицеркоид в ворсинках', 'Яйцо с онкосферой'],
+            correct: 0,
+            hint: 'Финна типа цистицерк в мышцах крупного рогатого скота.'
+        },
+        {
+            topic: 'Бычий цепень',
+            text: 'Сколько боковых ответвлений матки у зрелого членика бычьего цепня?',
+            options: ['7–12 с каждой стороны', '17–35 с каждой стороны', 'До 7 с каждой стороны', 'Более 50 с каждой стороны'],
+            correct: 1,
+            hint: 'У бычьего цепня матка имеет 17–35 боковых ответвлений.'
+        },
+        {
+            topic: 'Бычий цепень',
+            text: 'Сколекс бычьего цепня содержит:',
+            options: ['4 присоски и крючья', 'Только 4 присоски (без крючьев)', 'Ботрии (присасывательные щели)', 'Хоботок с крючьями'],
+            correct: 1,
+            hint: 'Бычий цепень называют «невооружённым» — крючьев нет.'
+        },
+
+        // ===== Свиной цепень =====
+        {
+            topic: 'Свиной цепень',
+            text: 'Какой гельминтоз вызывает Taenia solium?',
+            options: ['Тениаринхоз', 'Тениоз и цистицеркоз', 'Дифиллоботриоз', 'Эхинококкоз'],
+            correct: 1,
+            hint: 'Taenia solium вызывает тениоз (кишечная форма) и цистицеркоз (тканевая форма).'
+        },
+        {
+            topic: 'Свиной цепень',
+            text: 'Сколько боковых ответвлений матки у зрелого членика свиного цепня?',
+            options: ['17–35 с каждой стороны', '7–12 с каждой стороны', 'До 5 с каждой стороны', 'Более 40 с каждой стороны'],
+            correct: 1,
+            hint: 'У свиного цепня матка имеет 7–12 боковых ответвлений.'
+        },
+        {
+            topic: 'Свиной цепень',
+            text: 'Яичник свиного цепня состоит из:',
+            options: ['Двух долей', 'Трёх долей', 'Одной доли', 'Четырёх долей'],
+            correct: 1,
+            hint: 'У свиного цепня яичник трёхлопастный (в отличие от двулопастного у бычьего).'
+        },
+        {
+            topic: 'Свиной цепень',
+            text: 'Какое осложнение может развиться при цистицеркозе?',
+            options: ['B12-дефицитная анемия', 'Поражение головного мозга и глаз', 'Инфильтративный рост в печени', 'Анафилактический шок'],
+            correct: 1,
+            hint: 'Цистицерки могут локализоваться в головном мозге и глазах.'
+        },
+
+        // ===== Широкий лентец =====
+        {
+            topic: 'Широкий лентец',
+            text: 'Какой гельминтоз вызывает Diphyllobothrium latum?',
+            options: ['Тениоз', 'Дифиллоботриоз', 'Гименолепидоз', 'Эхинококкоз'],
+            correct: 1,
+            hint: 'Diphyllobothrium latum — возбудитель дифиллоботриоза.'
+        },
+        {
+            topic: 'Широкий лентец',
+            text: 'Тип матки у широкого лентеца:',
+            options: ['Закрытого типа', 'Открытого типа (розетковидная)', 'Мешковидная, без ответвлений', 'Слепозамкнутая'],
+            correct: 1,
+            hint: 'У широкого лентеца матка открытого типа, имеет вид розетки.'
+        },
+        {
+            topic: 'Широкий лентец',
+            text: 'Осложнением дифиллоботриоза является:',
+            options: ['Цистицеркоз мозга', 'B12-дефицитная анемия', 'Инфильтративный рост', 'Анафилактический шок'],
+            correct: 1,
+            hint: 'Широкий лентец поглощает витамин B12, вызывая анемию.'
+        },
+
+        // ===== Карликовый цепень =====
+        {
+            topic: 'Карликовый цепень',
+            text: 'Какой гельминтоз вызывает Hymenolepis nana?',
+            options: ['Тениаринхоз', 'Тениоз', 'Гименолепидоз', 'Дифиллоботриоз'],
+            correct: 2,
+            hint: 'Hymenolepis nana — возбудитель гименолепидоза.'
+        },
+        {
+            topic: 'Карликовый цепень',
+            text: 'Главный диагностический признак яиц Hymenolepis nana:',
+            options: ['Наличие крышечки', 'Наличие филаментов (нитевидных придатков)', 'Терминальный шип', 'Радиально исчерченная оболочка'],
+            correct: 1,
+            hint: 'Яйца карликового цепня имеют филаменты на полюсах.'
+        },
+        {
+            topic: 'Карликовый цепень',
+            text: 'Промежуточным хозяином в прямом цикле Hymenolepis nana является:',
+            options: ['Крупный рогатый скот', 'Человек', 'Свинья', 'Рыба'],
+            correct: 1,
+            hint: 'Человек — единственный хозяин, в котором паразит проходит все стадии.'
+        },
+
+        // ===== Альвеококк =====
+        {
+            topic: 'Альвеококк',
+            text: 'Какой гельминтоз вызывает Alveococcus multilocularis?',
+            options: ['Эхинококкоз', 'Альвеококкоз', 'Гименолепидоз', 'Дифиллоботриоз'],
+            correct: 1,
+            hint: 'Alveococcus multilocularis — возбудитель альвеококкоза.'
+        },
+        {
+            topic: 'Альвеококк',
+            text: 'Тип матки у зрелого членика альвеококка:',
+            options: ['Мешковидная с боковыми выпячиваниями', 'Округлая (шарообразная), без выпячиваний', 'Открытая (розетковидная)', 'Слепозамкнутая'],
+            correct: 1,
+            hint: 'У альвеококка матка округлая, без боковых выпячиваний.'
+        },
+        {
+            topic: 'Альвеококк',
+            text: 'Человек для альвеококка является:',
+            options: ['Окончательным хозяином', 'Промежуточным хозяином (случайным)', 'Биологическим хозяином', 'Резервуарным хозяином'],
+            correct: 1,
+            hint: 'Человек — случайный промежуточный хозяин, биологический тупик.'
+        },
+
+        // ===== Эхинококк =====
+        {
+            topic: 'Эхинококк',
+            text: 'Какой гельминтоз вызывает Echinococcus granulosus?',
+            options: ['Альвеококкоз', 'Эхинококкоз', 'Гименолепидоз', 'Тениоз'],
+            correct: 1,
+            hint: 'Echinococcus granulosus — возбудитель эхинококкоза.'
+        },
+        {
+            topic: 'Эхинококк',
+            text: 'Тип роста эхинококкового пузыря:',
+            options: ['Экзогенный (почкование наружу)', 'Эндогенный (дочерние пузыри внутри)', 'Инвазивный рост', 'Метастазирование'],
+            correct: 1,
+            hint: 'У эхинококка эндогенный рост — дочерние пузыри образуются внутри материнского.'
+        },
+        {
+            topic: 'Эхинококк',
+            text: 'Окончательным хозяином Echinococcus granulosus является:',
+            options: ['Человек', 'Псовые (собаки, волки)', 'Травоядные животные', 'Грызуны'],
+            correct: 1,
+            hint: 'Окончательные хозяева — животные семейства псовых.'
+        },
+
+        // ===== Общие вопросы по цестодам =====
+        {
+            topic: 'Общие вопросы',
+            text: 'У какого цепня сколекс имеет ботрии (присасывательные щели)?',
+            options: ['Taeniarhynchus saginatus', 'Diphyllobothrium latum', 'Taenia solium', 'Hymenolepis nana'],
+            correct: 1,
+            hint: 'У широкого лентеца сколекс имеет ботрии вместо присосок.'
+        },
+        {
+            topic: 'Общие вопросы',
+            text: 'Для какого цепня человек является одновременно и промежуточным, и окончательным хозяином?',
+            options: ['Taenia solium', 'Hymenolepis nana', 'Diphyllobothrium latum', 'Echinococcus granulosus'],
+            correct: 1,
+            hint: 'У карликового цепня человек — и промежуточный, и окончательный хозяин.'
+        },
+        {
+            topic: 'Общие вопросы',
+            text: 'Какая финна характерна для бычьего и свиного цепней?',
+            options: ['Цистицерк', 'Цистицеркоид', 'Плероцеркоид', 'Процеркоид'],
+            correct: 0,
+            hint: 'Цистицерк — пузырёк с ввернутой головкой.'
+        },
+        {
+            topic: 'Общие вопросы',
+            text: 'Почему при тениаринхозе и тениозе ищут членики, а не яйца?',
+            options: ['Яйца не выделяются в кишечник из-за закрытой матки', 'Яйца слишком мелкие', 'Членики видны невооруженным глазом', 'Яйца разрушаются в кишечнике'],
+            correct: 0,
+            hint: 'Матка закрытого типа, яйца выходят только при разрушении членика.'
+        },
+        {
+            topic: 'Общие вопросы',
+            text: 'Какое осложнение характерно для эхинококкоза при разрыве кисты?',
+            options: ['B12-дефицитная анемия', 'Анафилактический шок', 'Цистицеркоз', 'Гименолепидоз'],
+            correct: 1,
+            hint: 'Разрыв кисты приводит к анафилактическому шоку и диссеминации.'
+        },
+        {
+            topic: 'Общие вопросы',
+            text: 'У какого цепня в цикле развития два промежуточных хозяина?',
+            options: ['Taenia solium', 'Diphyllobothrium latum', 'Hymenolepis nana', 'Echinococcus granulosus'],
+            correct: 1,
+            hint: 'У широкого лентеца два промежуточных хозяина: рачок и рыба.'
+        }
+    ];
+
+    // ===== STATE =====
+    let userAnswers = new Array(questions.length).fill(null);
+    let checked = false;
+
+    const container = document.getElementById('questionsContainer');
+    const progressFill = document.getElementById('progressFill');
+    const totalCount = document.getElementById('totalCount');
+    const answeredCount = document.getElementById('answeredCount');
+    const checkBtn = document.getElementById('checkBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resultBox = document.getElementById('resultBox');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const resultDetail = document.getElementById('resultDetail');
+
+    // ===== RENDER =====
+    function renderQuestions() {
+        container.innerHTML = '';
+        totalCount.textContent = questions.length;
+
+        questions.forEach((q, index) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.id = `q-${index}`;
+
+            const numSpan = document.createElement('div');
+            numSpan.className = 'question-number';
+            numSpan.innerHTML = `<span class="tag">${q.topic}</span> Вопрос ${index + 1} / ${questions.length}`;
+            card.appendChild(numSpan);
+
+            const textP = document.createElement('div');
+            textP.className = 'question-text';
+            textP.textContent = q.text;
+            card.appendChild(textP);
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+
+            q.options.forEach((opt, optIndex) => {
+                const label = document.createElement('label');
+                label.className = 'option-label';
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `q${index}`;
+                radio.value = optIndex;
+                radio.dataset.index = index;
+                radio.dataset.optIndex = optIndex;
+                radio.addEventListener('change', () => {
+                    if (!checked) {
+                        userAnswers[index] = optIndex;
+                        updateStats();
+                        updateProgress();
+                    } else {
+                        radio.checked = false;
+                    }
+                });
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(opt));
+                optionsDiv.appendChild(label);
+            });
+
+            card.appendChild(optionsDiv);
+
+            const feedback = document.createElement('div');
+            feedback.className = 'feedback';
+            feedback.id = `feedback-${index}`;
+            card.appendChild(feedback);
+
+            container.appendChild(card);
+        });
+
+        updateStats();
+        updateProgress();
+    }
+
+    function updateStats() {
+        const answered = userAnswers.filter(a => a !== null).length;
+        answeredCount.textContent = answered;
+    }
+
+    function updateProgress() {
+        const answered = userAnswers.filter(a => a !== null).length;
+        const percent = (answered / questions.length) * 100;
+        progressFill.style.width = percent + '%';
+    }
+
+    // ===== CHECK =====
+    function checkAnswers() {
+        if (checked) return;
+        let correctCount = 0;
+        const cards = document.querySelectorAll('.question-card');
+
+        cards.forEach((card, index) => {
+            const q = questions[index];
+            const userAns = userAnswers[index];
+            const feedback = document.getElementById(`feedback-${index}`);
+            const options = card.querySelectorAll('.option-label');
+
+            options.forEach(opt => {
+                opt.classList.remove('correct-answer', 'wrong-answer', 'disabled');
+            });
+
+            if (userAns === null) {
+                feedback.className = 'feedback show wrong';
+                feedback.innerHTML = '❌ Вы не выбрали ответ.';
+                card.classList.add('wrong');
+                return;
+            }
+
+            const isCorrect = (userAns === q.correct);
+            if (isCorrect) correctCount++;
+            card.classList.add(isCorrect ? 'correct' : 'wrong');
+
+            options.forEach((opt, optIndex) => {
+                if (optIndex === q.correct) {
+                    opt.classList.add('correct-answer');
+                }
+                if (optIndex === userAns && !isCorrect) {
+                    opt.classList.add('wrong-answer');
+                }
+                const radio = opt.querySelector('input[type="radio"]');
+                if (radio) radio.disabled = true;
+                opt.classList.add('disabled');
+            });
+
+            feedback.className = 'feedback show ' + (isCorrect ? 'correct' : 'wrong');
+            let hintHtml = q.hint ? `<div class="hint">💡 ${q.hint}</div>` : '';
+            feedback.innerHTML = (isCorrect ? '✅ Правильно!' : `❌ Неправильно. Правильный ответ: ${q.options[q.correct]}`) + hintHtml;
+        });
+
+        checked = true;
+        checkBtn.disabled = true;
+        checkBtn.textContent = '✅ Проверено';
+
+        resultBox.classList.add('show');
+        scoreDisplay.textContent = `${correctCount} / ${questions.length}`;
+        const percent = Math.round((correctCount / questions.length) * 100);
+        let grade = '';
+        if (percent >= 90) grade = 'Отлично! 🎉';
+        else if (percent >= 75) grade = 'Хорошо! 👍';
+        else if (percent >= 50) grade = 'Удовлетворительно. 📖';
+        else grade = 'Нужно повторить материал. 💪';
+        resultDetail.textContent = `Правильных ответов: ${correctCount} из ${questions.length} (${percent}%). ${grade}`;
+    }
+
+    // ===== RESET =====
+    function resetTest() {
+        checked = false;
+        userAnswers.fill(null);
+        checkBtn.disabled = false;
+        checkBtn.textContent = '✅ Проверить ответы';
+        resultBox.classList.remove('show');
+
+        const cards = document.querySelectorAll('.question-card');
+        cards.forEach((card, index) => {
+            card.classList.remove('correct', 'wrong');
+            const options = card.querySelectorAll('.option-label');
+            options.forEach(opt => {
+                opt.classList.remove('correct-answer', 'wrong-answer', 'disabled');
+                const radio = opt.querySelector('input[type="radio"]');
+                if (radio) {
+                    radio.disabled = false;
+                    radio.checked = false;
+                }
+            });
+            const feedback = document.getElementById(`feedback-${index}`);
+            feedback.className = 'feedback';
+            feedback.innerHTML = '';
+        });
+
+        updateStats();
+        updateProgress();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ===== EVENTS =====
+    checkBtn.addEventListener('click', checkAnswers);
+    resetBtn.addEventListener('click', resetTest);
+
+    // ===== INIT =====
+    renderQuestions();
+</script>
+
+</body>
+</html>

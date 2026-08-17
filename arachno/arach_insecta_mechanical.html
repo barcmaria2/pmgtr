@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Механические переносчики — понятие, способы передачи, сравнительная таблица</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card p strong { color: #1e293b; }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 900px;
+        }
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .compare-table thead th {
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+            letter-spacing: 0.02em;
+        }
+        .compare-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table tbody tr:hover { background: #f8faff; }
+        .compare-table tbody tr:nth-child(even) { background: #fafcff; }
+        .compare-table tbody tr:nth-child(even):hover { background: #f4f8ff; }
+        .compare-table .col-label {
+            font-weight: 600;
+            color: #1e3a8a;
+            background: #f8fafc;
+            width: 18%;
+        }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .compare-table { font-size: 12px; min-width: 700px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .compare-table { font-size: 11px; min-width: 600px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">🪰</span> Механические переносчики</h1>
+    <div class="subtitle">
+        Понятие, способы передачи и сравнительная характеристика основных механических переносчиков
+    </div>
+
+    <!-- ===== ОПРЕДЕЛЕНИЕ ===== -->
+    <h2><span class="emoji">📖</span> Понятие механического переносчика</h2>
+
+    <p><strong>Механический переносчик</strong> — это кровососущее или некровососущее членистоногое, которое пассивно переносит возбудителей инфекционных или инвазионных заболеваний на поверхности своего тела (лапках, волосках, ротовых органах) либо внутри пищеварительного тракта, при этом сам возбудитель не проходит в организме переносчика стадий развития и не размножается.</p>
+
+    <!-- ===== СПОСОБЫ ПЕРЕДАЧИ ===== -->
+    <h2><span class="emoji">🔄</span> Способы передачи возбудителей</h2>
+
+    <p>Передача патогенов через механических переносчиков осуществляется следующими основными путями и способами:</p>
+
+    <h3>1. Контактно-бытовой путь (в рамках фекально-орального механизма)</h3>
+    <ul>
+        <li><strong>Основной путь заражения человека:</strong> Переносчик контактирует с инфицированными экскрементами или гниющими органическими отбросами, собирая возбудителей на покровы тела, а затем перелетает/переползает на продукты питания человека.</li>
+        <li><strong>Через выделения переносчика:</strong> Возбудители, заглоченные переносчиком, проходят через его пищеварительный тракт в неизмененном виде и выделяются наружу вместе с экскрементами на продукты питания или кожу человека.</li>
+        <li><strong>Путем отрыжки (регургитации):</strong> При питании жидкой пищей (например, у мух) возбудители могут отрыгиваться из зоба переносчика вместе с порцией полупереваренной пищи на продукты.</li>
+    </ul>
+
+    <h3>2. Механическая инокуляция (трансмиссивный путь)</h3>
+    <ul>
+        <li>Прямой занос возбудителей в кровь человека через ротовой аппарат переносчика во время укуса (характерно для кровососущих механических переносчиков, таких как осенняя жигалка, у которой бактерии остаются на хоботке).</li>
+    </ul>
+
+    <!-- ===== СРАВНИТЕЛЬНАЯ ТАБЛИЦА ===== -->
+    <h2><span class="emoji">📊</span> Сравнительная таблица механических переносчиков</h2>
+
+    <div class="note">
+        <p><strong>Основные механические переносчики:</strong> синантропные мухи и тараканы. Поскольку при механическом переносе возбудитель не размножается и не проходит стадий развития в организме членистоногого, все ассоциированные с ними заболевания относятся к <strong>факультативно-трансмиссивным</strong> (передача через переносчика является лишь одним из возможных путей заражения).</p>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th style="width:16%;">Критерий сравнения</th>
+                    <th style="width:28%;">Комнатная муха<br><em>Musca domestica</em></th>
+                    <th style="width:28%;">Осенняя жигалка<br><em>Stomoxys calcitrans</em></th>
+                    <th style="width:28%;">Синантропные тараканы<br><em>Blattella germanica</em>, <em>Blatta orientalis</em></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-label">Систематическое положение</td>
+                    <td>Тип: Arthropoda<br>Подтип: Tracheata<br>Класс: Insecta<br>Отряд: Diptera<br>Семейство: Muscidae<br>Вид: <em>Musca domestica</em></td>
+                    <td>Тип: Arthropoda<br>Подтип: Tracheata<br>Класс: Insecta<br>Отряд: Diptera<br>Семейство: Muscidae<br>Вид: <em>Stomoxys calcitrans</em></td>
+                    <td>Тип: Arthropoda<br>Подтип: Tracheata<br>Класс: Insecta<br>Отряд: Blattodea<br>Семейство: Blattidae / Blattellidae<br>Виды: <em>B. germanica</em> (рыжий), <em>B. orientalis</em> (черный)</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Тип метаморфоза</td>
+                    <td>Полный метаморфоз (развитие с полным превращением). Стадия куколки присутствует.</td>
+                    <td>Полный метаморфоз (развитие с полным превращением). Стадия куколки присутствует.</td>
+                    <td>Неполный метаморфоз (развитие с неполным превращением). Стадия куколки отсутствует.</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Стадии жизненного цикла</td>
+                    <td>Яйцо ⟶ Личинка (3 возраста) ⟶ Куколка (в пупарии) ⟶ Имаго</td>
+                    <td>Яйцо ⟶ Личинка (3 возраста) ⟶ Куколка (в пупарии) ⟶ Имаго</td>
+                    <td>Яйцо (в оотеке) ⟶ Нимфы (5–6 возрастов) ⟶ Имаго</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Ювенильная стадия (из яйца)</td>
+                    <td>Личинка (червеобразная, безногая, слепая, с грызущим ротовым аппаратом; морфологически не похожа на имаго).</td>
+                    <td>Личинка (червеобразная, безногая, слепая; развивается в навозе и гниющих отходах).</td>
+                    <td>Нимфа (бескрылая, но морфологически и экологически сходная с имаго: имеет фасеточные глаза, грызущий аппарат).</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Тип ротового аппарата имаго</td>
+                    <td>Лижуще-сосущий (адаптирован для приема жидкой пищи или растворения твердой слюной).</td>
+                    <td>Колюще-сосущий (хоботок жесткий, хитинизированный, постоянно торчит вперед).</td>
+                    <td>Грызущий (ортоптероидного типа; с мощными жвалами/мандибулами для измельчения твердого субстрата).</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Характер питания имаго</td>
+                    <td>Некровососущий синантроп (пантофаг). Питается продуктами человека, гниющими органическими отбросами, экскрементами.</td>
+                    <td>Облигатный гематофаг (кровосос). Кровью питаются и самцы, и самки.</td>
+                    <td>Всеядный синантроп (пантофаг). Активен ночью, поедает любые пищевые продукты, отходы, бумагу, кожу.</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Локализация возбудителей в/на переносчике</td>
+                    <td>На поверхности тела (щетинки), на липких подушечках лапок (пульвиллах), в зобе (фильтрационном аппарате) и кишечнике.</td>
+                    <td>Преимущественно на наружной поверхности хоботка и колющих стилетах.</td>
+                    <td>На хитиновых шипах и волосках бегательных конечностей, на брюшке, транзитом в кишечнике.</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Способ передачи возбудителя</td>
+                    <td>Механическая контаминация (пассивное обсеменение лапками, дефекация на пищу) и регургитация (отрыжка содержимого зоба при растворении пищи).</td>
+                    <td>Механическая инокуляция (прямой занос патогенов в кровь хоботком при прерванном укусе и перелете на нового хозяина).</td>
+                    <td>Механическая контаминация (пассивный перенос патогенов на лапках и брюшке, а также загрязнение пищи испражнениями).</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Характер трансмиссивности болезней</td>
+                    <td>Факультативно-трансмиссивный </td>
+                    <td>Факультативно-трансмиссивный </td>
+                    <td>Факультативно-трансмиссивный </td>
+                </tr>
+                <tr>
+                    <td class="col-label">Переносимые заболевания</td>
+                    <td><strong>Инфекции:</strong> брюшной тиф, дизентерия, холера, туберкулез, полиомиелит.<br><strong>Инвазии:</strong> амебиаз, лямблиоз, аскаридоз, энтеробиоз.</td>
+                    <td><strong>Инфекции:</strong> сибирская язва (<em>Bacillus anthracis</em>), туляремия (<em>Francisella tularensis</em>), бруцеллез.</td>
+                    <td><strong>Инфекции:</strong> брюшной тиф, холера, туберкулез, дифтерия.<br><strong>Инвазии:</strong> цисты простейших, яйца остриц и аскарид.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== БОЛЬШАЯ КАРТИНКА ===== -->
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🪰</span>
+            Основные механические переносчики
+            <span class="small">комнатная муха (<em>Musca domestica</em>), осенняя жигалка (<em>Stomoxys calcitrans</em>), рыжий таракан (<em>Blattella germanica</em>)</span>
+            <span class="filename">imagine/mechanical_vectors.jpg</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

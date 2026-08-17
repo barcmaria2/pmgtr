@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карликовый цепень (Hymenolepis nana) — урок 2</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        /* ===== СПИСКИ — ЕДИНООБРАЗНЫЕ ОТСТУПЫ ===== */
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul, ol ol, ul ol, ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== ТАБЛИЦА ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ДЛЯ ЯЙЦА (ТОЛЬКО СХЕМА, БЕЗ МИКРОСКОПИЧЕСКОГО) ===== */
+        .stage-row .left-col {
+            flex: 1 1 55%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col,
+            .stage-row .right-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .pathogenic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .image-col,
+            .stage-row .right-col {
+                min-height: 150px;
+            }
+
+            .pathogenic-table {
+                font-size: 12px;
+            }
+
+            ul, ol {
+                margin-left: 16px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🧬</span> Карликовый цепень</h1>
+    <div class="subtitle"><strong>Hymenolepis nana</strong> — возбудитель <strong>гименолепидоза</strong></div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)<br>
+            <strong>Класс:</strong> Ленточные черви (Cestoda)<br>
+            <strong>Отряд:</strong> Цепни (Cyclophyllidea)<br>
+            <strong>Вид:</strong> Карликовый цепень (<em>Hymenolepis nana</em>)
+        </p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Гименолепидоз.</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозоонозное заболевание (в природе резервуарами выступают грызуны – мыши, крысы, хомяки).</div>
+        <div class="item"><strong>Контагиозный гельминт:</strong> Способен передаваться напрямую от человека к человеку при бытовом контакте, а также вызывать постоянное самозаражение (аутоинвазию) внутри одного организма.</div>
+        <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Повсеместно, особенно в регионах с низким санитарным уровнем и высокой плотностью населения.</div>
+    </div>
+
+    <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 1. Половозрелая особь -->
+    <h3>1. Половозрелая особь </h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма и размеры:</strong> Полностью оправдывает своё название – очень мелкий цепень. Длина взрослой особи составляет <strong>1,5–5 см</strong> (10–50 мм), ширина не превышает 1 мм. Стробила (тело) очень нежная, полупрозрачная, легко рвётся.
+            </p>
+
+            <p>
+                <strong>Сколекс (головка):</strong> Диаметр около 0,3 мм. Имеет 4 округлые присоски и втягивающийся (выдвижной) хоботок, вооружённый одним венчиком из <strong>20–30 мелких хитиновых крючьев</strong>.
+            </p>
+
+            <p>
+                <strong>Шейка (зона роста):</strong> Отличительная черта карликового цепня – длинная, нерасчленённая шейка.
+            </p>
+
+            <p>
+                <strong>Стробила (членики):</strong> Состоит из 100–300 проглоттид. Членики имеют <strong>краспедотный тип строения</strong> – каждый предыдущий членик на 1/4 «накрывает» последующий, как черепица на крыше.
+            </p>
+
+            <p>
+                <strong>Отсутствующие системы органов:</strong> Полностью отсутствуют пищеварительная, кровеносная и дыхательная системы. Питание осуществляется осмотически всей поверхностью тела.
+            </p>
+
+            <h4>Половая система (гермафродит):</h4>
+            <ul>
+                <li><strong>Гермафродитный членик (средняя часть тела):</strong>
+                    <ul>
+                        <li><strong>Мужская система:</strong> три шаровидных семенника, лежащих в один ряд (максимально упрощена).</li>
+                        <li><strong>Женская система:</strong> вытянутый двулопастный яичник, под которым лежит компактный желточник.</li>
+                    </ul>
+                </li>
+                <li><strong>Зрелый членик (задняя треть стробилы):</strong> Матка <strong>закрытого типа</strong> (нет выводного отверстия), мешковидная, полностью заполнена яйцами.</li>
+            </ul>
+        </div>
+
+        <!-- Изображение мариты -->
+        <div class="image-col">
+            <img src="images/helminths/hymenolepis_marita_scheme.jpg"
+                 alt="Марита карликового цепня — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Марита <em>Hymenolepis nana</em>
+                <span class="small">(hymenolepis_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">мелкий цепень, сколекс с крючьями, членики</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Яйцо (БЕЗ МИКРОСКОПИЧЕСКОГО ФОТО) -->
+    <h3>2. Яйцо</h3>
+
+    <div class="stage-row">
+        <!-- Левая колонка: только текст -->
+        <div class="left-col">
+            <div class="text">
+                <p>
+                    <strong>Размеры:</strong> 30–50 мкм.<br>
+                    <strong>Форма и цвет:</strong> Округлые или овальные, прозрачные и бесцветные. Имеют две оболочки.<br>
+                    <strong>Характерные структуры (главный диагностический признак):</strong><br>
+                    На внутренней оболочке лежат два утолщения на полюсах, от которых отходят длинные нитевидные придатки – <strong>филаменты</strong> (4–8 нитей).<br>
+                    Внутри четко видна <strong>онкосфера</strong> с шестью крючьями.<br>
+                    <span class="spec">Важное примечание:</span> Яйца карликового цепня имеют характерный вид, что позволяет легко идентифицировать их при микроскопии.
+                </p>
+            </div>
+        </div>
+
+        <!-- Правая колонка: только схема яйца (без микроскопического фото) -->
+        <div class="right-col">
+            <img src="images/helminths/hymenolepis_egg_scheme.jpg"
+                 alt="Схема яйца карликового цепня"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🥚</span>
+                Схема яйца <em>Hymenolepis nana</em>
+                <span class="small">(hymenolepis_egg_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">филаменты, две оболочки, онкосфера</span>
+            </div>
+        </div>
+    </div>
+<h3>3. Финна (личиночная стадия)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Название:</strong> <span class="spec">Цистицеркоид</span>.<br>
+                <strong>Место формирования:</strong> Внутри ворсинки слизистой оболочки тонкого кишечника человека (онкосфера внедряется в ворсинку).<br>
+                <strong>Внешний вид:</strong> Финна грушевидной формы. Представляет собой пузырёк с ввёрнутым внутрь сколексом (на котором есть присоски и крючья), а также имеет хвостовидный придаток.<br>
+                <strong>Дальнейшее развитие:</strong> Через несколько дней цистицеркоид разрушает ворсинку, выходит в просвет кишки, отбрасывает хвостик и прикрепляется сколексом к слизистой, вырастая во взрослого червя.
+            </p>
+        </div>
+
+        <!-- Изображение финны (цистицеркоид) -->
+        <div class="image-col">
+            <img src="images/helminths/hymenolepis_cysticercoid_scheme.jpg"
+                 alt="Цистицеркоид карликового цепня — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🫧</span>
+                Цистицеркоид <em>Hymenolepis nana</em>
+                <span class="small">(hymenolepis_cysticercoid_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">грушевидная форма, ввёрнутый сколекс, хвостовидный придаток</span>
+            </div>
+        </div>
+    </div>
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Биогельминт.<br>
+        <span class="spec">Уникальная особенность:</span> Это единственный цепень, который может осуществлять развитие <strong>без смены хозяев</strong>. Человек для него выступает одновременно и промежуточным, и окончательным хозяином, так как паразит проходит в организме человека и личиночную, и взрослую стадии.<br>
+        <strong>Окончательный хозяин:</strong> Человек, грызуны (мыши, крысы, хомяки).<br>
+        <strong>Промежуточный хозяин:</strong> Человек (в прямом цикле). В непрямом цикле – насекомые (мучные жуки-хрущаки, блохи).<br>
+        <strong>Инвазионная стадия:</strong> Яйцо с онкосферой.<br>
+        <strong>Патогенная стадия:</strong> Марита (взрослый червь) и личинки (цистицеркоиды) в ворсинках кишечника.<br>
+        <strong>Локализация в организме человека:</strong> Тонкий кишечник (взрослые особи и личинки в ворсинках).
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/hymenolepis_life_cycle.jpg"
+             alt="Жизненный цикл карликового цепня"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Жизненный цикл <em>Hymenolepis nana</em>
+            <span class="small">(hymenolepis_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">яйцо → онкосфера → цистицеркоид в ворсинке → марита</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла -->
+    <h4>Этапы жизненного цикла (прямой цикл):</h4>
+    <ol>
+        <li><strong>Выделение во внешнюю среду:</strong> Яйца выделяются с фекалиями больного. Из-за нежности стробилы зрелые членики разрушаются прямо в просвете кишечника, поэтому наружу выходят свободные яйца.</li>
+        <li><strong>Заражение человека (контактно-бытовой путь):</strong> Яйца заглатываются с грязных рук, игрушек, предметов быта, через немытые овощи и фрукты.</li>
+        <li><strong>Развитие в теле человека (онкосфера → цистицеркоид):</strong>
+            <ul>
+                <li>В двенадцатиперстной кишке оболочка яйца разрушается, выходит <strong>онкосфера</strong> с 6 крючьями.</li>
+                <li>Онкосфера активно внедряется внутрь ворсинок слизистой оболочки тонкого кишечника.</li>
+                <li>В ворсинке через 4–8 дней она превращается в финну – <strong>цистицеркоид</strong> (личинка с хвостовым придатком).</li>
+            </ul>
+        </li>
+        <li><strong>Выход в просвет и рост взрослой особи:</strong>
+            <ul>
+                <li>Цистицеркоид разрушает ворсинку, выходит в просвет кишки.</li>
+                <li>Теряет хвост, выворачивает сколекс и прикрепляется к слизистой крючьями и присосками.</li>
+                <li>За <strong>2 недели</strong> вырастает до половозрелой особи.</li>
+            </ul>
+        </li>
+        <li><strong>Продолжительность жизненного цикла:</strong> От яйца до взрослого червя – около 1 месяца. Продолжительность жизни одной особи – около 2 месяцев. Однако из-за аутоинвазии болезнь может длиться годами.</li>
+    </ol>
+
+    <!-- ===== ЗАРАЖЕНИЕ ЧЕЛОВЕКА ===== -->
+    <h3>Заражение человека</h3>
+
+    <p>
+        <strong>Механизм:</strong> Фекально-оральный.<br>
+        <strong>Путь передачи:</strong>
+    </p>
+    <ul>
+        <li><strong>Основной путь – контактно-бытовой.</strong> Заражение происходит при заглатывании яиц с грязных рук (особенно у детей в коллективах), игрушек, дверных ручек, горшков, а также через немытые овощи и фрукты, на которые яйца заносятся мухами или тараканами.</li>
+        <li><strong>Аутоинвазия (самозаражение)</strong> – эндогенный путь, яйца вылупляются прямо в кишечнике, <strong>онкосферы внедряются в ворсинки того же кишечника, давая начало новым поколениям паразита</strong>.</li>
+        <li><strong>Алиментарный путь (редкий):</strong> Возможен при случайном проглатывании заражённых насекомых (мучных жуков) с хлебом или крупой (непрямой цикл). Это казуистический случай.</li>
+    </ul>
+
+    <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ ===== -->
+    <h2><span class="emoji">⚡</span> Патогенное действие</h2>
+
+    <div class="table-wrapper">
+        <table class="pathogenic-table">
+            <thead>
+                <tr>
+                    <th class="col-mechanism">Механизм действия</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-mechanism">Механическое повреждение</td>
+                    <td>Присоски и крючья травмируют слизистую кишечника; личинки разрушают ворсинки.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Токсико-аллергическое действие</td>
+                    <td>Продукты жизнедеятельности паразита вызывают аллергические реакции, диспепсию.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Нарушение питания</td>
+                    <td>Осмотическое поглощение питательных веществ всей поверхностью тела.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Особенности у детей</td>
+                    <td>Из-за аутоинвазии и массовой инвазии может вызывать тяжёлые кишечные расстройства, задержку физического развития.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <p>
+        <strong>Материал для исследования:</strong> Фекалии.<br>
+        <strong>Основной метод:</strong> Копроовоскопия (микроскопия) для обнаружения яиц.
+    </p>
+
+    <h4>Диагностические критерии:</h4>
+    <ul>
+        <li><strong>Обнаружение яиц:</strong> В исследуемом материале находят яйца размером 30–50 мкм, округлые или овальные, прозрачные и бесцветные, с двумя оболочками. Внутри – онкосфера с 6 крючьями. От полюсов внутренней оболочки отходят нитевидные <strong>филаменты</strong> (4–8 нитей).</li>
+        <li><strong>Особенность сдачи анализов:</strong> Выделение яиц носит периодический характер (из-за смены поколений паразита), поэтому кал нужно сдавать <strong>троекратно</strong> с интервалом 15–20 дней.</li>
+    </ul>
+
+    <div class="note">
+        <strong>⚠️ Почему при бычьем и свином цепнях (с закрытой маткой) мы ищем членики, а у карликового цепня (с такой же закрытой маткой) мы ищем яйца?</strong><br>
+        Потому что стробила карликового цепня очень нежная. Зрелые членики не выдерживают перистальтики, легко отрываются и полностью разрушаются прямо в просвете кишечника. Поэтому наружу с фекалиями выходят уже свободные яйца, а не членики.
+    </div>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Строгое соблюдение правил личной гигиены: тщательное мытье рук (особенно детям после туалета, перед едой, после прогулок).</li>
+        <li>Мытьё игрушек, овощей, фруктов и ягод перед употреблением.</li>
+        <li>Кипячение воды в эндемичных районах.</li>
+        <li>Борьба с насекомыми в жилых помещениях (мухи, тараканы).</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Систематические плановые обследования детей в детских садах, школах, интернатах (декретированный контингент).</li>
+        <li>Строгий санитарный контроль в детских учреждениях (обработка горшков, игрушек, мебели).</li>
+        <li>Дератизация – борьба с грызунами (мыши, крысы), которые являются резервуаром в природе.</li>
+        <li>Дезинсекция – борьба с мухами и тараканами (механические переносчики яиц).</li>
+        <li>Санитарно-просветительская работа с населением, особенно родителями в детских коллективах.</li>
+        <li>Выявление и лечение больных гименолепидозом.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

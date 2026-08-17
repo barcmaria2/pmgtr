@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мухи (Diptera) — морфология, развитие, медицинское значение</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card p strong { color: #1e293b; }
+        .taxonomy-card ol {
+            margin: 6px 0 0 20px;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card ol li {
+            margin-bottom: 4px;
+        }
+        .taxonomy-card ol ul {
+            margin: 2px 0 6px 20px;
+            font-size: 14px;
+            color: #475569;
+        }
+        .taxonomy-card ol ul li {
+            margin-bottom: 2px;
+        }
+
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+        .epi-grid .item {
+            font-size: 14px;
+        }
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+        .epi-grid .item.full {
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 1000px;
+        }
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .compare-table thead th {
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+            letter-spacing: 0.02em;
+        }
+        .compare-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table tbody tr:hover { background: #f8faff; }
+        .compare-table tbody tr:nth-child(even) { background: #fafcff; }
+        .compare-table tbody tr:nth-child(even):hover { background: #f4f8ff; }
+        .compare-table .col-label {
+            font-weight: 600;
+            color: #1e3a8a;
+            background: #f8fafc;
+            width: 18%;
+        }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .epi-grid { grid-template-columns: 1fr; }
+            .compare-table { font-size: 12px; min-width: 700px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .compare-table { font-size: 11px; min-width: 600px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">🪰</span> Мухи</h1>
+    <div class="subtitle">
+        Отряд <strong>Двукрылые (Diptera)</strong> — комнатная муха (<em>Musca domestica</em>), осенняя жигалка (<em>Stomoxys calcitrans</em>), муха цеце (<em>Glossina</em>), вольфартова муха (<em>Wohlfahrtia magnifica</em>)
+    </div>
+
+    <!-- ===== СИСТЕМАТИЧЕСКОЕ ПОЛОЖЕНИЕ ===== -->
+    <div class="taxonomy-card">
+        <p><strong>Тип:</strong> Членистоногие (Arthropoda)</p>
+        <p><strong>Подтип:</strong> Трахейные, или Трахейнодышащие (Tracheata)</p>
+        <p><strong>Класс:</strong> Насекомые (Insecta)</p>
+        <p><strong>Отряд:</strong> Двукрылые (Diptera)</p>
+        <p style="margin-top:8px;"><strong>Основные семейства и изучаемые виды:</strong></p>
+        <ol>
+            <li><strong>Семейство Настоящие мухи (Muscidae)</strong>
+                <ul>
+                    <li><em>Musca domestica</em> (Комнатная муха) — повсеместный синантроп, механический переносчик.</li>
+                    <li><em>Stomoxys calcitrans</em> (Осенняя жигалка) — кровосос, механический переносчик кровяных инфекций.</li>
+                </ul>
+            </li>
+            <li><strong>Семейство Мухи цеце (Glossinidae)</strong>
+                <ul>
+                    <li><em>Glossina palpalis</em>, <em>Glossina morsitans</em> (Муха цеце) — специфический переносчик африканского трипаносомоза.</li>
+                </ul>
+            </li>
+            <li><strong>Семейство Серые мясные мухи (Sarcophagidae)</strong>
+                <ul>
+                    <li><em>Wohlfahrtia magnifica</em> (Вольфартова муха) — возбудитель облигатных тканевых миазов.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ОТРЯДА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика отряда Двукрылые (Diptera)</h2>
+
+    <div class="epi-grid">
+        <div class="item full"><strong>Морфологический план:</strong> Тело массивное, густо покрыто щетинками и волосками разной величины. Голова полушаровидная, уплощённая кзади, несёт пару крупных сложных фасеточных глаз и три простых глазка.</div>
+        <div class="item full"><strong>Крыловой аппарат:</strong> Обладают только одной (передней) парой перепончатых крыльев. Задняя пара крыльев в процессе эволюции подверглась редукции и превратилась в жужжальца (halteres) — колбовидные органы равновесия и координации полёта.</div>
+        <div class="item full"><strong>Характер метаморфоза:</strong> Все мухи развиваются строго по типу <strong>полного метаморфоза</strong> (развитие с полным превращением / голометаболия).</div>
+        <div class="item full"><strong>Ювенильные стадии:</strong> Из яйца выходит исключительно личинка (червеобразная, безногая, слепая, с ротовыми крючьями или грызущим аппаратом). В цикле развития обязательно присутствует покоящаяся стадия куколки, которая у мух развивается внутри ложнококона — пупария (затвердевшей хитиновой оболочки личинки последнего возраста).</div>
+    </div>
+
+    <div class="note">
+        <p><strong>Важное правило:</strong> У мух нет нимф! Термин «нимфа» применим только к насекомым с неполным метаморфозом (вшам, клопам, тараканам). У мух стадии строго называются: <strong>Яйцо ⟶ Личинка ⟶ Куколка ⟶ Имаго</strong>.</p>
+    </div>
+
+    <!-- ===== СРАВНИТЕЛЬНАЯ ТАБЛИЦА ===== -->
+    <h2><span class="emoji">📊</span> Сравнительная таблица мух</h2>
+
+    <div class="table-wrapper">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th style="width:16%;">Критерий сравнения</th>
+                    <th style="width:21%;">Комнатная муха<br><em>Musca domestica</em></th>
+                    <th style="width:21%;">Осенняя жигалка<br><em>Stomoxys calcitrans</em></th>
+                    <th style="width:21%;">Муха цеце<br><em>Glossina</em> (G. palpalis, G. morsitans)</th>
+                    <th style="width:21%;">Вольфартова муха<br><em>Wohlfahrtia magnifica</em></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-label">Систематика (семейство)</td>
+                    <td>Семейство Настоящие мухи (Muscidae)</td>
+                    <td>Семейство Настоящие мухи (Muscidae)</td>
+                    <td>Семейство Мухи цеце (Glossinidae / Glossidae)</td>
+                    <td>Семейство Серые мясные мухи (Sarcophagidae)</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Географическое распространение</td>
+                    <td>Повсеместно (космополит)</td>
+                    <td>Повсеместно (наибольшая численность в августе-сентябре)</td>
+                    <td>Экваториальная, Западная и Восточная Африка</td>
+                    <td>Южная Европа, азиатская часть РФ, Кавказ, Ближний Восток, Северная Африка</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Экологическая категория</td>
+                    <td>Эндофильный синантроп (живёт в жилье человека)</td>
+                    <td>Эндофильный кровосос (связана с человеком и скотом)</td>
+                    <td>Экзофильный вид (обитает в дикой природе, лесах, по берегам рек)</td>
+                    <td>Экзофильный вид (никогда не залетает в помещения)</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Характер метаморфоза</td>
+                    <td>Полный метаморфоз</td>
+                    <td>Полный метаморфоз</td>
+                    <td>Полный метаморфоз</td>
+                    <td>Полный метаморфоз</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Ювенильная стадия (из яйца)</td>
+                    <td>Личинка (безногая, слепая, червеобразная; проходит 3 возраста)</td>
+                    <td>Личинка (безногая, червеобразная; развивается в навозе и гниющих отходах)</td>
+                    <td>Личинка (проходит развитие внутриутробно, рождается личинка III возраста)</td>
+                    <td>Личинка (червеобразная, с ротовыми крючьями, паразитирует в живых тканях)</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Размножение и цикл развития</td>
+                    <td>Откладывает яйца кучками (до 600 штук) во влажные гниющие органические отходы</td>
+                    <td>Откладывает яйца в навоз, солому, гниющий растительный мусор</td>
+                    <td>Аденотрофное живорождение (ларвовождение): рождает 1 личинку III возраста (всего 6–12 за жизнь)</td>
+                    <td>Живорождение (ларвивипария): на лету впрыскивает в раны/слизистые 120–160 активных личинок I возраста</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Морфология имаго</td>
+                    <td>Размеры до 7,5 мм; буро-серая окраска; 4 тёмные полосы на груди</td>
+                    <td>Размеры 5–6 мм; серая окраска с тёмными полосами на груди и пятнами на брюшке</td>
+                    <td>Размеры 6,5–13,5 мм; тёмно-коричневая окраска; крылья складываются на спине плоско, одно на другое</td>
+                    <td>Крупная муха (9–15 мм); светло-серое тело; 3 тёмные полосы на груди и чёрные пятна на брюшке</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Строение ротового аппарата</td>
+                    <td>Лижуще-сосущий: хоботок мягкий, на конце две сосательные лопасти с сосательными дольками</td>
+                    <td>Колюще-сосущий: хоботок тонкий, длинный, всегда выступает вперёд; на конце хитиновые зубцы</td>
+                    <td>Колюще-сосущий: хоботок длинный, тонкий, сильно хитинизирован, выступает вперёд</td>
+                    <td>Лижуще-сосущий</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Характер питания имаго</td>
+                    <td>Некровососущий пантофаг: питается жидкой органикой, пищей человека, отбросами</td>
+                    <td>Облигатный гематофаг (кровосос): кровью питаются и самки, и самцы</td>
+                    <td>Облигатный гематофаг (кровосос): кровью питаются и самки, и самцы</td>
+                    <td>Нектарофаг: взрослые мухи не паразитируют, питаются соками цветов</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Адаптации к переносу/паразитизму</td>
+                    <td>Липкие подушечки лапок (пульвиллы), удерживающие бактерии; феномен регургитации (срыгивания) пищи</td>
+                    <td>Острые зубцы хоботка для прокола кожи; пугливость во время питания (частая смена хозяев)</td>
+                    <td>Высокая растяжимость средней кишки; слюнные железы служат резервуаром трипаносом</td>
+                    <td>Выделение личинками ферментов, растворяющих живые мышечные ткани; ротовые крючья</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Роль в патологии (переносчик/возбудитель)</td>
+                    <td>Механический переносчик широкого спектра патогенов; случайный возбудитель миазов</td>
+                    <td>Механический трансмиссивный переносчик кровяных инфекций</td>
+                    <td>Специфический (биологический) переносчик и резервуар возбудителей</td>
+                    <td>Возбудитель облигатных тканевых (мышечных) миазов (паразитирует личинка)</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Переносимые болезни / вызываемые патологии</td>
+                    <td>Дизентерия, брюшной тиф, холера, туберкулёз, цисты амёб и лямблий, яйца аскарид и остриц</td>
+                    <td>Сибирская язва (<em>Bacillus anthracis</em>), туляремия (<em>Francisella tularensis</em>), сепсис</td>
+                    <td>Африканский трипаносомоз (гамбийская и родезийская сонная болезнь)</td>
+                    <td>Вольфартиоз (разрушение мышц, глазниц, носоглотки, слуховых ходов личинками)</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Тип патологии (Инфекция/Инвазия)</td>
+                    <td>Инфекции (бактерии, вирусы) и Инвазии (цисты простейших, яйца гельминтов)</td>
+                    <td>Инфекции (возбудители — бактерии)</td>
+                    <td>Инвазия (возбудитель — простейшее жгутиконосец <em>Trypanosoma brucei</em>)</td>
+                    <td>Инвазия (возбудитель — животное, личинка мухи)</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Способ и пути передачи</td>
+                    <td>Механическая контаминация; фекально-оральный механизм (алиментарный путь)</td>
+                    <td>Механическая инокуляция при укусе (бактерии переносятся на хоботке)</td>
+                    <td>Специфическая инокуляция (паразиты вводятся со слюной при укусе)</td>
+                    <td>Контактный (активное внедрение личинок в ранки или слизистые оболочки во время сна человека)</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Характер трансмиссивности</td>
+                    <td>Факультативно-трансмиссивное (переносчик не обязателен для циркуляции патогенов)</td>
+                    <td>Факультативно-трансмиссивное (основные пути заражения туляремией и сибирской язвой — контактный и алиментарный)</td>
+                    <td>Облигатно-трансмиссивное (в естественных условиях трипаносома циркулирует только по цепи хозяин-муха-хозяин)</td>
+                    <td>Нетрансмиссивное (прямой паразитизм личинок; перенос возбудителя отсутствует)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

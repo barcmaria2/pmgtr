@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Итоговая таблица: Сравнение нематод — интерактив</title>
+    <style>
+        /* ===== Базовые стили (аналогично цестодной таблице) ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== Фото-заглушка ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/6;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== Таблица ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 24px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            min-width: 700px;
+        }
+
+        .comparison-table thead th {
+            background: #f1f5f9;
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 2px solid #e9edf3;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        .comparison-table thead th:first-child {
+            background: #e9edf3;
+            min-width: 160px;
+        }
+
+        .comparison-table tbody td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: middle;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .comparison-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .comparison-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .comparison-table .species-cell {
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        .comparison-table .species-cell .sub {
+            display: block;
+            font-weight: 400;
+            color: #64748b;
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        .comparison-table td input {
+            width: 100%;
+            padding: 6px 10px;
+            border: 1px solid #d1d9e6;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            background: #ffffff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            min-width: 80px;
+        }
+
+        .comparison-table td input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .comparison-table td input.correct-input {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+
+        .comparison-table td input.wrong-input {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .table-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 28px 0 8px 0;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .table-title .badge {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 20px;
+            background: #dbeafe;
+            color: #1e3a8a;
+            margin-left: 8px;
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            background: #e9edf3;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: #d1d9e6;
+        }
+
+        .btn-success {
+            background: #22c55e;
+            color: #ffffff;
+        }
+
+        .btn-success:hover {
+            background: #16a34a;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .result-box {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-top: 16px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        .result-box .score {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        .result-box .detail {
+            font-size: 15px;
+            color: #475569;
+            margin-top: 4px;
+        }
+
+        .section-divider {
+            border-top: 3px dashed #e9edf3;
+            margin: 32px 0 8px 0;
+        }
+
+        /* ===== Адаптация ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .comparison-table {
+                font-size: 13px;
+                min-width: 550px;
+            }
+            .comparison-table td input {
+                font-size: 13px;
+                padding: 4px 8px;
+            }
+            .comparison-table thead th {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+            .comparison-table tbody td {
+                padding: 6px 10px;
+            }
+            .table-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn {
+                text-align: center;
+            }
+            .table-title {
+                font-size: 16px;
+            }
+            .full-width-image img {
+                max-height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            .comparison-table {
+                font-size: 12px;
+                min-width: 450px;
+            }
+            .comparison-table td input {
+                font-size: 12px;
+                padding: 3px 6px;
+                min-width: 60px;
+            }
+            .comparison-table .species-cell {
+                font-size: 13px;
+            }
+            .full-width-image img {
+                max-height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:4px;">
+        <span style="font-size:36px;">📊</span>
+        <h1>Итоговая таблица: Сравнение нематод</h1>
+    </div>
+    <div class="subtitle">
+        <strong>Ascaris lumbricoides</strong> (аскарида), <strong>Enterobius vermicularis</strong> (острица),
+        <strong>Trichocephalus trichiurus</strong> (власоглав), <strong>Ancylostoma duodenale</strong> (анкилостома),
+        <strong>Strongyloides stercoralis</strong> (угрица), <strong>Trichinella spiralis</strong> (трихинелла),
+        <strong>Dracunculus medinensis</strong> (ришта), <strong>Филярии</strong> (вухерерия, бругия, лоа-лоа, онхоцерка)
+    </div>
+
+    <!-- ===== ОБЩАЯ СХЕМА-ЗАГЛУШКА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/nematode_general_scheme.jpg"
+             alt="Общая схема строения нематод"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Общая схема строения нематод
+            <span class="small">(nematode_general_scheme.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">поперечный срез, кожно-мускульный мешок, псевдоцель</span>
+        </div>
+    </div>
+
+    <p style="margin-bottom:12px; color:#475569; font-size:15px;">
+        Заполните поля для каждого вида. После заполнения нажмите <strong>«Проверить таблицу»</strong>
+        для каждой секции отдельно.
+    </p>
+
+    <!-- ============================================================ -->
+    <!-- ===== ТАБЛИЦА 1: ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <!-- ============================================================ -->
+    <div class="table-title">
+        📋 Общая характеристика <span class="badge">Таблица 1</span>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="comparison-table" id="table1">
+            <thead>
+                <tr>
+                    <th style="min-width:160px;">Вид</th>
+                    <th style="min-width:120px;">Заболевание</th>
+                    <th style="min-width:130px;">Размеры (самка/самец)</th>
+                    <th style="min-width:140px;">Органы фиксации</th>
+                    <th style="min-width:150px;">Особенности</th>
+                </tr>
+            </thead>
+            <tbody id="table1Body">
+                <!-- будет заполнено JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-actions">
+        <button class="btn btn-success" data-table="1">✅ Проверить таблицу 1</button>
+        <button class="btn btn-primary" data-table="1">💡 Подсказки</button>
+        <button class="btn" data-table="1">🔄 Очистить</button>
+    </div>
+    <div class="result-box" id="result1"></div>
+
+    <!-- ============================================================ -->
+    <!-- ===== ТАБЛИЦА 2: ПОЛОВАЯ СИСТЕМА И МОРФОЛОГИЯ ===== -->
+    <!-- ============================================================ -->
+    <div class="section-divider"></div>
+
+    <div class="table-title">
+        🔬 Половая система и морфология <span class="badge">Таблица 2</span>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="comparison-table" id="table2">
+            <thead>
+                <tr>
+                    <th style="min-width:160px;">Вид</th>
+                    <th style="min-width:140px;">Половой диморфизм</th>
+                    <th style="min-width:140px;">Яйца / Личинки</th>
+                    <th style="min-width:160px;">Особенности яиц/личинок</th>
+                </tr>
+            </thead>
+            <tbody id="table2Body">
+                <!-- будет заполнено JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-actions">
+        <button class="btn btn-success" data-table="2">✅ Проверить таблицу 2</button>
+        <button class="btn btn-primary" data-table="2">💡 Подсказки</button>
+        <button class="btn" data-table="2">🔄 Очистить</button>
+    </div>
+    <div class="result-box" id="result2"></div>
+
+    <!-- ============================================================ -->
+    <!-- ===== ТАБЛИЦА 3: ЦИКЛ РАЗВИТИЯ И ПУТИ ЗАРАЖЕНИЯ ===== -->
+    <!-- ============================================================ -->
+    <div class="section-divider"></div>
+
+    <div class="table-title">
+        🔄 Цикл развития и пути заражения <span class="badge">Таблица 3</span>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="comparison-table" id="table3">
+            <thead>
+                <tr>
+                    <th style="min-width:160px;">Вид</th>
+                    <th style="min-width:120px;">Эпид. группа</th>
+                    <th style="min-width:120px;">Инвазионная стадия</th>
+                    <th style="min-width:140px;">Механизм заражения</th>
+                    <th style="min-width:140px;">Миграция в организме</th>
+                </tr>
+            </thead>
+            <tbody id="table3Body">
+                <!-- будет заполнено JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-actions">
+        <button class="btn btn-success" data-table="3">✅ Проверить таблицу 3</button>
+        <button class="btn btn-primary" data-table="3">💡 Подсказки</button>
+        <button class="btn" data-table="3">🔄 Очистить</button>
+    </div>
+    <div class="result-box" id="result3"></div>
+
+    <!-- ============================================================ -->
+    <!-- ===== ТАБЛИЦА 4: ДИАГНОСТИКА, ЛОКАЛИЗАЦИЯ, ОСЛОЖНЕНИЯ ===== -->
+    <!-- ============================================================ -->
+    <div class="section-divider"></div>
+
+    <div class="table-title">
+        🧪 Диагностика, локализация и осложнения <span class="badge">Таблица 4</span>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="comparison-table" id="table4">
+            <thead>
+                <tr>
+                    <th style="min-width:160px;">Вид</th>
+                    <th style="min-width:160px;">Локализация в человеке</th>
+                    <th style="min-width:180px;">Материал для диагностики</th>
+                    <th style="min-width:180px;">Осложнения</th>
+                </tr>
+            </thead>
+            <tbody id="table4Body">
+                <!-- будет заполнено JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-actions">
+        <button class="btn btn-success" data-table="4">✅ Проверить таблицу 4</button>
+        <button class="btn btn-primary" data-table="4">💡 Подсказки</button>
+        <button class="btn" data-table="4">🔄 Очистить</button>
+    </div>
+    <div class="result-box" id="result4"></div>
+
+</div>
+
+<script>
+    // ===== ДАННЫЕ ДЛЯ 8 ВИДОВ (филярии — обобщённо) =====
+    const speciesData = [
+        {
+            id: 'ascaris',
+            label: 'Ascaris lumbricoides',
+            disease: 'Аскаридоз',
+            size: '20–40 см / 15–25 см',
+            fixation: '3 кутикулярные губы (присосок нет)',
+            features: 'Геогельминт, антропоноз. Яйца созревают в почве.',
+            dimorphism: 'Самец — хвост загнут крючком; самка — прямой хвост, кольцевидная перетяжка',
+            eggs_larvae: 'Яйца с фестончатой оболочкой, золотисто-коричневые',
+            egg_features: 'Личинка созревает в почве 2–3 недели, совершает миграцию по крови',
+            epi_group: 'Геогельминт, антропоноз',
+            invasive: 'Яйцо с личинкой',
+            route: 'Фекально-оральный (грязные руки, овощи, вода)',
+            migration: 'Есть — кишечник → печень → лёгкие → кишечник',
+            localization: 'Тонкий кишечник',
+            diagnostics: 'Фекалии (овоскопия — яйца с фестончатой оболочкой)',
+            complications: 'Кишечная непроходимость, перфорация, заползание в желчные протоки'
+        },
+        {
+            id: 'enterobius',
+            label: 'Enterobius vermicularis',
+            disease: 'Энтеробиоз',
+            size: '8–13 мм / 2–3 мм',
+            fixation: 'Везикула (кутикулярное вздутие), бульбус пищевода',
+            features: 'Контагиозный геогельминт, антропоноз. Яйца созревают на коже.',
+            dimorphism: 'Самец — хвост закручен спирально; самка — хвост заострён',
+            eggs_larvae: 'Яйца асимметричные, бесцветные, одна сторона плоская',
+            egg_features: 'Созревают на коже за 4–6 часов, личинки без миграции',
+            epi_group: 'Контагиозный геогельминт, антропоноз',
+            invasive: 'Яйцо с личинкой (созревает на коже)',
+            route: 'Контактно-бытовой (грязные руки, пыль), аутоинвазия',
+            migration: 'Нет миграции — личинка развивается в кишечнике',
+            localization: 'Нижний отдел тонкого и верхний отдел толстого кишечника',
+            diagnostics: 'Соскоб с перианальных складок (яйца)',
+            complications: 'Вульвовагинит (у девочек), аппендицит, зуд, расчёсы'
+        },
+        {
+            id: 'trichuris',
+            label: 'Trichocephalus trichiurus',
+            disease: 'Трихоцефалёз',
+            size: '30–55 мм / 30–45 мм',
+            fixation: 'Передний волосовидный конец «прошивает» слизистую',
+            features: 'Геогельминт, антропоноз. Яйца с «пробочками» на полюсах.',
+            dimorphism: 'Самец — хвост спирально закручен; самка — хвост прямой',
+            eggs_larvae: 'Яйца лимоновидные (бочонок) с прозрачными «пробочками»',
+            egg_features: 'Созревают в почве 3–4 недели, личинки без миграции по крови',
+            epi_group: 'Геогельминт, антропоноз',
+            invasive: 'Яйцо с личинкой',
+            route: 'Фекально-оральный (грязные руки, овощи, вода)',
+            migration: 'Нет миграции — личинка внедряется в ворсинки слепой кишки',
+            localization: 'Слепая кишка, аппендикс, начальный отдел толстой кишки',
+            diagnostics: 'Фекалии (овоскопия — яйца-«бочонки» с пробочками)',
+            complications: 'Аппендицит, анемия, выпадение прямой кишки (у детей)'
+        },
+        {
+            id: 'ancylostoma',
+            label: 'Ancylostoma duodenale',
+            disease: 'Анкилостомоз',
+            size: '10–13 мм / 8–11 мм',
+            fixation: 'Ротовая капсула с 4 вентральными зубцами',
+            features: 'Геогельминт, антропоноз. «Кривоголовка» — С-образный изгиб.',
+            dimorphism: 'Самец — копулятивная бурса; самка — хвост прямой с шипом',
+            eggs_larvae: 'Яйца бесцветные, прозрачные, с 4–8 бластомерами',
+            egg_features: 'В почве → рабдитовидная → филяриевидная личинка (инвазионная)',
+            epi_group: 'Геогельминт, антропоноз',
+            invasive: 'Филяриевидная личинка',
+            route: 'Перкутанный (основной) или алиментарный',
+            migration: 'При перкутанном — есть (кожа → кровь → лёгкие → кишечник); при пероральном — нет',
+            localization: 'Двенадцатиперстная кишка (начальный отдел тонкой)',
+            diagnostics: 'Фекалии (овоскопия — яйца с бластомерами), лярвоскопия',
+            complications: 'Железодефицитная анемия, кахексия, задержка развития у детей'
+        },
+        {
+            id: 'strongyloides',
+            label: 'Strongyloides stercoralis',
+            disease: 'Стронгилоидоз',
+            size: '2,2 мм / 0,7–0,9 мм (свободноживущие)',
+            fixation: 'Нет (самка внедряется в слизистую кишечника)',
+            features: 'Геогельминт, антропоноз. Уникальное чередование поколений. Аутоинвазия.',
+            dimorphism: 'Самец — хвост загнут вентрально; самка — нитевидная, без хвостового изгиба',
+            eggs_larvae: 'Яйца в фекалиях не ищут (выходят личинки). Личинки: рабдитовидные (L1) и филяриевидные (L3)',
+            egg_features: 'Филяриевидная личинка (L3) — инвазионная, с V-образным расщеплением хвоста',
+            epi_group: 'Геогельминт, антропоноз',
+            invasive: 'Филяриевидная личинка (L3)',
+            route: 'Перкутанный (основной) или алиментарный',
+            migration: 'Есть — кожа → кровь → лёгкие → глотка → кишечник. Возможна аутоинвазия (внутренняя и наружная)',
+            localization: 'Двенадцатиперстная кишка (самки в криптах), кожа, лёгкие (личинки)',
+            diagnostics: 'Фекалии (метод Бермана — личинки), дуоденальное содержимое, мокрота, ИФА',
+            complications: 'Аутогиперинвазия → пневмония, менингоэнцефалит, сепсис, летальный исход'
+        },
+        {
+            id: 'trichinella',
+            label: 'Trichinella spiralis',
+            disease: 'Трихинеллёз',
+            size: '3–4 мм / 1,4–1,6 мм',
+            fixation: 'Ротовая капсула со стилетом (для пробивания тканей)',
+            features: 'Биогельминт, антропозооноз. Живородящая. Капсулы в мышцах до 20–25 лет.',
+            dimorphism: 'Самец — две лопасти на хвосте; самка — крупнее, без лопастей',
+            eggs_larvae: 'Живородящая (яйца внутри матки → личинки). Личинки инкапсулируются в мышцах',
+            egg_features: 'Личинки в капсулах (лимоновидные) — инвазионны до 20–25 лет',
+            epi_group: 'Биогельминт, антропозооноз',
+            invasive: 'Инкапсулированная личинка в мышцах',
+            route: 'Алиментарный (сырое/недоваренное мясо: свинина, кабан, медведь)',
+            migration: 'Есть — личинки из мяса → тонкий кишечник (взрослые) → рождение личинок → кровь → мышцы (капсулы)',
+            localization: 'Тонкий кишечник (взрослые); поперечнополосатые мышцы (личинки)',
+            diagnostics: 'Биопсия мышц (трихинеллоскопия), серология (ИФА), анамнез',
+            complications: 'Миокардит, менингоэнцефалит, отёк лица («одутловатка»), летальный исход'
+        },
+        {
+            id: 'dracunculus',
+            label: 'Dracunculus medinensis',
+            disease: 'Дракункулез',
+            size: '30–120 см (самка) / 12–30 мм (самец)',
+            fixation: 'Нет (мигрирует в подкожной клетчатке)',
+            features: 'Биогельминт, антропоноз. Самая длинная нематода человека. Живородящая.',
+            dimorphism: 'Самец — мелкий; самка — гигантская, с загнутым хвостом',
+            eggs_larvae: 'Живородящая (личинки L1 с нитевидным хвостом). L3 в циклопе — инвазионная',
+            egg_features: 'Личинки выстреливаются в воду при контакте язвы с водой. Циклоп — промежуточный хозяин',
+            epi_group: 'Биогельминт, антропоноз',
+            invasive: 'Личинка L3 в теле циклопа',
+            route: 'Водный (проглатывание циклопов с сырой водой)',
+            migration: 'Есть — личинка из циклопа → стенка кишечника → миграция 9–12 месяцев → подкожная клетчатка ног',
+            localization: 'Подкожная клетчатка (преимущественно ног)',
+            diagnostics: 'Клинический (обнаружение подкожного тяжа или конца самки), рентген',
+            complications: 'Абсцессы, флегмоны, гангрена, сепсис, анкилозы суставов'
+        },
+        {
+            id: 'filariae',
+            label: 'Филярии (обобщённо)',
+            disease: 'Филяриатозы (вухерериоз, бругиоз, лоаоз, онхоцеркоз)',
+            size: 'Самки 80–100 мм (до 700 мм у онхоцерки) / самцы до 40 мм',
+            fixation: 'Нет',
+            features: 'Биогельминты, трансмиссивные. Эндосимбиоз с Wolbachia. Живородящие. Циркадные миграции.',
+            dimorphism: 'Самец — хвост загнут вентрально, есть «морщинистая область»; самка — крупнее',
+            eggs_larvae: 'Живородящие. Личинки — микрофилярии (L1) с чехликом (у некоторых). L3 в насекомом — инвазионная',
+            egg_features: 'Микрофилярии циркулируют в крови или коже. Периодичность: ночная (вухерерия), дневная (лоа-лоа), апериодичная (онхоцерка)',
+            epi_group: 'Биогельминты, трансмиссивные',
+            invasive: 'Личинка L3 в хоботке насекомого-переносчика',
+            route: 'Трансмиссивный (укус комара, слепня или мошки)',
+            migration: 'Есть — L3 из хоботка → кожа → лимфа/кровь → лимфоузлы/подкожная клетчатка → взрослые (3–18 мес)',
+            localization: 'Лимфатические сосуды (вухерерия, бругия) или подкожная клетчатка/глаза (лоа-лоа, онхоцерка, дирофилярия)',
+            diagnostics: 'Толстая капля крови (вухерерия, бругия, лоа-лоа); кожные срезы (онхоцеркоз); биомикроскопия глаза; ИФА',
+            complications: 'Слоновость (лимфатический синдром), слепота (онхоцеркоз), калабарская опухоль (лоаоз)'
+        }
+    ];
+
+    // ===== НАСТРОЙКА ТАБЛИЦ =====
+    const tableConfigs = {
+        1: {
+            fields: ['disease', 'size', 'fixation', 'features'],
+            headers: ['Заболевание', 'Размеры (самка/самец)', 'Органы фиксации', 'Особенности'],
+            resultId: 'result1',
+            bodyId: 'table1Body'
+        },
+        2: {
+            fields: ['dimorphism', 'eggs_larvae', 'egg_features'],
+            headers: ['Половой диморфизм', 'Яйца / Личинки', 'Особенности яиц/личинок'],
+            resultId: 'result2',
+            bodyId: 'table2Body'
+        },
+        3: {
+            fields: ['epi_group', 'invasive', 'route', 'migration'],
+            headers: ['Эпид. группа', 'Инвазионная стадия', 'Механизм заражения', 'Миграция в организме'],
+            resultId: 'result3',
+            bodyId: 'table3Body'
+        },
+        4: {
+            fields: ['localization', 'diagnostics', 'complications'],
+            headers: ['Локализация в человеке', 'Материал для диагностики', 'Осложнения'],
+            resultId: 'result4',
+            bodyId: 'table4Body'
+        }
+    };
+
+    // ===== ПОСТРОЕНИЕ ТАБЛИЦ =====
+    function buildAllTables() {
+        for (const [tableNum, config] of Object.entries(tableConfigs)) {
+            const tbody = document.getElementById(config.bodyId);
+            tbody.innerHTML = '';
+            speciesData.forEach((row, idx) => {
+                const tr = document.createElement('tr');
+                // Вид
+                const tdSpecies = document.createElement('td');
+                tdSpecies.className = 'species-cell';
+                tdSpecies.innerHTML = row.label + `<span class="sub">${row.disease}</span>`;
+                tr.appendChild(tdSpecies);
+
+                config.fields.forEach(field => {
+                    const td = document.createElement('td');
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.id = `t${tableNum}-${idx}-${field}`;
+                    input.placeholder = 'введите...';
+                    input.dataset.row = idx;
+                    input.dataset.field = field;
+                    input.dataset.table = tableNum;
+                    td.appendChild(input);
+                    tr.appendChild(td);
+                });
+
+                tbody.appendChild(tr);
+            });
+        }
+    }
+
+    // ===== ПРОВЕРКА ТАБЛИЦЫ =====
+    function checkTable(tableNum) {
+        const config = tableConfigs[tableNum];
+        const resultBox = document.getElementById(config.resultId);
+        let correctCount = 0;
+        let total = speciesData.length * config.fields.length;
+
+        document.querySelectorAll(`#table${tableNum} td input`).forEach(inp => {
+            inp.classList.remove('correct-input', 'wrong-input');
+        });
+
+        speciesData.forEach((row, idx) => {
+            config.fields.forEach(field => {
+                const input = document.getElementById(`t${tableNum}-${idx}-${field}`);
+                if (!input) return;
+                const userValue = input.value.trim().toLowerCase();
+                const correctValue = row[field].toLowerCase();
+                const isCorrect = userValue === correctValue;
+                if (isCorrect) {
+                    correctCount++;
+                    input.classList.add('correct-input');
+                } else {
+                    input.classList.add('wrong-input');
+                }
+            });
+        });
+
+        resultBox.classList.add('show');
+        resultBox.innerHTML = `
+            <div class="score">${correctCount} / ${total}</div>
+            <div class="detail">${Math.round((correctCount/total)*100)}% правильных ответов</div>
+        `;
+    }
+
+    // ===== ПОДСКАЗКИ =====
+    function fillHints(tableNum) {
+        const config = tableConfigs[tableNum];
+        speciesData.forEach((row, idx) => {
+            config.fields.forEach(field => {
+                const input = document.getElementById(`t${tableNum}-${idx}-${field}`);
+                if (input) {
+                    input.value = row[field];
+                    input.classList.remove('correct-input', 'wrong-input');
+                }
+            });
+        });
+        document.getElementById(config.resultId).classList.remove('show');
+    }
+
+    // ===== СБРОС =====
+    function resetTable(tableNum) {
+        const config = tableConfigs[tableNum];
+        document.querySelectorAll(`#table${tableNum} td input`).forEach(inp => {
+            inp.value = '';
+            inp.classList.remove('correct-input', 'wrong-input');
+        });
+        document.getElementById(config.resultId).classList.remove('show');
+    }
+
+    // ===== НАВЕШИВАНИЕ ОБРАБОТЧИКОВ =====
+    document.querySelectorAll('[data-table]').forEach(btn => {
+        const tableNum = parseInt(btn.dataset.table);
+        btn.addEventListener('click', function() {
+            if (this.textContent.includes('Проверить')) {
+                checkTable(tableNum);
+            } else if (this.textContent.includes('Подсказки')) {
+                fillHints(tableNum);
+            } else if (this.textContent.includes('Очистить')) {
+                resetTable(tableNum);
+            }
+        });
+    });
+
+    // ===== ИНИЦИАЛИЗАЦИЯ =====
+    buildAllTables();
+</script>
+
+</body>
+</html>

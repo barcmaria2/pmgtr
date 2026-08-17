@@ -1,0 +1,301 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+    }
+
+    .tab-content-inner .intro {
+        font-size: 17px;
+        color: #475569;
+        margin-bottom: 20px;
+        padding: 16px 22px;
+        background: #f8fafc;
+        border-radius: 12px;
+        border-left: 4px solid #2563eb;
+    }
+
+    .tab-content-inner .intro strong {
+        color: #1e293b;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2563eb;
+        margin: 28px 0 12px 0;
+        letter-spacing: -0.01em;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #e9edf3;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Карточки методов ===== */
+    .method-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 16px 0 24px 0;
+    }
+
+    .method-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 22px;
+        border: 1px solid #e9edf3;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .method-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .method-card .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+    }
+
+    .method-card .card-header .num {
+        font-weight: 700;
+        font-size: 14px;
+        color: #fff;
+        background: #2563eb;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .method-card .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        line-height: 1.2;
+    }
+
+    .method-card .card-body {
+        color: #334155;
+        font-size: 15px;
+        flex: 1;
+    }
+
+    .method-card .card-body .principle {
+        display: block;
+        margin-top: 4px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .method-card .card-body .principle::before {
+        content: "⚙️";
+        position: absolute;
+        left: -4px;
+        font-size: 14px;
+    }
+
+    .method-card .card-body .steps {
+        display: block;
+        margin-top: 6px;
+        padding-left: 20px;
+        position: relative;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .method-card .card-body .steps::before {
+        content: "📋";
+        position: absolute;
+        left: -4px;
+        font-size: 14px;
+    }
+
+    .method-card .card-body .note {
+        display: block;
+        margin-top: 8px;
+        padding: 8px 14px;
+        background: #fffbeb;
+        border-left: 3px solid #f59e0b;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #92400e;
+    }
+
+    .method-card .card-body .note strong {
+        color: #78350f;
+    }
+
+    .method-card.native {
+        border-left: 4px solid #10b981;
+    }
+
+    .method-card.flotation {
+        border-left: 4px solid #f59e0b;
+    }
+
+    .method-card.other {
+        border-left: 4px solid #8b5cf6;
+        grid-column: 1 / -1;
+    }
+
+    /* ===== Список дополнительных методов ===== */
+    .method-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 8px 0 0 0;
+    }
+
+    .method-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 4px;
+        line-height: 1.5;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .method-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .method-list li strong {
+        color: #1e293b;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 768px) {
+        .method-grid {
+            grid-template-columns: 1fr;
+        }
+        .method-card.other {
+            grid-column: 1;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 22px;
+        }
+        .tab-content-inner h3 {
+            font-size: 18px;
+        }
+        .tab-content-inner .intro {
+            padding: 14px 16px;
+            font-size: 15px;
+        }
+        .method-card {
+            padding: 16px 18px;
+        }
+        .method-card .card-header .num {
+            width: 28px;
+            height: 28px;
+            font-size: 12px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2>Методы гельминтоовоскопии</h2>
+
+    <div class="intro">
+        <strong>Гельминтоовоскопия</strong> — это микроскопические методы лабораторной диагностики, направленные на обнаружение яиц паразитических червей в фекалиях больного. Размеры и морфология яиц (овометрия) специфичны для каждого вида гельминта, что позволяет поставить точный диагноз.
+    </div>
+
+    <h3>Основные методы овогельминтоскопии</h3>
+
+    <div class="method-grid">
+
+        <!-- ===== 1. МЕТОД НАТИВНОГО МАЗКА ===== -->
+        <div class="method-card native">
+            <div class="card-header">
+                <span class="num">1</span>
+                <span class="card-title">Метод нативного мазка</span>
+            </div>
+            <div class="card-body">
+                <div>На предметное стекло наносят две капли <strong>50% раствора глицерина</strong>. В каждую каплю помещают небольшой кусочек кала (размером с просяное зерно) и тщательно растирают до получения равномерного прозрачного мазка. Затем препарат накрывают покровным стеклом и исследуют под микроскопом.</div>
+                <span class="steps"><strong>Особенности:</strong> простой, быстрый, но малочувствительный метод; эффективен при высокой интенсивности инвазии.</span>
+            </div>
+        </div>
+
+        <!-- ===== 2. МЕТОД КАЛАНТАРЯН ===== -->
+        <div class="method-card flotation">
+            <div class="card-header">
+                <span class="num">2</span>
+                <span class="card-title">Метод Калантарян</span>
+            </div>
+            <div class="card-body">
+                <div>Основан на всплывании яиц гельминтов в <strong>насыщенном растворе азотно-кислого натрия</strong> (за счёт разницы удельного веса) в течение 20–30 минут.</div>
+                <span class="steps"><strong>Методика:</strong> 2–3 г фекалий (размером с лесной орех) помещают в стаканчик, смачивают раствором азотно-кислого натрия и тщательно растирают деревянной палочкой. Затем доливают этот же раствор до объёма 50–100 мл. Через 20–30 минут поверхностную плёнку (в которой скапливаются всплывшие яйца) аккуратно снимают прокалённой проволочной петлёй, переносят на предметное стекло, накрывают покровным стеклом и микроскопируют при малом увеличении.</span>
+                <span class="note"><strong>💡 Преимущество:</strong> более чувствительный метод, чем нативный мазок, позволяет обнаружить яйца даже при низкой интенсивности инвазии.</span>
+            </div>
+        </div>
+
+        <!-- ===== 3. ДРУГИЕ МЕТОДЫ ===== -->
+        <div class="method-card other">
+            <div class="card-header">
+                <span class="num">3</span>
+                <span class="card-title">Другие методы</span>
+            </div>
+            <div class="card-body">
+                <div>В лабораторной практике также применяются дополнительные методы диагностики:</div>
+                <ul class="method-list">
+                    <li><strong>Методы седиментации (осаждения)</strong> — формалин-эфирный и уксусно-эфирный.</li>
+                    <li><strong>Метод толстого мазка по Като</strong> — позволяет количественно оценить интенсивность инвазии.</li>
+                    <li><strong>Метод флотации по Фюллеборну</strong> — основан на всплывании яиц в насыщенном растворе поваренной соли.</li>
+                </ul>
+                <span class="note"><strong>📌 Важно:</strong> Выбор метода зависит от предполагаемого возбудителя, так как разные методы имеют разную чувствительность для яиц разных гельминтов.</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>

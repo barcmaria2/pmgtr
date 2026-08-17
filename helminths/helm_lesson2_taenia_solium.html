@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свиной цепень (Taenia solium) — урок 2</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА (полная ширина) ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ (полная ширина) ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== ТАБЛИЦА ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 55%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image {
+            margin-top: 12px;
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image img,
+        .stage-row .left-col .additional-image .placeholder {
+            max-width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ДЛЯ БЛОКА МАРИТА ===== */
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ (жизненный цикл) ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .stage-row .left-col .additional-image {
+                flex: 0 0 auto;
+                margin-top: 12px;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .pathogenic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+
+            .pathogenic-table {
+                font-size: 12px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🐖</span> Свиной (вооружённый) цепень</h1>
+    <div class="subtitle"><strong>Taenia solium</strong> — возбудитель <strong>тениоза</strong> и <strong>цистицеркоза</strong></div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)<br>
+            <strong>Класс:</strong> Ленточные черви (Cestoda)<br>
+            <strong>Отряд:</strong> Цепни (Cyclophyllidea)<br>
+            <strong>Вид:</strong> Свиной, или вооружённый цепень (<em>Taenia solium</em>)
+        </p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Тениоз (кишечная форма) и Цистицеркоз (тканевая форма).</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозооноз, природно-очаговое заболевание.</div>
+        <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Повсеместно.</div>
+    </div>
+
+    <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 1. Половозрелая особь -->
+    <h3>1. Половозрелая особь</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма и размеры:</strong> Ленточный червь. Длина — <strong>2–3 метра</strong> (редко до 5–8 м). Стробила состоит из 800–1000 члеников. Тело лентовидное, сплющенное в дорзовентральном направлении.
+            </p>
+
+            <p>
+                <strong>Сколекс (головка):</strong> Имеет 4 присоски и дополнительный втягивающийся <strong>хоботок с двойным венчиком хитиновых крючьев</strong> (22–32 крючка). Именно поэтому он называется «вооружённым».
+            </p>
+
+            <p>
+                <strong>Отсутствующие системы органов:</strong> В связи с адаптацией к паразитизму полностью отсутствуют пищеварительная, кровеносная и дыхательная системы. Питание осмотически всей поверхностью тела.
+            </p>
+
+            <h4>Половая система (гермафродит):</h4>
+            <ul>
+                <li><strong>Гермафродитный членик:</strong> Яичник состоит из <strong>трёх долей</strong> – двух крупных основных и одной дополнительной мелкой третьей дольки (важный диагностический признак!).</li>
+                <li><strong>Зрелый членик:</strong> Матка <strong>закрытого типа</strong> (слепо замкнутая). От центрального ствола матки отходит от <strong>7 до 12 боковых ответвлений</strong> с каждой стороны.</li>
+                <li><strong>Подвижность члеников:</strong> Зрелые концевые членики <strong>неподвижны</strong>. Они не способны самостоятельно выползать из анального отверстия и выделяются пассивно с фекалиями, часто группами по 5–6 члеников.</li>
+            </ul>
+        </div>
+
+        <!-- Изображение мариты -->
+        <div class="image-col">
+            <img src="images/helminths/taenia_solium_marita_scheme.jpg"
+                 alt="Марита свиного цепня — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Марита <em>Taenia solium</em>
+                <span class="small">(taenia_solium_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">сколекс с крючьями, стробила, членики</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Яйцо -->
+    <h3>2. Яйцо</h3>
+
+    <div class="stage-row">
+        <!-- Левая колонка: текст + второе фото под ним -->
+        <div class="left-col">
+            <div class="text">
+                <p>
+                    <strong>Размеры:</strong> 30х40 мкм.<br>
+                    <strong>Форма и цвет:</strong> Округлые, покрыты толстой, радиально исчерченной оболочкой коричневого цвета.<br>
+                    <strong>Содержимое:</strong> Внутри яйца находится <strong>онкосфера</strong> с шестью крючьями.<br>
+                    <strong>Важное примечание:</strong> Яйца свиного и бычьего цепней <strong>абсолютно идентичны</strong> морфологически. При копроовоскопии невозможно определить вид – в лаборатории пишут «обнаружены яйца <em>Taenia</em> spp.».
+                </p>
+            </div>
+            <!-- Второе фото (микроскопическое) сразу под текстом -->
+            <div class="additional-image">
+                <img src="images/helminths/taenia_egg_microscope.jpg"
+                     alt="Микроскопическое фото яйца свиного цепня"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🔬</span>
+                    Микроскопическое фото яйца <em>Taenia</em> spp.
+                    <span class="small">(taenia_egg_microscope.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">радиально исчерченная оболочка, онкосфера</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: схема яйца -->
+        <div class="right-col">
+            <img src="images/helminths/taenia_egg_scheme.jpg"
+                 alt="Схема яйца свиного цепня"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🥚</span>
+                Схема яйца <em>Taenia</em> spp.
+                <span class="small">(taenia_egg_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">радиальная исчерченность, онкосфера</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Финна -->
+    <h3>3. Финна (инвазионная стадия для человека)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Тип финны:</strong> <span class="spec">Цистицерк</span>.<br>
+                <strong>Внешний вид:</strong> Пузырёк с жидкостью, внутрь которого ввернута головка с присосками и крючьями.<br>
+                <strong>Размеры:</strong> До 2–5 см.<br>
+                <strong>Локализация в промежуточном хозяине:</strong> В мышцах свиньи, а при цистицеркозе – в различных органах человека (головной мозг, глаза, мышцы, подкожная клетчатка).
+            </p>
+        </div>
+
+        <!-- Изображение финны -->
+        <div class="image-col">
+            <img src="images/helminths/taenia_solium_finna_scheme.jpg"
+                 alt="Финна свиного цепня — цистицерк"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🫧</span>
+                Финна <em>Taenia solium</em> (цистицерк)
+                <span class="small">(taenia_solium_finna_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">пузырёк с ввернутой головкой, присоски и крючья</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Биогельминт (со сменой хозяев).<br>
+        <span class="spec">Уникальная особенность:</span> Промежуточным хозяином для свиного цепня может выступать <strong>сам человек</strong>.<br>
+        <strong>Окончательный (дефинитивный) хозяин:</strong> <span class="spec">Только человек</span> (взрослый червь в тонком кишечнике).<br>
+        <strong>Промежуточный хозяин:</strong> Домашняя свинья и дикий кабан. Также <strong>человек</strong> (при цистицеркозе).<br>
+        <strong>Инвазионная стадия для человека:</strong> При тениозе – финна типа цистицерк в свинине; при цистицеркозе – яйцо с онкосферой.<br>
+        <strong>Патогенная стадия:</strong> При тениозе – марита; при цистицеркозе – финна (цистицерк).<br>
+        <strong>Локализация в организме человека:</strong> При тениозе – тонкий кишечник; при цистицеркозе – головной мозг, глаза, скелетные мышцы, подкожная клетчатка.
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/taenia_solium_life_cycle.jpg"
+             alt="Жизненный цикл свиного цепня"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Жизненный цикл <em>Taenia solium</em>
+            <span class="small">(taenia_solium_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">человек (тениоз) → яйцо → свинья (финна) → человек; также яйцо → человек (цистицеркоз)</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла -->
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Выделение во внешнюю среду:</strong> Зрелые неподвижные членики отрываются от стробилы и пассивно выходят с фекалиями больного человека. В окружающей среде оболочка членика разрушается, высвобождая яйца с онкосферами.</li>
+        <li><strong>Заражение промежуточного хозяина (свиньи):</strong> Свиньи заражаются, поедая нечистоты (копрофагия), заглатывая целые проглоттиды или яйца. В мышцах свиньи онкосфера превращается в инвазионную финну – цистицерк.</li>
+        <li><strong>Заражение человека (тениоз):</strong>
+            <ul>
+                <li><strong>Механизм:</strong> Фекально-оральный.</li>
+                <li><strong>Путь передачи:</strong> Алиментарный (употребление в пищу сырой или недостаточно термически обработанной финнозной свинины).</li>
+            </ul>
+        </li>
+        <li><strong>Заражение человека (цистицеркоз):</strong>
+            <ul>
+                <li><strong>Механизм:</strong> Фекально-оральный.</li>
+                <li><strong>Путь передачи:</strong> Контактно-бытовой (случайное проглатывание яиц с грязных рук, немытых овощей, ягод или при питье загрязнённой воды).</li>
+                <li><strong>Аутоинвазия:</strong> При рвоте больного тениозом зрелые членики забрасываются из кишечника в желудок, их оболочка переваривается, высвобождаются яйца с онкосферами, которые затем проникают в кровоток.</li>
+            </ul>
+        </li>
+        <li><strong>Развитие в организме человека:</strong>
+            <ul>
+                <li><strong>При тениозе:</strong> В кишечнике из финны выворачивается сколекс, прикрепляется крючьями и присосками к слизистой, начинается рост ленточной стадии.</li>
+                <li><strong>При цистицеркозе:</strong> Онкосферы пробуравливают стенку кишки, проникают в кровоток и заносятся в различные органы (мозг, глаза, мышцы), превращаясь в цистицерки.</li>
+            </ul>
+        </li>
+        <li><strong>Продолжительность жизни в организме человека:</strong> До <strong>10–20 лет</strong>.</li>
+    </ol>
+
+    <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ ===== -->
+    <h2><span class="emoji">⚡</span> Патогенное действие</h2>
+
+    <div class="table-wrapper">
+        <table class="pathogenic-table">
+            <thead>
+                <tr>
+                    <th class="col-mechanism">Форма / Механизм</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-mechanism">Тениоз (кишечная форма)</td>
+                    <td>Присоски и крючья травмируют слизистую кишечника, вызывая воспаление, боли, нарушение пищеварения.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Цистицеркоз (тканевая форма)</td>
+                    <td>Финны в головном мозге вызывают тяжёлые неврологические нарушения (эпилепсия, гидроцефалия, менингит); в глазах – потеря зрения; в мышцах – образование плотных узлов.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <h4>Тениоз (диагностика кишечной формы):</h4>
+    <p>
+        <strong>Материал:</strong> Фекалии.<br>
+        <strong>Метод:</strong> Гельминтоскопия (макроскопическое исследование) – поиск <strong>неподвижных члеников</strong> с подсчётом боковых ответвлений матки (у свиного цепня – <strong>7–12</strong> с каждой стороны).<br>
+        <strong>Важное примечание:</strong> Перианальный соскоб малоэффективен, так как членики неподвижны и не выползают самостоятельно.
+    </p>
+
+    <h4>Цистицеркоз (диагностика тканевой формы):</h4>
+    <ul>
+        <li><strong>Инструментальные методы:</strong> КТ, МРТ (выявление кист в головном мозге), УЗИ, офтальмоскопия (при поражении глаз).</li>
+        <li><strong>Серологические методы:</strong> ИФА (обнаружение антител в сыворотке крови и ликворе).</li>
+    </ul>
+
+    <div class="note">
+        <strong>⚠️ Важное примечание:</strong><br>
+        Яйца свиного цепня идентичны яйцам бычьего цепня. При обнаружении в кале только яиц в лаборатории пишут «обнаружены яйца <em>Taenia</em> spp.».
+        Для дифференциальной диагностики необходимо исследовать целые членики и подсчитать количество боковых ответвлений матки.
+    </div>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Употреблять в пищу только хорошо проваренную или прожаренную свинину.</li>
+        <li>Тщательно мыть руки после туалета, перед едой.</li>
+        <li>Тщательно мыть овощи, ягоды, фрукты перед употреблением.</li>
+        <li>Кипятить воду при использовании из открытых источников.</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Ветеринарный контроль свинины (обнаружение финн).</li>
+        <li>Строгий санитарный контроль на мясокомбинатах.</li>
+        <li>Выявление и лечение больных тениозом (для предотвращения цистицеркоза у самих больных и окружающих).</li>
+        <li>Санитарно-просветительская работа.</li>
+        <li>Охрана почвы и водоёмов от загрязнения фекалиями.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

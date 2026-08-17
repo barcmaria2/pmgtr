@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шистосомы (Schistosoma) — урок 1</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА (полная ширина) ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ (полная ширина) ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 12px 0 16px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #fafcff;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: #f1f5f9;
+            color: #1e3a8a;
+            font-weight: 700;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .comparison-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #f4f8ff;
+        }
+
+        .comparison-table .col-feature {
+            width: 20%;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ТАБЛИЦА ПАТОГЕННОГО ДЕЙСТВИЯ ===== */
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 16px 0;
+            font-size: 14px;
+            background: #fafcff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .pathogenic-table th {
+            background: #f1f5f9;
+            color: #1e3a8a;
+            font-weight: 700;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .pathogenic-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+        }
+
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pathogenic-table tbody tr:hover {
+            background: #f4f8ff;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ (НЕ РАСТЯГИВАЮТСЯ) ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: flex-start;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+        }
+
+        .stage-row .image-col img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ФОТО ПЕРЕД ТАБЛИЦЕЙ (небольшое) ===== */
+        .egg-image-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 8px 0 16px 0;
+        }
+
+        .egg-image-wrapper img {
+            max-width: 60%;
+            height: auto;
+            max-height: 250px;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .egg-image-wrapper .placeholder {
+            max-width: 60%;
+            aspect-ratio: 4/3;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .egg-image-wrapper .placeholder .icon {
+            font-size: 40px;
+        }
+
+        .egg-image-wrapper .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ (жизненный цикл) ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+            }
+
+            .stage-row .image-col img {
+                max-height: 300px;
+            }
+
+            .egg-image-wrapper img,
+            .egg-image-wrapper .placeholder {
+                max-width: 80%;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .comparison-table,
+            .pathogenic-table {
+                font-size: 13px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .image-col img {
+                max-height: 220px;
+            }
+
+            .egg-image-wrapper img,
+            .egg-image-wrapper .placeholder {
+                max-width: 100%;
+            }
+
+            .comparison-table {
+                font-size: 12px;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 6px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🩸</span> Шистосомы (кровяные сосальщики)</h1>
+    <div class="subtitle"><strong>Schistosoma haematobium</strong>, <strong>S. mansoni</strong>, <strong>S. japonicum</strong> — возбудители <strong>шистосомозов</strong></div>
+
+    <!-- ===== БЛОК 1. СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)<br>
+            <strong>Класс:</strong> Сосальщики (Трематоды) — Trematoda<br>
+            <strong>Виды (основные для человека):</strong> <em>Schistosoma haematobium</em> (урогенитальный шистосомоз), <em>S. mansoni</em> (кишечный шистосомоз), <em>S. japonicum</em> (японский шистосомоз)
+        </p>
+    </div>
+
+    <!-- ===== БЛОК 2. ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Шистосомоз (урогенитальный, кишечный, японский – в зависимости от вида).</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозоонозное (для <em>S. japonicum</em> – зоонозное), природно-очаговое заболевание.</div>
+        <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Тропические и субтропические регионы Африки, Азии, Южной Америки, Ближнего Востока. <em>S. haematobium</em> – Африка, Ближний Восток; <em>S. mansoni</em> – Африка, Южная Америка, Карибы; <em>S. japonicum</em> – Юго-Восточная Азия, Китай, Филиппины.</div>
+    </div>
+
+    <!-- ===== БЛОК 3. МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 3.1. Марита -->
+    <h3>3.1. Марита (половозрелая стадия)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p><span class="spec">Главное отличие от всех остальных трематод:</span> Шистосомы — <strong>раздельнополые</strong> (выражен половой диморфизм).</p>
+
+            <h4>Самец:</h4>
+            <ul>
+                <li>Тело более короткое и широкое (длина <strong>10–15 мм</strong>).</li>
+                <li>Брюшная присоска сильно развита, служит для фиксации к стенке сосуда.</li>
+                <li>На брюшной стороне края тела заворачиваются, образуя продольный желоб – <strong>гинекофорный канал</strong>, в котором постоянно находится самка.</li>
+                <li>Имеет от <strong>3 до 9 семенников</strong>, расположенных в передней части тела на спинной поверхности.</li>
+            </ul>
+
+            <h4>Самка:</h4>
+            <ul>
+                <li>Тело длинное, тонкое, нитевидное (длина до <strong>20–28 мм</strong>).</li>
+                <li>После спаривания постоянно находится в гинекофорном канале самца.</li>
+            </ul>
+
+            <h4>Органы фиксации:</h4>
+            <ul>
+                <li><strong>Ротовая присоска</strong> — терминальная (на переднем конце), у самца с шипиками.</li>
+                <li><strong>Брюшная присоска</strong> — расположена чуть ниже ротовой, у самца крупнее и мощнее.</li>
+            </ul>
+
+            <h4>Покровы и подвижность (тегумент):</h4>
+            <p>Тело покрыто кожно-мускульным мешком (тегументом). На поверхности тегумента (особенно у самцов) имеются многочисленные шипики, обеспечивающие фиксацию к стенкам сосудов и продвижение против тока крови.</p>
+
+            <h4>Пищеварительная система:</h4>
+            <p>Рот → глотка → пищевод. От пищевода отходят две ветви кишечника, которые тянутся вдоль тела, а затем сливаются в единую слепо замкнутую кишку. Анального отверстия нет, непереваренные остатки удаляются через рот.</p>
+
+            <h4>Половая система (раздельнополая):</h4>
+            <ul>
+                <li><strong>Самец:</strong> Несколько семенников (3–9) в передней части тела → семявыносящие протоки → семяпровод → циррус.</li>
+                <li><strong>Самка:</strong> Один удлинённый яичник в задней половине тела → яйцевод → оотип → матка (трубчатая, в передней части тела, содержит яйца). Желточники — расположены по бокам задней половины тела.</li>
+            </ul>
+
+            <h4>Выделительная система (протонефридиальная):</h4>
+            <p>Представлена терминальными клетками с «мерцательным пламенем», тонкими канальцами, которые сливаются в центральный экскреторный канал, открывающийся наружу порой на заднем конце тела.</p>
+
+            <h4>Нервная система:</h4>
+            <p>Ортогон (окологлоточное нервное кольцо и продольные стволы с комиссурами). Органы чувств у взрослых особей не развиты.</p>
+
+            <h4>Кровеносная и дыхательная системы:</h4>
+            <p>Отсутствуют (как у всех плоских червей).</p>
+        </div>
+
+        <!-- Изображение мариты (уменьшено, не растягивается) -->
+        <div class="image-col">
+            <img src="images/helminths/schistosome_marita_scheme.jpg"
+                 alt="Схема мариты шистосом (самец и самка)"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Марита <em>Schistosoma</em> (самец и самка)
+                <span class="small">(schistosome_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">раздельнополые, гинекофорный канал, присоски</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3.2. Яйцо -->
+    <h3>3.2. Яйцо (морфология – важна для диагностики и дифференцировки видов)</h3>
+
+    <!-- ===== ОДНО ФОТО ЯЙЦА ПЕРЕД ТАБЛИЦЕЙ ===== -->
+    <div class="egg-image-wrapper">
+        <img src="images/helminths/schistosome_egg_scheme.jpg"
+             alt="Схема яйца шистосомы"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🥚</span>
+            Схема яйца шистосомы
+            <span class="small">(schistosome_egg_scheme.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">овальное, с характерным шипом, без крышечки</span>
+        </div>
+    </div>
+
+    <!-- Таблица сравнения яиц -->
+    <div class="table-wrapper">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th class="col-feature">Признак</th>
+                    <th><em>Schistosoma haematobium</em></th>
+                    <th><em>Schistosoma mansoni</em></th>
+                    <th><em>Schistosoma japonicum</em></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-feature">Размер</td>
+                    <td>Крупное (~150 мкм)</td>
+                    <td>Крупное (~140–160 мкм)</td>
+                    <td>Более мелкое (~70–100 мкм)</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Цвет</td>
+                    <td>Бесцветное, прозрачное</td>
+                    <td>Желтоватое</td>
+                    <td>Бесцветное</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Форма</td>
+                    <td>Овальное, с суженным концом</td>
+                    <td>Овальное, слегка вытянутое</td>
+                    <td>Широкоовальное</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Шип</td>
+                    <td><strong>Терминальный</strong> (на конце, крупный)</td>
+                    <td><strong>Боковой</strong> (латеральный), крупный</td>
+                    <td><strong>Боковой</strong> (латеральный), маленький, тупой, часто плохо заметен</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Крышечка</td>
+                    <td colspan="3"><strong>Отсутствует</strong> (важное отличие от других сосальщиков!)</td>
+                </tr>
+                <tr>
+                    <td class="col-feature">Оболочка</td>
+                    <td colspan="3">Гладкая, тонкая</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== БЛОК 4. ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Биогельминт (со сменой одного промежуточного хозяина).<br>
+        <span class="spec">Уникальные особенности:</span>
+    </p>
+    <ul>
+        <li>Нет второго промежуточного хозяина.</li>
+        <li>В теле моллюска выпадает стадия редии (развиваются только спороцисты).</li>
+        <li>Инвазионная стадия для человека – <strong>церкарий</strong> (проникает через кожу).</li>
+        <li>Цикл приурочен к пресноводной среде (моллюски и выход церкариев в воду).</li>
+    </ul>
+
+    <p>
+        <strong>Окончательный (дефинитивный) хозяин:</strong> Человек (и обезьяны для <em>S. mansoni</em>; для <em>S. japonicum</em> – также собаки, кошки, КРС, свиньи, грызуны).<br>
+        <strong>Промежуточный хозяин:</strong> Пресноводные брюхоногие моллюски (для <em>S. haematobium</em> – <em>Bulinus</em>, для <em>S. mansoni</em> – <em>Biomphalaria</em> / <em>Planorbis</em>, для <em>S. japonicum</em> – <em>Oncomelania</em>).<br>
+        <strong>Инвазионная стадия:</strong> <span class="spec">Церкарий</span> (в воде).<br>
+        <strong>Патогенная стадия:</strong> <span class="spec">Марита</span> (взрослые черви), яйца и мигрирующие личинки (шистосомулы).<br>
+        <strong>Локализация в организме человека:</strong> В зависимости от вида – см. таблицу ниже.
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/schistosome_life_cycle.jpg"
+             alt="Жизненный цикл шистосом"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🌊</span>
+            Жизненный цикл шистосом
+            <span class="small">(schistosome_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">яйцо → мирацидий → спороциста I → спороциста II → церкарий → шистосомула → марита</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла -->
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Выделение яиц во внешнюю среду:</strong> Самки откладывают яйца в мелких венулах. Зародыш (мирацидий) выделяет ферменты, растворяющие стенку сосуда и тканей органа. Яйца выходят в просвет мочевого пузыря (у <em>S. haematobium</em> – с мочой) или кишечника (у <em>S. mansoni</em> и <em>S. japonicum</em> – с фекалиями) и попадают в пресные водоемы.</li>
+        <li><strong>Выход мирацидия и заражение моллюска:</strong> В воде из яйца выходит свободноплавающая ресничная личинка – <strong>мирацидий</strong>. Она активно внедряется в тело соответствующего вида моллюска.</li>
+        <li><strong>Развитие в промежуточном хозяине (партеногенез):</strong> В теле моллюска происходит бесполое размножение <strong>без стадии редии</strong>. Строгая последовательность: <strong>Мирацидий → Спороциста I порядка (материнская) → Спороциста II порядка (дочерняя) → Церкарий</strong>.</li>
+        <li><strong>Выход церкария из моллюска:</strong> Церкарии выходят из моллюска в воду. Они имеют раздвоенный (вилочковый) хвост и активно плавают.</li>
+        <li><strong>Заражение окончательного хозяина (человека):</strong> Церкарии внедряются через неповрежденную кожу при контакте с зараженной водой (купание, стирка, хождение босиком, работа на рисовых полях).</li>
+    </ol>
+
+    <!-- ===== ЗАРАЖЕНИЕ ОКОНЧАТЕЛЬНОГО ХОЗЯИНА ===== -->
+    <h3>Заражение окончательного хозяина (человека)</h3>
+
+    <p>
+        <strong>Механизм заражения:</strong> Контактный (активное внедрение паразита).<br>
+        <strong>Путь передачи:</strong> <span class="spec">Перкутанный</span> (через кожу) – церкарии активно пробуравливают эпидермис.<br>
+        <strong>Факторы передачи:</strong> Купание, стирка белья, работа на орошаемых полях, хождение босиком в пресных водоемах, содержащих церкариев.
+    </p>
+
+    <div class="note">
+        <strong>⚠️ Важное примечание для экзамена:</strong><br>
+        Это <strong>не алиментарный и не водный путь</strong> (в отличие от многих других трематод), а именно <strong>контактный перкутанный</strong>, так как паразит сам активно внедряется через кожу.<br>
+        Заражение также возможно через слизистые оболочки при питье воды (редко).
+    </div>
+
+    <h4>Миграция в организме человека (подробно):</h4>
+    <ol>
+        <li>Стадия <strong>шистосомулы</strong> → проникновение в сосуды кожи → венозная система → правое сердце → легочные артерии → капилляры легких (миграция может занять несколько дней) → затем через легочные вены в левое сердце и в большой круг кровообращения → <strong>воротная вена печени</strong>.</li>
+        <li>В печени происходит половое созревание (через <strong>4–6 недель</strong>), спаривание.</li>
+        <li>Спаренная пара мигрирует к месту окончательной локализации (вены мочевого пузыря, матки, брыжеечные вены) и начинает откладывать яйца.</li>
+        <li><strong>Продолжительность жизни в организме человека:</strong> В среднем 3–6 лет, но может достигать <strong>25–40 лет</strong>.</li>
+    </ol>
+
+    <h4>Локализация в организме человека (по видам):</h4>
+    <div class="table-wrapper">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th class="col-feature">Вид</th>
+                    <th>Локализация</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-feature"><em>Schistosoma haematobium</em></td>
+                    <td>Вены малого таза, венозные сплетения мочевого пузыря и матки</td>
+                </tr>
+                <tr>
+                    <td class="col-feature"><em>Schistosoma mansoni</em></td>
+                    <td>Брыжеечные вены (система вен толстого кишечника)</td>
+                </tr>
+                <tr>
+                    <td class="col-feature"><em>Schistosoma japonicum</em></td>
+                    <td>Воротная и брыжеечные вены (преимущественно тонкого кишечника)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== БЛОК 5. ПАТОГЕННОЕ ДЕЙСТВИЕ ===== -->
+    <h2><span class="emoji">⚡</span> Патогенное действие</h2>
+
+    <table class="pathogenic-table">
+        <thead>
+            <tr>
+                <th class="col-mechanism">Стадия / Механизм</th>
+                <th>Характеристика</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-mechanism">Стадия внедрения (церкарии)</td>
+                <td>«Зуд купальщиков» – жжение, покраснение, уртикарная сыпь в месте внедрения.</td>
+            </tr>
+            <tr>
+                <td class="col-mechanism">Стадия миграции (шистосомулы)</td>
+                <td>Токсико-аллергическое действие: лихорадка, кашель, увеличение печени и селезенки, выраженная эозинофилия.</td>
+            </tr>
+            <tr>
+                <td class="col-mechanism">Хроническая стадия (яйца)</td>
+                <td>Яйца застревают в тканях, вызывают гранулематозное воспаление, фиброз, образование язв, полипов. При <em>S. haematobium</em> – <strong>терминальная гематурия</strong> (кровь в конце мочеиспускания). При кишечных формах – диарея с кровью, боли в животе. Возможны осложнения (пиелонефрит, цирроз печени, рак мочевого пузыря).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ===== БЛОК 6. ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <p>
+        <strong>Материал для исследования:</strong>
+    </p>
+    <ul>
+        <li><em>S. haematobium</em> – <strong>моча</strong> (осадок, утренняя порция, желательно сбор мочи в конце мочеиспускания).</li>
+        <li><em>S. mansoni</em> и <em>S. japonicum</em> – <strong>фекалии</strong>.</li>
+    </ul>
+
+    <p><strong>Основной метод:</strong> Микроскопия нативных мазков (или методов осаждения/фильтрации) для обнаружения яиц.</p>
+
+    <h4>Диагностические критерии:</h4>
+    <ul>
+        <li>Обнаружение яиц: Находят характерные яйца с шипами (см. таблицу в Блоке 3.2). Яйца <strong>не имеют крышечки</strong>, что является важным отличием от других сосальщиков.</li>
+    </ul>
+
+    <h4>Серологические методы:</h4>
+    <p>ИФА, РНГА, РСК для выявления антител (используются на ранних стадиях, при миграции, когда яйца еще не выделяются).</p>
+
+    <h4>Инструментальные методы:</h4>
+    <p>УЗИ, цистоскопия, ректоскопия, биопсия тканей для выявления гранулем и яиц в тканях.</p>
+
+    <div class="note">
+        <strong>⚠️ Важное примечание:</strong><br>
+        В отличие от фасциолеза и дикроцелиоза, для шистосомозов <strong>не характерен</strong> феномен транзитных яиц, так как яйца не проходят транзитом через кишечник при употреблении зараженной пищи – они выделяются только от больного человека.
+    </div>
+
+    <!-- ===== БЛОК 7. ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Не купаться, не стирать белье, не ходить босиком в пресноводных водоемах в эндемичных районах.</li>
+        <li>Кипятить или фильтровать воду для питья и бытовых нужд в очагах шистосомозов.</li>
+        <li>Использовать защитные резиновые сапоги при работе на рисовых полях.</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Строгая охрана водоемов от загрязнения мочой и фекалиями (санитарно-гигиенические мероприятия, канализация).</li>
+        <li>Выявление и лечение больных людей (массовое обследование населения в эндемичных очагах).</li>
+        <li>Уничтожение промежуточных хозяев (моллюсков) с помощью моллюскоцидов, осушение водоемов, изменение гидрологического режима.</li>
+        <li>Санитарно-просветительская работа среди местного населения и туристов.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,518 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 21px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 32px 0 8px 0;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 8px;
+        border-bottom: 3px solid #e9edf3;
+    }
+
+    .tab-content-inner h3 .badge {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 2px 12px;
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 6px;
+    }
+
+    .badge-impact {
+        background: #ef4444;
+    }
+    .badge-response {
+        background: #10b981;
+    }
+    .badge-adaptation {
+        background: #2563eb;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Связующие тексты ===== */
+    .bridge-text {
+        border-radius: 14px;
+        padding: 18px 24px;
+        margin: 24px 0 28px 0;
+        font-weight: 500;
+        font-size: 15px;
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .bridge-text .icon-big {
+        font-size: 28px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .bridge-text .text {
+        flex: 1;
+    }
+
+    .bridge-text .text strong {
+        color: #1e293b;
+        font-weight: 700;
+    }
+
+    .bridge-text.impact-response {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        border-left: 5px solid #ef4444;
+    }
+
+    .bridge-text.response-adaptation {
+        background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+        border-left: 5px solid #10b981;
+    }
+
+    /* ===== Таблицы ===== */
+    .table-wrapper {
+        overflow-x: auto;
+        margin: 16px 0 24px 0;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .table-wrapper:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .interaction-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        min-width: 620px;
+    }
+
+    .interaction-table thead th {
+        padding: 14px 18px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+    }
+
+    .interaction-table td {
+        padding: 13px 18px;
+        border-bottom: 1px solid #f0f2f5;
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    .interaction-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .interaction-table tbody tr {
+        transition: background 0.2s ease;
+    }
+
+    .interaction-table tbody tr:hover {
+        background: #f8faff;
+    }
+
+    .interaction-table tbody tr:nth-child(even) {
+        background: #fafcff;
+    }
+
+    .interaction-table tbody tr:nth-child(even):hover {
+        background: #f4f8ff;
+    }
+
+    .interaction-table .col-type {
+        width: 17%;
+        font-weight: 700;
+        color: #1e3a8a;
+        font-size: 15px;
+    }
+
+    .interaction-table .col-desc {
+        width: 38%;
+        color: #475569;
+    }
+
+    .interaction-table .col-examples {
+        width: 45%;
+        color: #2563eb;
+        font-weight: 500;
+        font-size: 13px;
+    }
+
+    .interaction-table .col-examples .ex {
+        display: block;
+        padding: 3px 0 3px 22px;
+        position: relative;
+        color: #334155;
+        font-weight: 400;
+        line-height: 1.5;
+    }
+
+    .interaction-table .col-examples .ex::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .interaction-table .col-examples .ex strong {
+        color: #1e293b;
+        font-weight: 600;
+    }
+
+    .interaction-table .col-examples .ex .sub {
+        display: block;
+        padding-left: 12px;
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    /* Стили для заголовков таблиц */
+    .table-impact thead {
+        background: linear-gradient(135deg, #fef2f2, #fee2e2);
+    }
+    .table-impact thead th {
+        color: #991b1b;
+    }
+
+    .table-response thead {
+        background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    }
+    .table-response thead th {
+        color: #065f46;
+    }
+
+    .table-adaptation thead {
+        background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    }
+    .table-adaptation thead th {
+        color: #1e40af;
+    }
+
+    /* Иконки в заголовках таблиц */
+    .table-impact thead th:first-child::before {
+        content: "⚡ ";
+    }
+    .table-response thead th:first-child::before {
+        content: "🛡️ ";
+    }
+    .table-adaptation thead th:first-child::before {
+        content: "🧬 ";
+    }
+
+    /* ===== Легенда для адаптации ===== */
+    .sub-label {
+        font-weight: 600;
+        color: #1e3a8a;
+        display: block;
+        margin-top: 2px;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 700px) {
+        .interaction-table {
+            font-size: 13px;
+            min-width: 480px;
+        }
+        .interaction-table th,
+        .interaction-table td {
+            padding: 10px 12px;
+        }
+        .interaction-table .col-type {
+            width: 20%;
+            font-size: 14px;
+        }
+        .interaction-table .col-desc {
+            width: 35%;
+        }
+        .interaction-table .col-examples {
+            width: 45%;
+        }
+        .interaction-table .col-examples .ex {
+            padding: 2px 0 2px 18px;
+        }
+        .bridge-text {
+            padding: 14px 18px;
+            font-size: 14px;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .bridge-text .icon-big {
+            font-size: 24px;
+        }
+        .tab-content-inner h2 {
+            font-size: 24px;
+        }
+        .tab-content-inner h3 {
+            font-size: 19px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .interaction-table {
+            font-size: 12px;
+            min-width: 400px;
+        }
+        .interaction-table th,
+        .interaction-table td {
+            padding: 8px 10px;
+        }
+        .interaction-table .col-type {
+            font-size: 13px;
+        }
+        .interaction-table .col-examples .ex {
+            font-size: 12px;
+        }
+        .tab-content-inner h3 .badge {
+            font-size: 11px;
+            padding: 1px 10px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">⚔️</span> Взаимодействие паразита и хозяина</h2>
+
+    <p>
+        Взаимоотношения в системе «паразит — хозяин» представляют собой сложный динамический процесс, в котором каждая сторона оказывает многоплановое воздействие на другую. Паразит стремится использовать ресурсы хозяина для собственного выживания и размножения, а хозяин, в свою очередь, развивает защитные механизмы, направленные на ограничение жизнедеятельности или полное уничтожение возбудителя. В ходе длительной коэволюции у паразитов сформировались специализированные адаптации, позволяющие им противостоять защитным реакциям хозяина.
+    </p>
+
+    <!-- ===== 1. ВОЗДЕЙСТВИЕ ПАРАЗИТА ===== -->
+    <h3>
+        <span>💥 1. Воздействие паразита на организм хозяина</span>
+        <span class="badge badge-impact">Патогенез</span>
+    </h3>
+
+    <p>Паразиты оказывают на хозяина многогранное повреждающее действие, которое может проявляться на разных уровнях — от механического разрушения тканей до системных нарушений обмена веществ и иммунного ответа.</p>
+
+    <div class="table-wrapper">
+        <table class="interaction-table table-impact">
+            <thead>
+                <tr>
+                    <th class="col-type">Тип воздействия</th>
+                    <th class="col-desc">Характеристика</th>
+                    <th class="col-examples">Примеры</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-type">Механическое</td>
+                    <td>Повреждение органов и тканей хозяина: нарушение целостности, ущемление, сдавливание, разрушение клеток или полная закупорка протоков и полостей.</td>
+                    <td class="col-examples">
+                        <span class="ex">Личинки аскариды при миграции разрывают и повреждают стенки кишечника и альвеол лёгких</span>
+                        <span class="ex">Скопление взрослых аскарид вызывает закупорку и непроходимость кишечника</span>
+                        <span class="ex">Растущий эхинококковый пузырь давит на окружающие ткани (печень, головной мозг)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-type">Токсико-аллергическое</td>
+                    <td>Отравление или аллергические реакции (сенсибилизация) в результате прямого действия продуктов жизнедеятельности (метаболитов) или распада погибших паразитов.</td>
+                    <td class="col-examples">
+                        <span class="ex">Зуд, отёк и гиперемия на месте укуса кровососущего насекомого (комара, мошки)</span>
+                        <span class="ex">Резкое повышение температуры, лихорадка и озноб в момент массового выхода в кровь продуктов метаболизма малярийных плазмодиев</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-type">Поглощение питательных веществ и витаминов</td>
+                    <td>Общее истощение организма хозяина в результате питания паразита (поглощение крови, тканевой жидкости, переваренной пищи, витаминов).</td>
+                    <td class="col-examples">
+                        <span class="ex">Тяжёлый гиповитаминоз B12 и злокачественное малокровие при дифиллоботриозе (заражении широким лентецом)</span>
+                        <span class="ex">Развитие анемии при интенсивном балантидиазе и анкилостомидозе</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-type">Присоединение вторичной инфекции</td>
+                    <td>Нарушение целостности кожных покровов или слизистой кишечника при внедрении и миграции паразита способствует проникновению патогенных микроорганизмов.</td>
+                    <td class="col-examples">
+                        <span class="ex">Бактериальное инфицирование расчёсов при чесотке или педикулёзе</span>
+                        <span class="ex">Инфицирование язв толстого кишечника при амёбиазе</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== СВЯЗКА 1 ===== -->
+    <div class="bridge-text impact-response">
+        <span class="icon-big">⚡</span>
+        <div class="text">
+            <strong>Ответная реакция хозяина:</strong> В ответ на перечисленные повреждающие воздействия организм хозяина запускает комплекс защитных механизмов, направленных на ослабление, подавление или полное уничтожение паразита. Эти реакции развиваются на разных уровнях организации — от молекулярно-гуморального до тканевого.
+        </div>
+    </div>
+
+    <!-- ===== 2. ОТВЕТНЫЕ РЕАКЦИИ ХОЗЯИНА ===== -->
+    <h3>
+        <span>🛡️ 2. Ответные реакции организма хозяина</span>
+        <span class="badge badge-response">Защита</span>
+    </h3>
+
+    <p>Влияние хозяина на паразита направлено на ослабление, подавление жизнедеятельности или полное уничтожение возбудителя. Эти защитные ответные реакции протекают на разных структурных уровнях:</p>
+
+    <div class="table-wrapper">
+        <table class="interaction-table table-response">
+            <thead>
+                <tr>
+                    <th class="col-type">Уровень реакции</th>
+                    <th class="col-desc">Характеристика</th>
+                    <th class="col-examples">Примеры</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-type">Гуморальные реакции</td>
+                    <td>Представляют собой общие иммунные реакции, связанные с распознаванием антигенов паразита и выработкой специфических антител (иммуноглобулинов, в частности IgE при гельминтозах).</td>
+                    <td class="col-examples">
+                        <span class="ex">Нейтрализация паразитов антителами, что приводит к снижению скорости их размножения, угнетению развития или полной остановке миграции личинок</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-type">Клеточные реакции</td>
+                    <td>Проявляются в изменении размеров, формы, нарушении структуры клеток и их метаболизма при внутриклеточной локализации паразита. Сюда же относится макрофагальный фагоцитоз и образование плотных клеточных инфильтратов вокруг паразита (эозинофилия).</td>
+                    <td class="col-examples">
+                        <span class="ex">Изменение структуры и свойств поверхности эритроцитов человека при их поражении малярийным плазмодием</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-type">Тканевые реакции</td>
+                    <td>Проявляются в виде локального воспаления и последующего образования плотных соединительнотканных капсул вокруг паразита, которые надёжно изолируют его от окружающих здоровых тканей.</td>
+                    <td class="col-examples">
+                        <span class="ex">Инкапсуляция свернутых спиралью личинок трихинелл в поперечнополосатых мышцах</span>
+                        <span class="ex">Образование оболочки вокруг псевдоцист токсоплазмы в головном мозге</span>
+                        <span class="ex">Изоляция эхинококкового пузыря</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== СВЯЗКА 2 ===== -->
+    <div class="bridge-text response-adaptation">
+        <span class="icon-big">🔄</span>
+        <div class="text">
+            <strong>Коэволюционный ответ паразита:</strong> В процессе длительной совместной эволюции (коэволюции) у паразитов сформировался комплекс адаптаций, позволяющий им противостоять защитным реакциям хозяина, успешно размножаться и распространяться. Эти адаптации затрагивают все уровни организации — от морфологии до иммунологических механизмов.
+        </div>
+    </div>
+
+    <!-- ===== 3. АДАПТАЦИИ ПАРАЗИТОВ ===== -->
+    <h3>
+        <span>🧬 3. Адаптации паразитов к паразитическому образу жизни</span>
+        <span class="badge badge-adaptation">Эволюция</span>
+    </h3>
+
+    <p>В процессе длительной коэволюции у паразитов сформировался комплекс адаптаций, обеспечивающих их выживание, размножение и распространение в организме хозяина. Эти адаптации затрагивают все уровни организации:</p>
+
+    <div class="table-wrapper">
+        <table class="interaction-table table-adaptation">
+            <thead>
+                <tr>
+                    <th class="col-type">Вид адаптаций</th>
+                    <th class="col-desc">Характеристика</th>
+                    <th class="col-examples">Примеры</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-type">Морфологические</td>
+                    <td>
+                        <span class="sub-label">📈 Прогрессивные</span>
+                        Развитие специализированных структур и усложнение органов для фиксации в теле хозяина и питания.
+                        <br><br>
+                        <span class="sub-label">📉 Регрессивные</span>
+                        Редукция (упрощение) систем органов, функции которых оказались невостребованными.
+                    </td>
+                    <td class="col-examples">
+                        <span class="ex"><strong>Прогрессивные:</strong> наличие мощных органов фиксации: крючья и присоски у цестод (ленточных червей), присасывательные диски у лямблий</span>
+                        <span class="ex"><strong>Регрессивные:</strong> полное отсутствие пищеварительной системы у ленточных червей, редукция органоидов движения у споровиков</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-type">Биохимические</td>
+                    <td>Выработка специфических химических веществ, облегчающих питание или защищающих от переваривания.</td>
+                    <td class="col-examples">
+                        <span class="ex">Наличие антикоагулянтов в слюне кровососущих членистоногих (комары, клещи, москиты)</span>
+                        <span class="ex">Выработка антиферментных покровов у кишечных паразитов (цестоды и нематоды)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-type">Физиологические</td>
+                    <td>Изменения процессов жизнедеятельности, направленные на компенсацию высокой гибели потомства и повышение вероятности заражения новых хозяев.</td>
+                    <td class="col-examples">
+                        <span class="ex">Чрезвычайно высокая плодовитость и способность к размножению на личиночных стадиях (стадии спороцисты и редии у сосальщиков)</span>
+                        <span class="ex">Синхронизация жизнедеятельности паразита с образом жизни хозяина (самка острицы активна и откладывает яйца ночью)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-type">Иммунологические</td>
+                    <td>Механизмы защиты паразитов от воздействия иммунной системы хозяина.</td>
+                    <td class="col-examples">
+                        <span class="ex"><strong>Антигенная маскировка:</strong> синтез поверхностных антигенов, сходных с белками хозяина (характерно для шистосом)</span>
+                        <span class="ex">Способность регулярно менять антигенную структуру оболочки на протяжении жизненного цикла (трипаносомы, плазмодии)</span>
+                        <span class="ex"><strong>Внутриклеточный паразитизм</strong> (токсоплазма, лейшмании)</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тип Круглые черви (Nemathelminthes) — общая характеристика</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== СПИСОК ВИДОВ ===== */
+        .species-list {
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .species-list .title {
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .species-list .items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        .species-list .items .spec {
+            font-style: italic;
+            color: #1e293b;
+        }
+
+        .species-list .items .spec .rus {
+            font-style: normal;
+            color: #475569;
+        }
+
+        .species-list .items .sep {
+            color: #94a3b8;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul, ol ol, ul ol, ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .highlight {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .evolution {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .evolution strong {
+            color: #78350f;
+        }
+
+        /* ===== ФОТО-ЗАГЛУШКА ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 24px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/6;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+            .species-list .items {
+                font-size: 14px;
+                gap: 4px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px 12px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            h3 {
+                font-size: 17px;
+            }
+            ul, ol {
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            .species-list .items {
+                font-size: 13px;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .full-width-image .placeholder .icon {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🔄</span> Тип Круглые черви</h1>
+    <div class="subtitle"><strong>Nemathelminthes</strong> (Nematoda) — общая характеристика и систематика</div>
+
+    <!-- ===== ТАКСОНОМИЯ ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Круглые черви (Nemathelminthes)<br>
+            <strong>Класс:</strong> Собственно круглые черви, или Нематоды (Nematoda)
+        </p>
+    </div>
+
+    <!-- ===== МЕДИЦИНСКОЕ ЗНАЧЕНИЕ ===== -->
+    <div class="species-list">
+        <div class="title">🧬 Медицинское значение (паразиты человека):</div>
+        <div class="items">
+            <span class="spec"><em>Ascaris lumbricoides</em> <span class="rus">(аскарида человеческая)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Enterobius vermicularis</em> <span class="rus">(острица детская)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Trichocephalus trichiurus</em> <span class="rus">(власоглав)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Ancylostoma duodenale</em> <span class="rus">(кривоголовка)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Necator americanus</em> <span class="rus">(некатор)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Strongyloides stercoralis</em> <span class="rus">(угрица кишечная)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Trichinella spiralis</em> <span class="rus">(трихинелла)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Dracunculus medinensis</em> <span class="rus">(ришта)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Wuchereria bancrofti</em> <span class="rus">(вухерерия)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Brugia malayi</em> <span class="rus">(бругия)</span></span>
+            <span class="sep">·</span>
+            <span class="spec"><em>Loa loa</em> <span class="rus">(лоа-лоа)</span></span>
+        </div>
+    </div>
+
+    <!-- ===== ОБЩЕЕ ФОТО (схема строения) ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/nematode_general_scheme.jpg"
+             alt="Общая схема строения круглых червей"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Общая схема строения круглых червей
+            <span class="small">(nematode_general_scheme.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">поперечный срез, кожно-мускульный мешок, псевдоцель</span>
+        </div>
+    </div>
+
+    <!-- ===== ХАРАКТЕРНЫЕ ЧЕРТЫ ОРГАНИЗАЦИИ ===== -->
+    <h2><span class="emoji">📋</span> Характерные черты организации</h2>
+    <p style="margin-bottom:16px; color:#64748b; font-size:15px;">
+        <span class="highlight">Ароморфозы</span> и отличия от Плоских червей
+    </p>
+
+    <!-- 1. Форма тела и симметрия -->
+    <h3>1. Форма тела и симметрия</h3>
+    <p>
+        Как следует из названия типа, на поперечном срезе их тело имеет <strong>форму круга</strong>.<br>
+        Тело <strong>несегментированное</strong> (в отличие от ленточных червей), цилиндрическое или веретенообразное, заострённое на концах.<br>
+        Как и плоские черви, они <strong>трёхслойные</strong> (развиваются из экто-, энто- и мезодермы) и имеют <strong>двустороннюю (билатеральную) симметрию</strong>.
+    </p>
+
+    <!-- 2. Покровы тела и мышечная система -->
+    <h3>2. Покровы тела и мышечная система</h3>
+    <p>
+        Тело покрыто <strong>кожно-мускульным мешком</strong>, в состав которого входят:
+    </p>
+    <ul>
+        <li><strong>Плотная многослойная кутикула</strong> — служит наружным скелетом и защитой от переваривания соками хозяина.</li>
+        <li><strong>Гиподерма</strong>.</li>
+        <li><strong>Только один слой продольных мышц</strong>.</li>
+    </ul>
+    <div class="evolution">
+        <strong>⚡ Важно для понимания:</strong> Из-за отсутствия кольцевых мышц круглые черви не могут вытягиваться и укорачиваться, они способны лишь <strong>изгибаться в дорзовентральном направлении</strong>.
+    </div>
+
+    <!-- 3. Полость тела (Первый важнейший эволюционный скачок) -->
+    <h3>3. Полость тела <span class="spec">(Первый важнейший эволюционный скачок)</span></h3>
+    <p>
+        В отличие от плоских червей, у которых органы были «залиты» паренхимой, у круглых червей впервые появляется <strong>первичная полость тела (псевдоцель)</strong>.
+    </p>
+    <ul>
+        <li>Она <strong>не имеет собственной эпителиальной выстилки</strong> и заполнена полостной жидкостью под высоким давлением.</li>
+    </ul>
+    <div class="evolution">
+        <strong>⚡ Функции полостной жидкости (частый вопрос в тестах):</strong><br>
+        — выполняет роль <strong>гидростатического скелета</strong> (поддерживает форму упругого тела червя);<br>
+        — служит <strong>внутренней средой</strong> организма, выполняя транспортную функцию (разносит питательные вещества и продукты обмена).
+    </div>
+
+    <!-- 4. Пищеварительная система (Второй важнейший эволюционный скачок) -->
+    <h3>4. Пищеварительная система <span class="spec">(Второй важнейший эволюционный скачок)</span></h3>
+    <p>
+        Пищеварительная трубка впервые становится <strong>сквозной</strong>! Появляется третий, задний отдел кишечника, который заканчивается <strong>анальным отверстием</strong>.
+    </p>
+    <p>
+        Она состоит из:
+    </p>
+    <ul>
+        <li><strong>Переднего отдела</strong> (рот, глотка, пищевод) — у многих видов пищевод имеет мышечные утолщения — <strong>бульбусы</strong>, работающие как насос.</li>
+        <li><strong>Среднего отдела</strong> — где происходит переваривание и всасывание.</li>
+        <li><strong>Заднего отдела</strong> — заканчивается анальным отверстием.</li>
+    </ul>
+
+    <!-- 5. Выделительная система -->
+    <h3>5. Выделительная система</h3>
+    <p>
+        Представлена <strong>1–2 гигантскими клетками</strong> (кожными железами, видоизменёнными протонефридиями), от которых отходят продольные выделительные каналы, сливающиеся в одну <strong>экскреторную пору</strong> на брюшной стороне.
+    </p>
+    <p>
+        Дополнительно имеются особые <strong>фагоцитарные клетки</strong> («почки накопления»), которые захватывают и накапливают в себе нерастворимые продукты обмена веществ.
+    </p>
+
+    <!-- 6. Нервная система и органы чувств -->
+    <h3>6. Нервная система и органы чувств</h3>
+    <p>
+        Стволового типа (<strong>ортогон</strong>).
+    </p>
+    <ul>
+        <li>Состоит из <strong>окологлоточного нервного кольца</strong> (ганглиев) и отходящих от него продольных нервных стволов.</li>
+        <li>Самые крупные и развитые из них — <strong>дорзальный (спинной)</strong> и <strong>вентральный (брюшной)</strong> стволы.</li>
+    </ul>
+    <p>Органы чувств в связи с паразитизмом развиты крайне слабо (в основном хеморецепторы и осязательные сосочки).</p>
+
+    <!-- 7. Кровеносная и дыхательная системы -->
+    <h3>7. Кровеносная и дыхательная системы</h3>
+    <p>
+        Как и у плоских червей, они <strong>полностью отсутствуют</strong>.
+    </p>
+
+    <!-- 8. Половая система (Третий важнейший скачок) -->
+    <h3>8. Половая система <span class="spec">(Третий важнейший скачок)</span></h3>
+    <div class="evolution">
+        <strong>⚡ Очень важно:</strong> В отличие от большинства плоских червей-гермафродитов, абсолютно все круглые черви — <strong>раздельнополые</strong> животные с ярко выраженным <strong>половым диморфизмом</strong>.
+    </div>
+    <p>
+        <strong>Как отличить самца от самки:</strong> самки всегда крупнее самцов, а у самцов задний конец тела <strong>спирально закручен на брюшную сторону</strong> (в виде крючка).
+    </p>
+    <p>
+        Половая система имеет <strong>трубчатое строение</strong>:
+    </p>
+    <ul>
+        <li><strong>Женская половая система</strong> — чаще парная: 2 трубчатых яичника, 2 яйцевода, 2 матки, которые сливаются в одно непарное влагалище.</li>
+        <li><strong>Мужская система</strong> — непарная: один трубчатый семенник, переходящий в семяпровод и семяизвергательный канал (открывается в заднюю кишку — <strong>клоаку</strong>).</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,459 @@
+<style>
+    /* ===== Базовые стили ===== */
+    .tab-content-inner {
+        color: #334155;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        font-size: 16px;
+        padding: 4px 0;
+    }
+
+    .tab-content-inner h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tab-content-inner h2 .emoji {
+        font-size: 30px;
+    }
+
+    .tab-content-inner h3 {
+        font-size: 21px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin: 32px 0 8px 0;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 8px;
+        border-bottom: 3px solid #e9edf3;
+    }
+
+    .tab-content-inner h3 .badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 12px;
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 4px;
+        letter-spacing: 0.02em;
+    }
+
+    .badge-blue {
+        background: #2563eb;
+    }
+    .badge-green {
+        background: #10b981;
+    }
+    .badge-purple {
+        background: #8b5cf6;
+    }
+    .badge-orange {
+        background: #f59e0b;
+    }
+    .badge-red {
+        background: #ef4444;
+    }
+
+    .tab-content-inner p {
+        margin: 0 0 16px 0;
+    }
+
+    .tab-content-inner strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .tab-content-inner .highlight {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .tab-content-inner .highlight-gold {
+        color: #d4a843;
+        font-weight: 700;
+    }
+
+    .tab-content-inner em {
+        font-style: italic;
+        color: #475569;
+    }
+
+    /* ===== Карточки ===== */
+    .topic-card {
+        border-radius: 14px;
+        padding: 20px 24px;
+        margin: 20px 0 24px 0;
+        border-left: 5px solid #2563eb;
+        background: #f8fafc;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .topic-card:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .topic-card.blue {
+        border-left-color: #2563eb;
+        background: linear-gradient(135deg, #eff6ff, #f8faff);
+    }
+
+    .topic-card.green {
+        border-left-color: #10b981;
+        background: linear-gradient(135deg, #ecfdf5, #f8fafc);
+    }
+
+    .topic-card.purple {
+        border-left-color: #8b5cf6;
+        background: linear-gradient(135deg, #f5f3ff, #faf8ff);
+    }
+
+    .topic-card.orange {
+        border-left-color: #f59e0b;
+        background: linear-gradient(135deg, #fffbeb, #fefcf5);
+    }
+
+    .topic-card.red {
+        border-left-color: #ef4444;
+        background: linear-gradient(135deg, #fef2f2, #faf8f8);
+    }
+
+    .topic-card .card-title {
+        font-weight: 700;
+        font-size: 17px;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 4px;
+    }
+
+    .topic-card .card-title .icon {
+        font-size: 22px;
+    }
+
+    .topic-card .card-desc {
+        color: #334155;
+    }
+
+    .topic-card .card-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 8px 0 0 0;
+    }
+
+    .topic-card .card-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 6px;
+        line-height: 1.5;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .topic-card .card-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .topic-card .card-list li strong {
+        color: #1e293b;
+    }
+
+    /* ===== Специальный блок для системы ===== */
+    .system-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        margin: 16px 0 24px 0;
+    }
+
+    .system-item {
+        border-radius: 12px;
+        padding: 16px 20px;
+        text-align: center;
+        border: 1px solid #e9edf3;
+        background: #ffffff;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .system-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .system-item .num {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 24px;
+        color: #2563eb;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 50%;
+        background: #eff6ff;
+        margin-bottom: 6px;
+    }
+
+    .system-item .sys-title {
+        font-weight: 700;
+        font-size: 15px;
+        color: #1e3a8a;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .system-item .sys-desc {
+        font-size: 13px;
+        color: #64748b;
+        line-height: 1.5;
+    }
+
+    .system-item.high {
+        border-color: #10b981;
+        background: #f0fdf4;
+    }
+    .system-item.high .num {
+        background: #10b981;
+        color: #fff;
+    }
+
+    .system-item.mid {
+        border-color: #f59e0b;
+        background: #fffbeb;
+    }
+    .system-item.mid .num {
+        background: #f59e0b;
+        color: #fff;
+    }
+
+    .system-item.low {
+        border-color: #ef4444;
+        background: #fef2f2;
+    }
+    .system-item.low .num {
+        background: #ef4444;
+        color: #fff;
+    }
+
+    /* ===== Адаптация ===== */
+    @media (max-width: 768px) {
+        .system-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tab-content-inner {
+            font-size: 15px;
+        }
+        .tab-content-inner h2 {
+            font-size: 24px;
+        }
+        .tab-content-inner h3 {
+            font-size: 19px;
+        }
+        .topic-card {
+            padding: 16px 18px;
+        }
+        .system-grid {
+            grid-template-columns: 1fr;
+        }
+        .system-item {
+            padding: 14px 16px;
+        }
+        .tab-content-inner h3 .badge {
+            font-size: 10px;
+            padding: 1px 8px;
+        }
+    }
+</style>
+
+<div class="tab-content-inner">
+
+    <h2><span class="emoji">🌍</span> Популяционный уровень взаимодействия паразитов и хозяев</h2>
+
+    <p>
+        Развитие экологической паразитологии, основы которой были заложены <strong>Е. Н. Павловским</strong> и его школой, привело к возникновению <strong>популяционной паразитологии</strong>, в которой взаимоотношения паразита и хозяина рассматриваются не просто как контакт отдельных особей, а на уровне их популяций.
+    </p>
+
+    <!-- ===== 1. ДУАЛИЗМ И КОЭВОЛЮЦИЯ ===== -->
+    <h3>
+        <span>🔄 1. Дуализм и коэволюция в системе «паразит–хозяин»</span>
+        <span class="badge badge-blue">Эволюция</span>
+    </h3>
+
+    <div class="topic-card blue">
+        <div class="card-title"><span class="icon">⚖️</span> Дуализм системы</div>
+        <div class="card-desc">
+            На популяционном уровне система «паразит–хозяин» выступает как единая биологическая единица, своеобразие которой выражается в её <strong>двойственности (дуализме)</strong>.
+        </div>
+        <ul class="card-list">
+            <li><strong>Антагонистический симбиоз</strong> — интересы видов изначально противоречат друг другу.</li>
+            <li><strong>Стабилизация отношений</strong> — в процессе длительной эволюции наблюдается сглаживание антагонизма и выработка равновесной системы.</li>
+        </ul>
+    </div>
+
+    <p>
+        Пути эволюции паразита и хозяина идут <strong>параллельно (коэволюция)</strong>, но в разных направлениях: эволюция паразита направлена на усложнение механизмов адаптации к организму хозяина, а эволюция хозяина — на совершенствование защитных механизмов. В результате такого взаимодействия в системе возникает <strong>взаимная адаптация (коадаптация)</strong>.
+    </p>
+
+    <p><strong>По степени взаимной адаптации системы «паразит–хозяин» классифицируются на три группы:</strong></p>
+
+    <div class="system-grid">
+        <div class="system-item high">
+            <span class="num">1</span>
+            <span class="sys-title">Высокоадаптированные</span>
+            <span class="sys-desc">Противоречия практически не проявляются. Формируется состояние <strong>паразитоносительства</strong> без выраженных клинических признаков.</span>
+        </div>
+        <div class="system-item mid">
+            <span class="num">2</span>
+            <span class="sys-title">Недостаточно адаптированные</span>
+            <span class="sys-desc">Защитные реакции хозяина подавляют жизнедеятельность паразитов, снижают их репродуктивную способность, но при этом <strong>повышают их вирулентность</strong>.</span>
+        </div>
+        <div class="system-item low">
+            <span class="num">3</span>
+            <span class="sys-title">Неадаптированные (транзитные)</span>
+            <span class="sys-desc">Паразиты не завершают свой цикл развития в организме данного хозяина, однако обладают по отношению к нему <strong>наибольшей вирулентностью</strong>.</span>
+        </div>
+    </div>
+
+    <!-- ===== 2. ДЕМОГРАФИЧЕСКИЕ ОСОБЕННОСТИ ===== -->
+    <h3>
+        <span>📊 2. Демографические и экологические особенности популяций</span>
+        <span class="badge badge-green">Экология</span>
+    </h3>
+
+    <div class="topic-card green">
+        <div class="card-title"><span class="icon">🔄</span> Роль в экосистеме</div>
+        <ul class="card-list">
+            <li>В природных экосистемах паразиты являются <strong>консументами 2-го и 3-го порядков</strong> и играют существенную роль в биотическом круговороте веществ.</li>
+            <li>Высокий репродуктивный потенциал паразита приводит к тому, что <strong>величина его популяции обычно значительно превышает численность популяции хозяина</strong> — именно этот демографический признак отличает паразитизм от хищничества.</li>
+            <li>На уровне биогеоценозов наиболее патогенные паразиты выступают как <strong>стабилизаторы численности популяций хозяев</strong>: устраняя избыток особей, они предотвращают нарушение глобального экологического баланса.</li>
+        </ul>
+    </div>
+
+    <!-- ===== 3. ПАРАЗИТИЗМ КАК ФАКТОР ОТБОРА ===== -->
+    <h3>
+        <span>🧬 3. Паразитизм как фактор естественного отбора</span>
+        <span class="badge badge-purple">Генетика</span>
+    </h3>
+
+    <div class="topic-card purple">
+        <div class="card-title"><span class="icon">🧬</span> Влияние на генетическую структуру популяции</div>
+        <ul class="card-list">
+            <li>Наиболее тяжелое течение заболеваний и гибель обычно наблюдаются у особей с <strong>ослабленным иммунитетом</strong>, имеющих наследственные дефекты или врождённую предрасположенность к аллергическим реакциям.</li>
+            <li>Гибель таких организмов убирает из аллелофонда <strong>аллели, снижающие жизнеспособность</strong>, и способствует устойчивости популяции хозяина.</li>
+            <li>При многих инвазиях между популяциями устанавливаются <strong>компромиссные взаимоотношения</strong>: хозяин адаптируется к обитанию в его теле небольшого количества паразитов, присутствие которых создаёт состояние <strong>нестерильного иммунитета</strong>, защищающего от гибельной суперинвазии.</li>
+        </ul>
+    </div>
+
+    <!-- ===== 4. ЧЕЛОВЕЧЕСКИЕ ПОПУЛЯЦИИ ===== -->
+    <h3>
+        <span>🧑‍⚕️ 4. Особенности взаимодействия в человеческих популяциях</span>
+        <span class="badge badge-orange">Антропология</span>
+    </h3>
+
+    <div class="topic-card orange">
+        <div class="card-title"><span class="icon">🧬</span> Исторический аспект</div>
+        <div class="card-desc">
+            Исторически паразитарные болезни, такие как <strong>малярия</strong>, выступали мощнейшей направляющей силой эволюции человеческих популяций. Выживание человека в эндемичных регионах сопровождалось закреплением в популяции <strong>мутантных аллелей</strong>, обеспечивающих генетическую устойчивость к паразитам.
+        </div>
+    </div>
+
+    <p><strong>Яркие примеры популяционного отбора:</strong></p>
+
+    <div class="topic-card" style="border-left-color: #d4a843; background: linear-gradient(135deg, #fefcf5, #faf8f0);">
+        <div class="card-title"><span class="icon">🩸</span> Гемоглобинопатии</div>
+        <ul class="card-list">
+            <li><strong>Серповидно-клеточная анемия, талассемии, гемоглобины С и Е</strong> — наличие этих аномалий в гетерозиготном состоянии снижает вероятность размножения малярийных плазмодиев в эритроцитах и защищает носителей от тяжелых и летальных форм малярии.</li>
+        </ul>
+    </div>
+
+    <div class="topic-card" style="border-left-color: #8b5cf6; background: linear-gradient(135deg, #f5f3ff, #faf8ff);">
+        <div class="card-title"><span class="icon">🧬</span> Отсутствие антигенов Даффи</div>
+        <ul class="card-list">
+            <li>Эта мутация, широко распространённая у коренных жителей Западной и Центральной Африки (до <strong>97 %</strong>), делает эритроциты невосприимчивыми к внедрению <em>Plasmodium vivax</em>, обеспечивая <strong>абсолютную защиту</strong> от трёхдневной малярии.</li>
+        </ul>
+    </div>
+
+    <div class="topic-card" style="border-left-color: #64748b; background: #f8fafc;">
+        <div class="card-title"><span class="icon">📉</span> Современная ситуация</div>
+        <ul class="card-list">
+            <li>В современную эпоху, в связи с социальностью человека, развитием медицины и гигиены, паразитизм как фактор естественного отбора <strong>практически утратил своё значение</strong> в человеческих популяциях.</li>
+            <li>Напротив, теперь <strong>целенаправленная борьба человека с паразитами</strong> (применение лекарств и инсектицидов) сама стала важнейшим фактором эволюции популяций паразитов, заставляя их адаптироваться к новым условиям.</li>
+        </ul>
+    </div>
+
+    <!-- ===== 5. СОВРЕМЕННЫЙ ЭТАП ===== -->
+    <h3>
+        <span>⚡ 5. Современный этап: антропогенный отбор и смена вектора коэволюции</span>
+        <span class="badge badge-red">XXI век</span>
+    </h3>
+
+    <p>
+        В XXI веке давление со стороны человека приобрело новые масштабы и формы, радикально изменив характер взаимодействия на популяционном уровне. Главный вектор эволюционного отбора сместился с <strong>естественного отбора хозяина</strong> (под давлением паразита) на <strong>антропогенный отбор паразита</strong> (под давлением хозяина), что привело к ускоренной, технологически опосредованной коэволюции.
+    </p>
+
+    <p><strong>Ключевые аспекты современного этапа:</strong></p>
+
+    <div class="topic-card red">
+        <div class="card-title"><span class="icon">💊</span> Лекарственная устойчивость паразитов</div>
+        <ul class="card-list">
+            <li><em>Plasmodium falciparum</em> выработал резистентность к хлорохину, сульфадоксину-пириметамину, а в некоторых регионах Юго-Восточной Азии – и к <strong>артемизинину</strong> (основе комбинированной терапии).</li>
+            <li>Аналогичные процессы наблюдаются у гельминтов (снижение чувствительности к бензимидазолам у <em>Ascaris</em> и <em>Trichuris</em>) и у эктопаразитов.</li>
+        </ul>
+    </div>
+
+    <div class="topic-card" style="border-left-color: #f59e0b; background: linear-gradient(135deg, #fffbeb, #fefcf5);">
+        <div class="card-title"><span class="icon">🦟</span> Устойчивость переносчиков</div>
+        <ul class="card-list">
+            <li>Массовое применение инсектицидов привело к отбору резистентных форм у комаров (<em>Anopheles</em>, <em>Aedes</em>) и других членистоногих – переносчиков, что снижает эффективность барьерных мер и требует постоянной смены активных веществ.</li>
+        </ul>
+    </div>
+
+    <div class="topic-card" style="border-left-color: #10b981; background: linear-gradient(135deg, #ecfdf5, #f8fafc);">
+        <div class="card-title"><span class="icon">🌍</span> Экологические сдвиги</div>
+        <ul class="card-list">
+            <li><strong>Урбанизация, глобальное потепление</strong> и интенсификация международных перевозок расширяют ареалы паразитов и переносчиков, создавая новые эпидемиологические ниши (например, распространение лихорадки денге, вируса Зика и чикунгуньи в ранее свободные регионы).</li>
+            <li>Человек непреднамеренно изменяет среду обитания, что делает систему «паразит–хозяин» <strong>динамичной и трудно предсказуемой</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="topic-card" style="border-left-color: #8b5cf6; background: linear-gradient(135deg, #f5f3ff, #faf8ff);">
+        <div class="card-title"><span class="icon">🛡️</span> Гигиеническая гипотеза и иммунные последствия</div>
+        <ul class="card-list">
+            <li>Ослабление естественного отбора и снижение паразитарной нагрузки в развитых странах, по одной из ведущих гипотез, способствует росту <strong>аутоиммунных и аллергических заболеваний</strong>.</li>
+            <li>Иммунная система, лишённая постоянной «тренировки» паразитарными антигенами, становится гиперреактивной — это косвенное, но социально значимое следствие изменения популяционного взаимодействия.</li>
+        </ul>
+    </div>
+
+    <div class="topic-card" style="border-left-color: #ef4444; background: linear-gradient(135deg, #fef2f2, #faf8f8);">
+        <div class="card-title"><span class="icon">⚔️</span> Изменение темпов коэволюции</div>
+        <ul class="card-list">
+            <li>В отличие от медленных естественных процессов, <strong>антропогенный отбор</strong> протекает в масштабах нескольких десятилетий (иногда лет), что делает современную систему «паразит–хозяин» не просто равновесной, а находящейся в постоянной <strong>«гонке вооружений» (arms race)</strong>, где человек вынужден непрерывно разрабатывать новые средства защиты, а паразиты – преодолевать их.</li>
+        </ul>
+    </div>
+
+    <div class="topic-card" style="border-left-color: #1e3a8a; background: linear-gradient(135deg, #eff6ff, #f8faff);">
+        <div class="card-title"><span class="icon">📌</span> Резюме</div>
+        <ul class="card-list">
+            <li>Если классическая популяционная паразитология рассматривала хозяина как <strong>пассивный объект естественного отбора</strong>, то современный этап характеризуется активной ролью человека как <strong>глобального эволюционного фактора</strong>.</li>
+            <li>Это не отменяет фундаментальных законов коэволюции, но существенно ускоряет их и вносит элемент технологического вмешательства, что требует пересмотра стратегий контроля и прогнозирования паразитарных систем.</li>
+        </ul>
+    </div>
+
+</div>

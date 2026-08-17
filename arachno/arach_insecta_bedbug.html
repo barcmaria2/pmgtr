@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Постельный клоп (Cimex lectularius) — морфология, развитие, медицинское значение</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card p strong { color: #1e293b; }
+
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+        .epi-grid .item {
+            font-size: 14px;
+        }
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+        .epi-grid .item.full {
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 700px;
+        }
+        .compare-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .compare-table thead th {
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+            letter-spacing: 0.02em;
+        }
+        .compare-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table tbody tr:hover { background: #f8faff; }
+        .compare-table tbody tr:nth-child(even) { background: #fafcff; }
+        .compare-table tbody tr:nth-child(even):hover { background: #f4f8ff; }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .epi-grid { grid-template-columns: 1fr; }
+            .compare-table { font-size: 12px; min-width: 500px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .compare-table { font-size: 11px; min-width: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">🩸</span> Постельный клоп</h1>
+    <div class="subtitle">
+        <strong><em>Cimex lectularius</em></strong> — постельный клоп, временный эктопаразит человека
+    </div>
+
+    <!-- ===== СИСТЕМАТИЧЕСКОЕ ПОЛОЖЕНИЕ ===== -->
+    <div class="taxonomy-card">
+        <p><strong>Тип:</strong> Членистоногие (Arthropoda)</p>
+        <p><strong>Класс:</strong> Насекомые (Insecta)</p>
+        <p><strong>Отряд:</strong> Полужесткокрылые, или Клопы (Heteroptera / Hemiptera)</p>
+        <p><strong>Семейство:</strong> Постельные клопы (Cimicidae)</p>
+        <p><strong>Род:</strong> <em>Cimex</em></p>
+        <p><strong>Вид:</strong> Постельный клоп — <em>Cimex lectularius</em></p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item full"><strong>Географическое распространение:</strong> Повсеместное (космополит) — встречается во всех климатических зонах, где есть человек.</div>
+        <div class="item full"><strong>Специфичность к хозяину:</strong> Широкий временный эктопаразит. Основной хозяин — человек, но при его отсутствии легко переключается на домашних животных (собак, кошек, птиц, грызунов).</div>
+        <div class="item full"><strong>Специфический переносчик чего:</strong> Не является специфическим переносчиком инфекционных или инвазионных заболеваний человека. Передача патогенов (гепатит В, ВИЧ, чума) в естественных условиях не установлена.</div>
+        <div class="item full"><strong>Характер трансмиссивности:</strong> Отсутствует (не трансмиссивное заболевание).</div>
+    </div>
+
+    <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ РАЗВИТИЯ ===== -->
+    <h2><span class="emoji">🥚</span> Морфологическая характеристика стадий развития</h2>
+
+    <p>Развитие постельного клопа происходит по типу <strong>неполного превращения</strong> (без стадии куколки). Жизненный цикл: <strong>яйцо → нимфы I–V возрастов → имаго</strong>.</p>
+
+    <h3>1. Яйцо</h3>
+    <ul>
+        <li><strong>Форма и размеры:</strong> Длиной около <strong>1 мм</strong>, овальное, белого цвета. На верхнем полюсе имеет характерную откидывающуюся крышечку, через которую нимфа выходит наружу.</li>
+        <li><strong>Развитие:</strong> При комнатной температуре — около 2–3 недель; при 30 °С — всего 6–8 дней.</li>
+    </ul>
+
+    <h3>2. Нимфы (I–V возраста)</h3>
+    <ul>
+        <li>Из яйца выходит <strong>нимфа I возраста</strong> — очень мелкая, почти прозрачная, бескрылая.</li>
+        <li><strong>Обязательное условие развития:</strong> Для перехода в следующий возраст нимфа каждого возраста должна хотя бы один раз полноценно насосаться крови. Без приёма крови линька невозможна.</li>
+        <li>Объём поглощаемой крови увеличивается с 1–3 мг (младшие возрасты) до 7 мг (нимфа V возраста).</li>
+        <li>Нимфа проходит <strong>5 последовательных стадий</strong>, интервал между линьками при благоприятных условиях — 5–10 дней.</li>
+    </ul>
+
+    <h3>3. Имаго (взрослая особь)</h3>
+    <ul>
+        <li><strong>Размеры:</strong> Длина тела от <strong>4–5 мм до 8 мм</strong> (самки крупнее самцов).</li>
+        <li><strong>Форма тела:</strong> Сильно сплющено в спинно-брюшном направлении, листовидное, овальное. Это позволяет клопу забираться в тончайшие щели. При насыщении брюшко раздувается (до 0,5–0,8 см), становится округлым и приобретает ярко-красный оттенок.</li>
+        <li><strong>Окраска:</strong> Темно-красно-коричневая, тело покрыто мелкими чувствительными волосками.</li>
+        <li><strong>Крылья:</strong> Практически полностью редуцированы; на среднегруди сохраняются лишь крошечные чешуйчатые рудименты. <strong>Клопы не способны летать</strong>.</li>
+        <li><strong>Ротовой аппарат:</strong> Колюще-сосущего типа; щупики отсутствуют. Состоит из прочного членистого хоботка с колющими стилетами.</li>
+        <li><strong>Пахучие железы:</strong> На брюшной стороне третьего грудного сегмента открываются пахучие железы, выделяющие секрет с резким «клоповым» запахом.</li>
+        <li><strong>Органы чувств:</strong> Глаза выпуклые, но зрение слабое; ведущую роль играет обоняние. На антеннах расположены термо- и хеморецепторы, улавливающие тепло и углекислый газ спящего человека на расстоянии нескольких метров.</li>
+        <li><strong>Конечности:</strong> Бегательные, лапки трехчлениковые. Голодный клоп передвигается со скоростью более 1 метра в минуту.</li>
+    </ul>
+
+    <!-- ===== БОЛЬШАЯ КАРТИНКА ===== -->
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🪲</span>
+            Постельный клоп (<em>Cimex lectularius</em>) — имаго
+            <span class="small">характерная дорсовентрально сплющенная форма тела</span>
+            <span class="filename">imagine/cimex_morphology.jpg</span>
+        </div>
+    </div>
+
+    <!-- ===== БИОЛОГИЧЕСКИЕ ОСОБЕННОСТИ ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <h2><span class="emoji">🔄</span> Биологические особенности жизненного цикла</h2>
+
+    <ul>
+        <li><strong>Размножение:</strong> Половое. Самка ежедневно откладывает <strong>от 1 до 12 яиц</strong>, приклеивая их специальным секретом к стенам, мебели, обоям. За всю жизнь самка откладывает около <strong>250–500 яиц</strong>.</li>
+        <li><strong>Питание:</strong> Облигатный временный гематофаг. Кровью питаются и имаго, и нимфы всех возрастов. Взрослый клоп сосёт кровь <strong>10–15 минут</strong>, нимфы — от 1 минуты. Строго ночной образ жизни, но при сильном голоде может нападать и при свете.</li>
+        <li><strong>Способность к голоданию:</strong> Взрослые клопы и нимфы старших возрастов способны выживать без пищи до <strong>14–18 месяцев</strong> (особенно при пониженной температуре, впадая в оцепенение). Голодный клоп становится плоским и почти прозрачным.</li>
+        <li><strong>Полный цикл развития:</strong> При 30 °С занимает около 28 дней, при комнатной температуре — 6–8 недель.</li>
+    </ul>
+
+    <!-- ===== МЕДИЦИНСКОЕ ЗНАЧЕНИЕ ===== -->
+    <h2><span class="emoji">⚠️</span> Медицинское значение</h2>
+
+    <h3>1. Эктопаразитизм и характер укусов</h3>
+    <ul>
+        <li><strong>Укусы:</strong> Слюна клопа содержит токсические белки-антикоагулянты и ферменты, вызывающие на месте укуса сильно зудящие воспалительные волдыри с покраснением и отёком.</li>
+        <li><strong>«Дорожка укусов»:</strong> Для постельного клопа характерны серийные укусы (по 2–3 подряд), так как во время питания он несколько раз перемещается в поисках капилляра.</li>
+        <li><strong>Психотравмирующее действие:</strong> При массовом заселении клопы совершают сотни укусов за ночь, лишая человека нормального сна, вызывая нервное истощение и снижение работоспособности. Расчёсы часто приводят к вторичной бактериальной инфекции (пиодермия).</li>
+    </ul>
+
+    <div class="note">
+        <p><strong>Важнейшее отличие от поцелуйного клопа:</strong> Постельный клоп не является специфическим переносчиком каких-либо инфекционных или инвазионных заболеваний человека. Роль постельных клопов в передаче патогенов (включая вирусы гепатита B, ВИЧ или чуму) в естественных условиях не установлена.</p>
+    </div>
+
+    <!-- ===== СРАВНЕНИЕ С ТРИАТОМОВЫМ КЛОПОМ ===== -->
+    <h2><span class="emoji">📊</span> Сравнение с триатомовым клопом</h2>
+
+    <div class="table-wrapper">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Параметр сравнения</th>
+                    <th>Постельный клоп (<em>Cimex lectularius</em>)</th>
+                    <th>Триатомовый клоп (<em>Triatoma infestans</em>)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Размеры тела</strong></td>
+                    <td>Мелкие: 4–8 мм</td>
+                    <td>Крупные: 1,5–3,5 см</td>
+                </tr>
+                <tr>
+                    <td><strong>Наличие крыльев</strong></td>
+                    <td>Редуцированы (не летает)</td>
+                    <td>Хорошо развиты (способен к полету)</td>
+                </tr>
+                <tr>
+                    <td><strong>Медицинское значение</strong></td>
+                    <td>Временный эктопаразит (болезни не переносит)</td>
+                    <td>Временный эктопаразит и специфический переносчик</td>
+                </tr>
+                <tr>
+                    <td><strong>Переносимое заболевание</strong></td>
+                    <td>Отсутствует (передача инфекций не установлена)</td>
+                    <td>Американский трипаносомоз (болезнь Шагаса)</td>
+                </tr>
+                <tr>
+                    <td><strong>Способ передачи возбудителя</strong></td>
+                    <td>Отсутствует</td>
+                    <td>Специфическая контаминация (втирание экскрементов в ранку)</td>
+                </tr>
+                <tr>
+                    <td><strong>Характер трансмиссивности</strong></td>
+                    <td>Нет</td>
+                    <td>Облигатно-трансмиссивная инвазия</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== МЕРЫ БОРЬБЫ И ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Меры борьбы и профилактика</h2>
+
+    <ul>
+        <li><strong>Химическая дезинсекция:</strong> Систематическая обработка спальных мест, плинтусов, мебели, щелей в стенах и полах стойкими контактными инсектицидами (пиретроидами, фосфорорганическими соединениями).</li>
+        <li><strong>Термическая обработка:</strong> Стирка постельного белья и одежды при температуре не ниже 60 °С, обработка матрасов и мягкой мебели горячим паром (все стадии развития, включая яйца, погибают при высоких температурах).</li>
+        <li><strong>Санитарно-гигиенические мероприятия:</strong> Поддержание строгой чистоты в жилых помещениях, регулярная влажная уборка, заделка трещин в полах и стенах, своевременная подклейка отставших обоев (ликвидация дневных убежищ паразитов).</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

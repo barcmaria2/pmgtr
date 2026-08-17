@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вольфартова муха (Wohlfahrtia magnifica) — морфология, развитие, вольфартиоз</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 .emoji { font-size: 32px; line-height: 1; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+        .subtitle strong { color: #2563eb; font-weight: 600; }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .taxonomy-card p strong { color: #1e293b; }
+
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+        .epi-grid .item {
+            font-size: 14px;
+        }
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+        .epi-grid .item.full {
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+        ul ul, ol ol, ul ol, ol ul { margin-left: 20px; }
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+        .note strong { color: #78350f; }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+        .full-width-image .placeholder .filename {
+            font-size: 12px;
+            color: #64748b;
+            background: #e9edf3;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .epi-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">🐛</span> Вольфартова муха</h1>
+    <div class="subtitle">
+        <strong><em>Wohlfahrtia magnifica</em></strong> — возбудитель вольфартиоза (облигатного тканевого миаза)
+    </div>
+
+    <!-- ===== СИСТЕМАТИЧЕСКОЕ ПОЛОЖЕНИЕ ===== -->
+    <div class="taxonomy-card">
+        <p><strong>Тип:</strong> Членистоногие (Arthropoda)</p>
+        <p><strong>Подтип:</strong> Трахейные (Tracheata)</p>
+        <p><strong>Класс:</strong> Насекомые (Insecta)</p>
+        <p><strong>Отряд:</strong> Двукрылые (Diptera)</p>
+        <p><strong>Семейство:</strong> Серые мясные мухи (Sarcophagidae)</p>
+        <p><strong>Род:</strong> <em>Wohlfahrtia</em></p>
+        <p><strong>Вид:</strong> Вольфартова муха — <em>Wohlfahrtia magnifica</em></p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item full"><strong>Географическое распространение:</strong> Южная Европа, азиатская часть РФ, Кавказ, Средняя Азия, Прикаспий, Ближний Восток, Северная Африка.</div>
+        <div class="item full"><strong>Специфичность к хозяину:</strong> Полифаг — личинки паразитируют на человеке, крупном рогатом скоте, овцах, лошадях, верблюдах, собаках и других теплокровных животных.</div>
+        <div class="item full"><strong>Специфический переносчик чего:</strong> Не является переносчиком. Возбудитель заболевания — сама личинка мухи (прямой паразитизм).</div>
+        <div class="item full"><strong>Характер трансмиссивности:</strong> Нетрансмиссивное заболевание (прямой паразитизм личинок, перенос возбудителя отсутствует).</div>
+    </div>
+
+    <!-- ===== ЭКОЛОГИЯ И РАСПРОСТРАНЕНИЕ ===== -->
+    <h2><span class="emoji">🌍</span> Экология и распространение</h2>
+
+    <ul>
+        <li><strong>Экологический статус:</strong> Строго <strong>экзофильный вид</strong> (обитает исключительно в дикой природе, на пастбищах и полях).</li>
+        <li><strong>Поведение имаго:</strong> Активны днём, питаются нектаром цветов. <strong>Никогда не залетают в жилые помещения человека</strong>.</li>
+        <li><strong>Эпидемиологическое следствие:</strong> Заражение человека происходит строго на открытом воздухе (чаще всего во время сна на пастбище или в поле).</li>
+    </ul>
+
+    <!-- ===== МОРФОЛОГИЯ СТАДИЙ РАЗВИТИЯ ===== -->
+    <h2><span class="emoji">🔬</span> Морфология стадий развития</h2>
+
+    <h3>1. Имаго (Взрослая особь)</h3>
+    <ul>
+        <li><strong>Размеры:</strong> Крупная муха длиной <strong>9–15 мм</strong>.</li>
+        <li><strong>Окраска тела:</strong> Светло-серая (пепельная) с серебристым налётом.</li>
+        <li><strong>Грудь (Торакс):</strong> Сверху несёт <strong>три продольные тёмные полосы</strong>.</li>
+        <li><strong>Брюшко (Абдомен):</strong> Выпуклое, со специфическим «шахматным» рисунком (тёмная продольная полоса по центру и чёткие круглые чёрные пятна по бокам каждого сегмента).</li>
+        <li><strong>Голова:</strong> Крупная, с парой больших фасеточных глаз красно-коричневого цвета и короткими трёхчлениковыми усиками (сяжками).</li>
+    </ul>
+
+    <h3>2. Личинка (Патогенная стадия)</h3>
+    <ul>
+        <li><strong>Внешний вид:</strong> Червеобразная, безногая, белого или желтоватого цвета, сегментированная.</li>
+        <li><strong>Приспособления к паразитизму:</strong>
+            <ul>
+                <li><strong>Ротовые крючья (челюстные вилки)</strong> на зауженном переднем конце — для механического разрушения тканей.</li>
+                <li><strong>Хитиновые шипики</strong> (направлены назад, расположены поясками на сегментах) — для прочной фиксации в тканях хозяина.</li>
+                <li><strong>Задние дыхальца (стигмы)</strong> в углублении на плоском заднем конце — для дыхания атмосферным воздухом при нахождении в глубине раны.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- ===== БОЛЬШАЯ КАРТИНКА ===== -->
+    <div class="full-width-image">
+        <div class="placeholder">
+            <span class="icon">🪰</span>
+            Вольфартова муха (<em>Wohlfahrtia magnifica</em>) — имаго и личинка
+            <span class="small">личинка с ротовыми крючьями и хитиновыми шипиками</span>
+            <span class="filename">imagine/wohlfahrtia_morphology.jpg</span>
+        </div>
+    </div>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ И МЕТАМОРФОЗ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл и метаморфоз</h2>
+
+    <ul>
+        <li><strong>Тип развития:</strong> <strong>Полный метаморфоз</strong> (голометаболия).</li>
+        <li><strong>Схема онтогенеза:</strong> Яйцо (внутриутробно) ⟶ Личинка (3 возраста) ⟶ Куколка (в пупарии) ⟶ Имаго.</li>
+        <li><strong>Характер воспроизводства:</strong> <strong>Облигатное живорождение (ларвивипария).</strong> Самка вынашивает яйца в матке, отрождая уже сформированных активных личинок.</li>
+        <li><strong>Инвазионная стадия для человека:</strong> Личинка.</li>
+        <li><strong>Патогенная стадия для человека:</strong> Личинка.</li>
+        <li><strong>Плодовитость:</strong> Самка на лету впрыскивает в раны или на слизистые оболочки от <strong>120 до 160 личинок</strong>.</li>
+        <li><strong>Период паразитирования:</strong> Личинки развиваются в теле хозяина строго <strong>5–7 дней</strong>, проходя три возраста.</li>
+        <li><strong>Окукливание:</strong> Насытившиеся личинки III возраста выходят из ран, падают на землю, зарываются в почву и формируют плотную оболочку — <strong>пупарий</strong>.</li>
+        <li><strong>Стадия куколки:</strong> Длится около <strong>24 дней</strong> в почве, после чего выходит имаго.</li>
+    </ul>
+
+    <!-- ===== ЭПИДЕМИОЛОГИЯ И ПАТОГЕНЕЗ ===== -->
+    <h2><span class="emoji">⚠️</span> Эпидемиология и патогенез вольфартиоза</h2>
+
+    <h3>1. Заболевание</h3>
+    <ul>
+        <li><strong>Название:</strong> <strong>Вольфартиоз</strong> (относится к группе облигатных тканевых / мышечных миазов).</li>
+        <li><strong>Тип патологии:</strong> <strong>Нетрансмиссивная инвазия</strong> (прямой паразитизм личинок животных в тканях человека без участия переносчиков).</li>
+    </ul>
+
+    <h3>2. Механизм и пути заражения</h3>
+    <ul>
+        <li><strong>Механизм:</strong> Контактный </li>
+        <li><strong>Пути передачи:</strong>
+            <ul>
+                <li><strong>Прямой/Перкутанный:</strong> отрождение личинок самкой непосредственно в повреждённую кожу (открытые гнойные раны, ссадины, язвы, пупочный рубец новорожденных)или активное самостоятельное внедрение личинок в здоровые ткани естественных отверстий (глаза, носовые ходы, наружные слуховые проходы, дёсны) спящего человека.</li>
+            </ul>
+        </li>
+        <li><strong>Локализация в организме человека (эндопаразитизм):</strong> подкожная клетчатка и мышечные ткани; конъюнктивальный мешок глаза и глазница; носовая полость и гайморовы/лобные пазухи; наружный слуховой проход и среднее ухо.</li>
+    </ul>
+
+    <h3>3. Клиническое значение и повреждающее действие</h3>
+    <ul>
+        <li><strong>Механическое разрушение:</strong> Личинки буквально разрывают мышечные волокна и сосуды ротовыми крючьями и шипами.</li>
+        <li><strong>Химическое разрушение (Гистолиз):</strong> Выделение личинками мощных протеолитических ферментов, растворяющих живые ткани и клеточные структуры.</li>
+        <li><strong>Симптоматика:</strong> Мучительная пульсирующая боль, формирование обширных гноящихся язв, некроз тканей, гангренозные процессы, тяжёлые кровотечения.</li>
+        <li><strong>Системный эффект:</strong> Тяжёлая интоксикация продуктами распада белков и жизнедеятельности личинок, высокая лихорадка.</li>
+        <li><strong>Осложнения:</strong> Полное разрушение глазного яблока, прободение барабанной перепонки, разрушение слуховых косточек, прогрызание костей черепа с миграцией в оболочки головного мозга (летальный исход).</li>
+    </ul>
+
+    <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <ul>
+        <li><strong>Метод:</strong> <strong>Лярвоскопия</strong>.</li>
+        <li><strong>Суть метода:</strong> Визуальное обнаружение подвижных личинок в ранах, язвах или слуховых/носовых проходах и их извлечение пинцетом.</li>
+        <li><strong>Видовая верификация:</strong> Извлечённые личинки микроскопируют и идентифицируют по строению задних дыхалец (стигм), что позволяет дифференцировать их от личинок комнатных или мясных мух.</li>
+    </ul>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика вольфартиоза</h2>
+
+    <h3>1. Личная (индивидуальная)</h3>
+    <ul>
+        <li>Защита спящих на открытом воздухе людей противомоскитными сетками и пологами.</li>
+        <li>Своевременная обработка антисептиками и герметичное закрытие повязками любых ран, царапин и ссадин на коже (для исключения привлечения самок мух запахом крови).</li>
+        <li>Применение репеллентов при нахождении на пастбищах.</li>
+    </ul>
+
+    <h3>2. Общественная (ветеринарно-санитарная)</h3>
+    <ul>
+        <li>Регулярный ветеринарный осмотр и лечение ран у пастбищного скота (основного резервуара паразита).</li>
+        <li>Быстрое гигиеническое уничтожение (глубокое захоронение) трупов павших животных.</li>
+        <li>Санитарное содержание животноводческих ферм.</li>
+        <li>Санитарно-просветительская работа среди населения эндемичных районов.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

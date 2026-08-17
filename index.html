@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Интерактивная паразитология · Помогатор Plus</title>
+    <link rel="stylesheet" href="para-engine.css">
+    <style>
+        /* ===== все ваши существующие стили ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f1f5f9;
+            color: #334155;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            -webkit-touch-callout: none;
+        }
+        :root {
+            --bg-page: #f1f5f9;
+            --white: #ffffff;
+            --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 4px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-hover: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+            --text-primary: #334155;
+            --text-secondary: #64748b;
+            --blue-med: #2563eb;
+            --blue-dark: #1e40af;
+            --orange-accent: #f59e0b;
+            --gold: #d4a843;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --sidebar-width: 300px;
+        }
+        .app { display: flex; min-height: 100vh; background: var(--bg-page); }
+
+        /* ===== САЙДБАР ===== */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--white);
+            box-shadow: var(--shadow-soft);
+            padding: 28px 20px 24px;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            scrollbar-width: thin;
+        }
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 20px; }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e9edf3;
+        }
+        .sidebar-header .title-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--blue-dark);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .sidebar-header .sub {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            letter-spacing: -0.01em;
+        }
+        .sidebar-header .sub .plus {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .sidebar-collapse-btn {
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: var(--transition);
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sidebar-collapse-btn:hover {
+            background: #f1f5f9;
+            color: var(--text-primary);
+        }
+        .sidebar-collapse-btn:active {
+            transform: scale(0.92);
+        }
+
+        .btn-masha {
+            display: block;
+            width: 100%;
+            padding: 14px 18px;
+            margin: 4px 0 18px 0;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+            transition: var(--transition);
+            letter-spacing: -0.01em;
+        }
+        .btn-masha:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+        }
+        .btn-masha:active {
+            transform: translateY(0);
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+        }
+        .accordion-section {
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: transparent;
+            transition: background 0.2s;
+        }
+        .accordion-section:hover {
+            background: #f8fafc;
+        }
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-primary);
+            cursor: pointer;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            letter-spacing: -0.01em;
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+        .accordion-header:hover {
+            background: #f1f5f9;
+        }
+        .accordion-header .arrow {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            color: var(--text-secondary);
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+        .accordion-header.open .arrow {
+            transform: rotate(180deg);
+        }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+            padding: 0 6px 0 14px;
+            background: transparent;
+        }
+        .accordion-body.open {
+            max-height: 800px;
+            padding: 4px 6px 12px 14px;
+        }
+        .menu-item {
+            display: block;
+            padding: 8px 12px;
+            margin: 1px 0;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+            letter-spacing: -0.01em;
+        }
+        .menu-item:hover {
+            background: #f1f5f9;
+            color: var(--text-primary);
+        }
+        .menu-item.active {
+            background: #eff6ff;
+            color: var(--blue-med);
+            font-weight: 600;
+            box-shadow: inset 3px 0 0 var(--blue-med);
+        }
+
+        .main {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 32px 40px 40px;
+            min-height: 100vh;
+            transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.sidebar-collapsed .sidebar {
+            transform: translateX(-100%);
+            box-shadow: none;
+        }
+        body.sidebar-collapsed .main {
+            margin-left: 0;
+        }
+        body.sidebar-collapsed .hamburger {
+            display: flex;
+        }
+        body.sidebar-collapsed .sidebar-collapse-btn {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            z-index: 1100;
+            background: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            padding: 10px 12px;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 22px;
+            line-height: 1;
+            color: var(--text-primary);
+        }
+        .hamburger:hover {
+            box-shadow: var(--shadow-hover);
+        }
+        .hamburger-close {
+            display: none;
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            z-index: 1100;
+            background: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            padding: 10px 12px;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 22px;
+            line-height: 1;
+            color: var(--text-primary);
+        }
+        .hamburger-close:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        @media (max-width: 899px) {
+            .sidebar {
+                transform: translateX(-110%);
+                width: 300px;
+                max-width: 85vw;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main {
+                margin-left: 0;
+                padding: 24px 18px 32px;
+                padding-top: 76px;
+            }
+            .hamburger {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .hamburger-close {
+                display: none;
+            }
+            .sidebar.open ~ .hamburger {
+                display: none;
+            }
+            .sidebar.open ~ .hamburger-close {
+                display: flex;
+            }
+            body.sidebar-collapsed .sidebar {
+                transform: translateX(-110%);
+            }
+            body.sidebar-collapsed .main {
+                margin-left: 0;
+            }
+            body.sidebar-collapsed .hamburger {
+                display: flex;
+            }
+            body.sidebar-collapsed .sidebar-collapse-btn {
+                display: none;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .hamburger {
+                display: none;
+            }
+            .hamburger-close {
+                display: none;
+            }
+            .sidebar-collapse-btn {
+                display: flex;
+            }
+            body.sidebar-collapsed .hamburger {
+                display: flex;
+            }
+            body.sidebar-collapsed .hamburger-close {
+                display: none;
+            }
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .overlay.show {
+            opacity: 1;
+        }
+
+        /* ===== ПРОЧИЕ СТИЛИ (ваши существующие) ===== */
+        .tabs-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            padding: 20px 24px 28px;
+            margin-bottom: 28px;
+            transition: var(--transition);
+        }
+        .tabs-container:hover {
+            box-shadow: var(--shadow-hover);
+        }
+        .tabs-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e9edf3;
+            padding-bottom: 14px;
+        }
+        .tab-btn {
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+        .tab-btn:hover {
+            background: #f1f5f9;
+            color: var(--text-primary);
+        }
+        .tab-btn.active {
+            background: var(--blue-med);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
+        }
+        .tab-btn.interactive-tab {
+            color: var(--orange-accent);
+            font-weight: 600;
+        }
+        .tab-btn.interactive-tab.active {
+            background: var(--orange-accent);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+        }
+        .tab-btn.interactive-tab:hover {
+            background: #fffbeb;
+            color: #d97706;
+        }
+        .tab-content {
+            min-height: 120px;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(6px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .flashcard-wrapper { display: flex; justify-content: center; padding: 16px 0 8px; }
+        .flashcard { width: 320px; height: 200px; perspective: 1000px; cursor: pointer; }
+        .flashcard-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+        .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+        .flashcard-front, .flashcard-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 20px; background: var(--white); color: var(--text-primary); font-weight: 500; font-size: 16px; text-align: center; box-shadow: var(--shadow-soft); border: 1px solid #f0f3f8; }
+        .flashcard-front { background: linear-gradient(145deg, #ffffff, #fafcff); }
+        .flashcard-back { transform: rotateY(180deg); background: linear-gradient(145deg, #f8faff, #eef4ff); border-color: #dbe7fe; }
+        .flashcard-front .label, .flashcard-back .label { font-size: 13px; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 8px; }
+        .flashcard-front .emoji-big, .flashcard-back .emoji-big { font-size: 40px; margin-bottom: 6px; }
+        .flashcard-hint { margin-top: 14px; font-size: 13px; color: var(--text-secondary); text-align: center; }
+
+        .test-block { margin-top: 28px; padding-top: 24px; border-top: 1px solid #e9edf3; }
+        .test-block .question { font-weight: 600; font-size: 16px; margin-bottom: 16px; color: var(--text-primary); }
+        .test-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+        .test-option { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: var(--radius); background: #f8fafc; border: 2px solid transparent; cursor: pointer; transition: var(--transition); font-size: 14px; font-weight: 500; color: var(--text-primary); }
+        .test-option:hover { background: #f1f5f9; border-color: #dbe7fe; }
+        .test-option.selected { background: #eff6ff; border-color: var(--blue-med); box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08); }
+        .test-option.correct { background: #ecfdf5; border-color: #10b981; color: #065f46; }
+        .test-option.wrong { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+        .test-option input[type="radio"] { display: none; }
+        .test-option .radio-circle { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #cbd5e1; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: var(--transition); }
+        .test-option.selected .radio-circle { border-color: var(--blue-med); background: var(--blue-med); }
+        .test-option.selected .radio-circle::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+        .test-option.correct .radio-circle { border-color: #10b981; background: #10b981; }
+        .test-option.correct .radio-circle::after { content: '✓'; color: #fff; font-size: 12px; font-weight: 700; }
+        .test-option.wrong .radio-circle { border-color: #ef4444; background: #ef4444; }
+        .test-option.wrong .radio-circle::after { content: '✗'; color: #fff; font-size: 12px; font-weight: 700; }
+        .test-btn { padding: 12px 32px; background: var(--blue-med); color: #fff; font-weight: 600; font-size: 14px; border: none; border-radius: var(--radius); cursor: pointer; transition: var(--transition); box-shadow: 0 2px 10px rgba(37, 99, 235, 0.2); }
+        .test-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3); }
+        .test-btn:active { transform: translateY(0); }
+        .test-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+        .test-result { margin-top: 16px; font-weight: 600; font-size: 15px; padding: 12px 18px; border-radius: var(--radius); display: none; }
+        .test-result.show { display: block; }
+        .test-result.pass { background: #ecfdf5; color: #065f46; }
+        .test-result.fail { background: #fef2f2; color: #991b1b; }
+
+        .watermark {
+            position: fixed;
+            bottom: 24px;
+            right: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.07);
+            pointer-events: none;
+            z-index: 9999;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            letter-spacing: 0.02em;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        @media print {
+            body * { display: none !important; }
+            body::after { content: "🛑 Печать запрещена"; display: flex !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; justify-content: center !important; align-items: center !important; font-size: 32px !important; font-weight: 700 !important; color: #ef4444 !important; background: #ffffff !important; z-index: 99999 !important; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important; letter-spacing: -0.02em !important; }
+            @page { margin: 0 !important; size: auto !important; }
+            .watermark { display: none !important; }
+        }
+
+        .empty-state { color: var(--text-secondary); font-size: 15px; padding: 18px 4px; text-align: center; font-weight: 400; letter-spacing: -0.01em; }
+        .empty-state small { display: block; margin-top: 4px; font-size: 13px; color: #94a3b8; }
+        .loading-placeholder { text-align: center; padding: 30px; color: var(--text-secondary); font-size: 15px; }
+    </style>
+</head>
+<body>
+    <div class="watermark">© Интерактивная паразитология · Помогатор Plus</div>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню">☰</button>
+    <button class="hamburger-close" id="hamburgerCloseBtn" aria-label="Закрыть меню">✕</button>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="app">
+        <aside class="sidebar" id="sidebar" role="navigation" aria-label="Боковое меню">
+            <div class="sidebar-header">
+                <div class="title-group">
+                    <a href="../index.html" style="font-size:12px; font-weight:700; color:var(--blue-med); text-decoration:none; margin-bottom:4px; display:inline-block;">← Pomogator.med</a>
+                    <h1>Интерактивная паразитология</h1>
+                    <div class="sub">Помогатор <span class="plus">Plus</span></div>
+                </div>
+                <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Свернуть меню">◀</button>
+            </div>
+            <a class="btn-masha" href="https://t.me/pomogator_pimu" target="_blank" rel="noopener noreferrer">
+                ✈️ Маша в меде
+            </a>
+
+            <button class="progress-nav-btn" id="progressNavBtn">
+                <span>📊 Мой прогресс</span>
+                <span class="pnb-pct">0%</span>
+            </button>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Поиск по терминам..." autocomplete="off">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
+            <div class="accordion" id="accordionRoot"></div>
+        </aside>
+
+        <main class="main" id="mainContent">
+            <div class="tabs-container" id="tabsContainer">
+                <div class="tabs-header" id="tabsHeader"></div>
+                <div class="tab-content" id="tabContent"></div>
+            </div>
+            <div class="progress-dash" id="progressDash" style="display:none;"></div>
+        </main>
+    </div>
+
+    <script>
+        // =====================================================================
+        // ДАННЫЕ НАВИГАЦИИ (ОБНОВЛЁННАЯ ВЕРСИЯ)
+        // =====================================================================
+        const NAV_DATA = [{
+            id: 'general',
+            title: 'Общая паразитология',
+            items: [
+                { id: 'about_parasitology', title: 'О паразитологии и паразитизме', tabs: ['Определение', 'Разделы медицинской паразитологии', 'Межвидовые связи в биоценозе и паразитизм', 'Происхождение и распространение паразитизма', '✍️ Интерактив'] },
+                { id: 'about_parasites', title: 'О паразитах', tabs: ['Классификация паразитов', 'Жизненные циклы и феномен смены хозяев', 'Инвазия: термины и пути заражения', '✍️ Интерактив'] },
+                { id: 'parasite_host', title: 'Паразит и Хозяин', tabs: ['Межвидовые связи в биоцинозе и паразитизм', 'Классификация болезней', 'Виды хозяев', 'Взаимодействие особей', 'Популяционный уровень взаимодействия', 'Паразитоценоз', '✍️ Интерактив'] },
+                { id: 'scientists', title: 'Ученые', tabs: ['Вклад ученых', '✍️ Интерактив'] },
+                { id: 'natural_focality', title: 'Природная очаговость', tabs: ['Учение Павловского', 'Создатели учения', 'Классификация и структура природного очага', 'Ландшафтные зоны', 'Принципы борьбы', '✍️ Интерактив'] }
+            ]
+        }, {
+            id: 'protists',
+            title: 'Простейшие',
+            items: [
+                { id: 'general_char', title: 'Общая характеристика', tabs: ['Систематика', 'Морфология', 'Типы ассимиляции и способы питания', 'Половое и бесполое размножение', '✍️ Интерактив'] },
+                { id: 'geoprotists', title: 'Геопротисты', tabs: ['Дизентерийная амёба', 'Лямблия кишечная', 'Балантидий кишечный'] },
+                { id: 'contagious_protist', title: 'Контагиозный протист', tabs: ['Урогенитальная трихомонада'] },
+                { id: 'bioprotists', title: 'Биопротисты', tabs: ['Морфологические формы кинетопластидных', 'Лейшмании', 'Trypanosoma brucei', 'Trypanosoma cruzi', 'Малярийный плазмодий', 'Токсоплазма'] },
+                { id: 'protists_interactive', title: 'Интерактив', tabs: ['Тест', 'Задачи'] }
+            ]
+        }, {
+            id: 'helminths',
+            title: 'Гельминты',
+            items: [
+                { id: 'helminth_theory', title: 'Теория', tabs: ['Методы гельминтоовоскопии', 'Учение Скрябина', 'Организация борьбы', 'Исаев Л.М.', '✍️ Интерактив'] },
+                { id: 'helminth_flatworms', title: 'Тип Плоские черви', tabs: ['Классификация и характерные черты организации'] },
+                { id: 'helminth_lesson1', title: 'Занятие 1', tabs: ['Печеночный сос.', 'Кошачий сос.', 'Ланцетовидный сос.', 'Легочный сос.', 'Шистосомы', 'Общая схема', '✍️ Интерактив'] },
+                { id: 'helminth_lesson2', title: 'Занятие 2', tabs: ['Бычий цепень', 'Свиной цепень', 'Широкий лентец', '📊 Сравнительная таблица (бычий, свиной, широкий)', 'Карликовый цепень', 'Альвеококк', 'Эхинококк', '📊 Итоговая таблица всех цестод', '✍️ Интерактив'] },
+                { id: 'helminth_roundworms', title: 'Тип Круглые черви', tabs: ['Классификация и характерные черты организации'] },
+                { id: 'helminth_lesson3', title: 'Занятие 3', tabs: ['Аскарида', 'Острица', 'Власоглав', 'Анкилостома', 'Угрица кишечная', 'Трихинелла', 'Ришта', 'Филярии', '📊 Итоговая таблица нематод', '✍️ Интерактив'] },
+                { id: 'helminths_interactive', title: 'Интерактив', tabs: ['Тест', 'Задачи'] }
+            ]
+        }, {
+            id: 'arachno',
+            title: 'Арахноэнтомология',
+            items: [
+                {
+                    id: 'arachno_general_arthropods',
+                    title: 'Общая характеристика членистоногих',
+                    tabs: ['Общая характеристика и медицинское значение', 'Ароморфозы и идиоадаптации']
+                },
+                {
+                    id: 'arachno_arachnida',
+                    title: 'Класс паукообразные',
+                    tabs: [
+                        'Общая характеристика класса',
+                        'Общая характеристика клещей',
+                        'Сравнительная таблица клещей',
+                        'Иксодовые клещи',
+                        'Аргасовые клещи',
+                        'Чесоточный зудень',
+                        'Железница угревая'
+                    ]
+                },
+                {
+                    id: 'arachno_insecta',
+                    title: 'Класс насекомые',
+                    tabs: [
+                        'Общая характеристика класса',
+                        'Специфические переносчики',
+                        'Механические переносчики',
+                        'Эктопаразиты',
+                        'Комары и Москиты',
+                        'Общая характеристика вшей',
+                        'Три вида вшей',
+                        'Постельный клоп',
+                        'Поцелуйный клоп',
+                        'Блохи',
+                        'Тараканы',
+                        'Общая характеристика мух',
+                        'Муха Це-це',
+                        'Домашнаяя муха и Осенняя жигалка',
+                        'Вольфартова муха'
+                    ]
+                },
+                {
+                    id: 'arachno_interactive',
+                    title: 'Интерактив',
+                    tabs: ['Тест', 'Задачи']
+                }
+            ]
+        }, {
+            id: 'ecology',
+            title: 'Основы экологии',
+            items: [
+                { id: 'ecology_49', title: 'Вопрос 49', tabs: ['Определение экологии', 'Среда и факторы', 'Экосистема и биоценоз', '✍️ Интерактив'] },
+                { id: 'ecology_50', title: 'Вопрос 50', tabs: ['Биотические взаимоотношения', 'Экологические стратегии', '✍️ Интерактив'] },
+                { id: 'ecology_51', title: 'Вопрос 51', tabs: ['Теория экологической ниши'] },
+                { id: 'ecology_53', title: 'Вопрос 53', tabs: ['Экология человека', 'Закон взаимодействия', 'Факторы риска', '✍️ Интерактив'] },
+                { id: 'ecology_54', title: 'Вопрос 54', tabs: ['Адаптация человека', 'Хронология адаптивных типов', '✍️ Интерактив'] },
+                { id: 'ecology_55', title: 'Вопрос 55', tabs: ['Экологический кризис и риск', 'Классификация кризисов', 'Основные проблемы', '✍️ Интерактив'] },
+                { id: 'ecology_56', title: 'Вопрос 56', tabs: ['Радиация как фактор', 'Защитные механизмы', 'Радиация в медицине', 'Радиационный гормезис', '✍️ Интерактив'] }
+            ]
+        }];
+
+        // =====================================================================
+        // МАППИНГ ФАЙЛОВ (ОБНОВЛЁННЫЙ)
+        // =====================================================================
+        const FILE_MAP = {
+            // Общая паразитология – без изменений
+            'about_parasitology': ['general/gen_about_definition.html', 'general/gen_about_sections.html', 'general/gen_about_origin.html', 'general/gen_about_distribution.html', 'general/gen_about_parasitology_interactive.html'],
+            'about_parasites': ['general/gen_parasites_classification.html', 'general/gen_parasites_lifecycles.html', 'general/gen_parasites_invasion.html', 'general/gen_parasites_interactive.html'],
+            'parasite_host': ['general/gen_host_interspecific.html', 'general/gen_host_disease_class.html', 'general/gen_host_host_types.html', 'general/gen_host_interaction.html', 'general/gen_host_population.html', 'general/gen_host_parasitocenosis.html', 'general/gen_host_interactive.html'],
+            'scientists': ['general/gen_scientists_contribution.html', 'general/gen_scientists_interactive.html'],
+            'natural_focality': ['general/gen_focality_pavlovsky.html', 'general/gen_focality_creators.html', 'general/gen_focality_structure.html', 'general/gen_focality_landscape.html', 'general/gen_focality_control.html', 'general/gen_focality_interactive.html'],
+
+            // Простейшие
+            'general_char': ['protists/prot_general_systematics.html', 'protists/prot_general_morphology.html', 'protists/prot_general_nutrition.html', 'protists/prot_general_reproduction.html', 'protists/prot_general_interactive.html'],
+            'geoprotists': ['protists/prot_geo_amoeba.html', 'protists/prot_geo_giardia.html', 'protists/prot_geo_balantidium.html'],
+            'contagious_protist': ['protists/prot_contagious_trichomonas.html'],
+            'bioprotists': [
+                'protists/prot_bio_kinetoplastid_forms.html',
+                'protists/prot_bio_leishmania.html',
+                'protists/prot_bio_trypanosoma_brucei.html',
+                'protists/prot_bio_trypanosoma_cruzi.html',
+                'protists/prot_bio_plasmodium.html',
+                'protists/prot_bio_toxoplasma.html'
+            ],
+            'protists_interactive': ['protists/prot_interactive_test.html', 'protists/prot_interactive_tasks.html'],
+
+            // Гельминты
+            'helminth_theory': ['helminths/helm_theory_methods.html', 'helminths/helm_theory_skryabin.html', 'helminths/helm_theory_control.html', 'helminths/helm_theory_ismailov.html', 'helminths/helm_theory_interactive.html'],
+            'helminth_flatworms': ['helminths/helm_flatworms_classification.html'],
+            'helminth_lesson1': ['helminths/helm_lesson1_liver_fluke.html', 'helminths/helm_lesson1_cat_fluke.html', 'helminths/helm_lesson1_lancet_fluke.html', 'helminths/helm_lesson1_lung_fluke.html', 'helminths/helm_lesson1_schistosomes.html', 'helminths/helm_lesson1_scheme.html', 'helminths/helm_lesson1_interactive.html'],
+            'helminth_lesson2': ['helminths/helm_lesson2_taenia_saginatus.html', 'helminths/helm_lesson2_taenia_solium.html', 'helminths/helm_lesson2_diphyllobothrium.html', 'helminths/helm_lesson2_comparison_tapeworms.html', 'helminths/helm_lesson2_hymenolepis.html', 'helminths/helm_lesson2_alveococcus.html', 'helminths/helm_lesson2_echinococcus.html', 'helminths/helm_lesson2_final_table_cestodes.html', 'helminths/helm_lesson2_interactive.html'],
+            'helminth_lesson3': ['helminths/helm_lesson3_ascaris.html', 'helminths/helm_lesson3_enterobius.html', 'helminths/helm_lesson3_trichuris.html', 'helminths/helm_lesson3_ancylostoma_necator.html', 'helminths/helm_lesson3_strongyloides.html', 'helminths/helm_lesson3_trichinella.html', 'helminths/helm_lesson3_dracunculus.html', 'helminths/helm_lesson3_filariae.html', 'helminths/helm_lesson3_final_table_nematodes.html', 'helminths/helm_lesson3_interactive.html'],
+            'helminth_roundworms': ['helminths/helm_roundworms_classification.html'],
+            'helminths_interactive': ['helminths/helm_interactive_test.html', 'helminths/helm_interactive_tasks.html'],
+
+            // Арахноэнтомология – обновлённая структура
+            'arachno_general_arthropods': ['arachno/arach_general_intro.html', 'arachno/arach_general_aromor.html'],
+            'arachno_arachnida': [
+                'arachno/arach_arachnida_overview.html',          // Общая характеристика класса
+                'arachno/arach_arachnida_general_ticks.html',     // Общая характеристика клещей (НОВЫЙ)
+                'arachno/arach_arachnida_comparison.html',        // Сравнительная таблица клещей
+                'arachno/arach_arachnida_ixodid.html',            // Иксодовые клещи
+                'arachno/arach_arachnida_argasid.html',           // Аргасовые клещи
+                'arachno/arach_arachnida_scabies.html',           // Чесоточный зудень
+                'arachno/arach_arachnida_demodex.html'            // Железница угревая
+            ],
+            'arachno_insecta': [
+                'arachno/arach_insecta_overview.html',            // Общая характеристика класса
+                'arachno/arach_insecta_specific_vectors.html',    // Специфические переносчики
+                'arachno/arach_insecta_mechanical.html',          // Механические переносчики
+                'arachno/arach_insecta_ectoparasites.html',       // Эктопаразиты
+                'arachno/arach_insecta_mosquitoes.html',          // Комары и Москиты
+                'arachno/arach_insecta_lice_general.html',        // Общая характеристика вшей
+                'arachno/arach_insecta_lice_species.html',        // Три вида вшей
+                'arachno/arach_insecta_bedbug.html',              // Постельный клоп
+                'arachno/arach_insecta_triatomine.html',          // Поцелуйный клоп
+                'arachno/arach_insecta_fleas.html',               // Блохи
+                'arachno/arach_insecta_cockroaches.html',         // Тараканы
+                'arachno/arach_insecta_flies_general.html',       // Общая характеристика мух
+                'arachno/arach_insecta_tsetse.html',              // Муха Це-це
+                'arachno/arach_insecta_housefly_stablefly.html',  // Домашнаяя муха и Осенняя жигалка
+                'arachno/arach_insecta_wolfart.html'              // Вольфартова муха
+            ],
+            'arachno_interactive': ['arachno/arach_interactive_test.html', 'arachno/arach_interactive_tasks.html'],
+
+            // Экология – без изменений
+            'ecology_49': ['ecology/ecology_49_definition.html', 'ecology/ecology_49_factors.html', 'ecology/ecology_49_ecosystem.html', 'ecology/ecology_49_interactive.html'],
+            'ecology_50': ['ecology/ecology_50_relationships.html', 'ecology/ecology_50_strategies.html', 'ecology/ecology_50_interactive.html'],
+            'ecology_51': ['ecology/ecology_51_niche.html'],
+            'ecology_53': ['ecology/ecology_53_human_ecology.html', 'ecology/ecology_53_law.html', 'ecology/ecology_53_risk_factors.html', 'ecology/ecology_53_interactive.html'],
+            'ecology_54': ['ecology/ecology_54_adaptation.html', 'ecology/ecology_54_chronology.html', 'ecology/ecology_54_interactive.html'],
+            'ecology_55': ['ecology/ecology_55_crisis.html', 'ecology/ecology_55_classification.html', 'ecology/ecology_55_problems.html', 'ecology/ecology_55_interactive.html'],
+            'ecology_56': ['ecology/ecology_56_radiation.html', 'ecology/ecology_56_defense.html', 'ecology/ecology_56_medicine.html', 'ecology/ecology_56_hormesis.html', 'ecology/ecology_56_interactive.html']
+        };
+
+        // =====================================================================
+        // ОСТАЛЬНЫЕ ФУНКЦИИ (БЕЗ ИЗМЕНЕНИЙ)
+        // =====================================================================
+        let state = {
+            currentMenuItem: null,
+            currentTabIndex: 0,
+            openSections: new Set(),
+            loadedContent: {},
+        };
+
+        function getMenuItemById(id) {
+            for (const section of NAV_DATA) {
+                for (const item of section.items) {
+                    if (item.id === id) return item;
+                }
+            }
+            return null;
+        }
+
+        function getSectionByItemId(id) {
+            for (const section of NAV_DATA) {
+                for (const item of section.items) {
+                    if (item.id === id) return section;
+                }
+            }
+            return null;
+        }
+
+        function isInteractiveTab(tabName) {
+            return tabName === '✍️ Интерактив' || tabName === 'Тест' || tabName === 'Задачи';
+        }
+
+        function executeScripts(container) {
+            const scripts = container.querySelectorAll('script');
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement('script');
+                Array.from(oldScript.attributes).forEach(attr => {
+                    newScript.setAttribute(attr.name, attr.value);
+                });
+                if (oldScript.textContent) {
+                    newScript.textContent = oldScript.textContent;
+                }
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            });
+        }
+
+        function loadContent(itemId, tabIndex, container) {
+            const files = FILE_MAP[itemId];
+            if (!files || tabIndex >= files.length) {
+                container.innerHTML = `<div class="empty-state">⚠️ Файл не найден<br><small>${itemId} [${tabIndex}]</small></div>`;
+                return;
+            }
+            const fileName = files[tabIndex];
+            const cacheKey = `${itemId}_${tabIndex}`;
+            if (state.loadedContent[cacheKey]) {
+                container.innerHTML = state.loadedContent[cacheKey];
+                executeScripts(container);
+                afterContentLoaded(container, itemId, tabIndex);
+                return;
+            }
+            container.innerHTML = `<div class="loading-placeholder">⏳ Загрузка...</div>`;
+            fetch(fileName)
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.text();
+                })
+                .then(html => {
+                    state.loadedContent[cacheKey] = html;
+                    container.innerHTML = html;
+                    executeScripts(container);
+                    afterContentLoaded(container, itemId, tabIndex);
+                })
+                .catch(err => {
+                    console.warn('Ошибка загрузки файла:', fileName, err);
+                    container.innerHTML = `<div class="empty-state">❌ Не удалось загрузить контент<br><small>${fileName}</small></div>`;
+                });
+        }
+
+        function afterContentLoaded(container, itemId, tabIndex) {
+            const hasFlashcard = container.querySelector('.flashcard');
+            const hasTest = container.querySelector('.test-block');
+            if (hasFlashcard || hasTest) {
+                initInteractive(container, itemId, tabIndex);
+            }
+        }
+
+        function initInteractive(container, itemId, tabIndex) {
+            const flashcard = container.querySelector('.flashcard');
+            if (flashcard) {
+                flashcard.removeEventListener('click', flashcard._flipHandler);
+                flashcard._flipHandler = function() {
+                    this.classList.toggle('flipped');
+                };
+                flashcard.addEventListener('click', flashcard._flipHandler);
+            }
+            const testBtn = container.querySelector('.test-btn');
+            if (testBtn) {
+                const optionsContainer = container.querySelector('.test-options');
+                const resultDiv = container.querySelector('.test-result');
+                if (optionsContainer && resultDiv) {
+                    testBtn.removeEventListener('click', testBtn._testHandler);
+                    testBtn._testHandler = function() {
+                        const options = optionsContainer.querySelectorAll('.test-option');
+                        let selected = null;
+                        options.forEach(opt => {
+                            const radio = opt.querySelector('input[type="radio"]');
+                            if (radio && radio.checked) {
+                                selected = opt;
+                            }
+                        });
+                        if (!selected) {
+                            resultDiv.className = 'test-result show fail';
+                            resultDiv.textContent = '⚠️ Выберите вариант ответа';
+                            return;
+                        }
+                        options.forEach(opt => {
+                            opt.classList.remove('correct', 'wrong', 'selected');
+                        });
+                        const val = parseInt(selected.getAttribute('data-value'), 10);
+                        const isCorrect = (val === 1);
+                        if (isCorrect) {
+                            selected.classList.add('correct');
+                            resultDiv.className = 'test-result show pass';
+                            resultDiv.textContent = '✅ Правильно! Отлично!';
+                        } else {
+                            selected.classList.add('wrong');
+                            options.forEach(opt => {
+                                if (parseInt(opt.getAttribute('data-value'), 10) === 1) {
+                                    opt.classList.add('correct');
+                                }
+                            });
+                            resultDiv.className = 'test-result show fail';
+                            resultDiv.textContent = '❌ Неправильно. Попробуйте ещё раз.';
+                        }
+                        testBtn.disabled = true;
+                        setTimeout(() => { testBtn.disabled = false; }, 1500);
+                    };
+                    testBtn.addEventListener('click', testBtn._testHandler);
+                    optionsContainer.querySelectorAll('.test-option').forEach(opt => {
+                        opt.removeEventListener('click', opt._selectHandler);
+                        opt._selectHandler = function() {
+                            const parent = this.closest('.test-options');
+                            parent.querySelectorAll('.test-option').forEach(o => {
+                                o.classList.remove('selected');
+                            });
+                            this.classList.add('selected');
+                            const radio = this.querySelector('input[type="radio"]');
+                            if (radio) radio.checked = true;
+                        };
+                        opt.addEventListener('click', opt._selectHandler);
+                    });
+                }
+            }
+        }
+
+        function renderSidebar() {
+            const root = document.getElementById('accordionRoot');
+            root.innerHTML = '';
+            NAV_DATA.forEach((section) => {
+                const sectionId = section.id;
+                const isOpen = state.openSections.has(sectionId);
+                const sectionEl = document.createElement('div');
+                sectionEl.className = 'accordion-section';
+                const header = document.createElement('button');
+                header.className = `accordion-header${isOpen ? ' open' : ''}`;
+                header.setAttribute('aria-expanded', isOpen);
+                header.innerHTML = `${section.title} <span class="arrow">▾</span>`;
+                header.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleSection(sectionId);
+                });
+                const body = document.createElement('div');
+                body.className = `accordion-body${isOpen ? ' open' : ''}`;
+                section.items.forEach((item) => {
+                    const btn = document.createElement('button');
+                    btn.className = `menu-item${state.currentMenuItem === item.id ? ' active' : ''}`;
+                    btn.textContent = item.title;
+                    btn.setAttribute('data-item-id', item.id);
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        selectMenuItem(item.id);
+                    });
+                    body.appendChild(btn);
+                });
+                sectionEl.appendChild(header);
+                sectionEl.appendChild(body);
+                root.appendChild(sectionEl);
+            });
+        }
+
+        function toggleSection(sectionId) {
+            if (state.openSections.has(sectionId)) {
+                state.openSections.delete(sectionId);
+            } else {
+                state.openSections.add(sectionId);
+            }
+            renderSidebar();
+            if (state.currentMenuItem) {
+                highlightMenuItem(state.currentMenuItem);
+            }
+        }
+
+        function highlightMenuItem(itemId) {
+            const allItems = document.querySelectorAll('.menu-item');
+            allItems.forEach(el => {
+                el.classList.toggle('active', el.getAttribute('data-item-id') === itemId);
+            });
+        }
+
+        function selectMenuItem(itemId) {
+            const item = getMenuItemById(itemId);
+            if (!item) return;
+            state.currentMenuItem = itemId;
+            state.currentTabIndex = 0;
+            renderSidebar();
+            highlightMenuItem(itemId);
+            const section = getSectionByItemId(itemId);
+            if (section && !state.openSections.has(section.id)) {
+                state.openSections.add(section.id);
+                renderSidebar();
+                highlightMenuItem(itemId);
+            }
+            renderTabs(item);
+        }
+
+        function renderTabs(item) {
+            const header = document.getElementById('tabsHeader');
+            const content = document.getElementById('tabContent');
+            header.innerHTML = '';
+            content.innerHTML = '';
+            const tabs = item.tabs;
+            tabs.forEach((tabName, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `tab-btn${idx === state.currentTabIndex ? ' active' : ''}`;
+                if (isInteractiveTab(tabName)) {
+                    btn.classList.add('interactive-tab');
+                }
+                btn.textContent = tabName;
+                btn.setAttribute('data-tab-index', idx);
+                btn.addEventListener('click', () => {
+                    state.currentTabIndex = idx;
+                    renderTabs(item);
+                });
+                header.appendChild(btn);
+                const pane = document.createElement('div');
+                pane.className = `tab-pane${idx === state.currentTabIndex ? ' active' : ''}`;
+                pane.id = `pane_${item.id}_${idx}`;
+                content.appendChild(pane);
+                if (idx === state.currentTabIndex) {
+                    loadContent(item.id, idx, pane);
+                } else {
+                    pane.innerHTML = `<div class="empty-state">📄 Контент будет загружен при активации</div>`;
+                }
+            });
+        }
+
+        // =====================================================================
+        // ЛОГИКА СВОРАЧИВАНИЯ САЙДБАРА (без изменений)
+        // =====================================================================
+        function initSidebarToggle() {
+            const sidebar = document.getElementById('sidebar');
+            const collapseBtn = document.getElementById('sidebarCollapseBtn');
+            const hamburger = document.getElementById('hamburgerBtn');
+            const closeBtn = document.getElementById('hamburgerCloseBtn');
+            const overlay = document.getElementById('overlay');
+
+            collapseBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.body.classList.toggle('sidebar-collapsed');
+                if (document.body.classList.contains('sidebar-collapsed')) {
+                    this.textContent = '▶';
+                    this.setAttribute('aria-label', 'Развернуть меню');
+                } else {
+                    this.textContent = '◀';
+                    this.setAttribute('aria-label', 'Свернуть меню');
+                }
+                if (window.innerWidth < 900 && sidebar.classList.contains('open')) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('show');
+                    overlay.style.display = 'none';
+                    hamburger.style.display = 'flex';
+                    closeBtn.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            hamburger.addEventListener('click', function() {
+                if (window.innerWidth < 900) {
+                    sidebar.classList.add('open');
+                    overlay.classList.add('show');
+                    overlay.style.display = 'block';
+                    this.style.display = 'none';
+                    closeBtn.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.classList.remove('sidebar-collapsed');
+                    collapseBtn.textContent = '◀';
+                    collapseBtn.setAttribute('aria-label', 'Свернуть меню');
+                }
+            });
+
+            closeBtn.addEventListener('click', function() {
+                if (window.innerWidth < 900) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('show');
+                    overlay.style.display = 'none';
+                    hamburger.style.display = 'flex';
+                    this.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            overlay.addEventListener('click', function() {
+                if (window.innerWidth < 900) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('show');
+                    overlay.style.display = 'none';
+                    hamburger.style.display = 'flex';
+                    closeBtn.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 900) {
+                    if (sidebar.classList.contains('open')) {
+                        sidebar.classList.remove('open');
+                        overlay.classList.remove('show');
+                        overlay.style.display = 'none';
+                        hamburger.style.display = 'none';
+                        closeBtn.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }
+                    if (document.body.classList.contains('sidebar-collapsed')) {
+                        hamburger.style.display = 'flex';
+                        closeBtn.style.display = 'none';
+                    } else {
+                        hamburger.style.display = 'none';
+                        closeBtn.style.display = 'none';
+                    }
+                } else {
+                    if (sidebar.classList.contains('open')) {
+                        hamburger.style.display = 'none';
+                        closeBtn.style.display = 'flex';
+                    } else {
+                        hamburger.style.display = 'flex';
+                        closeBtn.style.display = 'none';
+                    }
+                    document.body.classList.remove('sidebar-collapsed');
+                    collapseBtn.textContent = '◀';
+                    collapseBtn.setAttribute('aria-label', 'Свернуть меню');
+                }
+            });
+
+            if (window.innerWidth >= 900) {
+                if (document.body.classList.contains('sidebar-collapsed')) {
+                    collapseBtn.textContent = '▶';
+                    collapseBtn.setAttribute('aria-label', 'Развернуть меню');
+                    hamburger.style.display = 'flex';
+                } else {
+                    collapseBtn.textContent = '◀';
+                    collapseBtn.setAttribute('aria-label', 'Свернуть меню');
+                    hamburger.style.display = 'none';
+                }
+                closeBtn.style.display = 'none';
+            } else {
+                collapseBtn.style.display = 'none';
+                hamburger.style.display = 'flex';
+                closeBtn.style.display = 'none';
+            }
+        }
+
+        // =====================================================================
+        // ИНИЦИАЛИЗАЦИЯ
+        // =====================================================================
+        function init() {
+            const firstSection = NAV_DATA[0];
+            if (firstSection && firstSection.items.length > 0) {
+                const firstItem = firstSection.items[0];
+                state.currentMenuItem = firstItem.id;
+                state.openSections.add(firstSection.id);
+            }
+            renderSidebar();
+            highlightMenuItem(state.currentMenuItem);
+            const item = getMenuItemById(state.currentMenuItem);
+            if (item) {
+                renderTabs(item);
+            }
+            initSidebarToggle();
+        }
+
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.addEventListener('keydown', (e) => {
+            if (
+                (e.ctrlKey && ['c', 'v', 'x', 'u', 's'].includes(e.key.toLowerCase())) ||
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && ['i', 'j'].includes(e.key.toLowerCase())) ||
+                (e.metaKey && e.key === 'c')
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+    <script src="para-engine.js"></script>
+</body>
+</html>

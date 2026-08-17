@@ -1,0 +1,814 @@
+{
+  "about_parasitology": {
+    "sectionId": "general",
+    "sectionTitle": "Общая паразитология",
+    "title": "О паразитологии и паразитизме",
+    "totalTabs": 5,
+    "readyTabs": 5,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "about_parasites": {
+    "sectionId": "general",
+    "sectionTitle": "Общая паразитология",
+    "title": "О паразитах",
+    "totalTabs": 4,
+    "readyTabs": 4,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "parasite_host": {
+    "sectionId": "general",
+    "sectionTitle": "Общая паразитология",
+    "title": "Паразит и Хозяин",
+    "totalTabs": 7,
+    "readyTabs": 7,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "scientists": {
+    "sectionId": "general",
+    "sectionTitle": "Общая паразитология",
+    "title": "Ученые",
+    "totalTabs": 2,
+    "readyTabs": 2,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "natural_focality": {
+    "sectionId": "general",
+    "sectionTitle": "Общая паразитология",
+    "title": "Природная очаговость",
+    "totalTabs": 6,
+    "readyTabs": 6,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "general_char": {
+    "sectionId": "protists",
+    "sectionTitle": "Простейшие",
+    "title": "Общая характеристика",
+    "totalTabs": 5,
+    "readyTabs": 5,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "geoprotists": {
+    "sectionId": "protists",
+    "sectionTitle": "Простейшие",
+    "title": "Геопротисты",
+    "totalTabs": 3,
+    "readyTabs": 3,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      }
+    ]
+  },
+  "contagious_protist": {
+    "sectionId": "protists",
+    "sectionTitle": "Простейшие",
+    "title": "Контагиозный протист",
+    "totalTabs": 1,
+    "readyTabs": 1,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      }
+    ]
+  },
+  "bioprotists": {
+    "sectionId": "protists",
+    "sectionTitle": "Простейшие",
+    "title": "Биопротисты",
+    "totalTabs": 6,
+    "readyTabs": 6,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      }
+    ]
+  },
+  "helminth_theory": {
+    "sectionId": "helminths",
+    "sectionTitle": "Гельминты",
+    "title": "Теория",
+    "totalTabs": 5,
+    "readyTabs": 5,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "helminth_flatworms": {
+    "sectionId": "helminths",
+    "sectionTitle": "Гельминты",
+    "title": "Тип Плоские черви",
+    "totalTabs": 1,
+    "readyTabs": 1,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      }
+    ]
+  },
+  "helminth_lesson1": {
+    "sectionId": "helminths",
+    "sectionTitle": "Гельминты",
+    "title": "Занятие 1",
+    "totalTabs": 7,
+    "readyTabs": 7,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "helminth_lesson2": {
+    "sectionId": "helminths",
+    "sectionTitle": "Гельминты",
+    "title": "Занятие 2",
+    "totalTabs": 9,
+    "readyTabs": 9,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "helminth_roundworms": {
+    "sectionId": "helminths",
+    "sectionTitle": "Гельминты",
+    "title": "Тип Круглые черви",
+    "totalTabs": 1,
+    "readyTabs": 1,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      }
+    ]
+  },
+  "helminth_lesson3": {
+    "sectionId": "helminths",
+    "sectionTitle": "Гельминты",
+    "title": "Занятие 3",
+    "totalTabs": 10,
+    "readyTabs": 10,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "helminths_interactive": {
+    "sectionId": "helminths",
+    "sectionTitle": "Гельминты",
+    "title": "Интерактив",
+    "totalTabs": 2,
+    "readyTabs": 2,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": true
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "arachno_general_arthropods": {
+    "sectionId": "arachno",
+    "sectionTitle": "Арахноэнтомология",
+    "title": "Общая характеристика членистоногих",
+    "totalTabs": 2,
+    "readyTabs": 2,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      }
+    ]
+  },
+  "arachno_arachnida": {
+    "sectionId": "arachno",
+    "sectionTitle": "Арахноэнтомология",
+    "title": "Класс паукообразные",
+    "totalTabs": 7,
+    "readyTabs": 7,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      }
+    ]
+  },
+  "arachno_insecta": {
+    "sectionId": "arachno",
+    "sectionTitle": "Арахноэнтомология",
+    "title": "Класс насекомые",
+    "totalTabs": 15,
+    "readyTabs": 15,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      }
+    ]
+  },
+  "arachno_interactive": {
+    "sectionId": "arachno",
+    "sectionTitle": "Арахноэнтомология",
+    "title": "Интерактив",
+    "totalTabs": 2,
+    "readyTabs": 2,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": true
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "ecology_49": {
+    "sectionId": "ecology",
+    "sectionTitle": "Основы экологии",
+    "title": "Вопрос 49",
+    "totalTabs": 4,
+    "readyTabs": 4,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "ecology_50": {
+    "sectionId": "ecology",
+    "sectionTitle": "Основы экологии",
+    "title": "Вопрос 50",
+    "totalTabs": 3,
+    "readyTabs": 3,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "ecology_51": {
+    "sectionId": "ecology",
+    "sectionTitle": "Основы экологии",
+    "title": "Вопрос 51",
+    "totalTabs": 1,
+    "readyTabs": 1,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      }
+    ]
+  },
+  "ecology_53": {
+    "sectionId": "ecology",
+    "sectionTitle": "Основы экологии",
+    "title": "Вопрос 53",
+    "totalTabs": 4,
+    "readyTabs": 4,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "ecology_54": {
+    "sectionId": "ecology",
+    "sectionTitle": "Основы экологии",
+    "title": "Вопрос 54",
+    "totalTabs": 3,
+    "readyTabs": 3,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "ecology_55": {
+    "sectionId": "ecology",
+    "sectionTitle": "Основы экологии",
+    "title": "Вопрос 55",
+    "totalTabs": 4,
+    "readyTabs": 4,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "ecology_56": {
+    "sectionId": "ecology",
+    "sectionTitle": "Основы экологии",
+    "title": "Вопрос 56",
+    "totalTabs": 5,
+    "readyTabs": 5,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": false
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  },
+  "protists_interactive": {
+    "sectionId": "protists",
+    "sectionTitle": "Простейшие",
+    "title": "Интерактив",
+    "totalTabs": 2,
+    "readyTabs": 2,
+    "ready": true,
+    "complete": true,
+    "tabs": [
+      {
+        "exists": true,
+        "isInteractive": true
+      },
+      {
+        "exists": true,
+        "isInteractive": true
+      }
+    ]
+  }
+}

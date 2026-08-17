@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эхинококк (Echinococcus granulosus) — урок 2</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul ul, ol ol, ul ol, ol ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .danger {
+            background: #fef2f2;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #991b1b;
+            border-left: 4px solid #ef4444;
+            margin: 12px 0 16px 0;
+        }
+
+        .danger strong {
+            color: #7f1d1d;
+        }
+
+        /* ===== ТАБЛИЦА ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0 8px 0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .table-wrapper:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pathogenic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+
+        .pathogenic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .pathogenic-table thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .pathogenic-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .pathogenic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pathogenic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even) {
+            background: #fafcff;
+        }
+
+        .pathogenic-table tbody tr:nth-child(even):hover {
+            background: #f4f8ff;
+        }
+
+        .pathogenic-table .col-mechanism {
+            width: 25%;
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* Диагностическая таблица */
+        .diagnostic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 400px;
+        }
+
+        .diagnostic-table thead {
+            background: #f1f5f9;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .diagnostic-table thead th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        .diagnostic-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f2f5;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .diagnostic-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .diagnostic-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .diagnostic-table .col-method {
+            width: 30%;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ДЛЯ ЯЙЦА (ОДНО ФОТО) ===== */
+        .stage-row .left-col {
+            flex: 1 1 55%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col,
+            .stage-row .right-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .pathogenic-table,
+            .diagnostic-table {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .image-col,
+            .stage-row .right-col {
+                min-height: 150px;
+            }
+
+            .pathogenic-table,
+            .diagnostic-table {
+                font-size: 12px;
+            }
+
+            ul, ol {
+                margin-left: 16px;
+            }
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🐕</span> Эхинококк</h1>
+    <div class="subtitle"><strong>Echinococcus granulosus</strong> — возбудитель <strong>эхинококкоза</strong></div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)<br>
+            <strong>Класс:</strong> Ленточные черви (Cestoda)<br>
+            <strong>Отряд:</strong> Цепни (Cyclophyllidea)<br>
+            <strong>Вид:</strong> Эхинококк (<em>Echinococcus granulosus</em>)
+        </p>
+    </div>
+
+    <!-- ===== ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Эхинококкоз (однокамерный, или гидатидозный эхинококкоз).</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозоонозное, природно-очаговое заболевание.</div>
+        <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Повсеместно, особенно в регионах с развитым овцеводством и скотоводством.</div>
+    </div>
+
+    <div class="note">
+        <strong>⚠️ Важное примечание:</strong> Возбудитель циркулирует в природе (хищники → травоядные) <strong>без участия человека</strong>. Человек для эхинококка – <strong>биологический тупик</strong> (после смерти человека финна погибает и не передаётся дальше, так как собаки не поедают человеческие органы).
+    </div>
+
+    <!-- ===== МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 1. Половозрелая особь -->
+    <h3>1. Половозрелая особь (марита)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма и размеры:</strong> Очень мелкая ленточная форма. Длина – <strong>2–7 мм</strong> (в среднем 3–5 мм). Стробила состоит всего из <strong>3–4 члеников</strong> (молодые, гермафродитный и один зрелый).
+            </p>
+
+            <p>
+                <strong>Сколекс (головка):</strong> Имеет 4 присоски и втягивающийся хоботок с <strong>двумя венчиками крючьев</strong> (всего 36–40 крючьев).
+            </p>
+
+            <p>
+                <strong>Отсутствующие системы органов:</strong> Полностью отсутствуют пищеварительная, кровеносная и дыхательная системы. Питание осмотически всей поверхностью тела.
+            </p>
+
+            <h4>Половая система (гермафродит) – важнейшие отличия от альвеококка:</h4>
+            <ul>
+                <li><strong>Матка в зрелом членике:</strong> У эхинококка матка имеет <strong>мешковидную форму с боковыми выпячиваниями</strong> (ответвлениями). (У альвеококка – шарообразная, без боковых выпячиваний).</li>
+                <li><strong>Зрелый членик:</strong> Занимает заднюю часть стробилы, матка заполнена яйцами.</li>
+            </ul>
+        </div>
+
+        <!-- Изображение мариты -->
+        <div class="image-col">
+            <img src="images/helminths/echinococcus_marita_scheme.jpg"
+                 alt="Марита эхинококка — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Марита <em>Echinococcus granulosus</em>
+                <span class="small">(echinococcus_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">мелкий цепень, 3–4 членика, мешковидная матка</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Яйцо (одно фото) -->
+    <h3>2. Яйцо (онкосфера)</h3>
+
+    <div class="stage-row">
+        <div class="left-col">
+            <div class="text">
+                <p>
+                    <strong>Размеры:</strong> Мелкие, 30–40 мкм.<br>
+                    <strong>Форма и цвет:</strong> Овальные, коричневатые, с толстой радиально исчерченной оболочкой.<br>
+                    <strong>Содержимое:</strong> Внутри – <strong>онкосфера</strong> с шестью крючьями.<br>
+                    <strong>Устойчивость:</strong> Яйца эхинококка устойчивы во внешней среде.
+                </p>
+            </div>
+        </div>
+
+        <div class="right-col">
+            <img src="images/helminths/echinococcus_egg_scheme.jpg"
+                 alt="Схема яйца эхинококка"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🥚</span>
+                Схема яйца <em>Echinococcus granulosus</em>
+                <span class="small">(echinococcus_egg_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">радиально исчерченная оболочка, онкосфера</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Финна -->
+    <h3>3. Финна (личиночная стадия) – критическое отличие от альвеококка</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Название:</strong> <span class="spec">Эхинококковый пузырь (однокамерная киста)</span>.<br>
+                <strong>Внешний вид:</strong> Огромный пузырь, заполненный токсической жидкостью. Стенка пузыря состоит из двух оболочек:
+            </p>
+            <ul>
+                <li><strong>Наружная</strong> – кутикулярная (хитиновая).</li>
+                <li><strong>Внутренняя</strong> – зародышевая (герминативная) – на ней образуются дочерние и внучатые пузыри.</li>
+            </ul>
+            <p>
+                <strong>Фиброзная капсула:</strong> Вокруг пузыря организм человека формирует плотную фиброзную капсулу.<br>
+                <strong>Способ роста (важно!):</strong> Зародышевая оболочка образует дочерние и внучатые пузыри, которые растут <strong>внутрь</strong> материнского пузыря (<strong>эндогенный рост</strong>). Поверхность кисты остаётся гладкой. (У альвеококка – экзогенный рост, почкование наружу).<br>
+                <strong>Метастазирование:</strong> Отсутствует. При разрыве кисты возможно обсеменение полостей дочерними пузырями, но это не истинные метастазы.<br>
+                <strong>Локализация в человеке:</strong> Первично – <strong>печень</strong> (до 75% случаев, чаще правая доля), реже – лёгкие; возможны другие органы (головной мозг, почки, кости, мышцы).
+            </p>
+        </div>
+
+        <div class="image-col">
+            <img src="images/helminths/echinococcus_finna_scheme.jpg"
+                 alt="Эхинококковый пузырь — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🫧</span>
+                Эхинококковый пузырь (однокамерная киста)
+                <span class="small">(echinococcus_finna_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">однокамерный, эндогенный рост, дочерние пузыри внутри</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Биогельминт (со сменой хозяев).<br>
+        <strong>Окончательный (дефинитивный) хозяин:</strong> Животные семейства Псовые (домашние собаки, волки, шакалы, лисицы). В их тонком кишечнике обитает половозрелая ленточная стадия.<br>
+        <strong>Промежуточный хозяин:</strong> Травоядные млекопитающие (овцы, коровы, свиньи, лошади, олени, верблюды) и <span class="spec">человек (случайно)</span>. В их органах развивается личиночная стадия (финна).<br>
+        <strong>Инвазионная стадия для человека:</strong> Яйцо с онкосферой.<br>
+        <strong>Патогенная стадия:</strong> Финна (эхинококковый пузырь) в печени, лёгких и других органах.<br>
+        <strong>Локализация в организме человека:</strong> Первично – <strong>печень</strong> (до 75%, чаще правая доля). Лёгкие (до 15–20%). Реже – головной мозг, почки, селезёнка, кости, мышцы.
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/echinococcus_life_cycle.jpg"
+             alt="Жизненный цикл эхинококка"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Жизненный цикл <em>Echinococcus granulosus</em>
+            <span class="small">(echinococcus_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">собака → яйцо → травоядное (финна) → собака; человек – тупик</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла -->
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Выделение во внешнюю среду:</strong> Зрелые членики отрываются и с фекалиями собаки/волка попадают в почву, на траву, шерсть животного. Яйца (онкосферы) эхинококка попадают в окружающую среду.</li>
+        <li><strong>Заражение промежуточного хозяина (травоядного или человека):</strong> Животное/человек заглатывает яйца с травой, водой или через грязные руки. В кишечнике из яйца выходит онкосфера, которая проникает через стенку кишки в кровоток (воротную вену) и оседает в органах (печень, лёгкие), где превращается в эхинококковый пузырь.</li>
+        <li><strong>Заражение окончательного хозяина (хищника):</strong> Хищник съедает заражённого травоядного (вместе с финнами в органах). В кишечнике хищника из финны выворачивается сколекс, прикрепляется к слизистой и вырастает половозрелая особь (через <strong>2–3 месяца</strong>).</li>
+        <li><strong>Заражение человека (случайного промежуточного хозяина):</strong>
+            <ul>
+                <li><strong>Механизм:</strong> Фекально-оральный.</li>
+                <li><strong>Пути передачи:</strong> Контактно-бытовой – при тесном контакте с заражёнными собаками (яйца на шерсти), при разделке шкур диких животных через немытые руки, а также при проглатывании яиц с немытыми лесными ягодами, травами, овощами или при питье загрязнённой воды.</li>
+            </ul>
+        </li>
+        <li><strong>Развитие в организме человека:</strong> Проглоченное яйцо → кишечник → онкосфера → пробуравливает стенку кишки → воротная вена → печень (или лёгкие) → медленный рост эхинококкового пузыря (годами).</li>
+    </ol>
+
+    <!-- ===== ПАТОГЕННОЕ ДЕЙСТВИЕ ===== -->
+    <h2><span class="emoji">⚡</span> Патогенное действие</h2>
+
+    <div class="table-wrapper">
+        <table class="pathogenic-table">
+            <thead>
+                <tr>
+                    <th class="col-mechanism">Механизм действия</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-mechanism">Механическое сдавление</td>
+                    <td>Растущий пузырь сдавливает ткани печени или лёгких, вызывая их атрофию, некроз, нарушение функции органа.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Токсико-аллергическое действие</td>
+                    <td>Жидкость внутри пузыря обладает сильнейшим токсико-аллергическим действием, вызывает сенсибилизацию организма.</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Осложнение – разрыв кисты</td>
+                    <td>Спонтанный или травматический разрыв кисты → излитие жидкости в брюшную/плевральную полость → <strong>анафилактический шок</strong> (вплоть до летального исхода) → диссеминация (обсеменение) дочерними пузырями (вторичный множественный эхинококкоз).</td>
+                </tr>
+                <tr>
+                    <td class="col-mechanism">Клинические проявления</td>
+                    <td>Зависят от локализации. При поражении печени – боли в правом подреберье, желтуха, гепатомегалия. При поражении лёгких – кашель, одышка, боли в грудной клетке.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <div class="danger">
+        <strong>⚠️ Главное правило (ловушка на логику!):</strong><br>
+        <strong>Почему мы не сдаём кал на анализ (не ищем яйца или членики), чтобы поставить диагноз эхинококкоза у человека?</strong><br>
+        Ответ: Потому что человек для эхинококка является <strong>промежуточным хозяином</strong>. В организме человека живёт только личиночная стадия (пузырь), которая <strong>не выделяет яйца</strong>. Половозрелый червь, выделяющий членики с яйцами, живёт исключительно в кишечнике <strong>окончательного хозяина</strong> – собаки, волка или другого псового.
+    </div>
+
+    <div class="table-wrapper">
+        <table class="diagnostic-table">
+            <thead>
+                <tr>
+                    <th class="col-method">Метод</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-method">Инструментальные методы (визуализация)</td>
+                    <td>УЗИ (ведущий метод для печени), рентгенография (для лёгких), КТ, МРТ. Позволяют увидеть кисту, её размеры, наличие дочерних пузырей, обызвествление оболочек.</td>
+                </tr>
+                <tr>
+                    <td class="col-method">Серологические методы (основной лабораторный метод)</td>
+                    <td>ИФА, РНГА, реакция латекс-агглютинации – обнаружение специфических антител (IgG) в сыворотке крови. Ранее применялась кожно-аллергическая проба Казони (сейчас редко).</td>
+                </tr>
+                <tr>
+                    <td class="col-method">Общий анализ крови</td>
+                    <td>Эозинофилия, повышение СОЭ.</td>
+                </tr>
+                <tr>
+                    <td class="col-method">Биопсия</td>
+                    <td>Пункционная биопсия – <strong>редко</strong> из-за опасности разрыва кисты.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Тщательно мыть руки после общения с собаками и работы со шкурами диких животных.</li>
+        <li>Тщательно мыть лесные ягоды, травы, овощи перед употреблением.</li>
+        <li>Кипятить воду из открытых водоёмов.</li>
+        <li>Не кормить собак сырыми субпродуктами (печень, лёгкие) от убитых животных.</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Регулярная плановая дегельминтизация собак (особенно служебных, пастушьих, охотничьих).</li>
+        <li>Строгий ветеринарный контроль на скотобойнях – поражённые эхинококковыми пузырями органы животных (печень, лёгкие овец и коров) категорически запрещено скармливать собакам, они подлежат обязательному уничтожению (сжиганию).</li>
+        <li>Санитарно-просветительская работа с населением (особенно в эндемичных регионах – овцеводческих районах).</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошачий сосальщик (Opisthorchis felineus) — урок 1</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА (полная ширина) ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .highlight {
+            background: #eef2ff;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ (полная ширина) ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 20px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 8px 0 12px 0;
+        }
+
+        .stage-row .left-col {
+            flex: 1 1 55%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-row .left-col .text {
+            flex: 0 0 auto;
+        }
+
+        .stage-row .left-col .additional-image {
+            margin-top: 12px;
+            flex: 1 1 auto; /* позволит фото растягиваться, занимая оставшееся место */
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .left-col .additional-image img,
+        .stage-row .left-col .additional-image .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .left-col .additional-image .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+            min-height: 420px; /* делаем правую колонку длиннее, чтобы слева было больше места */
+        }
+
+        .stage-row .right-col img,
+        .stage-row .right-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .right-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .right-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .right-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ДЛЯ БЛОКА МАРИТА ===== */
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ (жизненный цикл) ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 200px;
+            }
+
+            .stage-row .left-col {
+                flex: 1 1 auto;
+            }
+
+            .stage-row .left-col .additional-image {
+                flex: 0 0 auto;
+                margin-top: 12px;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .right-col,
+            .stage-row .image-col {
+                min-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🐚</span> Кошачий (сибирский) сосальщик</h1>
+    <div class="subtitle"><strong>Opisthorchis felineus</strong> — возбудитель <strong>описторхоза</strong></div>
+
+    <!-- ===== БЛОК 1. СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Тип:</strong> Плоские черви (Plathelminthes)<br>
+            <strong>Класс:</strong> Сосальщики (Трематоды) — Trematoda<br>
+            <strong>Вид:</strong> Кошачий, или сибирский сосальщик (<em>Opisthorchis felineus</em>)
+        </p>
+    </div>
+
+    <!-- ===== БЛОК 2. ОБЩАЯ ХАРАКТЕРИСТИКА ===== -->
+    <h2><span class="emoji">📋</span> Общая характеристика</h2>
+
+    <div class="epi-grid">
+        <div class="item"><strong>Вызываемое заболевание:</strong> Описторхоз.</div>
+        <div class="item"><strong>Эпидемиологическая группа:</strong> Биогельминт, антропозоонозное, природно-очаговое заболевание.</div>
+        <div class="item" style="grid-column: 1 / -1;"><strong>Географическое распространение:</strong> Заболевание носит очаговый характер. Крупнейший в мире очаг находится в Обь-Иртышском речном бассейне (Западная Сибирь). Также встречается в бассейнах Камы, Волги и Днепра.</div>
+    </div>
+
+    <!-- ===== БЛОК 3. МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🔬</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 3.1. Марита -->
+    <h3>3.1. Марита (половозрелая стадия / гермафродит)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма и размеры:</strong> Тело плоское, ланцетовидное (листовидное), бледно-желтого цвета, слегка сужено к переднему концу. Длина тела — <strong>8–13 мм</strong>.
+            </p>
+
+            <h4>Органы фиксации:</h4>
+            <ul>
+                <li><strong>Ротовая присоска</strong> — расположена терминально (на переднем конце), окружает ротовое отверстие.</li>
+                <li><strong>Брюшная присоска</strong> — расположена чуть позади ротовой на вентральной стороне.</li>
+            </ul>
+
+            <h4>Покровы и подвижность (тегумент):</h4>
+            <p>Тело покрыто кожно-мускульным мешком (тегументом). На поверхности тегумента имеются многочисленные шипики, обеспечивающие дополнительную фиксацию и подвижность.</p>
+
+            <h4>Пищеварительная система:</h4>
+            <p>Рот → глотка → короткий пищевод. От пищевода отходят две <strong>неразветвленные</strong> боковые ветви кишечника, слепо заканчивающиеся у заднего конца тела. <span class="spec">(Важное отличие от <em>Fasciola hepatica</em>, у которого кишечник сильно ветвится.)</span></p>
+
+            <h4>Половая система (гермафродит):</h4>
+            <ul>
+                <li><strong>Мужская:</strong> В задней части тела расположены два крупных <strong>розетковидных (лопастных) семенника</strong>. Между ними проходит S-образно изогнутый экскреторный канал.</li>
+                <li><strong>Женская:</strong> В средней части тела — <strong>петлеобразно извитая матка</strong>, за ней (несколько позади) — <strong>округлый яичник</strong>. По краям тела, между кишечными ветвями и краем тела, находятся <strong>желточники</strong> (мелкие фолликулы).</li>
+            </ul>
+        </div>
+
+        <!-- Изображение мариты -->
+        <div class="image-col">
+            <img src="images/helminths/cat_fluke_marita_scheme.jpg"
+                 alt="Марита кошачьего сосальщика — схема"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🪱</span>
+                Марита <em>Opisthorchis felineus</em>
+                <span class="small">(cat_fluke_marita_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">ланцетовидное тело, присоски, семенники, матка, яичник</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3.2. Яйцо -->
+    <h3>3.2. Яйцо</h3>
+
+    <div class="stage-row">
+        <!-- Левая колонка: текст + второе фото под ним -->
+        <div class="left-col">
+            <div class="text">
+                <p>
+                    <strong>Размеры:</strong> Мелкие — <strong>30×15 мкм</strong> (в среднем).<br>
+                    <strong>Форма и цвет:</strong> Овальные, бледно-желтого цвета, суженные к одному из полюсов.<br>
+                    <strong>Характерные структуры:</strong> На суженном полюсе имеется <strong>крышечка</strong>; на противоположном (расширенном) полюсе — небольшое <strong>утолщение (бугорок)</strong>.<br>
+                    <strong>Диагностическое значение:</strong> Эти признаки являются ключевыми для микроскопической идентификации яиц описторхиса.
+                </p>
+            </div>
+            <!-- Второе фото (микроскопическое) сразу под текстом, растягивается -->
+            <div class="additional-image">
+                <img src="images/helminths/cat_fluke_egg_microscope.jpg"
+                     alt="Микроскопическое фото яйца кошачьего сосальщика"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none;">
+                    <span class="icon">🔬</span>
+                    Микроскопическое фото яйца <em>Opisthorchis felineus</em>
+                    <span class="small">(cat_fluke_egg_microscope.jpg)</span>
+                    <span style="font-size:12px;color:#94a3b8;">овальное, с крышечкой и бугорком</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: схема яйца (удлинена с помощью min-height) -->
+        <div class="right-col">
+            <img src="images/helminths/cat_fluke_egg_scheme.jpg"
+                 alt="Схема яйца кошачьего сосальщика"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🥚</span>
+                Схема яйца <em>Opisthorchis felineus</em>
+                <span class="small">(cat_fluke_egg_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">крышечка, бугорок, овальная форма</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== БЛОК 4. ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Биогельминт (со сменой двух промежуточных хозяев).<br>
+        <strong>Обязательное условие:</strong> Все личиночные стадии развиваются только в пресноводной среде.
+    </p>
+
+    <p>
+        <strong>Окончательный (дефинитивный) хозяин:</strong> Человек, а также дикие и домашние плотоядные животные (кошки, собаки, лисицы, песцы и др.), в рацион которых входит рыба.<br>
+        <strong>Первый промежуточный хозяин:</strong> Пресноводный моллюск рода <em>Bithynia</em> (битиния).<br>
+        <strong>Второй промежуточный хозяин:</strong> Пресноводные рыбы семейства <strong>Карповые</strong> (язь, плотва, сазан, лещ, линь и др.).<br>
+        <strong>Инвазионная стадия:</strong> <span class="spec">Метацеркарий</span> (в мышцах рыбы).<br>
+        <strong>Патогенная стадия:</strong> <span class="spec">Марита</span> (половозрелая особь).<br>
+        <strong>Локализация в организме человека:</strong> Внутрипеченочные желчные протоки, желчный пузырь, протоки поджелудочной железы.
+    </p>
+
+    <!-- ===== БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА ===== -->
+    <div class="full-width-image">
+        <img src="images/helminths/cat_fluke_life_cycle.jpg"
+             alt="Жизненный цикл кошачьего сосальщика"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🌊</span>
+            Жизненный цикл <em>Opisthorchis felineus</em>
+            <span class="small">(cat_fluke_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">яйцо → мирацидий → спороциста → редия → церкарий → метацеркарий → марита</span>
+        </div>
+    </div>
+
+    <!-- Этапы жизненного цикла -->
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Выделение яиц во внешнюю среду:</strong> Марита, паразитирующая в желчных протоках окончательного хозяина, продуцирует яйца. С током желчи яйца попадают в кишечник и выделяются с фекалиями. Для дальнейшего развития яйца обязательно должны попасть в <strong>пресный водоем</strong>.</li>
+        <li><strong>Выход мирацидия:</strong> В воде из яйца выходит свободноплавающая ресничная личинка — <strong>мирацидий</strong>. Она активно плавает и внедряется в тело первого промежуточного хозяина.</li>
+        <li><strong>Развитие в первом промежуточном хозяине (партеногенез):</strong> Внутри моллюска происходит бесполое (партеногенетическое) размножение. Строгая последовательность стадий: <strong>Мирацидий → Спороциста → Редия → Церкарий</strong>.</li>
+        <li>Из моллюска в воду выходит подвижная хвостатая личинка — <strong>церкарий</strong>.</li>
+        <li><strong>Заражение второго промежуточного хозяина (рыбы):</strong> Церкарии активно внедряются в подкожную клетчатку и мускулатуру рыб семейства Карповые. В мышцах рыбы церкарий покрывается плотной оболочкой и превращается в <strong>метацеркария</strong> — это <strong>инвазионная стадия</strong> для окончательного хозяина.</li>
+    </ol>
+
+    <!-- ===== ЗАРАЖЕНИЕ ОКОНЧАТЕЛЬНОГО ХОЗЯИНА (НОВЫЙ БЛОК) ===== -->
+    <h3>Заражение окончательного хозяина (человека)</h3>
+
+    <p>
+        <strong>Механизм заражения:</strong> Фекально-оральный.<br>
+        <strong>Путь передачи:</strong> Алиментарный (через зараженные мышечные ткани рыбы).<br>
+        <strong>Факторы передачи:</strong> Употребление в пищу сырой, вяленой или недостаточно термически обработанной (непроваренной, непрожаренной) рыбы карповых пород, содержащей метацеркариев.
+    </p>
+
+    <h4>Миграция в организме человека:</h4>
+    <ol>
+        <li>В тонком кишечнике оболочка метацеркария растворяется.</li>
+        <li>Освободившаяся личинка через общий желчный проток мигрирует во внутрипеченочные желчные ходы, желчный пузырь и протоки поджелудочной железы.</li>
+        <li>Через 3–4 недели личинка достигает половой зрелости (становится маритой) и начинает продуцировать яйца.</li>
+        <li><strong>Продолжительность жизни в организме человека:</strong> Марита может паразитировать до <strong>20–25 лет</strong>.</li>
+    </ol>
+
+    <!-- ===== БЛОК 5. ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <p>
+        <strong>Материал для исследования:</strong> Фекалии, дуоденальное содержимое (полученное при зондировании).<br>
+        <strong>Основной метод:</strong> Микроскопия нативных мазков (или мазков по Като) для обнаружения яиц паразита.
+    </p>
+
+    <h4>Диагностические критерии:</h4>
+    <ul>
+        <li><strong>Обнаружение яиц:</strong> В исследуемом материале находят мелкие (30×15 мкм) овальные яйца бледно-желтого цвета, суженные к одному полюсу, с <strong>крышечкой</strong> на суженном полюсе и <strong>бугорком</strong> (утолщением) на противоположном.</li>
+        <li><strong>Постановка диагноза:</strong> Окончательный диагноз «описторхоз» ставится при обнаружении характерных яиц в фекалиях или дуоденальном содержимом.</li>
+    </ul>
+
+    <div class="note">
+        <strong>⚠️ Важное примечание:</strong><br>
+        В отличие от фасциолеза, для описторхоза <strong>не характерен</strong> феномен транзитных яиц, так как яйца описторхиса не проходят транзитом через кишечник человека при употреблении зараженной рыбы (в рыбе находятся метацеркарии, а не яйца). Однако для исключения ложноположительных результатов рекомендуется повторный анализ.
+    </div>
+
+    <p>
+        <strong>Дополнительные методы:</strong> Серологические реакции (ИФА, РНГА) для выявления специфических антител в сыворотке крови.
+    </p>
+
+    <!-- ===== БЛОК 6. ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Употреблять в пищу только <strong>хорошо проваренную</strong> (не менее 15–20 минут с момента закипания), <strong>прожаренную</strong> или <strong>тщательно просоленную/промороженную</strong> рыбу карповых пород.</li>
+        <li>Полностью исключить из рациона сырую, вяленую, малосольную и термически недостаточно обработанную рыбу, особенно выловленную в эндемичных районах.</li>
+        <li>Не использовать сырую рыбу для кормления домашних животных (кошек, собак).</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Выявление и лечение больных описторхозом людей и животных.</li>
+        <li>Строгий санитарно-ветеринарный контроль рыбы, поступающей в продажу (особенно из эндемичных очагов).</li>
+        <li>Охрана водоемов от загрязнения фекалиями человека и животных (канализация, обезвреживание сточных вод).</li>
+        <li>Санитарно-просветительская работа среди населения в эндемичных регионах (Сибирь, бассейны Волги, Камы, Днепра).</li>
+    </ul>
+
+</div>
+
+</body>
+</html>
