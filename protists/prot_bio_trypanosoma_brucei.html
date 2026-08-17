@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Африканская трипаносома (Trypanosoma brucei) — Конспект</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .pronounce {
+            background: #eef2ff;
+            border-radius: 8px;
+            padding: 4px 14px;
+            font-size: 15px;
+            color: #1e3a8a;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .pronounce i {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .subnote {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #d1d9e8;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 24px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        .epi-grid .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== БЛОК ВНИМАНИЯ ===== */
+        .attention-block {
+            background: #fef2f2;
+            border-radius: 12px;
+            padding: 14px 18px;
+            border-left: 6px solid #dc2626;
+            margin: 12px 0 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: #7f1d1d;
+        }
+
+        .attention-block .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .attention-block .content strong {
+            color: #b91c1c;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .lecture-highlight {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 4px solid #3b82f6;
+            margin: 12px 0 16px 0;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .lecture-highlight strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ASCII-схема ===== */
+        .ascii-art {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: pre;
+            overflow-x: auto;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            margin: 12px 0 16px 0;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 12px 0 20px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 500px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #fafcff;
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            min-width: 600px;
+        }
+
+        .styled-table th {
+            background: #e9edf3;
+            color: #1e3a8a;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        .styled-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .styled-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .styled-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 220px;
+            }
+
+            .stage-row .text-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .styled-table {
+                font-size: 14px;
+                min-width: 560px;
+            }
+
+            .attention-block {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .image-col {
+                min-height: 180px;
+            }
+
+            .styled-table {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🦠</span> Африканская трипаносома</h1>
+    <div class="subtitle">
+        <strong>Trypanosoma brucei</strong> — возбудитель <strong>африканского трипаносомоза (сонной болезни)</strong>
+        <div class="pronounce">
+            🎙️ Произношение:
+            <i>Trypanosoma brucei</i> — «Трипаносо́ма бру́цеи»;
+            <i>T. brucei gambiense</i> — «Трипаносо́ма бру́цеи гамбие́нсе»;
+            <i>T. brucei rhodesiense</i> — «Трипаносо́ма бру́цеи родезие́нсе»
+        </div>
+    </div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Подцарство:</strong> Простейшие (Protozoa)<br>
+            <strong>Тип:</strong> Саркомастигофоры (Sarcomastigophora)<br>
+            <strong>Класс:</strong> Жгутиконосцы (Mastigophora)<br>
+            <strong>Отряд:</strong> Кинетопластидные (Kinetoplastida)<br>
+            <strong>Семейство:</strong> Трипаносомовые (Trypanosomatidae)<br>
+            <strong>Вид:</strong> Африканская трипаносома (Trypanosoma brucei gambiense/rhodesiense)
+        </p>
+        <div class="subnote">
+            <strong>Экологическая группа:</strong> <span class="spec">Биопротист</span><br>
+            <strong>Тип заболевания:</strong> <span class="spec">Трансмиссивное, природно-очаговое</span><br>
+            <strong>Размножение:</strong> Только бесполое — продольное деление.
+        </div>
+    </div>
+
+    <!-- ===== КЛЮЧЕВЫЕ ПОКАЗАТЕЛИ ===== -->
+    <h2><span class="emoji">📋</span> Ключевые показатели паразитоза</h2>
+
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Подвид</th>
+                    <th>Заболевание и течение</th>
+                    <th>Переносчик / биотоп</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong><em>Trypanosoma brucei gambiense</em></strong></td>
+                    <td><strong>Западноафриканский трипаносомоз</strong> — хроническое течение ~5 лет, антропоноз.</td>
+                    <td>Переносчик обитает близ жилищ человека.</td>
+                </tr>
+                <tr>
+                    <td><strong><em>Trypanosoma brucei rhodesiense</em></strong></td>
+                    <td><strong>Восточноафриканский трипаносомоз</strong> — острое / злокачественное течение до 6 месяцев со смертельным исходом, зооантропоноз</td>
+                    <td>Переносчик обитает в открытых саваннах и саванновых лесах.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="epi-grid">
+        <div class="item full-width">
+            <strong>Специфический переносчик:</strong> муха цеце рода <em>Glossina</em>.
+        </div>
+
+        <div class="item full-width">
+            <strong>Механизм и путь заражения:</strong><br>
+            Трансмиссивный, <strong>инокулятивный</strong> — при укусе мухи цеце метациклические трипомастиготы поступают со слюной в ранку.
+        </div>
+
+        <div class="item">
+            <strong>Инвазионная стадия для человека:</strong><br>
+            <span class="spec">Метациклическая трипомастигота</span>
+        </div>
+
+        <div class="item">
+            <strong>Патогенная стадия:</strong><br>
+            <span class="spec">Трипомастигота</span>
+        </div>
+
+        <div class="item full-width">
+            <strong>Локализация:</strong><br>
+            Плазма крови, лимфа, межтканевая жидкость, ликвор и ткани ЦНС.
+        </div>
+    </div>
+
+    <div class="attention-block">
+        <div class="icon">⚠️</div>
+        <div class="content">
+            <strong>Важный нюанс:</strong> в организме человека трипаносомы находятся <strong>внеклеточно</strong>.
+        </div>
+    </div>
+
+    <!-- ===== МОРФОЛОГИЯ ===== -->
+    <h2><span class="emoji">🧫</span> Морфологическая характеристика</h2>
+
+    <p>
+        <strong>Полиморфизм:</strong> в жизненном цикле <em>T. brucei</em> основное значение имеют
+        <strong>трипомастигота</strong>, <strong>эпимастигота</strong> и
+        <strong>метациклическая трипомастигота</strong>.
+    </p>
+
+    <div class="note">
+        <strong>⚠️ Амастигота:</strong> это одна из общих морфологических форм кинетопластид,
+        но для <em>Trypanosoma brucei</em> она <strong>не является характерной стадией жизненного цикла</strong>.
+        У человека <em>T. brucei</em> существует преимущественно в виде <strong>внеклеточных трипомастигот</strong>.
+        Поэтому на экзамене амастиготу лучше не включать в цикл <em>T. brucei</em>; она типична прежде всего
+        для <em>Trypanosoma cruzi</em> и лейшманий.
+    </div>
+
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Форма</th>
+                    <th>Жгутик / мембрана</th>
+                    <th>Положение кинетопласта</th>
+                    <th>Где встречается</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Трипомастигота</strong></td>
+                    <td>Длинный жгутик + широкая ундулирующая мембрана</td>
+                    <td>Позади ядра (на заднем конце)</td>
+                    <td>Кровь, лимфа, ликвор человека; слюнные железы мухи (метациклическая)</td>
+                </tr>
+                <tr>
+                    <td><strong>Эпимастигота</strong></td>
+                    <td>Жгутик + короткая ундулирующая мембрана</td>
+                    <td>Перед ядром (смещён вперёд)</td>
+                    <td>Пищеварительный тракт и слюнные железы мухи цеце</td>
+                </tr>
+                <tr>
+                    <td><strong>Метациклическая трипомастигота</strong></td>
+                    <td>Инвазионная трипомастиготная форма</td>
+                    <td>Кинетопласт в задней части клетки</td>
+                    <td>Слюнные железы мухи цеце; вводится человеку при укусе</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <div class="full-width-image">
+        <img src="images/protists/trypanosoma_life_cycle.jpg"
+             alt="Жизненный цикл Trypanosoma brucei"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🌊</span>
+            Жизненный цикл <em>Trypanosoma brucei</em>
+            <span class="small">(trypanosoma_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">человек → муха цеце → человек</span>
+        </div>
+    </div>
+
+    <ol>
+        <li><strong>Укус мухи цеце:</strong> Муха вводит в ранку <strong>метациклические трипомастиготы</strong> со слюной (инокуляция).</li>
+
+        <li><strong>В крови человека:</strong> Трипомастиготы размножаются продольным делением в плазме крови, лимфе и межтканевой жидкости. <span class="spec">Внеклеточно!</span> Длинные формы (<em>slender</em>) делятся, короткие (<em>stumpy</em>) — готовятся к передаче.</li>
+
+        <li><strong>Заражение мухи:</strong> Муха цеце заглатывает <strong>короткие (stumpy) трипомастиготы</strong> с кровью больного.</li>
+
+        <li><strong>В средней кишке мухи:</strong> Происходит <strong>метаболическая перестройка</strong> (анаэробный → аэробный метаболизм), трипомастиготы размножаются, мигрируют в слюнные железы, превращаются в <strong>эпимастиготы</strong>, затем — в <strong>метациклические трипомастиготы</strong> (инвазионные).</li>
+
+        <li><strong>Инвазионная стадия:</strong> Метациклические трипомастиготы накапливаются в слюнных железах и готовы к инокуляции при следующем укусе.</li>
+    </ol>
+
+    <!-- ===== ПАТОГЕНЕЗ ===== -->
+    <h2><span class="emoji">⚕️</span> Патогенез и клиническая картина</h2>
+
+    <h4>Волнообразное течение</h4>
+    <p>
+        Для сонной болезни характерны <strong>повторные волны паразитемии и лихорадки</strong>:
+        количество трипаносом в крови периодически возрастает, затем снижается и вновь увеличивается.
+    </p>
+
+    <div class="lecture-highlight">
+        <strong>📌 Механизм:</strong> волнообразное течение связано с
+        <strong>антигенной изменчивостью поверхностных гликопротеинов VSG</strong>.
+        Иммунная система вырабатывает антитела против текущего варианта VSG и уничтожает большую часть паразитов.
+        Единичные трипаносомы с другим вариантом VSG выживают, размножаются и формируют следующую волну паразитемии.
+    </div>
+
+    <div class="ascii-art">[Рост числа трипаносом] ──► [Антитела к текущему VSG] ──► [Гибель большей части популяции]
+                                                                       │
+[Новая волна паразитемии] ◄── [Смена VSG] ◄── [Выжившие антигенные варианты]</div>
+
+    <div class="lecture-highlight">
+        <strong>📌 Две последовательные стадии:</strong>
+    </div>
+
+    <h4>1. Гемолимфатическая (ранняя) стадия</h4>
+    <ul>
+        <li><strong>Трипаносомный шанкр:</strong> плотный воспалительный узелок на месте укуса (исчезает через 1–2 недели).</li>
+        <li><strong>Паразитемия:</strong> трипаносомы в крови, лимфоузлах.</li>
+        <li><strong>Симптомы:</strong> неправильная интермиттирующая лихорадка, кожная сыпь, сильная слабость, гепатоспленомегалия, анемия, поражение миокарда и почек.</li>
+        <li><span class="spec">Симптом Уинтерботтома</span> — выраженное увеличение <strong>заднешейных и затылочных лимфоузлов</strong>.</li>
+    </ul>
+
+    <h4>2. Менингоэнцефалитическая (поздняя / неврологическая) стадия</h4>
+    <ul>
+        <li><strong>Преодоление гематоэнцефалического барьера:</strong> трипаносомы проникают в ликвор и ткань ЦНС.</li>
+        <li><strong>Симптомы:</strong>
+            <ul>
+                <li>Нарастающая <strong>дневная сонливость</strong>, ночная бессонница.</li>
+                <li>Тремор языка и пальцев, атаксия, психические расстройства (депрессия, апатия).</li>
+                <li>Кахексия, судороги, кома и смерть без лечения.</li>
+            </ul>
+        </li>
+        <li><strong>Исход:</strong> при отсутствии лечения — летальный в течение нескольких месяцев (родезийский тип) или лет (гамбийский тип).</li>
+    </ul>
+
+    <!-- ===== ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <div class="lecture-highlight">
+        <strong>🎙️ Схема ответа:</strong> всегда указывайте <strong>1) биоматериал, 2) метод, 3) что находим</strong>.
+    </div>
+
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Биоматериал</th>
+                    <th>Метод исследования</th>
+                    <th>Что находим / Обоснование</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Кровь (мазок и толстая капля)</td>
+                    <td>Микроскопия нативного препарата / окраска по Романовскому–Гимзе</td>
+                    <td><span class="spec">Подвижные трипомастиготы</span> — в гемолимфатической стадии</td>
+                </tr>
+                <tr>
+                    <td>Пунктат шейных / затылочных лимфоузлов</td>
+                    <td>Микроскопия (нативный + окрашенный препарат)</td>
+                    <td><span class="spec">Трипомастиготы</span> — метод выбора при симптоме Уинтерботтома</td>
+                </tr>
+                <tr>
+                    <td>Спинномозговая жидкость (ликвор) — люмбальная пункция</td>
+                    <td>Микроскопия (нативный + окрашенный), подсчёт клеток</td>
+                    <td><span class="spec">Трипомастиготы</span> и плеоцитоз — на поздней стадии</td>
+                </tr>
+                <tr>
+                    <td>Пунктат костного мозга</td>
+                    <td>Микроскопия</td>
+                    <td>При сомнительных результатах мазков крови</td>
+                </tr>
+                <tr>
+                    <td>Сыворотка крови / ликвор</td>
+                    <td>Иммунологические методы (ИФА, РИФ, РСК)</td>
+                    <td><span class="spec">Специфические антитела (IgM, IgG)</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Защита от укусов мух цеце: <strong>плотная одежда светлых тонов</strong> (муху привлекают тёмные и синие цвета), репелленты.</li>
+        <li>Использование <strong>противомоскитных сеток</strong> на окнах и пологов над кроватями.</li>
+        <li>Химиопрофилактика (пентамидин, ломидин) перед поездкой в эндемичные регионы — защита на 3–6 месяцев.</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li><strong>Борьба с переносчиками:</strong> распыление инсектицидов, ловушки-приманки с аттрактантами, вырубка кустарников вдоль водоёмов и дорог, выпуск стерилизованных самцов.</li>
+        <li><strong>Раннее выявление и лечение больных</strong> — для ликвидации резервуара (особенно в очагах <em>T. b. gambiense</em>).</li>
+        <li>Ветеринарный контроль и санитарно-просветительная работа среди населения.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

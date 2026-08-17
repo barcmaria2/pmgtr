@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Морфофизиологические формы кинетопластид — Конспект</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .pronounce {
+            background: #eef2ff;
+            border-radius: 8px;
+            padding: 4px 14px;
+            font-size: 15px;
+            color: #1e3a8a;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .pronounce i {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .subnote {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #d1d9e8;
+        }
+
+        /* ===== БЛОК ВНИМАНИЯ (КРАСНЫЙ) ===== */
+        .attention-block {
+            background: #fef2f2;
+            border-radius: 12px;
+            padding: 14px 18px;
+            border-left: 6px solid #dc2626;
+            margin: 12px 0 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: #7f1d1d;
+        }
+
+        .attention-block .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .attention-block .content strong {
+            color: #b91c1c;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .lecture-highlight {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 4px solid #3b82f6;
+            margin: 12px 0 16px 0;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .lecture-highlight strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ASCII-схема ===== */
+        .ascii-art {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: pre;
+            overflow-x: auto;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            margin: 12px 0 16px 0;
+        }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #fafcff;
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            min-width: 500px;
+        }
+
+        .styled-table th {
+            background: #e9edf3;
+            color: #1e3a8a;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        .styled-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .styled-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .styled-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 12px 0 20px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 220px;
+            }
+
+            .stage-row .text-col {
+                flex: 1 1 auto;
+            }
+
+            .styled-table {
+                font-size: 14px;
+                min-width: 0;
+            }
+
+            .styled-table th,
+            .styled-table td {
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+
+            .stage-row .image-col {
+                min-height: 180px;
+            }
+
+            .styled-table {
+                font-size: 13px;
+            }
+            .styled-table th,
+            .styled-table td {
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🧬</span> Морфофизиологические формы кинетопластид</h1>
+    <div class="subtitle">
+        Отряд <strong>Kinetoplastida</strong> — представители <strong>Leishmania</strong>, <strong>Trypanosoma brucei</strong>, <strong>Trypanosoma cruzi</strong>
+    </div>
+
+    <!-- ===== БЛОК 1. СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Протисты (Protista)<br>
+            <strong>Подцарство:</strong> Простейшие (Protozoa)<br>
+            <strong>Тип:</strong> Саркомастигофоры (Sarcomastigophora)<br>
+            <strong>Класс:</strong> Жгутиконосцы (Mastigophora)<br>
+            <strong>Отряд:</strong> Кинетопластиды (Kinetoplastida)
+        </p>
+        <div class="subnote">
+            <strong>Ключевая особенность:</strong> Наличие <span class="spec">кинетопласта</span> — дисковидной структуры внутри гигантской митохондрии, содержащей собственную ДНК (кДНК). Функционально и пространственно связан с базальным тельцем жгутика (кинетосомой / блефаропластом).В процессе жизненного цикла со сменой хозяев и сред обитания кинетопластиды закономерно трансформируются в различные морфологические формы трофозоитов.
+        </div>
+    </div>
+
+    <!-- ===== БЛОК 2. ОСНОВНЫЕ МОРФОЛОГИЧЕСКИЕ ФОРМЫ ===== -->
+    <h2><span class="emoji">🔬</span> Основные морфологические формы трофозоитов</h2>
+
+    <div class="lecture-highlight">
+        <strong>📌 Классификация основана на:</strong> взаимном расположении ядра, кинетопласта/кинетосомы, точке выхода жгутика и степени развития ундулирующей мембраны.
+    </div>
+
+    <div style="display:flex;justify-content:center;margin:18px 0 24px;max-width:100%;overflow:hidden;">
+        <img src="images/protists/kinetoplastid_forms.png" alt="Морфологические формы кинетопластид" style="display:block;max-width:100%;height:auto;object-fit:contain;border-radius:12px;border:1px solid #e2e8f0;background:#fff;">
+    </div>
+
+    <!-- 1. Амастигота -->
+    <h3>1. Амастигота (лейшманиальная стадия)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Морфология:</strong> Округлая или овальная мелкая клетка (2–5 мкм).<br>
+                <strong>Ядро:</strong> Округлое, занимает до ⅓ объёма клетки.<br>
+                <strong>Кинетопласт:</strong> Палочковидный или округлый, расположен рядом с ядром.<br>
+                <strong>Жгутик:</strong> Свободный наружный жгутик <strong>отсутствует</strong> (имеется лишь рудиментарный корешок внутри клетки).<br>
+                <strong>Ундулирующая мембрана:</strong> Отсутствует.
+            </p>
+            <div class="note">
+                <strong>Биологическое значение:</strong> Специализированная форма для <strong>внутриклеточного паразитизма</strong> в макрофагах, клетках печени, селезёнки, костного мозга, мышечных тканях. Неподвижна.
+            </div>
+        </div>
+        <div class="image-col">
+            <div class="placeholder">
+                <span class="icon">🟤</span>
+                Амастигота
+                <span class="small">(Leishmania, T. cruzi)</span>
+                <span style="font-size:12px;color:#94a3b8;">округлая, ядро + кинетопласт</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Промастигота -->
+    <h3>2. Промастигота (лептомонадная стадия)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Морфология:</strong> Вытянутая веретеновидная клетка (длина 10–25 мкм, ширина 1,5–3 мкм).<br>
+                <strong>Ядро:</strong> Центральное положение.<br>
+                <strong>Кинетопласт:</strong> На переднем конце тела — <span class="spec">впереди ядра</span>.<br>
+                <strong>Жгутик:</strong> Выходит из передней части клетки, длинный свободный бич направлен вперёд.<br>
+                <strong>Ундулирующая мембрана:</strong> Отсутствует.
+            </p>
+            <div class="note">
+                <strong>Биологическое значение:</strong> Высокоподвижная форма. Обитает <strong>во внеклеточной среде</strong> — в просвете пищеварительного тракта москитов или на искусственных питательных средах. <span class="spec">Инвазионная стадия для человека у лейшманий.</span>
+            </div>
+        </div>
+        <div class="image-col">
+            <div class="placeholder">
+                <span class="icon">🧵</span>
+                Промастигота
+                <span class="small">(Leishmania)</span>
+                <span style="font-size:12px;color:#94a3b8;">веретеновидная, жгутик спереди</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Эпимастигота -->
+    <h3>3. Эпимастигота (критидиальная стадия)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Морфология:</strong> Удлинённая клетка (длина 15–20 мкм).<br>
+                <strong>Ядро:</strong> По центру или слегка сзади.<br>
+                <strong>Кинетопласт:</strong> Смещён вперёд — <span class="spec">непосредственно перед ядром</span> (в средней трети клетки).<br>
+                <strong>Жгутик:</strong> Отходит от кинетосомы вперёд, поднимает пелликулу, образует <strong>короткую ундулирующую мембрану</strong> (до переднего конца), после чего выходит свободным концом.<br>
+                <strong>Ундулирующая мембрана:</strong> Короткая (от центра кпереди).
+            </p>
+            <div class="note">
+                <strong>Биологическое значение:</strong> Переходная фаза размножения и созревания в <strong>пищеварительной системе и слюнных железах насекомых-переносчиков</strong> (муха цеце, триатомовые клопы).
+            </div>
+        </div>
+        <div class="image-col">
+            <div class="placeholder">
+                <span class="icon">〰️</span>
+                Эпимастигота
+                <span class="small">(T. brucei, T. cruzi)</span>
+                <span style="font-size:12px;color:#94a3b8;">жгутик + короткая мембрана</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Трипомастигота -->
+    <h3>4. Трипомастигота (трипаносомная стадия)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Морфология:</strong> Извилистая узкая веретеновидная клетка (длина 15–30 мкм, ширина 1,5–3 мкм).<br>
+                <strong>Ядро:</strong> Крупное, в центре клетки.<br>
+                <strong>Кинетопласт:</strong> Смещён на <span class="spec">задний конец тела (позади ядра)</span>.<br>
+                <strong>Жгутик:</strong> Начинается на заднем полюсе, проходит вдоль всей длины клетки к переднему концу, образуя <strong>широкую длинную ундулирующую мембрану</strong>, и выдается спереди длинным свободным концом.<br>
+                <strong>Ундулирующая мембрана:</strong> Длинная и широкая (во всю длину клетки).
+            </p>
+            <div class="note">
+                <strong>Биологическое значение:</strong> Обеспечивает быстрое волнообразное винтовое движение в <strong>высоковязких жидкостях</strong> (плазма крови, лимфа, спинномозговая жидкость). <span class="spec">Основная циркулирующая инвазионная и патогенная форма.</span>
+            </div>
+        </div>
+        <div class="image-col">
+            <div class="placeholder">
+                <span class="icon">🌀</span>
+                Трипомастигота
+                <span class="small">(T. brucei, T. cruzi)</span>
+                <span style="font-size:12px;color:#94a3b8;">извилистая, длинная мембрана</span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- ===== БЛОК 5. РАСПРЕДЕЛЕНИЕ ПО РОДАМ ===== -->
+    <h2><span class="emoji">🔄</span> Распределение форм у представителей</h2>
+
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Представитель</th>
+                    <th>Встречающиеся морфологические формы</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Лейшмании</strong> (<em>Leishmania</em> spp.)</td>
+                    <td>
+                        <span class="spec">1. Амастигота</span> (в человеке/млекопитающих) — патогенная стадия, обитаетвнутриклеточно в макрофагах<br>
+                        <span class="spec">2. Промастигота</span> (в моските и культуре) — обитает внеклеточно, инвазионная стадия для человека
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Африканские трипаносомы</strong> (<em>T. brucei</em>)</td>
+                    <td>
+                        <span class="spec">1. Эпимастигота</span> (в мухе цеце) — размножение<br>
+                        <span class="spec">2. Трипомастигота</span> (в крови человека и мухе) — основная инвазионная и патогенная форма
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Американская трипаносома</strong> (<em>T. cruzi</em>)</td>
+                    <td>
+                        <span class="spec">1. Амастигота</span> (в тканях человека) — внутриклеточное размножение, патогенная стадия <br>
+                        <span class="spec">2. Эпимастигота</span> (в клопе и культуре) — размножение<br>
+                        <span class="spec">3. Трипомастигота</span> (в крови человека и клопе) — диссеминация (разнос паразита по организму), инвазионная стадия
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== БЛОК 7. ЛЕКЦИОННЫЕ НЮАНСЫ ===== -->
+    <h2><span class="emoji">🎙️</span> Важные нюансы</h2>
+
+    <div class="lecture-highlight" style="border-left-color: #f59e0b; background: #fffbeb;">
+        <strong>⚠️ Ключевой нюанс для ответа:</strong><br>
+        При ответе на вопрос о морфологических формах кинетопластид обязательно указывайте <strong>положение кинетопласта относительно ядра</strong> — это главный диагностический признак, позволяющий отличить одну стадию от другой.
+    </div>
+
+    <div class="lecture-highlight">
+        <strong>📌 Запоминалка:</strong><br>
+        • <strong>Амастигота</strong> — «а» = без жгутика (округлая, внутри клеток).<br>
+        • <strong>Промастигота</strong> — «про» = жгутик впереди (переднежгутиковая).<br>
+        • <strong>Эпимастигота</strong> — «эпи» = кинетопласт перед ядром (короткая мембрана).<br>
+        • <strong>Трипомастигота</strong> — «трипо» = кинетопласт позади ядра (длинная мембрана, в крови).
+    </div>
+
+</div>
+
+</body>
+</html>

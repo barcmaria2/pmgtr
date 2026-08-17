@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лейшмании (Leishmania) — Конспект</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .pronounce {
+            background: #eef2ff;
+            border-radius: 8px;
+            padding: 4px 14px;
+            font-size: 15px;
+            color: #1e3a8a;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .pronounce i {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .subnote {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #d1d9e8;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 24px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        .epi-grid .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== БЛОК ВНИМАНИЯ (КРАСНЫЙ) ===== */
+        .attention-block {
+            background: #fef2f2;
+            border-radius: 12px;
+            padding: 14px 18px;
+            border-left: 6px solid #dc2626;
+            margin: 12px 0 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: #7f1d1d;
+        }
+
+        .attention-block .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .attention-block .content strong {
+            color: #b91c1c;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .lecture-highlight {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 4px solid #3b82f6;
+            margin: 12px 0 16px 0;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .lecture-highlight strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ASCII-схема ===== */
+        .ascii-art {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: pre;
+            overflow-x: auto;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            margin: 12px 0 16px 0;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 12px 0 20px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #fafcff;
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            min-width: 500px;
+        }
+
+        .styled-table th {
+            background: #e9edf3;
+            color: #1e3a8a;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        .styled-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .styled-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .styled-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 220px;
+            }
+
+            .stage-row .text-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .styled-table {
+                font-size: 14px;
+                min-width: 0;
+            }
+
+            .styled-table th,
+            .styled-table td {
+                padding: 8px 12px;
+            }
+
+            .attention-block {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+
+            .stage-row .image-col {
+                min-height: 180px;
+            }
+
+            .styled-table {
+                font-size: 13px;
+            }
+            .styled-table th,
+            .styled-table td {
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🦟</span> Лейшмании</h1>
+    <div class="subtitle">
+        Род <strong>Leishmania</strong> — возбудители <strong>лейшманиозов</strong> (кожного и висцерального)
+        <div class="pronounce">🎙️ <i>«Лейшмания»</i> (от имени Уильяма Лейшмана)</div>
+    </div>
+
+    <!-- ===== БЛОК 1. СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Протисты (Protista)<br>
+            <strong>Подцарство:</strong> Простейшие (Protozoa)<br>
+            <strong>Тип:</strong> Саркомастигофоры (Sarcomastigophora)<br>
+            <strong>Класс:</strong> Жгутиковые (Mastigophora)<br>
+            <strong>Отряд:</strong> Кинетопластиды (Kinetoplastida)<br>
+        </p>
+        <div class="subnote">
+            <strong>Основные виды:</strong><br>
+            • <span class="spec"><em>Leishmania tropica</em></span> — возбудитель <strong>кожного лейшманиоза</strong> (болезнь Боровского, пендинская язва).<br>
+            • <span class="spec"><em>Leishmania donovani</em></span> — возбудитель <strong>висцерального лейшманиоза</strong> (кала-азар, чёрный лейшманиоз).
+        </div>
+    </div>
+
+    <!-- ===== БЛОК 2. КЛЮЧЕВЫЕ ПОКАЗАТЕЛИ ===== -->
+    <h2><span class="emoji">📋</span> Ключевые показатели паразитоза</h2>
+
+    <div class="epi-grid">
+        <div class="item full-width">
+            <strong>Экологическая группа:</strong> <span class="spec">Биопротист (кровяной / тканевой)</span> — жизненный цикл со сменой двух хозяев (позвоночный + беспозвоночный переносчик).<br>
+            <strong>Переносчик:</strong> Москиты рода <em>Phlebotomus</em> (самки).<br>
+            <strong>Тип инвазии:</strong> <span class="spec">Трансмиссивное природно-очаговое заболевание</span> (моновекторное,т.к. передается только москитами только рода Phlebotomus).
+        </div>
+
+        <!-- КРАСНЫЙ БЛОК ВНИМАНИЯ -->
+        <div class="attention-block full-width" style="grid-column: 1 / -1; margin: 0;">
+            <div class="icon">⚠️</div>
+            <div class="content">
+                <strong>Важнейший нюанс:</strong> Передача происходит <strong>только через укус москита</strong> (инокуляция промастигот). Во внешнюю среду паразит не выделяется.
+            </div>
+        </div>
+
+        <div class="item">
+            <strong>Инвазионная стадия для человека:</strong><br>
+            <span class="spec">Промастигота</span> (в хоботке москита)
+        </div>
+
+        <div class="item">
+            <strong>Патогенная стадия для человека:</strong><br>
+            <span class="spec">Амастигота</span> (внутриклеточно в макрофагах)
+        </div>
+
+        <div class="item full-width">
+            <strong>Источники инвазии:</strong><br>
+            • <strong>Для <em>L. tropica</em> (кожный):</strong> больной человек, грызуны-песчанки, суслики, собаки, кошки.<br>
+            • <strong>Для <em>L. donovani</em> (висцеральный):</strong> больные люди, собаки, дикие псовые (в зависимости от очага).
+        </div>
+    </div>
+
+    <!-- ===== БЛОК 3. МОРФОЛОГИЯ ===== -->
+    <h2><span class="emoji">🧫</span> Морфологическая характеристика стадий</h2>
+
+    <div style="display:flex;justify-content:center;margin:16px 0 22px;max-width:100%;overflow:hidden;">
+        <img src="images/protists/kinetoplastid_forms.png" alt="Схема морфологических форм кинетопластид" style="display:block;max-width:100%;height:auto;object-fit:contain;border-radius:12px;border:1px solid #e2e8f0;background:#fff;">
+    </div>
+
+    <div class="lecture-highlight">
+        <strong>📌 В жизненном цикле лейшманий — только 2 стадии:</strong> амастигота (внутриклеточная) и промастигота (внеклеточная). Эпимастигота и трипомастигота <strong>отсутствуют</strong>.
+    </div>
+
+    <!-- 3.1. Амастигота -->
+    <h3>Амастигота (лейшманиальная / безжгутиковая форма)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Где находится:</strong> Внутриклеточно в макрофагах кожи, костного мозга, печени, селезёнки, лимфоузлов.<br>
+                <strong>Размеры:</strong> 2–5 мкм, округлая или овальная.<br>
+                <strong>Строение:</strong>
+            </p>
+            <ul>
+                <li>Одно крупное округлое ядро (занимает до ⅓ клетки).</li>
+                <li>Кинетопласт — мелкое палочковидное тельце рядом с ядром.</li>
+                <li><span class="spec">Свободного жгутика нет</span> (имеется рудиментарный внутриклеточный корешок).</li>
+                <li>Ундулирующая мембрана отсутствует.</li>
+            </ul>
+            <div class="note">
+                <strong>Биологическое значение:</strong> Размножается внутри макрофагов, вызывая их разрушение. <span class="spec">Патогенная стадия для человека.</span>
+            </div>
+        </div>
+        <div class="image-col">
+            <div class="placeholder">
+                <span class="icon">🟤</span>
+                Амастигота
+                <span class="small">(в макрофагах)</span>
+                <span style="font-size:12px;color:#94a3b8;">округлая, ядро + кинетопласт, без жгутика</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3.2. Промастигота -->
+    <h3>Промастигота (лептомонадная / жгутиковая форма)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Где находится:</strong> В пищеварительном тракте и хоботке москита, а также в культуре (среда NNN).<br>
+                <strong>Размеры:</strong> 10–20 мкм, веретеновидная (ширина 1,5–3 мкм).<br>
+                <strong>Строение:</strong>
+            </p>
+            <ul>
+                <li>Ядро расположено в центре.</li>
+                <li><span class="spec">Кинетопласт — на переднем конце (впереди ядра).</span></li>
+                <li>Из переднего конца выходит <strong>один длинный свободный жгутик</strong> (15–20 мкм) — обеспечивает быстрое движение.</li>
+                <li>Ундулирующая мембрана отсутствует.</li>
+            </ul>
+            <div class="note">
+                <strong>Биологическое значение:</strong> Размножается в моските, накапливается в слюнных железах. <span class="spec">Инвазионная стадия для человека.</span>
+            </div>
+        </div>
+        <div class="image-col">
+            <div class="placeholder">
+                <span class="icon">🧵</span>
+                Промастигота
+                <span class="small">(в моските / культуре)</span>
+                <span style="font-size:12px;color:#94a3b8;">веретеновидная, жгутик спереди, кинетопласт впереди ядра</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ===== БЛОК 4. ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Биопротист (со сменой хозяев).<br>
+        <strong>Хозяева:</strong> Человек (и другие млекопитающие).<br>
+        <strong>Механизм передачи:</strong> Трансмиссивный (инокуляция).
+    </p>
+
+    <ol>
+        <li><strong>Укус москита:</strong> Самка москита вводит в кожу человека <strong>промастиготы</strong> со слюной (инокуляция).</li>
+        <li><strong>Фагоцитоз:</strong> Промастиготы захватываются макрофагами кожи (или внутренних органов при висцеральной форме).</li>
+        <li><strong>Превращение в амастиготу:</strong> Внутри макрофага промастигота теряет жгутик и превращается в <strong>амастиготу</strong>.</li>
+        <li><strong>Размножение:</strong> Амастиготы размножаются бинарным делением, разрушают макрофаг и выходят наружу, инфицируя новые клетки.</li>
+        <li><strong>Заражение москита:</strong> Москит, питаясь кровью больного, заглатывает амастиготы.</li>
+        <li><strong>В моските:</strong> В кишечнике амастиготы превращаются в <strong>промастиготы</strong>, размножаются, мигрируют в слюнные железы и хоботок — становятся инвазионными.</li>
+    </ol>
+
+
+    <!-- ===== БЛОК 5. КЛИНИКА И ПАТОГЕНЕЗ ===== -->
+    <h2><span class="emoji">⚕️</span> Клинические формы и патогенез</h2>
+
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Характеристика</th>
+                    <th>Кожный лейшманиоз (<em>L. tropica</em>)</th>
+                    <th>Висцеральный лейшманиоз (<em>L. donovani</em>)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Вызываемая болезнь</strong></td>
+                    <td>Кожный лейшманиоз (болезнь Боровского, пендинская язва)</td>
+                    <td>Висцеральный лейшманиоз (кала-азар, чёрный лейшманиоз)</td>
+                </tr>
+                <tr>
+                    <td><strong>Локализация в теле</strong></td>
+                    <td>Клетки кожи (эпидермис и дерма) на открытых участках</td>
+                    <td>Клетки внутренних органов (красный костный мозг, селезёнка, печень, лимфосистема)</td>
+                </tr>
+                <tr>
+                    <td><strong>Патогенез</strong></td>
+                    <td>Размножение амастигот в макрофагах кожи → гибель клеток → гранулема → некроз и изъязвление</td>
+                    <td>Гематогенный занос амастигот во внутренние органы → гибель ретикулоэндотелиальных клеток → гиперплазия органов, угнетение кроветворения</td>
+                </tr>
+                <tr>
+                    <td><strong>Клинические симптомы</strong></td>
+                    <td>
+                        Первичный узелок на месте укуса москита → формирование <strong>длительно не заживающей язвы</strong> с кратерообразным дном → заживление с глубоким рубцом
+                    </td>
+                    <td>
+                        <span class="spec">Гепатоспленомегалия</span> (гигантское увеличение печени и селезёнки), потемнение кожи («кала-азар»), анемия, лейкопения, тяжёлая интоксикация, кахексия. Без лечения — высокая летальность.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== БЛОК 6. ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <div class="lecture-highlight">
+        <strong>🎙️ Схема ответа:</strong> всегда указывайте <strong>1) биоматериал, 2) метод, 3) что находим</strong>. Серологический метод (ИФА) — универсален для обоих форм.
+    </div>
+
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Форма</th>
+                    <th>Биоматериал</th>
+                    <th>Метод исследования</th>
+                    <th>Что находим</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2"><strong>Кожный лейшманиоз</strong> (<em>L. tropica</em>)</td>
+                    <td>Соскоб / мазок-отпечаток со дна и края язвы</td>
+                    <td>Микроскопия, окраска по Романовскому–Гимзе</td>
+                    <td><span class="spec">Амастиготы</span> внутри и вне макрофагов</td>
+                </tr>
+                <tr>
+                    <td>Тот же материал</td>
+                    <td>Посев на среду NNN (22–25 °C)</td>
+                    <td>Вырастают <span class="spec">подвижные промастиготы</span></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>Висцеральный лейшманиоз</strong> (<em>L. donovani</em>)</td>
+                    <td>Пунктат костного мозга (стернальная пункция), пунктат селезёнки / печени / лимфоузлов, толстая капля крови</td>
+                    <td>Микроскопия, окраска по Романовскому–Гимзе</td>
+                    <td><span class="spec">Амастиготы</span> в макрофагах и моноцитах</td>
+                </tr>
+                <tr>
+                    <td>Тот же материал</td>
+                    <td>Посев на среду NNN</td>
+                    <td>Вырастают <span class="spec">промастиготы</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Универсально</strong></td>
+                    <td>Сыворотка крови</td>
+                    <td>ИФА (иммуноферментный анализ), РНИФ</td>
+                    <td><span class="spec">Специфические антитела</span> к лейшманиям</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== БЛОК 7. ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Защита от укусов москитов: <strong>репелленты</strong>, противомоскитные сетки (мелкая ячейка!), закрытая одежда.</li>
+        <li>
+            <strong>Вакцинация:</strong>
+            <div class="lecture-highlight" style="margin: 6px 0 0 0; border-left-color: #f59e0b; background: #fffbeb;">
+                <strong>⚠️ Критический нюанс из лекции:</strong> Официально зарегистрированная специфическая прививка существует <strong>только для кожного лейшманиоза</strong> (<em>L. tropica</em>). Для висцерального — <strong>вакцины нет</strong>.
+            </div>
+        </li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li><strong>Борьба с переносчиками:</strong> дезинсекция, уничтожение москитов и обработка мест их выплода (подвалы, сырые затенённые места, норы грызунов).</li>
+        <li><strong>Борьба с резервуарными хозяевами:</strong> дератизация (истребление грызунов-песчанок), контроль численности бродячих собак.</li>
+        <li>Раннее выявление, изоляция (защита от укусов москитов) и лечение больных.</li>
+        <li>Санитарно-просветительная работа.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

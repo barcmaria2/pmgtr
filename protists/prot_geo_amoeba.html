@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дизентерийная амёба (Entamoeba histolytica) — Конспект</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .pronounce {
+            background: #eef2ff;
+            border-radius: 8px;
+            padding: 4px 14px;
+            font-size: 15px;
+            color: #1e3a8a;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .pronounce i {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ И ПАСПОРТ (полная ширина) ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 24px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        .epi-grid .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== БЛОК ВНИМАНИЯ (КРАСНЫЙ) ===== */
+        .attention-block {
+            background: #fef2f2;
+            border-radius: 12px;
+            padding: 14px 18px;
+            border-left: 6px solid #dc2626;
+            margin: 12px 0 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: #7f1d1d;
+        }
+
+        .attention-block .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .attention-block .content strong {
+            color: #b91c1c;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .lecture-highlight {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 4px solid #3b82f6;
+            margin: 12px 0 16px 0;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .lecture-highlight strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 12px 0 20px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 220px;
+            }
+
+            .stage-row .text-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .attention-block {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .image-col {
+                min-height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🔬</span> Дизентерийная амёба</h1>
+    <div class="subtitle">
+        <strong>Entamoeba histolytica</strong> — возбудитель <strong>амебиаза</strong> (амебной дизентерии)
+        <div class="pronounce">🎙️ Правильное произношение: <i>«Энтамёба хистолитика»</i> (не искажать!)</div>
+    </div>
+
+    <!-- ===== БЛОК 1. СИСТЕМАТИКА ===== -->
+<div class="taxonomy-card">
+    <p>
+        <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+        <strong>Царство:</strong> Простейшие / Протисты (Protista)<br>
+        <strong>Подцарство:</strong> Одноклеточные (Protozoa)<br>
+        <strong>Тип:</strong> Саркомастигофоры (Sarcomastigophora)<br>
+        <strong>Подтип:</strong> Саркодовые (Sarcodina)<br>
+        <strong>Вид:</strong> Дизентерийная амёба (<em>Entamoeba histolytica</em>)
+    </p>
+    <p style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #d1d9e8;">
+        <strong>Экологическая группа:</strong> <span class="spec">Геопротисты</span> — заражение происходит из окружающей среды, нет обязательной смены видов хозяев.<br>
+        <strong>Тип инвазии:</strong> <span class="spec">Антропоноз</span> — единственным источником заражения является человек.
+    </p>
+</div>
+
+    <!-- ===== БЛОК 2. КЛЮЧЕВЫЕ ПОКАЗАТЕЛИ (ПАСПОРТ) ===== -->
+    <h2><span class="emoji">📋</span> Ключевые показатели паразитоза</h2>
+
+    <div class="epi-grid">
+        <div class="item full-width">
+            <strong>Механизм и путь заражения:</strong><br>
+            • <strong>Механизм:</strong> Фекально-оральный.<br>
+            • <strong>Пути заражения:</strong>
+            <ul>
+                <li><em>Водный</em> — при питье сырой инфицированной воды или использовании её для мытья посуды/продуктов.</li>
+                <li><em>Контактно-бытовой</em> — через загрязненные руки, предметы обихода, дверные ручки и игрушки, а также при употреблении немытых овощей, фруктов и т.д., содержащих зрелые цисты.</li>
+            </ul>
+        </div>
+
+        <!-- БЛОК ВНИМАНИЯ (КРАСНЫЙ) — оставлен как дополнение -->
+        <div class="attention-block full-width" style="grid-column: 1 / -1; margin: 0;">
+            <div class="icon">⚠️</div>
+            <div class="content">
+                <strong>Внимание!</strong> Механическими переносчиками могут выступать <strong>мухи и тараканы</strong>, переносящие цисты на продукты питания.
+            </div>
+        </div>
+
+        <div class="item">
+            <strong>Инвазионная стадия для человека:</strong><br>
+            <span class="spec">Зрелая 4-ядерная циста</span>
+        </div>
+
+        <div class="item">
+            <strong>Патогенная стадия для человека:</strong><br>
+            <span class="spec">Большая вегетативная тканевая форма (forma magna / эритрофаг)</span>
+        </div>
+
+        <div class="item full-width">
+            <strong>Локализация в теле человека:</strong><br>
+            • <strong>Первичная (основная):</strong> Просвет и слизистый/подслизистый слои толстого кишечника (преимущественно слепая, восходящая ободочная и прямая кишка).<br>
+            • <strong>Вторичная (внекишечная / гематогенная):</strong> Печень (паренхима), лёгкие, головной мозг, селезёнка, а также кожа (перианальная область).
+        </div>
+    </div>
+
+    <!-- ===== БЛОК 3. МОРФОЛОГИЧЕСКАЯ ХАРАКТЕРИСТИКА СТАДИЙ ===== -->
+    <h2><span class="emoji">🧫</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 1. Вегетативные формы (Трофозоиты) -->
+    <h3>1. Вегетативные формы (Трофозоиты)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                В организме человека <em>Entamoeba histolytica</em> может существовать в нескольких вегетативных формах:
+            </p>
+            <ul>
+                <li>
+                    <strong>Большая вегетативная форма (<em>forma magna</em>):</strong>
+                    Размеры <strong>20–50 мкм</strong>. Патогенная тканевая форма. Цитоплазма чётко разделена на стекловидную эктоплазму и зернистую эндоплазму. Образует широкие псевдоподии, совершая активные толчкообразные движения. <strong>Фагоцитирует эритроциты</strong> (эритрофаг). Выделяет гиалуронидазу и протеазы, разрушающие ткани.
+                </li>
+                <li>
+                    <strong>Малая вегетативная форма (<em>forma minuta</em>):</strong>
+                    Размеры <strong>15–20 мкм</strong>. Просветная форма. Обитает в просвете верхних отделов толстого кишечника у цистоносителей. Питается бактериями и органическими остатками. Эритроциты не фагоцитирует, ткани не повреждает.
+                </li>
+            </ul>
+        </div>
+
+        <div class="image-col">
+            <img src="images/protists/entamoeba_trophozoite_scheme.jpg"
+                 alt="Трофозоит Entamoeba histolytica"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🦠</span>
+                Трофозоит <em>Forma Magna</em>
+                <span class="small">(entamoeba_trophozoite_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">эктоплазма, эндоплазма, псевдоподия, эритроциты</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Циста -->
+    <h3>2. Циста (Cysta)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Размеры:</strong> <strong>10–15 мкм</strong>.<br>
+                <strong>Форма:</strong> Сферическая (шаровидная), покрыта плотной двухконтурной оболочкой.<br>
+                <strong>Ядерный аппарат:</strong> Зрелая инвазионная циста содержит <strong>4 ядра</strong> с центрально расположенной кариосомой.<br>
+                <strong>Включения:</strong> Незрелые цисты (1–2-ядерные) могут содержать гликогеновую вакуоль и хроматоидные тела (палочковидные скопления РНК и белка).
+            </p>
+            <div class="note">
+                <strong>Диагностическое отличие:</strong> 4 ядра зрелой цисты <em>E. histolytica</em> позволяют дифференцировать её под микроскопом от непатогенной кишечной амёбы (<em>Entamoeba coli</em>), зрелая циста которой содержит 8 ядер.
+            </div>
+        </div>
+
+        <div class="image-col">
+            <img src="images/protists/entamoeba_cyst_scheme.jpg"
+                 alt="Циста Entamoeba histolytica"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🔮</span>
+                Циста <em>E. histolytica</em>
+                <span class="small">(entamoeba_cyst_scheme.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">4 ядра, двухконтурная оболочка, кариосома</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== БЛОК 4. ЖИЗНЕННЫЙ ЦИКЛ И ПАТОГЕНЕЗ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл и патогенез</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Геопротист (проходит без смены хозяев).<br>
+        <strong>Хозяин:</strong> Человек.
+    </p>
+
+    <!-- Вставка: терминология хозяев -->
+    <div class="lecture-highlight">
+        <strong>🎙️ Нюанс:</strong> Так как у <em>E. histolytica</em> только бесполое размножение (просто делится надвое произвольно), термины «основной» или «промежуточный» хозяин к ней <strong>не применяются</strong> — используется только термин <strong>«хозяин»</strong> (человек).
+    </div>
+
+    <!-- БОЛЬШОЕ ФОТО ЖИЗНЕННОГО ЦИКЛА -->
+    <div class="full-width-image">
+        <img src="images/protists/amoeba_cycle.png"
+             alt="Жизненный цикл дизентерийной амёбы"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🌊</span>
+            Жизненный цикл <em>Entamoeba histolytica</em>
+            <span class="small">(entamoeba_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">циста → эксцистирование → forma minuta → forma magna → инцистирование</span>
+        </div>
+    </div>
+
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Проглатывание:</strong> Человек проглатывает зрелые 4-ядерные цисты с водой или пищей.</li>
+        <li><strong>Эксцистирование:</strong> В тонком кишечнике под действием ферментов растворяется оболочка цисты. Выходит 4-ядерная материнская амёба, которая делится с образованием 8 малых вегетативных форм (<em>forma minuta</em>).</li>
+        <li><strong>Просветное обитание:</strong> <em>Forma minuta</em> спускается в верхние отделы толстого кишечника, размножается делением надвое, питается бактериями и не вызывает патологии (состояние бессимптомного <strong>цистоносительства</strong>).</li>
+        <li><strong>Инцистирование:</strong> По мере продвижения по кишечнику в нижние отделы <em>forma minuta</em> теряет воду, превращается в предцисту, а затем образует плотную оболочку и делится до 4-ядерной цисты, которая выделяется с фекалиями во внешнюю среду.</li>
+        <li><strong>Развитие амебиаза (Патогенетический путь):</strong>
+            <ul>
+                <li>При ослаблении организма хозяина или дисбиозе <em>forma minuta</em> превращается в <strong><em>forma magna</em></strong>.</li>
+                <li><em>Forma magna</em> выделяет протеолитические ферменты, разрушающие эпителий, и внедряется в стенку кишки.</li>
+                <li>Образуются характерные <strong>глубокие язвы с подрытыми краями</strong> (кратерообразные).</li>
+                <li>При повреждении сосудов амёбы гематогенным путём разносятся в печень, лёгкие, мозг, образуя абсцессы (внекишечный амебиаз).</li>
+            </ul>
+        </li>
+    </ol>
+
+    <!-- Вставка: нюанс выхода во внешнюю среду + добавлено про нативный кал -->
+    <div class="lecture-highlight">
+        <strong>🎙️ Важный нюанс:</strong><br>
+        В норме <em>forma minuta</em> в нижних отделах кишечника успевает инцистироваться. Однако при <strong>острой диарее</strong> <em>forma magna</em> не успевает превратиться в цисту и выводится наружу в виде вегетативной формы. <strong>Во внешней среде трофозоиты быстро погибают</strong>, так как не защищены цистной оболочкой <em>(поэтому для лабораторной диагностики берётся нативный, т.е. свежий кал, в котором трофозоиты ещё живы)</em>.
+    </div>
+
+<!-- ===== БЛОК 5. ПАТОГЕНЕЗ И КЛИНИКА ===== -->
+<h2><span class="emoji">⚕️</span> Патогенез и клинические проявления</h2>
+
+<h4>Патогенез</h4>
+<ul>
+    <li><strong>Проникновение и ферментативный лизис:</strong> просветная форма (<em>forma minuta</em>) переходит в большую тканевую (<em>forma magna</em>), выделяет протеолитические ферменты и разрушает эпителий толстой кишки.</li>
+    <li><strong>Образование язв:</strong> глубокие колбовидные язвы с подрытыми краями в слизистом и подслизистом слоях.</li>
+    <li><strong>Гематофагия:</strong> амёбы активно захватывают и переваривают эритроциты.</li>
+    <li><strong>Гематогенный занос (метастазирование):</strong> через систему воротной вены проникают в другие органы:
+        <ul>
+            <li>в первую очередь — печень (амёбный абсцесс печени);</li>
+            <li>далее — лёгкие и головной мозг.</li>
+        </ul>
+    </li>
+</ul>
+
+<h4>Клиника</h4>
+<ul>
+    <li><strong>Кишечный амёбиаз:</strong>
+        <ul>
+            <li><strong>Стул:</strong> частый (до 10–20 раз в сутки) в виде слизи с примесью крови (симптом «малинового желе»).</li>
+            <li><strong>Болевой синдром:</strong> схваткообразные боли внизу живота, преимущественно в правой подвздошной области (в зоне слепой кишки).</li>
+            <li><strong>Тенезмы:</strong> частые мучительные ложные позывы к дефекации.</li>
+        </ul>
+    </li>
+    <li><strong>Внекишечный амёбиаз:</strong>
+        <ul>
+            <li><strong>Абсцесс печени:</strong> резкая боль в правом подреберье, высокая температура с ознобом, увеличение печени.</li>
+            <li><strong>Абсцесс лёгких:</strong> боль в груди, одышка, кашель со специфической шоколадно-бурой («ржавой») мокротой.</li>
+        </ul>
+    </li>
+    <li><strong>Опасные осложнения:</strong> перфорация стенки кишки → перитонит, массивные кишечные кровотечения.</li>
+</ul>
+
+    <!-- ===== БЛОК 5. ЛАБОРАТОРНАЯ ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Обоснование методов лабораторной диагностики</h2>
+
+    <p>
+        Главная задача диагностики — отличить патогенную <em>Entamoeba histolytica</em> от морфологически сходных непатогенных амёб (например, <em>Entamoeba dispar</em>).
+    </p>
+
+    <!-- Структура по трём пунктам -->
+    <div class="lecture-highlight" style="margin-bottom: 20px;">
+        <strong>🎙️ Схема вашего ответа:</strong> всегда указывайте <strong>что берём, как исследуем, что находим</strong>.
+    </div>
+
+    <h4>1. Микроскопическое исследование (Основной метод)</h4>
+
+    <ul>
+        <li>
+            <strong>Что берём:</strong> Свежевыделенный кал (не позднее 20–30 минут после дефекации) или оформленный кал.<br>
+            <strong>Как исследуем:</strong> Готовят нативный мазок (для тёплого кала) или мазок с раствором Люголя (для оформленного).<br>
+            <strong>Что находим:</strong>
+            <ul>
+                <li>В нативном мазке — <strong>подвижные трофозоиты <em>forma magna</em></strong> с фагоцитированными эритроцитами (эритрофагия) — <span class="spec">абсолютный признак острого амебиаза</span>.</li>
+                <li>В мазке с Люголем — <strong>4-ядерные цисты</strong> <em>E. histolytica</em> (отличаются от 8-ядерных цист <em>E. coli</em>).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="note">
+        <strong>⚠️ Критический нюанс:</strong><br>
+        Обнаружение <strong>только цист</strong> — свидетельство <strong>бессимптомного цистоносительства</strong>, поэтому для подтверждения <strong>острой амёбной дизентерии</strong> необходимо найти <strong>трофозоиты</strong> (вегетативные формы) в свежем кале.
+    </div>
+
+    <ul>
+        <li>
+            <strong>Обоснование:</strong> Вегетативные формы (трофозоиты) быстро разрушаются вне организма, поэтому исследовать нужно только тёплый свежий материал. Окрашивание по Люголю позволяет чётко визуализировать ядра цист.
+        </li>
+    </ul>
+
+    <h4>2. Молекулярно-генетические и иммунологические методы</h4>
+    <ul>
+        <li><strong>ПЦР (Полимеразная цепная реакция):</strong> Позволяет на 100% дифференцировать ДНК патогенной <em>E. histolytica</em> от непатогенной <em>E. dispar</em>.</li>
+        <li>
+            <strong>ИФА (Иммуноферментный анализ):</strong>
+            <ul>
+                <li><strong>Что берём:</strong> кал или сыворотку крови.</li>
+                <li><strong>Как исследуем:</strong> выявляем антигены амёбы (лектин) в кале либо специфические антитела (IgG) в крови.</li>
+                <li><strong>Что находим:</strong> маркёр текущей инфекции (антигены) или перенесённой/внекишечной (антитела).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>3. Инструментальная диагностика</h4>
+    <ul>
+        <li><strong>Ректороманоскопия / Колоноскопия:</strong> Визуализация характерных кратерообразных язв с подрытыми краями и взятие биопсии с края язвы.</li>
+        <li><strong>УЗИ, КТ, МРТ:</strong> Для своевременного обнаружения внекишечных очагов — абсцессов в печени или других органах.</li>
+    </ul>
+
+    <!-- ===== БЛОК 6. ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Тщательное мытьё рук с мылом перед едой и после посещения туалета.</li>
+        <li>Употребление только кипячёной или бутилированной воды.</li>
+        <li>Тщательное мытьё овощей, фруктов, ягод и зелени перед употреблением (с последующим обдаванием кипятком).</li>
+        <li>Защита готовой пищи от мух и тараканов (механических переносчиков цист).</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Санитарный контроль за источниками водоснабжения и качеством очистки сточных вод.</li>
+        <li>Выявление и лечение больных амебиазом и бессимптомных цистоносителей.</li>
+        <li>Регулярное обследование работников предприятий общественного питания и детских учреждений.</li>
+        <li>Борьба с бытовыми насекомыми-переносчиками (дезинсекция).</li>
+        <li>Санитарное просвещение населения в эндемичных районах.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

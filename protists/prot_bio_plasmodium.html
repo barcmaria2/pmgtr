@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Малярийный плазмодий (Plasmodium spp.) — Конспект</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:#f4f6fa;color:#1e293b;line-height:1.7;padding:24px 16px
+}
+.container{
+    max-width:1100px;margin:0 auto;background:#fff;border-radius:20px;
+    box-shadow:0 8px 40px rgba(0,0,0,.08);padding:32px 28px 40px
+}
+h1{
+    font-size:28px;font-weight:700;color:#1e3a8a;margin-bottom:4px;
+    display:flex;align-items:center;gap:10px
+}
+h1 .emoji{font-size:32px}
+.subtitle{
+    font-size:18px;color:#475569;margin-bottom:28px;padding-bottom:16px;
+    border-bottom:2px solid #e9edf3
+}
+.subtitle strong{color:#2563eb;font-weight:600}
+.pronounce{
+    background:#eef2ff;border-radius:8px;padding:4px 14px;font-size:15px;
+    color:#1e3a8a;display:inline-block;margin-top:4px
+}
+.taxonomy-card{
+    background:#f8fafc;border-radius:12px;padding:16px 20px;
+    border-left:4px solid #2563eb;margin-bottom:16px
+}
+.taxonomy-card p{margin:0;font-size:15px;color:#475569}
+.taxonomy-card p strong{color:#1e293b}
+.taxonomy-card .subnote{
+    margin-top:8px;padding-top:8px;border-top:1px dashed #d1d9e8
+}
+h2{
+    font-size:24px;font-weight:700;color:#1e3a8a;margin:32px 0 12px;
+    letter-spacing:-.02em;display:flex;align-items:center;gap:10px
+}
+h2 .emoji{font-size:28px}
+h3{
+    font-size:20px;font-weight:600;color:#2563eb;margin:24px 0 10px;
+    padding-bottom:4px;border-bottom:2px solid #e9edf3
+}
+h4{
+    font-size:17px;font-weight:600;color:#1e3a8a;margin:18px 0 6px
+}
+p{margin:0 0 12px;font-size:15px;color:#334155}
+ul,ol{margin:6px 0 14px 20px;font-size:15px;color:#334155}
+li{margin-bottom:5px}
+strong{color:#1e293b}
+.spec{color:#2563eb;font-weight:600}
+.note{
+    background:#fffbeb;border-radius:10px;padding:12px 16px;font-size:14px;
+    color:#92400e;border-left:4px solid #f59e0b;margin:12px 0 16px
+}
+.attention-block{
+    background:#fef2f2;border-radius:12px;padding:14px 18px;
+    border-left:6px solid #dc2626;margin:12px 0 18px;
+    font-size:15px;color:#7f1d1d
+}
+.lecture-highlight{
+    background:#f0f7ff;border-radius:10px;padding:12px 16px;
+    border-left:4px solid #3b82f6;margin:12px 0 16px;font-size:14px
+}
+.epi-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;
+    background:#fafcff;border-radius:12px;padding:16px;border:1px solid #e9edf3;
+    margin-bottom:24px
+}
+.epi-grid .item{font-size:14px}
+.epi-grid .item strong{color:#1e3a8a}
+.epi-grid .full-width{grid-column:1/-1}
+.table-wrap{
+    overflow-x:auto;margin:16px 0 20px;border-radius:12px;
+    border:1px solid #e2e8f0;background:#fafcff
+}
+.styled-table{
+    width:100%;border-collapse:collapse;font-size:14px;min-width:900px
+}
+.styled-table th{
+    background:#e9edf3;color:#1e3a8a;font-weight:600;text-align:left;
+    padding:12px 14px;border-bottom:2px solid #cbd5e1;vertical-align:top
+}
+.styled-table td{
+    padding:10px 14px;border-bottom:1px solid #e2e8f0;vertical-align:top
+}
+.styled-table tbody tr:nth-child(even){background:#f8fafc}
+.styled-table tr:last-child td{border-bottom:none}
+.cycle{
+    background:#f1f5f9;border-radius:12px;padding:16px 20px;
+    font-family:'Courier New',monospace;font-size:13px;line-height:1.5;
+    white-space:pre;overflow-x:auto;color:#1e293b;border:1px solid #e2e8f0;
+    margin:12px 0 16px
+}
+.flow-card{
+    background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;
+    padding:14px 18px;margin:12px 0 16px
+}
+.flow-card .arrow{color:#2563eb;font-weight:700}
+
+.full-width-image{
+    display:flex;justify-content:center;margin:18px 0 26px
+}
+.full-width-image img{
+    width:100%;max-width:100%;max-height:560px;height:auto;object-fit:contain;
+    border-radius:14px;border:1px solid #eef2f6;background:#fafcff;
+    box-shadow:0 4px 20px rgba(0,0,0,.08)
+}
+.full-width-image .placeholder{
+    width:100%;min-height:320px;background:#f1f5f9;border-radius:14px;
+    border:2px dashed #cbd5e1;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    color:#94a3b8;padding:20px;gap:6px
+}
+.full-width-image .placeholder .icon{font-size:48px}
+.full-width-image .placeholder .small{font-size:13px;color:#b0bccd}
+@media(max-width:768px){
+    .container{padding:20px 16px}
+    .epi-grid{grid-template-columns:1fr}
+    .styled-table{font-size:13px;min-width:760px}
+}
+@media(max-width:480px){
+    h1{font-size:22px}h2{font-size:20px}h3{font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1><span class="emoji">🦟</span> Малярийный плазмодий</h1>
+<div class="subtitle">
+    <strong>Plasmodium spp.</strong> — возбудители <strong>малярии</strong>
+    <div class="pronounce">🎙️ Произношение: <i>Plasmodium</i> — «Плазмо́диум»</div>
+</div>
+
+<!-- ===== СИСТЕМАТИКА ===== -->
+<h2><span class="emoji">🧬</span> 1. Систематическое положение</h2>
+
+<div class="taxonomy-card">
+    <p>
+        <strong>Царство:</strong> Животные (<em>Animalia</em>)<br>
+        <strong>Подцарство:</strong> Простейшие (<em>Protozoa</em>)<br>
+        <strong>Тип:</strong> Споровики (<em>Sporozoa</em>)<br>
+        <strong>Род:</strong> <em>Plasmodium</em> (Плазмодии)
+    </p>
+    <div class="subnote">
+        <strong>Экологическая группа:</strong> <span class="spec">биопротисты</span> — развитие происходит со сменой двух хозяев.<br>
+    </div>
+</div>
+
+<h3>Виды, паразитирующие у человека</h3>
+<div class="table-wrap">
+<table class="styled-table">
+<thead>
+<tr>
+    <th>Вид</th>
+    <th>Заболевание</th>
+    <th>Периодичность приступов</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td><strong><em>Plasmodium vivax</em></strong></td>
+    <td>Трехдневная малярия</td>
+    <td>Каждые 48 часов</td>
+</tr>
+<tr>
+    <td><strong><em>Plasmodium ovale</em></strong></td>
+    <td>Трехдневная малярия типа овале</td>
+    <td>Каждые 48 часов</td>
+</tr>
+<tr>
+    <td><strong><em>Plasmodium malariae</em></strong></td>
+    <td>Четырехдневная малярия</td>
+    <td>Каждые 72 часа</td>
+</tr>
+<tr>
+    <td><strong><em>Plasmodium falciparum</em></strong></td>
+    <td>Тропическая малярия — наиболее злокачественная форма</td>
+    <td>Каждые 24–48 часов / нерегулярно</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- ===== КЛЮЧЕВЫЕ ПОКАЗАТЕЛИ ===== -->
+<h2><span class="emoji">📋</span> Ключевые показатели паразитоза</h2>
+
+<div class="epi-grid">
+    <div class="item full-width">
+        <strong>Географическое распространение:</strong><br>
+        Преимущественно тропические и субтропические районы Африки, Азии, Центральной и Южной Америки;
+        распространение связано с ареалом малярийных комаров рода <em>Anopheles</em>.
+    </div>
+
+    <div class="item">
+        <strong>Эпидемиологический тип:</strong><br>
+        <span class="spec">Антропоноз</span>
+    </div>
+
+    <div class="item">
+        <strong>Природно-очаговость:</strong><br>
+        <span class="spec">Нет</span>
+    </div>
+
+    <div class="item full-width">
+        <strong>Источник инвазии (промежуточный хозяин):</strong><br>
+        Больной человек или паразитоноситель
+        в периферической крови которого присутствуют гаметоциты.
+    </div>
+
+    <div class="item full-width">
+        <strong>Специфический переносчик (окончательный хозяин):</strong><br>
+        Самка комара рода <em>Anopheles</em> 
+    </div>
+
+    <div class="item full-width">
+        <strong>Механизм и путь заражения человека:</strong><br>
+        <strong>Трансмиссивный механизм, инокулятивный путь.</strong>
+        При укусе заражённая самка <em>Anopheles</em> вводит со слюной спорозоиты в кровеносное русло человека.
+    </div>
+
+    <div class="item">
+        <strong>Инвазионная стадия для человека:</strong><br>
+        <span class="spec">Спорозоит</span>
+    </div>
+
+    <div class="item">
+        <strong>Патогенные стадии для человека:</strong><br>
+        <span class="spec">Эритроцитарные формы плазмодия</span>
+    </div>
+
+    <div class="item full-width">
+        <strong>Локализация в организме человека:</strong><br>
+        <strong>Гепатоциты</strong> — тканевая (экзоэритроцитарная) шизогония;
+        <strong>эритроциты</strong> — эритроцитарная шизогония и образование гаметоцитов.
+    </div>
+
+    <div class="item full-width">
+        <strong>Размножение:</strong><br>
+        У человека — бесполое размножение путем <strong>шизогонии</strong> в печени и эритроцитах.
+        У комара — половой процесс с образованием оокинеты, ооцисты и последующей <strong>спорогонией</strong>.
+    </div>
+</div>
+
+<!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+<h2><span class="emoji">🔄</span> 2. Жизненный цикл и смена хозяев</h2>
+
+<div class="full-width-image">
+    <img src="images/protists/plasmodium_life_cycle.jpg"
+         alt="Жизненный цикл малярийного плазмодия"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="placeholder" style="display:none;">
+        <span class="icon">🔄</span>
+        Жизненный цикл <em>Plasmodium spp.</em>
+        <span class="small">(plasmodium_life_cycle.jpg)</span>
+        <span style="font-size:12px;">Добавьте сюда изображение жизненного цикла</span>
+    </div>
+</div>
+
+<h3>1. В организме самки комара рода <em>Anopheles</em></h3>
+<ul>
+    <li>При сосании крови больного человека комар заглатывает <strong>микро- и макрогаметоциты</strong>.</li>
+    <li><strong>Гаметогенез и оплодотворение:</strong> в желудке комара созревают половые клетки, происходит их слияние с образованием подвижной зиготы — <strong>оокинеты</strong>.</li>
+    <li>Оокинета проникает под наружную оболочку стенки желудка комара и превращается в <strong>ооцисту</strong>.</li>
+    <li><strong>Спорогония:</strong> внутри ооцисты происходит множественное деление с образованием тысяч веретеновидных <strong>спорозоитов</strong>.</li>
+    <li>Ооциста разрывается, спорозоиты с гемолимфой мигрируют в слюнные железы комара.</li>
+</ul>
+
+<div class="lecture-highlight">
+    <strong>Инвазионная стадия для человека:</strong> спорозоит.
+</div>
+
+<h3>2. В организме человека</h3>
+
+<h4>Инвазия</h4>
+<p>
+    При укусе самка <em>Anopheles</em> вводит со слюной <strong>спорозоиты</strong> в кровеносное русло.
+</p>
+
+<h4>Тканевая (экзоэритроцитарная) шизогония</h4>
+<ul>
+    <li>Спорозоиты с током крови достигают печени и проникают в <strong>гепатоциты</strong>.</li>
+    <li>Внутри гепатоцита паразит превращается в тканевой <strong>трофозоит / шизонт</strong>.</li>
+    <li>Происходит множественное деление — <strong>шизогония</strong>.</li>
+    <li>Гепатоцит разрывается, в кровь выходят тканевые <strong>мерозоиты</strong>.</li>
+    <li>У <em>P. vivax</em> и <em>P. ovale</em> часть спорозоитов образует покоящиеся формы — <strong>гипнозоиты</strong>, способные активироваться через месяцы или годы и вызывать отдаленные рецидивы.</li>
+</ul>
+
+<h4>Эритроцитарная шизогония</h4>
+<ol>
+    <li><strong>Мерозоит</strong> проникает в эритроцит.</li>
+    <li><strong>Кольцевидный трофозоит:</strong> центральная вакуоль оттесняет цитоплазму и ядро к периферии.</li>
+    <li><strong>Амебовидный / растущий трофозоит:</strong> активно питается гемоглобином, накапливает пигмент — гемозоин.</li>
+    <li><strong>Зрелый шизонт (морула):</strong> ядро многократно делится с образованием эритроцитарных мерозоитов.</li>
+    <li>Эритроцит разрушается; в кровь выходят мерозоиты, продукты метаболизма паразита и гемозоин.</li>
+</ol>
+
+<div class="attention-block">
+    <strong>Малярийный пароксизм</strong> связан с массовым разрушением зараженных эритроцитов и выходом паразитарного материала в кровь:
+    <strong>озноб → жар → профузный пот.</strong>
+</div>
+
+<h4>Гаметоцитогония</h4>
+<p>
+    После нескольких эритроцитарных циклов часть мерозоитов дифференцируется в незрелые половые формы —
+    <strong>микрогаметоциты и макрогаметоциты</strong>, циркулирующие в периферической крови и заглатываемые комаром.
+</p>
+
+<!-- ===== ДИФФЕРЕНЦИАЛЬНАЯ МОРФОЛОГИЯ ===== -->
+<h2><span class="emoji">🔬</span> 3. Дифференциальная морфология и биологические особенности видов <em>Plasmodium</em></h2>
+
+<div class="table-wrap">
+<table class="styled-table" style="min-width:1500px;">
+<thead>
+<tr>
+    <th>Тип малярии / вид</th>
+    <th>Кольцевидный шизонт<br><span style="font-weight:400;">(юный трофозоит)</span></th>
+    <th>Амебовидный шизонт<br><span style="font-weight:400;">(растущий трофозоит)</span></th>
+    <th>Зрелый шизонт</th>
+    <th>Морула</th>
+    <th>Женский гамонт<br><span style="font-weight:400;">(макрогаметоцит)</span></th>
+    <th>Инкубационный период</th>
+    <th>Длительность тканевой шизогонии</th>
+    <th>Длительность эритроцитарной шизогонии</th>
+    <th>Возможность отдаленных рецидивов</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+    <td>
+        <strong>Трехдневная малярия</strong><br>
+        <em>Plasmodium vivax</em>
+    </td>
+    <td>
+        Крупное кольцо, занимает около <strong>1/3 диаметра эритроцита</strong>; одно ядро.
+    </td>
+    <td>
+        Амебовидная форма с выраженными псевдоподиями и вакуолью.
+    </td>
+    <td>
+        Крупный, округлый, занимает почти весь эритроцит; пигмент рассеян.
+    </td>
+    <td>
+        <strong>12–24 мерозоита</strong> (в среднем 16); пигмент собирается в центре.
+    </td>
+    <td>
+        Увеличенный в размере, округлый / овальный; базофильная цитоплазма, ядро компактное.
+    </td>
+    <td>
+        <strong>10–21 день</strong> при короткой инкубации или <strong>6–14 месяцев</strong> при длительной.
+    </td>
+    <td><strong>6–8 суток</strong></td>
+    <td><strong>48 часов</strong></td>
+    <td>
+        <strong>Есть.</strong> Обусловлены активацией покоящихся тканевых форм — гипнозоитов в печени.
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Малярия типа овале</strong><br>
+        <em>Plasmodium ovale</em>
+    </td>
+    <td>
+        Кольцо средней величины, компактное, занимает около <strong>1/3 эритроцита</strong>.
+    </td>
+    <td>
+        Компактный; псевдоподии слабо выражены. Эритроцит овальный с бахромчатым краем.
+    </td>
+    <td>
+        Округлый, компактный; эритроцит овальной формы с крупной зернистостью.
+    </td>
+    <td>
+        <strong>4–12 мерозоитов</strong> (в среднем 8), сгруппированных вокруг темно-коричневого пигмента.
+    </td>
+    <td>
+        Округлый, компактный, меньше, чем у <em>P. vivax</em>; базофильная цитоплазма.
+    </td>
+    <td>
+        <strong>11–16 дней</strong>, иногда до <strong>1–2 лет</strong>.
+    </td>
+    <td><strong>9 суток</strong></td>
+    <td><strong>48 часов</strong></td>
+    <td>
+        <strong>Есть.</strong> Обусловлены активацией гипнозоитов в клетках печени.
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Четырехдневная малярия</strong><br>
+        <em>Plasmodium malariae</em>
+    </td>
+    <td>
+        Компактное кольцо, занимает <strong>1/3–1/4 диаметра эритроцита</strong>.
+    </td>
+    <td>
+        <strong>Лентовидная форма</strong> — вытягивается широкой полосой через весь эритроцит.
+    </td>
+    <td>
+        Полностью заполняет неизмененный эритроцит; пигмент в виде крупных зерен.
+    </td>
+    <td>
+        В виде правильной <strong>«розетки» / «ромашки»</strong>, содержит
+        <strong>6–12 мерозоитов</strong> (в среднем 8).
+    </td>
+    <td>
+        Округлый, компактный, не превышает размеров нормального эритроцита.
+    </td>
+    <td>
+        <strong>21–40 дней</strong>, иногда до нескольких месяцев.
+    </td>
+    <td><strong>11–12 суток</strong></td>
+    <td><strong>72 часа</strong></td>
+    <td>
+        <strong>Нет истинных тканевых рецидивов.</strong>
+        Гипнозоиты отсутствуют; возможны поздние рекрудесценции за счет многолетней эритроцитарной персистенции.
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Тропическая малярия</strong><br>
+        <em>Plasmodium falciparum</em>
+    </td>
+    <td>
+        Мелкие тонкие кольца; характерно по <strong>2–3 кольца в одном эритроците</strong>;
+        часто имеются 2 хроматиновых ядра.
+    </td>
+    <td>
+        В периферической крови практически не обнаруживается; стадия проходит в капиллярах внутренних органов.
+    </td>
+    <td>
+        В периферической крови встречается только при крайне тяжелом, злокачественном течении.
+    </td>
+    <td>
+        <strong>8–24 мерозоита</strong> (в среднем 12–18); в периферической крови — только при злокачественной инвазии.
+    </td>
+    <td>
+        <strong>Полулунной формы</strong> — в виде полумесяца / банана; деформирует эритроцит.
+    </td>
+    <td>
+        <strong>7–16 дней</strong>, в среднем <strong>10–12 дней</strong>.
+    </td>
+    <td><strong>5–6 суток</strong></td>
+    <td><strong>24–48 часов</strong>, часто несинхронно</td>
+    <td>
+        <strong>Нет.</strong> Гипнозоиты не образуются; тканевая шизогония однократна.
+    </td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<!-- ===== ПАТОГЕНЕЗ ===== -->
+<h2><span class="emoji">⚕️</span> 4. Патогенез и клинические особенности</h2>
+
+<h3>Малярийный приступ</h3>
+<ol>
+    <li>
+        <strong>Озноб — 1–3 часа:</strong> спазм периферических сосудов, мышечная дрожь.
+    </li>
+    <li>
+        <strong>Жар — 6–12 часов:</strong> повышение температуры до 40–41 °C, тахикардия, головная боль, возможен бред.
+    </li>
+    <li>
+        <strong>Профузный пот — 1–2 часа:</strong> критическое падение температуры до нормальных или субнормальных значений, выраженная слабость и сонливость.
+    </li>
+</ol>
+
+<h3>Осложнения тропической малярии — <em>P. falciparum</em></h3>
+<ul>
+    <li>
+        <strong>Церебральная малярия (малярийная кома):</strong>
+        поражение микроциркуляторного русла мозга зараженными эритроцитами; цитоадгезия и розеткообразование.
+    </li>
+    <li><strong>Острая почечная недостаточность</strong>, в том числе при гемоглобинурийной лихорадке.</li>
+    <li>
+        <strong>Массивный гемолиз:</strong> тяжелая гемолитическая анемия, гепатоспленомегалия, гемолитическая желтуха.
+    </li>
+</ul>
+
+<!-- ===== ДИАГНОСТИКА ===== -->
+<h2><span class="emoji">🧪</span> 5. Лабораторная диагностика</h2>
+
+<div class="table-wrap">
+<table class="styled-table">
+<thead>
+<tr>
+    <th>Материал / метод</th>
+    <th>Техника</th>
+    <th>Диагностическое значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td><strong>Толстая капля крови</strong></td>
+    <td>Микроскопия, окраска по Романовскому–Гимзе</td>
+    <td>Первичный скрининг; высокая концентрация паразитов на единицу площади, обнаружение при низкой паразитемии.</td>
+</tr>
+<tr>
+    <td><strong>Тонкий мазок крови</strong></td>
+    <td>Микроскопия, окраска по Романовскому–Гимзе</td>
+    <td>Видовая диагностика по форме колец, трофозоитов, шизонтов, гаметоцитов и изменениям эритроцита.</td>
+</tr>
+<tr>
+    <td><strong>Экспресс-тесты (RDT)</strong></td>
+    <td>Иммунохроматографический метод</td>
+    <td>Выявление циркулирующих малярийных антигенов <em>HRP-2</em> / <em>pLDH</em>.</td>
+</tr>
+<tr>
+    <td><strong>ПЦР</strong></td>
+    <td>Молекулярно-генетический метод</td>
+    <td>Выявление ДНК плазмодиев при низкой паразитемии, микст-инвазиях и сомнительных случаях.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- ===== ПРОФИЛАКТИКА ===== -->
+<h2><span class="emoji">🛡️</span> 6. Профилактика</h2>
+
+<h3>1. Личная (индивидуальная) профилактика</h3>
+<p>
+    Направлена на защиту человека от укусов комаров-переносчиков и предупреждение развития
+    клинических проявлений при инфицировании.
+</p>
+
+<h4>Индивидуальная химиопрофилактика</h4>
+<ul>
+    <li>
+        Профилактический прием противомалярийных препаратов перед выездом в эндемичные регионы
+        <strong>за 1–2 недели</strong>, в течение всего периода нахождения в очаге и
+        <strong>4–6 недель после возвращения</strong>.
+    </li>
+</ul>
+
+<h4>Защита от нападения и укусов комаров рода <em>Anopheles</em></h4>
+<ul>
+    <li>
+        Использование <strong>репеллентов</strong> — кремов, спреев, лосьонов, отпугивающих кровососущих насекомых,
+        наносимых на открытые участки кожи и одежду.
+    </li>
+    <li>
+        Ношение защитной одежды, максимально закрывающей тело:
+        длинные рукава, брюки, плотные светлые ткани, особенно в вечернее и ночное время —
+        период максимальной активности комаров.
+    </li>
+    <li>Установка противомоскитных сеток на оконных и дверных проемах.</li>
+    <li>
+        Использование марлевых пологов / сеток-балдахинов над спальными местами,
+        пропитанных инсектицидами длительного действия — перметрином, дельтаметрином.
+    </li>
+    <li>
+        Применение фумигаторов, спиралей и аэрозолей для уничтожения комаров, попавших в помещение.
+    </li>
+</ul>
+
+<h4>Безопасность медицинских манипуляций</h4>
+<ul>
+    <li>
+        Предотвращение ятрогенного, в том числе гемотрансфузионного, заражения:
+        использование стерильного одноразового медицинского инструментария при парентеральных процедурах.
+    </li>
+</ul>
+
+<h3>2. Общественная профилактика</h3>
+<p>
+    Включает государственные и санитарно-эпидемиологические мероприятия по контролю очагов,
+    ликвидации источников инвазии и уничтожению переносчиков.
+</p>
+
+<h4>А. Мероприятия в отношении источника инвазии — больных и паразитоносителей</h4>
+<ul>
+    <li>
+        <strong>Раннее активное выявление:</strong>
+        обследование лиц с лихорадкой неясного генеза —
+        микроскопия толстой капли и тонкого мазка крови, экспресс-тесты RDT, ПЦР.
+    </li>
+    <li>
+        <strong>Своевременное выявление и радикальное лечение:</strong>
+        полная этиотропная терапия больных и бессимптомных гаметоцитоносителей
+        для прекращения циркуляции возбудителя.
+    </li>
+    <li>
+        <strong>Контроль донорской крови:</strong>
+        тщательный скрининг доноров крови и органов, исключение лиц,
+        перенесших малярию или пребывавших в эндемичных зонах.
+    </li>
+</ul>
+
+<h4>Б. Мероприятия по борьбе с переносчиками — комарами рода <em>Anopheles</em></h4>
+
+<div class="table-wrap">
+<table class="styled-table" style="min-width:900px;">
+<thead>
+<tr>
+    <th>Гидротехнические меры</th>
+    <th>Биологические меры</th>
+    <th>Генетические и химические меры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>
+        Осушение болот и мелких стоячих водоемов;<br>
+        расчистка береговой линии;<br>
+        регулирование уровня воды.
+    </td>
+    <td>
+        Разведение рыбки гамбузии;<br>
+        бактериальные и грибковые ларвициды;<br>
+        использование естественных врагов комаров.
+    </td>
+    <td>
+        Выпуск стерилизованных самцов;<br>
+        генетически модифицированные особи;<br>
+        инсектицидная обработка помещений и мест выплода.
+    </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<h4>В. Санитарно-просветительная работа и мониторинг</h4>
+<ul>
+    <li>
+        Информирование лиц, выезжающих в тропические и субтропические страны,
+        о риске заражения, правилах химиопрофилактики и симптомах малярии.
+    </li>
+    <li>
+        Проведение энтомологического мониторинга за видовым составом и плотностью
+        популяции комаров в теплый период года.
+    </li>
+</ul>
+
+</div>
+</body>
+</html>

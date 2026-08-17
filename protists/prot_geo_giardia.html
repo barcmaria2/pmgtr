@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кишечная лямблия (Lamblia intestinalis) — Конспект</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .pronounce {
+            background: #eef2ff;
+            border-radius: 8px;
+            padding: 4px 14px;
+            font-size: 15px;
+            color: #1e3a8a;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .pronounce i {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .subnote {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #d1d9e8;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 24px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        .epi-grid .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== БЛОК ВНИМАНИЯ (КРАСНЫЙ) ===== */
+        .attention-block {
+            background: #fef2f2;
+            border-radius: 12px;
+            padding: 14px 18px;
+            border-left: 6px solid #dc2626;
+            margin: 12px 0 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: #7f1d1d;
+        }
+
+        .attention-block .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .attention-block .content strong {
+            color: #b91c1c;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .lecture-highlight {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 4px solid #3b82f6;
+            margin: 12px 0 16px 0;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .lecture-highlight strong {
+            color: #1e3a8a;
+        }
+
+        /* ===== ASCII-схема ===== */
+        .ascii-art {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: pre;
+            overflow-x: auto;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            margin: 12px 0 16px 0;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 12px 0 20px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО НА ВСЮ ШИРИНУ ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 500px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ТАБЛИЦА ДИАГНОСТИКИ ===== */
+        .diagnostic-table-wrap {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #fafcff;
+        }
+
+        .diagnostic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            min-width: 500px;
+        }
+
+        .diagnostic-table th {
+            background: #e9edf3;
+            color: #1e3a8a;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        .diagnostic-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .diagnostic-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .diagnostic-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .diagnostic-table .material {
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .diagnostic-table .method {
+            color: #2563eb;
+        }
+
+        .diagnostic-table .finding {
+            color: #0b6e4f;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 220px;
+            }
+
+            .stage-row .text-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .diagnostic-table {
+                font-size: 14px;
+                min-width: 0;
+            }
+
+            .diagnostic-table th,
+            .diagnostic-table td {
+                padding: 8px 12px;
+            }
+
+            .attention-block {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .image-col {
+                min-height: 180px;
+            }
+
+            .diagnostic-table {
+                font-size: 13px;
+            }
+            .diagnostic-table th,
+            .diagnostic-table td {
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🦠</span> Кишечная лямблия</h1>
+    <div class="subtitle">
+        <strong>Lamblia intestinalis</strong>  — возбудитель <strong>лямблиоза</strong>
+        <div class="pronounce">🎙️ Правильное произношение: <i>«Лямблия интестиналис»</i></div>
+    </div>
+
+    <!-- ===== БЛОК 1. СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Подцарство:</strong> Простейшие (Protozoa)<br>
+            <strong>Тип:</strong> Саркомастигофоры (Sarcomastigophora)<br>
+            <strong>Класс:</strong> Жгутиковые (Mastigophora)<br>
+            <strong>Вид:</strong> Кишечная лямблия (<em>Lamblia intestinalis</em>, син. <em>Giardia duodenalis</em>, <em>Giardia lamblia</em>)<br>
+        </p>
+        <p style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #d1d9e8;">
+            <strong>Экологическая группа:</strong> <span class="spec">Геопротисты</span> — заражение происходит из окружающей среды, нет обязательной смены видов хозяев.<br>
+            <strong>Тип инвазии:</strong> <span class="spec">Антропоноз</span> — единственным источником заражения является человек.
+        </p>
+    </div>
+
+    <!-- ===== БЛОК 2. КЛЮЧЕВЫЕ ПОКАЗАТЕЛИ ===== -->
+    <h2><span class="emoji">📋</span> Ключевые показатели паразитоза</h2>
+
+    <div class="epi-grid">
+        <div class="item full-width">
+            <strong>Механизм и путь заражения:</strong><br>
+            • <strong>Механизм:</strong> Фекально-оральный.<br>
+            • <strong>Пути заражения:</strong>
+            <ul>
+                <li><em>Водный (ведущий)</em> — употребление некипячёной воды из открытых водоёмов, колодцев, водопровода (цисты устойчивы к хлорированию).</li>
+                <li><em>Контактно-бытовой</em> — через грязные руки, предметы обихода, игрушки, а также при употреблении немытых овощей, фруктов, зелени.</li>
+                <!-- трансмиссивный путь убран, но блок внимания ниже оставлен -->
+            </ul>
+        </div>
+
+        <!-- БЛОК ВНИМАНИЯ (КРАСНЫЙ) — мухи и тараканы -->
+        <div class="attention-block full-width" style="grid-column: 1 / -1; margin: 0;">
+            <div class="icon">⚠️</div>
+            <div class="content">
+                <strong>Внимание!</strong> Механическими переносчиками могут выступать <strong>мухи и тараканы</strong>, переносящие цисты на продукты питания.
+            </div>
+        </div>
+
+        <div class="item">
+            <strong>Инвазионная стадия для человека:</strong><br>
+            <span class="spec">Зрелая 4-ядерная циста</span>
+        </div>
+
+        <div class="item">
+            <strong>Патогенная стадия для человека:</strong><br>
+            <span class="spec">Вегетативная форма (трофозоит)</span>
+        </div>
+
+        <div class="item full-width">
+            <strong>Локализация в теле человека:</strong><br>
+            • <strong>Основная:</strong> Верхние отделы тонкого кишечника — <strong>двенадцатиперстная кишка</strong> и начальные отделы тощей кишки (пристеночное пространство).<br>
+            • <strong>Важно:</strong> В желчном пузыре и протоках <strong>не живут</strong> (желчь губительна для трофозоитов). Симптомы со стороны правого подреберья — рефлекторная дискинезия.
+        </div>
+    </div>
+
+    <!-- ===== БЛОК 3. МОРФОЛОГИЯ ===== -->
+    <h2><span class="emoji">🧫</span> Морфологическая характеристика стадий</h2>
+
+    <!-- 1. Трофозоит -->
+    <h3>1. Трофозоит (вегетативная форма)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма:</strong> Грушевидная (каплевидная), передний конец расширен и закруглён, задний — заострён. Тело билатерально-симметричное.<br>
+                <strong>Размеры:</strong> Длина 9–18 мкм, ширина 8–10 мкм.
+            </p>
+            <ul>
+                <li><strong>Ядерный аппарат:</strong> 2 одинаковых ядра овальной формы, лежат симметрично (под микроскопом — «лицо в очках» / «рожица»).</li>
+                <li><strong>Органоиды движения:</strong> 4 пары жгутиков (всего 8): передние, задние, брюшные и боковые. Движение поступательное с вращением вокруг оси («кувыркающееся»).</li>
+                <li><strong>Органоиды фиксации и опоры:</strong>
+                    <ul>
+                        <li><em>Присасывательный диск</em> — вентральное углубление для прикрепления к эпителию.</li>
+                        <li><em>2 аксостиля</em> — осевые опорные нити вдоль тела.</li>
+                        <li><em>Парабазальные тела</em> — изогнутые тельца в цитоплазме.</li>
+                    </ul>
+                </li>
+                <li><strong>Питание:</strong> Осмотическое (пиноцитоз) всей поверхностью — всасывание готовых питательных веществ из зоны пристеночного пищеварения.</li>
+            </ul>
+        </div>
+        <div class="image-col">
+            <img src="images/protists/giardia_forms.jpeg" alt="Трофозоит лямблии" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🏊</span>
+                Трофозоит <em>L. intestinalis</em>
+                <span class="small">(giardia_trophozoite.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">грушевидная форма, 2 ядра, жгутики, присасывательный диск</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Циста -->
+    <h3>2. Циста (покоящаяся форма)</h3>
+
+    <div class="stage-row">
+        <div class="text-col">
+            <p>
+                <strong>Форма и размеры:</strong> Овальная, длина 10–14 мкм, ширина 6–10 мкм.<br>
+                <strong>Оболочка:</strong> Толстая, плотная, выраженная двуконтурная.
+            </p>
+            <ul>
+                <li><strong>Ядерный состав:</strong>
+                    <ul>
+                        <li>Незрелая циста — 2 ядра.</li>
+                        <li><span class="spec">Зрелая инвазионная циста — 4 ядра</span>, компактно расположенные на переднем полюсе.</li>
+                    </ul>
+                </li>
+                <li><strong>Внутренние структуры:</strong> В цитоплазме видны удвоенный комплекс аксостилей и жгутиковые фибриллы в виде <strong>буквы S</strong>.</li>
+            </ul>
+            <div class="note">
+                <strong>Диагностическое отличие:</strong> Зрелая циста <em>L. intestinalis</em> содержит 4 ядра, что отличает её от цист других простейших (например, у <em>Entamoeba coli</em> — 8 ядер).
+            </div>
+        </div>
+        <div class="image-col">
+            <img src="images/protists/giardia_forms.jpeg" alt="Циста лямблии" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🔮</span>
+                Циста <em>L. intestinalis</em>
+                <span class="small">(giardia_cyst.jpg)</span>
+                <span style="font-size:12px;color:#94a3b8;">овальная, 4 ядра, аксостили в виде S</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== БЛОК 4. ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <p>
+        <strong>Тип цикла:</strong> Геопротист (проходит без смены хозяев).<br>
+        <strong>Хозяин:</strong> Человек.
+    </p>
+
+    <!-- Важный нюанс: нет основного/промежуточного хозяина -->
+    <div class="lecture-highlight">
+        <strong>🎙️ Нюанс:</strong> У лямблии <strong>отсутствует половой процесс</strong>, размножение только бесполое (продольное деление). Поэтому термины «основной» или «промежуточный» хозяин <strong>не применяются</strong> — есть только <strong>один хозяин</strong> — человек.
+    </div>
+
+    <!-- Схема цикла (текстовая) -->
+    <div class="full-width-image">
+        <img src="images/protists/giardia_life_cycle.jpg" alt="Жизненный цикл лямблии" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🌊</span>
+            Жизненный цикл <em>Lamblia intestinalis</em>
+            <span class="small">(giardia_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">циста → эксцистирование → трофозоит → деление → инцистирование</span>
+        </div>
+    </div>
+
+    <h4>Этапы жизненного цикла:</h4>
+    <ol>
+        <li><strong>Заглатывание зрелой цисты</strong> (с водой, пищей, через грязные руки).</li>
+        <li><strong>Эксцистирование</strong> в двенадцатиперстной кишке (под действием желудочного сока и ферментов) — из одной цисты образуются <strong>два трофозоита</strong>.</li>
+        <li><strong>Размножение</strong> трофозоитов бесполым путём (продольное деление) в просвете тонкой кишки, прикрепление к ворсинкам.</li>
+        <li><strong>Инцистирование</strong> при продвижении в нижние отделы тонкого кишечника (при нормальной перистальтике) — образование цист.</li>
+        <li><strong>Выделение цист</strong> с фекалиями во внешнюю среду (зрелые 4-ядерные цисты).</li>
+    </ol>
+
+    <!-- Нюанс про диарею + добавлена скобка про нативный кал -->
+    <div class="lecture-highlight">
+        <strong>⚠️ Важный нюанс:</strong><br>
+        При <strong>диарее</strong> (ускоренный пассаж) трофозоиты <strong>не успевают инцистироваться</strong> и выделяются наружу в вегетативной форме, из-за чего во внешней среде быстро погибают <em>(поэтому для лабораторной диагностики берётся нативный, т.е. свежий кал, в котором трофозоиты ещё живы)</em>.
+    </div>
+
+    <!-- ===== БЛОК 5. ПАТОГЕНЕЗ ===== -->
+    <h2><span class="emoji">⚕️</span> Патогенез и клинические проявления</h2>
+
+    <ul>
+        <li><strong>Механическое поражение:</strong> Массовое прикрепление трофозоитов к ворсинкам («эффект ковра») нарушает пристеночное пищеварение и травмирует эпителий.</li>
+        <li><strong>Синдром мальабсорбции:</strong> Блокада всасывания питательных веществ, жиров, витаминов (A, D, E, K, B₁₂).</li>
+        <li><strong>Токсико-аллергические реакции:</strong> Всасывание метаболитов паразитов → дерматозы, зуд, крапивница.</li>
+    </ul>
+
+    <h4>Клинические симптомы:</h4>
+    <ul>
+        <li>Вздутие живота (метеоризм), тошнота, чередование запоров и диареи.</li>
+        <li>Боли в околопупочной области, слабость, головные боли, субфебрилитет.</li>
+    </ul>
+
+    <!-- ===== БЛОК 6. ЛАБОРАТОРНАЯ ДИАГНОСТИКА (ТАБЛИЦА) ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <div class="lecture-highlight">
+        <strong>🎙️ Схема ответа:</strong> всегда указывайте <strong>1) биоматериал, 2) метод исследования, 3) что находим</strong>.
+    </div>
+
+    <div class="diagnostic-table-wrap">
+        <table class="diagnostic-table">
+            <thead>
+                <tr>
+                    <th>Биоматериал</th>
+                    <th>Метод исследования</th>
+                    <th>Что находим</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="material">Оформленный кал</td>
+                    <td class="method">Микроскопия мазка с раствором Люголя</td>
+                    <td class="finding"><strong>Зрелые 4-ядерные цисты</strong></td>
+                </tr>
+                <tr>
+                    <td class="material">Жидкий стул (диарея)</td>
+                    <td class="method">Микроскопия нативного мазка (свежий, тёплый)</td>
+                    <td class="finding"><strong>Подвижные трофозоиты</strong> (вегетативные формы)</td>
+                </tr>
+                <tr>
+                    <td class="material">Дуоденальное содержимое (порции А и В)</td>
+                    <td class="method">Срочная микроскопия нативного препарата</td>
+                    <td class="finding"><strong>Подвижные трофозоиты</strong> (из двенадцатиперстной кишки)</td>
+                </tr>
+                <tr>
+                    <td class="material">Сыворотка крови или кал</td>
+                    <td class="method">ИФА / ИХА (иммуноферментный анализ)</td>
+                    <td class="finding"><strong>Антигены лямблий</strong> (в кале) или <strong>антитела класса IgG/IgM</strong> (в крови)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Важнейший нюанс: прерывистое выделение цист -->
+    <div class="lecture-highlight" style="border-left-color: #f59e0b; background: #fffbeb;">
+        <strong>⚠️ Критический нюанс: «Феномен прерывистого выделения цист»</strong><br>
+        Выделение цист происходит <strong>волнообразно</strong> (периоды активного выделения сменяются «немыми» фазами от нескольких дней до 2–3 недель).<br>
+        <strong>Следствие:</strong> Однократный отрицательный анализ кала <strong>не исключает лямблиоз</strong>. Необходимо сдавать кал <strong>многократно</strong> с интервалом 2–3 дня.
+    </div>
+
+    <!-- ===== БЛОК 7. ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Мытьё рук перед едой, после туалета и улицы.</li>
+        <li>Питьё только кипячёной или бутилированной воды.</li>
+        <li>Тщательное мытьё и ошпаривание кипятком овощей, зелени, фруктов, ягод.</li>
+        <li>Защита продуктов от мух и тараканов.</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li>Санитарный контроль источников водоснабжения и канализационных сетей.</li>
+        <li>Плановое обследование и лечение декретированных групп (работники общепита, водоканалов, персонал детских учреждений).</li>
+        <li>Санитарно-просветительская работа среди населения.</li>
+        <li>Дезинсекция помещений (борьба с мухами и тараканами).</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

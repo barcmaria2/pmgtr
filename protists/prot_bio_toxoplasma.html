@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Токсоплазма (Toxoplasma gondii) — Конспект</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji { font-size: 32px; }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .pronounce {
+            background: #eef2ff;
+            border-radius: 8px;
+            padding: 4px 14px;
+            font-size: 15px;
+            color: #1e3a8a;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong { color: #1e293b; }
+
+        .taxonomy-card .subnote {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #d1d9e8;
+        }
+
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 24px;
+        }
+
+        .epi-grid .item { font-size: 14px; }
+        .epi-grid .item strong { color: #1e3a8a; }
+        .epi-grid .full-width { grid-column: 1 / -1; }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px;
+            letter-spacing: -.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji { font-size: 28px; }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px;
+        }
+
+        p {
+            margin: 0 0 12px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li { margin-bottom: 4px; }
+        strong { color: #1e293b; }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px;
+        }
+
+        .lecture-highlight {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 4px solid #3b82f6;
+            margin: 12px 0 16px;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #fafcff;
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            min-width: 650px;
+        }
+
+        .styled-table th {
+            background: #e9edf3;
+            color: #1e3a8a;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        .styled-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .styled-table tbody tr:nth-child(even) { background: #f8fafc; }
+        .styled-table tr:last-child td { border-bottom: none; }
+
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 12px 0 20px;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .placeholder .icon { font-size: 48px; }
+        .placeholder .small { font-size: 13px; color: #b0bccd; }
+
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            max-height: 560px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            min-height: 300px;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .cycle {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.55;
+            white-space: pre;
+            overflow-x: auto;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            margin: 12px 0 16px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .epi-grid { grid-template-columns: 1fr; }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 220px;
+            }
+
+            .styled-table {
+                font-size: 14px;
+                min-width: 560px;
+            }
+
+            .full-width-image img { max-height: 350px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .styled-table { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><span class="emoji">🦠</span> Токсоплазма</h1>
+    <div class="subtitle">
+        <strong>Toxoplasma gondii</strong> — возбудитель <strong>токсоплазмоза</strong>
+        <div class="pronounce">🎙️ Произношение: <i>Toxoplasma gondii</i> — «Токсопла́зма го́ндии»</div>
+    </div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Подцарство:</strong> Простейшие (Protozoa)<br>
+            <strong>Тип:</strong>  Споровики (Sporozoa)<br>
+            <strong>Вид:</strong> <em>Toxoplasma gondii</em>
+        </p>
+        <div class="subnote">
+            <strong>Экологическая группа:</strong> <span class="spec">Биопротист</span> — жизненный цикл проходит со сменой хозяев разных видов.<br>
+            <strong>Эпидемиологический тип:</strong> <span class="spec">Зооантропоноз</span>.<br>
+            <strong>Тип паразитирования:</strong> <span class="spec">внутриклеточный паразит</span>.<br>
+            <strong>Окончательный хозяин:</strong> представители семейства кошачьих; половой этап проходит в кишечнике.<br>
+            <strong>Промежуточные хозяева:</strong> человек и различные теплокровные животные.
+        </div>
+    </div>
+
+    <!-- ===== КЛЮЧЕВЫЕ ПОКАЗАТЕЛИ ===== -->
+    <h2><span class="emoji">📋</span> Ключевые показатели паразитоза</h2>
+
+    <div class="epi-grid">
+        <div class="item full-width">
+            <strong>Географическое распространение:</strong><br>
+            Повсеместное, где распространены представители семейства кошачьих.
+        </div>
+
+        <div class="item full-width">
+            <strong>Механизмы и пути заражения:</strong>
+            <ul>
+                <li>
+                    <strong>Фекально-оральный механизм:</strong>
+                    <ul>
+                        <li><em>алиментарный путь</em> — употребление сырого или недостаточно термически обработанного мяса промежуточных хозяев, содержащего тканевые цисты с брадизоитами;</li>
+                        <li><em>контактно-бытовой путь</em> — проглатывание спорулированных ооцист с грязных рук, после контакта с загрязнённой почвой, при употреблении немытых овощей, фруктов и других пищевых продуктов, загрязнённых почвой;</li>
+                        <li><em>водный путь</em> — проглатывание спорулированных ооцист с водой.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Вертикальный механизм:</strong>
+                    <ul>
+                        <li><em>трансплацентарный путь</em> — передача токсоплазмы от инфицированной матери развивающемуся плоду.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <strong>Инвазионные стадии для человека:</strong><br>
+            <span class="spec">Спорулированная ооциста; тканевая циста с брадизоитами</span>
+        </div>
+
+        <div class="item">
+            <strong>Патогенные формы:</strong><br>
+            <span class="spec">Тахизоиты; брадизоиты в тканевых цистах</span>
+        </div>
+
+        <div class="item full-width">
+            <strong>Локализация:</strong><br>
+            Мозг, сердце, печень, селезёнка, почки, глаза. При беременности возможно поражение развивающегося плода.
+        </div>
+    </div>
+
+    <!-- ===== МОРФОЛОГИЯ ===== -->
+    <h2><span class="emoji">🧫</span> Морфологическая характеристика</h2>
+
+    <p>
+        <em>Toxoplasma gondii</em> — облигатный внутриклеточный биопротист-споровик.
+        В течение жизненного цикла паразит существует в нескольких четко разграниченных морфологических формах,
+        сменяющихся в зависимости от хозяина (окончательный / промежуточный) и фазы патологического процесса.
+    </p>
+
+    <!-- ===== 1. ТАХИЗОИТ ===== -->
+    <h3>1. Тахизоит (эндозоит / свободный трофозоит)</h3>
+    <div class="stage-row">
+        <div class="text-col">
+            <h4>Морфология</h4>
+            <ul>
+                <li><strong>Форма:</strong> полулунная, напоминает дольку апельсина, полумесяц или банан.</li>
+                <li><strong>Размеры:</strong> длина около <strong>4–8 мкм</strong>, ширина <strong>2–4 мкм</strong>.</li>
+                <li><strong>Строение:</strong> один конец заострён (апикальный полюс), второй закруглён. В центре клетки располагается округлое ядро.</li>
+                <li>На заострённом конце находится <strong>апикальный комплекс органелл</strong> — коноид, роптрии, микронемы, обеспечивающие активное проникновение в клетку хозяина.</li>
+                <li>Жгутики и реснички отсутствуют.</li>
+            </ul>
+
+            <h4>Локализация в организме</h4>
+            <ul>
+                <li><strong>Организм:</strong> промежуточные хозяева — человек, млекопитающие, птицы; также встречается в тканях окончательного хозяина вне кишечника.</li>
+                <li><strong>Биотоп:</strong> внутриклеточно в цитоплазме различных ядерных клеток — макрофагов, лейкоцитов, нейронов, кардиомиоцитов, гепатоцитов и др.; кратковременно может находиться свободно в плазме крови и лимфе.</li>
+            </ul>
+
+            <h4>Значение</h4>
+            <ul>
+                <li><strong>Патогенетическое значение:</strong> стадия <strong>острой фазы</strong> инвазии.</li>
+                <li>Характеризуется быстрым бесполым размножением путём продольного деления или внутреннего почкования — <strong>эндодиогении</strong>.</li>
+                <li>Вызывает разрушение клеток-мишеней, клеточный лизис и воспалительную реакцию.</li>
+                <li>Способен преодолевать <strong>гематоэнцефалический</strong> и <strong>трансплацентарный</strong> барьеры.</li>
+                <li><strong>Диагностическое значение:</strong> индуцирует выработку IgM и нарастание титра IgG; может обнаруживаться в биологических материалах при манифестной острой инфекции.</li>
+            </ul>
+        </div>
+
+        <div class="image-col">
+            <img src="images/protists/toxoplasma_tachyzoite.jpg"
+                 alt="Тахизоит Toxoplasma gondii"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🧬</span>
+                Тахизоит <em>Toxoplasma gondii</em>
+                <span class="small">(toxoplasma_tachyzoite.jpg)</span>
+                <span style="font-size:12px;">полулунная форма, апикальный комплекс, ядро</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 2. БРАДИЗОИТ ===== -->
+    <h3>2. Брадизоит (цистозоит / в составе истинных тканевых цист)</h3>
+    <div class="stage-row">
+        <div class="text-col">
+            <h4>Морфология</h4>
+            <ul>
+                <li><strong>Форма и размеры:</strong> сходны с тахизоитами; полулунные, около <strong>4–7 мкм</strong>.</li>
+                <li>Имеют более плотную цитоплазму, ядро смещено к заднему концу, метаболизм значительно замедлен.</li>
+                <li><strong>Тканевая циста:</strong> округлое или овальное скопление сотен и тысяч брадизоитов, окружённое плотной защитной оболочкой.</li>
+                <li>Со временем стенка цисты может обызвествляться с образованием <strong>кальцинатов</strong>.</li>
+            </ul>
+
+            <h4>Локализация в организме</h4>
+            <ul>
+                <li><strong>Организм:</strong> промежуточные хозяева — человек, сельскохозяйственные животные, грызуны.</li>
+                <li><strong>Биотоп:</strong> головной мозг, скелетная мускулатура, миокард, сетчатка глаза, печень.</li>
+            </ul>
+
+            <h4>Значение</h4>
+            <ul>
+                <li><strong>Патогенетическое значение:</strong> стадия <strong>хронической (латентной) фазы</strong> токсоплазмоза.</li>
+                <li>Брадизоиты делятся медленно; тканевая циста обеспечивает длительное сохранение паразита.</li>
+                <li>При выраженном иммунодефиците возможен выход брадизоитов из цисты, превращение в тахизоиты и <strong>реактивация процесса</strong>.</li>
+                <li><strong>Эпидемиологическое значение:</strong> тканевая циста является инвазионной стадией при употреблении сырого или недостаточно термически обработанного мяса.</li>
+                <li><strong>Диагностическое значение:</strong> возможное обнаружение кальцинатов при инструментальных исследованиях; серологически характерно наличие IgG.</li>
+            </ul>
+        </div>
+
+        <div class="image-col">
+            <img src="images/protists/toxoplasma_tissue_cyst.jpg"
+                 alt="Брадизоиты и тканевая циста Toxoplasma gondii"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🔵</span>
+                Брадизоиты в тканевой цисте
+                <span class="small">(toxoplasma_tissue_cyst.jpg)</span>
+                <span style="font-size:12px;">истинная циста с плотной оболочкой</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3. ПСЕВДОЦИСТА ===== -->
+    <h3>3. Псевдоциста</h3>
+    <div class="stage-row">
+        <div class="text-col">
+            <h4>Морфология</h4>
+            <ul>
+                <li>Временное скопление размножающихся тахизоитов внутри вакуоли поражённой клетки хозяина.</li>
+                <li><strong>Ключевое отличие от истинной тканевой цисты:</strong> не имеет собственной утолщённой защитной оболочки; ограничена мембраной поражённой клетки и паразитофорной вакуолью.</li>
+            </ul>
+
+            <h4>Локализация в организме</h4>
+            <ul>
+                <li>Цитоплазма макрофагов, эндотелиоцитов и клеток паренхиматозных органов промежуточного хозяина.</li>
+            </ul>
+
+            <h4>Значение</h4>
+            <ul>
+                <li>Промежуточный этап <strong>острой инфекции</strong>.</li>
+                <li>По мере накопления тахизоитов поражённая клетка разрушается, паразиты выходят в межклеточное пространство и поражают новые клетки.</li>
+            </ul>
+        </div>
+
+        <div class="image-col">
+            <img src="images/protists/toxoplasma_pseudocyst.jpg"
+                 alt="Псевдоциста Toxoplasma gondii"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🟠</span>
+                Псевдоциста <em>Toxoplasma gondii</em>
+                <span class="small">(toxoplasma_pseudocyst.jpg)</span>
+                <span style="font-size:12px;">скопление тахизоитов без собственной плотной оболочки</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4. ООЦИСТА ===== -->
+    <h3>4. Ооциста (со спорозоитами)</h3>
+    <div class="stage-row">
+        <div class="text-col">
+            <h4>Морфология</h4>
+            <ul>
+                <li><strong>Форма и размеры:</strong> округлая или слегка овальная, около <strong>9–14 мкм</strong>.</li>
+                <li><strong>Оболочка:</strong> толстая, многослойная, бесцветная или желтоватая, устойчивая к факторам внешней среды.</li>
+                <li><strong>Незрелая ооциста:</strong> содержит одну несегментированную зиготу и выделяется с фекалиями кошки.</li>
+                <li><strong>Зрелая (спорулированная) ооциста:</strong> формируется во внешней среде при доступе кислорода; содержит <strong>2 спороцисты</strong>, в каждой по <strong>4 спорозоита</strong> — всего 8 спорозоитов.</li>
+            </ul>
+
+            <h4>Локализация в организме и внешней среде</h4>
+            <ul>
+                <li><strong>Организм:</strong> формируется в эпителии тонкого кишечника окончательного хозяина — представителей семейства кошачьих.</li>
+                <li><strong>Внешняя среда:</strong> почва, песок, вода, кошачьи лотки и другие объекты, загрязнённые фекалиями кошек.</li>
+            </ul>
+
+            <h4>Значение</h4>
+            <ul>
+                <li><strong>Эпидемиологическое значение:</strong> основная устойчивая форма расселения паразита во внешней среде.</li>
+                <li><strong>Инвазионная стадия:</strong> зрелая спорулированная ооциста.</li>
+                <li>При проглатывании оболочка ооцисты разрушается в ЖКТ, спорозоиты освобождаются, внедряются в кишечную стенку и дают начало тахизоитам.</li>
+            </ul>
+        </div>
+
+        <div class="image-col">
+            <img src="images/protists/toxoplasma_oocyst.jpg"
+                 alt="Ооциста Toxoplasma gondii"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="placeholder" style="display:none;">
+                <span class="icon">🟣</span>
+                Ооциста <em>Toxoplasma gondii</em>
+                <span class="small">(toxoplasma_oocyst.jpg)</span>
+                <span style="font-size:12px;">2 спороцисты × 4 спорозоита</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== СВОДНАЯ ТАБЛИЦА ФОРМ ===== -->
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Морфологическая форма</th>
+                    <th>Основные признаки</th>
+                    <th>Локализация</th>
+                    <th>Значение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td><strong>Тахизоит</strong></td>
+                    <td>Полулунный, 4–8 × 2–4 мкм; апикальный комплекс; быстро размножается</td>
+                    <td>Внутриклеточно в различных ядерных клетках; кратковременно кровь и лимфа</td>
+                    <td>Острая фаза, диссеминация, трансплацентарное распространение</td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td><strong>Брадизоит / тканевая циста</strong></td>
+                    <td>Полулунный, 4–7 мкм; медленный метаболизм; циста с плотной оболочкой</td>
+                    <td>Мозг, скелетные мышцы, миокард, сетчатка, печень</td>
+                    <td>Хроническая фаза, персистенция; инвазионная форма при употреблении мяса</td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td><strong>Псевдоциста</strong></td>
+                    <td>Скопление тахизоитов без собственной плотной оболочки</td>
+                    <td>Внутри поражённых клеток промежуточного хозяина</td>
+                    <td>Промежуточный этап острой инфекции</td>
+                </tr>
+                <tr>
+                    <td><strong>4</strong></td>
+                    <td><strong>Ооциста</strong></td>
+                    <td>9–14 мкм; зрелая содержит 2 спороцисты по 4 спорозоита</td>
+                    <td>Образуется в кишечнике кошачьих; созревает и сохраняется во внешней среде</td>
+                    <td>Устойчивая форма расселения; спорулированная ооциста инвазионна для промежуточного хозяина</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== РАЗМНОЖЕНИЕ ===== -->
+    <h2><span class="emoji">🧬</span> Размножение</h2>
+
+    <h4>В организме окончательного хозяина — кошки</h4>
+    <ul>
+        <li><strong>Бесполое размножение:</strong> в кишечнике проходит мерогония.</li>
+        <li><strong>Половое размножение:</strong> образуются мужские и женские гаметы; после их слияния формируется зигота, окружённая оболочкой — ооциста.</li>
+    </ul>
+
+    <h4>Во внешней среде</h4>
+    <ul>
+        <li><strong>Созревание ооцисты:</strong> неспорулированная ооциста созревает примерно за 24–48 часов.</li>
+        <li>В результате формируется <strong>спорулированная заразная ооциста</strong> со спороцистами и спорозоитами.</li>
+    </ul>
+
+    <h4>В организме промежуточного хозяина</h4>
+    <ul>
+        <li><strong>Бесполое внутриклеточное размножение:</strong> тахизоиты активно размножаются внутри клеток в период острой инфекции.</li>
+        <li>При переходе инфекции в хроническую форму образуются <strong>брадизоиты</strong>, которые накапливаются в тканевых цистах.</li>
+    </ul>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <div class="full-width-image">
+        <img src="images/protists/toxoplasma_life_cycle.jpg"
+             alt="Жизненный цикл Toxoplasma gondii"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Жизненный цикл <em>Toxoplasma gondii</em>
+            <span class="small">(toxoplasma_life_cycle.jpg)</span>
+            <span style="font-size:12px;">кошка → ооциста → внешняя среда → промежуточный хозяин → тканевая циста → кошка</span>
+        </div>
+    </div>
+
+    <h4>В организме кошки</h4>
+    <ol>
+        <li>В кишечнике проходят мерогония и образование половых клеток.</li>
+        <li>Мужская и женская гаметы сливаются, формируется ооциста.</li>
+        <li>Примерно через <strong>7–14 дней после заражения кошки</strong> ооцисты попадают во внешнюю среду.</li>
+        <li>С фекалиями выделяются <strong>неспорулированные ооцисты</strong>.</li>
+    </ol>
+
+    <h4>Во внешней среде</h4>
+    <ol>
+        <li>Неспорулированная ооциста созревает примерно <strong>24–48 часов</strong>.</li>
+        <li>Образуется <strong>спорулированная заразная ооциста</strong>.</li>
+        <li>Зрелые ооцисты распространяются через пищу, воду и почву.</li>
+    </ol>
+
+    <h4>В организме промежуточного хозяина</h4>
+    <ol>
+        <li>После заражения появляются <strong>тахизоиты</strong>.</li>
+        <li>Тахизоиты внутриклеточно размножаются и соответствуют <strong>острой инфекции</strong>.</li>
+        <li>В дальнейшем происходит переход к <strong>брадизоитам</strong>.</li>
+        <li>Брадизоиты формируют <strong>тканевые цисты</strong>, характерные для хронической инфекции.</li>
+        <li>При поедании заражённого промежуточного хозяина кошкой тканевые цисты вновь попадают к окончательному хозяину и цикл повторяется.</li>
+    </ol>
+
+
+
+    <!-- ===== ПАТОГЕНЕЗ ===== -->
+    <h2><span class="emoji">⚕️</span> Патогенез и клиническое значение</h2>
+
+    <p>
+        <em>Toxoplasma gondii</em> является внутриклеточным паразитом. Основные органы локализации:
+        <strong>мозг, сердце, печень, селезёнка, почки и глаза</strong>.
+    </p>
+
+    <h4>Острая инфекция</h4>
+    <ul>
+        <li>Связана с тахизоитами.</li>
+        <li>Тахизоиты активно размножаются внутри клеток и распространяются по организму.</li>
+    </ul>
+
+    <h4>Хроническая инфекция</h4>
+    <ul>
+        <li>Связана с брадизоитами.</li>
+        <li>Брадизоиты формируют тканевые цисты и сохраняются в органах и тканях промежуточного хозяина.</li>
+    </ul>
+
+    <h4>Врожденный токсоплазмоз</h4>
+    <p>
+        Возможен трансплацентарный путь передачи от инфицированной матери развивающемуся плоду.
+        На схеме лекции отдельно отмечено поражение развивающегося плода, а также мозга, органа зрения и сердца.
+    </p>
+
+    <!-- ===== ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Биоматериал</th>
+                    <th>Метод исследования</th>
+                    <th>Что определяют</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Кровь</td>
+                    <td>Иммунологические / серологические методы</td>
+                    <td>Антитела к токсоплазме</td>
+                </tr>
+                <tr>
+                    <td>Пунктат лимфатического узла</td>
+                    <td>Микроскопическое исследование</td>
+                    <td>Токсоплазмы</td>
+                </tr>
+                <tr>
+                    <td>Материал поражённых органов</td>
+                    <td>Микроскопическое исследование</td>
+                    <td>Паразитарные формы; на слайде указано «обнаружение оооцист внутри органов»</td>
+                </tr>
+                <tr>
+                    <td>Исследуемый материал</td>
+                    <td>Метод биологических проб</td>
+                    <td>Наличие возбудителя</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<!-- ===== ПРОФИЛАКТИКА ===== -->
+<h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+<h3>1. Личная профилактика</h3>
+
+<h4>Питание</h4>
+<ul>
+    <li>
+        Употреблять только <strong>термически обработанное мясо</strong>;
+        исключить сырой фарш и мясо с кровью.
+    </li>
+    <li>
+        Употреблять только <strong>кипяченое или пастеризованное молоко</strong>.
+    </li>
+    <li>
+        Тщательно мыть <strong>овощи, зелень и ягоды</strong>.
+    </li>
+</ul>
+
+<h4>Гигиена и контакты</h4>
+<ul>
+    <li>
+        Мыть руки после контакта с <strong>кошками и почвой</strong>.
+    </li>
+    <li>
+        Садовые и другие работы с землей проводить <strong>в перчатках</strong>.
+    </li>
+    <li>
+        <strong>Ежедневно убирать и ошпаривать кошачий лоток</strong>,
+        не допуская споруляции выделенных ооцист.
+    </li>
+    <li>
+        Закрывать <strong>детские песочницы</strong>, предупреждая их загрязнение
+        фекалиями кошек.
+    </li>
+</ul>
+
+<h4>Профилактика у беременных</h4>
+<ul>
+    <li>
+        Исключить контакт с <strong>кошачьими лотками</strong>.
+    </li>
+    <li>
+        Планово исследовать кровь на антитела к <em>Toxoplasma gondii</em>:
+        <strong>IgM и IgG</strong>.
+    </li>
+</ul>
+
+<h3>2. Общественная профилактика</h3>
+
+<h4>Ветеринарный надзор</h4>
+<ul>
+    <li>
+        Контроль качества мяса на <strong>бойнях и рынках</strong>.
+    </li>
+    <li>
+        Правильная <strong>утилизация мясных отходов</strong>.
+    </li>
+</ul>
+
+<h4>Контроль популяции животных</h4>
+<ul>
+    <li>
+        Регуляция численности <strong>бродячих кошек</strong>.
+    </li>
+    <li>
+        <strong>Дератизация</strong> — борьба с грызунами.
+    </li>
+</ul>
+
+<h4>Медицинский контроль</h4>
+<ul>
+    <li>
+        <strong>Скрининг доноров крови и органов</strong>.
+    </li>
+    <li>
+        Проведение <strong>санитарно-просветительной работы</strong>.
+    </li>
+</ul>
+
+</div>
+</body>
+</html>

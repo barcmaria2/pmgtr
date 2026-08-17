@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Американская трипаносома (Trypanosoma cruzi) — Конспект</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6fa;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 .emoji {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        .subtitle strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .pronounce {
+            background: #eef2ff;
+            border-radius: 8px;
+            padding: 4px 14px;
+            font-size: 15px;
+            color: #1e3a8a;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .pronounce i {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* ===== ТАКСОНОМИЧЕСКАЯ КАРТОЧКА ===== */
+        .taxonomy-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .taxonomy-card p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .taxonomy-card p strong {
+            color: #1e293b;
+        }
+
+        .taxonomy-card .subnote {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #d1d9e8;
+        }
+
+        /* ===== ЭПИДЕМИОЛОГИЯ ===== */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+            background: #fafcff;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #e9edf3;
+            margin-bottom: 24px;
+        }
+
+        .epi-grid .item {
+            font-size: 14px;
+        }
+
+        .epi-grid .item strong {
+            color: #1e3a8a;
+        }
+
+        .epi-grid .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== БЛОК ВНИМАНИЯ ===== */
+        .attention-block {
+            background: #fef2f2;
+            border-radius: 12px;
+            padding: 14px 18px;
+            border-left: 6px solid #dc2626;
+            margin: 12px 0 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: #7f1d1d;
+        }
+
+        .attention-block .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .attention-block .content strong {
+            color: #b91c1c;
+        }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 32px 0 12px 0;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .emoji {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 24px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e9edf3;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 18px 0 6px 0;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul, ol {
+            margin: 6px 0 14px 20px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: #1e293b;
+        }
+
+        .spec {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0 16px 0;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .lecture-highlight {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 4px solid #3b82f6;
+            margin: 12px 0 16px 0;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .lecture-highlight strong {
+            color: #1e3a8a;
+        }
+
+        .external-highlight {
+            background: #f0fdf4;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 4px solid #16a34a;
+            margin: 12px 0 16px 0;
+            font-size: 14px;
+            color: #14532d;
+        }
+
+        .external-highlight strong {
+            color: #166534;
+        }
+
+        /* ===== ASCII-схема ===== */
+        .ascii-art {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: pre;
+            overflow-x: auto;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            margin: 12px 0 16px 0;
+        }
+
+        /* ===== БЛОКИ С ИЗОБРАЖЕНИЯМИ ===== */
+        .stage-row {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            margin: 12px 0 20px 0;
+        }
+
+        .stage-row .text-col {
+            flex: 1 1 55%;
+            min-width: 0;
+        }
+
+        .stage-row .image-col {
+            flex: 0 0 40%;
+            max-width: 40%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stage-row .image-col img,
+        .stage-row .image-col .placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+        }
+
+        .stage-row .image-col .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .stage-row .image-col .placeholder .icon {
+            font-size: 52px;
+        }
+
+        .stage-row .image-col .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== БОЛЬШОЕ ФОТО ===== */
+        .full-width-image {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 28px 0;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            max-height: 520px;
+            object-fit: contain;
+        }
+
+        .full-width-image .placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+            gap: 6px;
+        }
+
+        .full-width-image .placeholder .icon {
+            font-size: 48px;
+        }
+
+        .full-width-image .placeholder .small {
+            font-size: 13px;
+            color: #b0bccd;
+        }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #fafcff;
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            min-width: 620px;
+        }
+
+        .styled-table th {
+            background: #e9edf3;
+            color: #1e3a8a;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        .styled-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .styled-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .styled-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .stage-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stage-row .image-col {
+                flex: 1 1 auto;
+                max-width: 100%;
+                order: -1;
+                min-height: 220px;
+            }
+
+            .stage-row .text-col {
+                flex: 1 1 auto;
+            }
+
+            .epi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-image img {
+                max-height: 350px;
+            }
+
+            .styled-table {
+                font-size: 14px;
+                min-width: 560px;
+            }
+
+            .attention-block {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+
+            .full-width-image img {
+                max-height: 250px;
+            }
+
+            .stage-row .image-col {
+                min-height: 180px;
+            }
+
+            .styled-table {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <h1><span class="emoji">🦠</span> Американская трипаносома</h1>
+    <div class="subtitle">
+        <strong>Trypanosoma cruzi</strong> — возбудитель <strong>американского (бразильского) трипаносомоза — болезни Шагаса</strong>
+        <div class="pronounce">
+            🎙️ Произношение: <i>Trypanosoma cruzi</i> — «Трипаносо́ма кру́зи»
+        </div>
+    </div>
+
+    <!-- ===== СИСТЕМАТИКА ===== -->
+    <div class="taxonomy-card">
+        <p>
+            <strong>Домен:</strong> Эукариоты (Eukaryota)<br>
+            <strong>Царство:</strong> Животные (Animalia)<br>
+            <strong>Подцарство:</strong> Простейшие (Protozoa)<br>
+            <strong>Тип:</strong> Саркомастигофоры (Sarcomastigophora)<br>
+            <strong>Класс:</strong> Жгутиконосцы (Mastigophora)<br>
+            <strong>Отряд:</strong> Кинетопластидные (Kinetoplastida)<br>
+            <strong>Вид:</strong> <em>Trypanosoma cruzi</em>
+        </p>
+        <div class="subnote">
+            <strong>Экологическая группа:</strong> <span class="spec">Биопротист</span><br>
+            <strong>Эпидемиологический тип:</strong> <span class="spec">Зооантропонозное, природно-очаговое, трансмиссивное заболевание</span><br>
+            <strong>Размножение:</strong> Бесполое — <strong>продольным делением надвое</strong>.
+        </div>
+    </div>
+
+    <!-- ===== КЛЮЧЕВЫЕ ПОКАЗАТЕЛИ ===== -->
+    <h2><span class="emoji">📋</span> Ключевые показатели паразитоза</h2>
+
+    <div class="epi-grid">
+        <div class="item full-width">
+            <strong>Географическое распространение:</strong><br>
+            Страны Латинской Америки.
+        </div>
+
+        <div class="item full-width">
+            <strong>Источники инвазии:</strong><br>
+            Больной человек и резервуарные хозяева.<br>
+            <strong>Синантропные резервуары:</strong> собаки, кошки, свиньи, крысы.<br>
+            <strong>Дикие резервуары:</strong> броненосцы, опоссумы, муравьеды, обезьяны.
+        </div>
+
+        <div class="item full-width">
+            <strong>Специфический переносчик:</strong><br>
+            Триатомовые («поцелуйные») клопы (клопы рода <em>Triatoma)</em>.
+        </div>
+
+        <div class="item full-width">
+            <strong>Механизм и путь заражения:</strong><br>
+            <strong>Трансмиссивный, контаминативный.</strong> Клоп заражает человека не слюной: после кровососания он выделяет рядом с местом укуса фекалии, содержащие трипаносом. При расчёсывании паразиты втираются в ранку, ссадины или попадают на слизистые.
+        </div>
+
+        <div class="item">
+            <strong>Инвазионная стадия для человека:</strong><br>
+            <span class="spec">Метациклическая трипомастигота</span>
+        </div>
+
+        <div class="item">
+            <strong>Патогенная стадия для человека:</strong><br>
+            <span class="spec">Амастигота</span>
+        </div>
+
+        <div class="item full-width">
+            <strong>Локализация:</strong><br>
+            Клетки кожи и слизистых → кровь → клетки сердечной и скелетной мускулатуры, нервной системы и других тканей.
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>Дополнительные пути из учебного пособия:</strong> трансфузионный и трансплацентарный.
+    </div>
+
+    <!-- ===== МОРФОЛОГИЯ ===== -->
+    <h2><span class="emoji">🧫</span> Морфологическая характеристика</h2>
+
+    <p>
+        <strong>Полиморфизм:</strong> в жизненном цикле <em>T. cruzi</em> последовательно встречаются
+        <strong>трипомастигота → эпимастигота → метациклическая трипомастигота</strong> у переносчика и
+        <strong>трипомастигота ↔ амастигота</strong> у позвоночного хозяина.
+    </p>
+
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Форма</th>
+                    <th>Морфология</th>
+                    <th>Где встречается</th>
+                    <th>Функция</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Трипомастигота</strong></td>
+                    <td>
+                        Удлинённая; ядро центрально, крупный кинетопласт сзади ядра; хорошо выражена ундулирующая мембрана и жгутик.
+                        В окрашенном мазке крови часто имеет <strong>C- или U-образную форму</strong>.
+                    </td>
+                    <td>Кровь человека; заглатывается клопом при кровососании.</td>
+                    <td>Распространение по организму и заражение переносчика. <strong>В крови не размножается.</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Амастигота</strong></td>
+                    <td>
+                        Мелкая округлая / овальная внутриклеточная форма; свободного жгутика и ундулирующей мембраны нет.
+                        Имеются ядро и кинетопласт.
+                    </td>
+                    <td>Внутри клеток кожи, мышц, сердца, нервной системы и других тканей.</td>
+                    <td><strong>Патогенная стадия для человека.</strong> Главная размножающаяся тканевая форма: делится внутри клетки, вызывает её повреждение и разрушение, затем превращается в трипомастиготу.</td>
+                </tr>
+                <tr>
+                    <td><strong>Эпимастигота</strong></td>
+                    <td>Кинетопласт расположен впереди ядра; ундулирующая мембрана короче, чем у трипомастиготы.</td>
+                    <td>Кишечник триатомового клопа.</td>
+                    <td>Размножающаяся форма в организме переносчика.</td>
+                </tr>
+                <tr>
+                    <td><strong>Метациклическая трипомастигота</strong></td>
+                    <td>Инвазионная трипомастиготная форма.</td>
+                    <td>Задние отделы кишечника клопа → фекалии.</td>
+                    <td><strong>Инвазионна для человека.</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="lecture-highlight">
+        <strong>🎙️ Нюанс для сравнения с T. brucei:</strong><br>
+        У <em>T. brucei</em> цикл у человека внеклеточный, а у <em>T. cruzi</em> имеется настоящая
+        <strong>внутриклеточная амастиготная стадия</strong>. Именно амастиготы размножаются в тканях и непосредственно повреждают клетки.
+    </div>
+
+    <!-- ===== ЖИЗНЕННЫЙ ЦИКЛ ===== -->
+    <h2><span class="emoji">🔄</span> Жизненный цикл</h2>
+
+    <div class="full-width-image">
+        <img src="images/protists/trypanosoma_cruzi_life_cycle.jpg"
+             alt="Жизненный цикл Trypanosoma cruzi"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" style="display:none;">
+            <span class="icon">🔄</span>
+            Жизненный цикл <em>Trypanosoma cruzi</em>
+            <span class="small">(trypanosoma_cruzi_life_cycle.jpg)</span>
+            <span style="font-size:12px;color:#94a3b8;">клоп → фекалии → человек → амастигота → трипомастигота → клоп</span>
+        </div>
+    </div>
+
+    <h4>В организме триатомового клопа:</h4>
+    <ol>
+        <li><strong>Заражение переносчика:</strong> клоп при кровососании заглатывает <strong>кровяные трипомастиготы</strong> больного человека или животного.</li>
+        <li><strong>Кишечник клопа:</strong> трипомастиготы превращаются в <strong>эпимастиготы</strong> и размножаются.</li>
+        <li><strong>Метациклогенез:</strong> в задних отделах кишечника образуются <strong>метациклические трипомастиготы</strong>.</li>
+        <li><strong>Выведение:</strong> инвазионные формы выделяются с фекалиями клопа.</li>
+    </ol>
+
+    <h4>Заражение и цикл в организме человека:</h4>
+    <ol>
+        <li><strong>Кровососание:</strong> клоп кусает человека и обычно оставляет фекалии рядом с местом укуса.</li>
+        <li><strong>Контаминация:</strong> при расчёсывании человек втирает фекалии с метациклическими трипомастиготами в ранку; возможно попадание на слизистую глаза или другую слизистую.</li>
+        <li><strong>Проникновение в клетку:</strong> трипомастиготы внедряются в клетки кожи / слизистых и превращаются в <strong>амастиготы</strong>.</li>
+        <li><strong>Внутриклеточное размножение:</strong> амастиготы многократно делятся внутри клетки.</li>
+        <li><strong>Обратное превращение:</strong> амастиготы превращаются в трипомастиготы; клетка разрушается, паразиты выходят в кровь.</li>
+        <li><strong>Паразитемия:</strong> кровяные трипомастиготы разносятся по организму. <span class="spec">В крови они не делятся.</span></li>
+        <li><strong>Повторное заражение клеток:</strong> трипомастиготы проникают в клетки сердечной и скелетной мускулатуры, нервной системы и других тканей, где снова превращаются в амастиготы.</li>
+        <li><strong>Замыкание цикла:</strong> новый клоп заглатывает кровяные трипомастиготы.</li>
+    </ol>
+
+    <!-- ===== ПАТОГЕНЕЗ И КЛИНИКА ===== -->
+    <h2><span class="emoji">⚕️</span> Патогенез и клиническая картина</h2>
+
+    <h4>Патогенное действие</h4>
+    <ul>
+        <li><strong>Механическое / цитопатическое:</strong> внутриклеточное размножение амастигот → разрушение клеток и тканей.</li>
+        <li><strong>Токсическое:</strong> действие продуктов жизнедеятельности паразита.</li>
+        <li><strong>Основные мишени:</strong> сердечная мышца, поперечнополосатые мышцы, клетки нервной системы; возможно поражение ЦНС.</li>
+    </ul>
+
+    <h4>Первичный эффект</h4>
+    <ul>
+        <li><strong>Чагома (или «Шагома»):</strong> красный воспалительный узел в месте внедрения паразита, обычно с регионарным лимфаденитом; внешне может напоминать фурункул.</li>
+        <li><strong>Конъюнктивальный первичный эффект:</strong> при попадании паразита через конъюнктиву развивается воспаление и выраженный отёк век.</li>
+    </ul>
+
+    <div class="lecture-highlight">
+        <strong>📌 Симптом Романьи:</strong> односторонний отёк век / окологлазничных тканей при попадании заражённых фекалий клопа на конъюнктиву.
+    </div>
+
+    <h4>Острая фаза</h4>
+    <ul>
+        <li>Длительность — около <strong>2 месяцев</strong>.</li>
+        <li>Высокая паразитемия: трипомастиготы циркулируют в крови.</li>
+        <li>Наиболее тяжёлые проявления — <strong>миокардит</strong> и <strong>менингоэнцефалит</strong>.</li>
+    </ul>
+
+    <h4>Хроническая фаза</h4>
+    <p>
+        Развивается через несколько лет, иногда через <strong>10 лет и более</strong>.
+        Паразиты сохраняются преимущественно в тканях.
+    </p>
+
+    <div class="external-highlight">
+        <strong>Дополнение по современным данным WHO / CDC:</strong><br>
+        При клинически выраженной хронической болезни наиболее характерны
+        <strong>кардиомиопатия, нарушения проводимости и ритма, сердечная недостаточность</strong>.
+        Возможны поражения пищеварительной системы — прежде всего <strong>мегаэзофагус и мегаколон</strong>,
+        а также неврологические нарушения.
+    </div>
+
+    <!-- ===== ДИАГНОСТИКА ===== -->
+    <h2><span class="emoji">🧪</span> Лабораторная диагностика</h2>
+
+    <div class="lecture-highlight">
+        <strong>🎙️ Схема ответа:</strong> всегда указывайте <strong>1) биоматериал, 2) метод, 3) что находим</strong>.
+    </div>
+
+    <div class="table-wrap">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Биоматериал</th>
+                    <th>Метод исследования</th>
+                    <th>Что находим / значение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Кровь (мазок, толстая капля)</td>
+                    <td>Микроскопия, окраска по Романовскому–Гимзе</td>
+                    <td><span class="spec">Трипомастиготы</span>; наиболее информативно в острой фазе</td>
+                </tr>
+                <tr>
+                    <td>Содержимое чагомы</td>
+                    <td>Микроскопия</td>
+                    <td>Паразитарные формы <em>T. cruzi</em>; метод отдельно указан в лекционной презентации</td>
+                </tr>
+                <tr>
+                    <td>Пунктат лимфатических узлов / костного мозга</td>
+                    <td>Микроскопия</td>
+                    <td>Трипаносомы; материал указан в лекционной презентации</td>
+                </tr>
+                <tr>
+                    <td>Спинномозговая жидкость</td>
+                    <td>Микроскопия</td>
+                    <td><span class="spec">Трипомастиготы</span> при поражении ЦНС</td>
+                </tr>
+                <tr>
+                    <td>Поражённая ткань</td>
+                    <td>Гистологическое исследование</td>
+                    <td><span class="spec">Внутриклеточные амастиготы</span></td>
+                </tr>
+                <tr>
+                    <td>Сыворотка крови</td>
+                    <td>Серологические реакции</td>
+                    <td>Специфические антитела; особенно важны в хронической стадии</td>
+                </tr>
+                <tr>
+                    <td>Кровь / ткань</td>
+                    <td>ПЦР</td>
+                    <td>ДНК <em>T. cruzi</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="external-highlight">
+        <strong>Современное диагностическое уточнение CDC:</strong><br>
+        В острой фазе основа прямой диагностики — обнаружение трипомастигот в крови.
+        В хронической фазе паразитемия низкая, поэтому основное значение имеет серология;
+        для подтверждения хронической инфекции применяют не один, а как минимум два серологических теста,
+        основанных на разных антигенах / принципах.
+    </div>
+
+    <!-- ===== ПРОФИЛАКТИКА ===== -->
+    <h2><span class="emoji">🛡️</span> Профилактика</h2>
+
+    <h4>Личная профилактика:</h4>
+    <ul>
+        <li>Защита от контакта с триатомовыми клопами.</li>
+        <li>Использование защитных сеток / пологов в эндемичных районах.</li>
+        <li>Не расчёсывать укусы и не втирать загрязнения с кожи в ранку или глаза.</li>
+    </ul>
+
+    <h4>Общественная профилактика:</h4>
+    <ul>
+        <li><strong>Выявление и лечение больных.</strong></li>
+        <li><strong>Уничтожение триатомовых клопов</strong> и обработка жилых помещений и хозяйственных построек инсектицидами.</li>
+        <li>Улучшение санитарного состояния жилищ, устранение щелей и мест укрытия переносчиков.</li>
+        <li>Контроль резервуарных хозяев и санитарно-просветительная работа.</li>
+    </ul>
+
+    <div class="external-highlight">
+        <strong>Дополнение WHO:</strong> важны также контроль донорской крови и органов и профилактика врождённой передачи.
+    </div>
+
+</div>
+</body>
+</html>

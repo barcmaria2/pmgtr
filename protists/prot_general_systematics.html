@@ -1,0 +1,225 @@
+<style>
+/* ===== Стиль Pomogator.med: как в остальных теоретических вкладках ===== */
+.tab-content-inner {
+    color: #334155;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.7;
+    font-size: 16px;
+    padding: 4px 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.tab-content-inner, .tab-content-inner * { box-sizing: border-box; }
+.tab-content-inner h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+.tab-content-inner h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2563eb;
+    margin: 28px 0 12px 0;
+    letter-spacing: -0.01em;
+}
+.tab-content-inner h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin: 20px 0 8px 0;
+}
+.tab-content-inner p { margin: 0 0 16px 0; }
+.tab-content-inner strong { font-weight: 700; color: #1e293b; }
+.tab-content-inner em { color: #1e293b; }
+.tab-content-inner .intro-text { font-size: 17px; font-weight: 450; color: #1e293b; }
+.definition-card {
+    background: #f0f9ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 20px 0 24px 0;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+}
+.definition-card p { margin: 0; font-size: 17px; font-weight: 500; color: #1e3a8a; }
+.definition-card p strong { color: #1e40af; }
+.type-block {
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin: 18px 0;
+}
+.type-block h3 { margin: 0 0 8px 0; color: #1e3a8a; }
+.type-block p:last-child { margin-bottom: 0; }
+.tab-content-inner ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 12px 0 16px 0;
+}
+.tab-content-inner ul li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+.tab-content-inner ul li::before {
+    content: "✓";
+    color: #2563eb;
+    font-weight: 700;
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    top: -1px;
+}
+.tab-content-inner ul ul { margin: 6px 0 6px 20px; }
+.tab-content-inner ul ul li::before { content: "•"; color: #2563eb; font-size: 22px; top: -2px; }
+.tab-content-inner ol { padding-left: 24px; margin: 12px 0 16px 0; }
+.tab-content-inner ol li { margin-bottom: 10px; line-height: 1.7; }
+.tab-content-inner ol li strong { color: #1e3a8a; }
+.alert-box {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px 16px 48px;
+    margin: 24px 0;
+    position: relative;
+}
+.alert-box::before { content: "💡"; position: absolute; left: 16px; top: 16px; font-size: 20px; }
+.alert-box p { margin: 0; }
+.content-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin: 20px auto;
+}
+.image-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+}
+.image-row img { width: 100%; max-width: 100%; height: 180px; object-fit: contain; background: #fff; border-radius: 10px; }
+.table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    margin: 16px 0 20px;
+    padding-bottom: 8px;
+    border-radius: 12px;
+    scrollbar-width: auto;
+    scrollbar-color: #94a3b8 #e2e8f0;
+}
+.table-wrapper::-webkit-scrollbar { height: 12px; }
+.table-wrapper::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 999px; }
+.table-wrapper::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 999px; border: 2px solid #e2e8f0; }
+.compare-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 760px;
+    background: #fff;
+    font-size: 14px;
+}
+.compare-table th, .compare-table td { border: 1px solid #dbe3ee; padding: 12px 14px; text-align: left; vertical-align: top; }
+.compare-table th { background: #f1f5f9; color: #1e3a8a; font-weight: 700; }
+/* Внутренние подвкладки: отдельные классы, чтобы не конфликтовать с вкладками сайта */
+.repro-subtabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 4px 0 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e9edf3;
+}
+.repro-subtab-btn {
+    padding: 8px 18px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .2s;
+    white-space: nowrap;
+}
+.repro-subtab-btn:hover { background: #f1f5f9; color: #334155; }
+.repro-subtab-btn.active { background: #2563eb; color: #fff; box-shadow: 0 2px 10px rgba(37, 99, 235, .25); }
+.repro-subpane { display: none; animation: protoFadeIn .25s ease; }
+.repro-subpane.active { display: block; }
+@keyframes protoFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (max-width: 600px) {
+    .tab-content-inner { font-size: 15px; }
+    .tab-content-inner h2 { font-size: 22px; }
+    .tab-content-inner h3 { font-size: 18px; }
+    .definition-card { padding: 16px 18px; }
+    .definition-card p { font-size: 16px; }
+    .tab-content-inner ul li { padding-left: 24px; }
+    .tab-content-inner ul ul { margin-left: 12px; }
+    .alert-box { padding: 14px 16px 14px 44px; }
+    .alert-box::before { left: 12px; top: 14px; font-size: 18px; }
+    .image-row { grid-template-columns: 1fr; }
+    .image-row img { height: auto; max-height: 360px; }
+    .repro-subtab-btn { flex: 1 1 auto; text-align: center; }
+}
+</style>
+
+<div class="tab-content-inner">
+    <h2>Тип Простейшие. Классификация</h2>
+    <div class="definition-card">
+        <p><strong>Простейшие</strong> — это организмы, тело которых состоит из одной эукариотической клетки, функционирующей как целый самостоятельный организм. Они способны к самостоятельному питанию, передвижению, защите и переживанию неблагоприятных условий.</p>
+    </div>
+
+    <h3>Классификация простейших</h3>
+    <ul>
+        <li><strong>Домен:</strong> Эукариоты (Eukariota).</li>
+        <li><strong>Царство:</strong> Протисты (Protista).</li>
+        <li><strong>Подцарство:</strong> Простейшие (Protozoa).</li>
+    </ul>
+
+    <div class="type-block">
+        <h3>1. Тип Саркомастигофоры (Sarcomastigophora)</h3>
+        <p><strong>Отличительная черта:</strong> органеллами движения служат временные выросты цитоплазмы (псевдоподии) или постоянные жгутики.</p>
+        <p><strong>Представители:</strong></p>
+        <ul>
+            <li>Дизентерийная амёба — <em>Entamoeba histolytica</em></li>
+            <li>Лямблия кишечная — <em>Lamblia intestinalis</em></li>
+            <li>Урогенитальная трихомонада — <em>Trichomonas vaginalis</em></li>
+            <li>Лейшмания Донована — <em>Leishmania donovani</em></li>
+            <li>Лейшмания тропическая — <em>Leishmania tropica</em></li>
+            <li>Трипаносома бруцеи — <em>Trypanosoma brucei</em></li>
+            <li>Трипаносома крузи — <em>Trypanosoma cruzi</em></li>
+        </ul>
+    </div>
+
+    <div class="type-block">
+        <h3>2. Тип Апикомплексы / Споровики (Apicomplexa / Sporozoa)</h3>
+        <p><strong>Отличительная черта:</strong> не имеют специализированных органелл движения во взрослом состоянии, являются исключительно внутриклеточными паразитами со сложным жизненным циклом.</p>
+        <p><strong>Представители:</strong></p>
+        <ul>
+            <li>Токсоплазма — <em>Toxoplasma gondii</em></li>
+            <li>Малярийные плазмодии — род <em>Plasmodium</em> (включает виды: <em>Plasmodium vivax</em>, <em>Plasmodium malariae</em>, <em>Plasmodium falciparum</em>, <em>Plasmodium ovale</em>)</li>
+        </ul>
+    </div>
+
+    <div class="type-block">
+        <h3>3. Тип Инфузории, или Ресничные (Ciliophora)</h3>
+        <p><strong>Отличительная черта:</strong> передвигаются с помощью многочисленных ресничек, имеют постоянную форму тела и два типа ядер в клетке (большое вегетативное и малое генеративное).</p>
+        <p><strong>Представители:</strong></p>
+        <ul>
+            <li>Балантидий кишечный — <em>Balantidium coli</em></li>
+        </ul>
+    </div>
+</div>
